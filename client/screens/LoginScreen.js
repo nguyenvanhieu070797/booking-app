@@ -24,8 +24,6 @@ function LoginScreen({navigation}) {
         }
     }
 
-
-
     return (
         <BackgroundStart>
             <View style={styles.rootContainer}>

@@ -24,12 +24,14 @@ function LoginScreen({navigation}) {
         }
     }
 
+
+
     return (
         <BackgroundStart>
             <View style={styles.rootContainer}>
                 <View style={styles.container}>
                     <Text style={styles.titleWelcome}>
-                        Đăng nhập
+                        Đăng Nhập
                     </Text>
                 </View>
 
@@ -125,6 +127,7 @@ const styles = StyleSheet.create({
         fontFamily: 'open-sans',
     },
     contentRegister: {
+        fontWeight: 'bold',
         fontSize: 14,
         fontFamily: 'open-sans',
         marginTop: 5,

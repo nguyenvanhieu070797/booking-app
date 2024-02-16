@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         marginBottom: 4,
     },
     labelInvalid: {
-        color: Colors.red500,
+        color: Colors.red200,
     },
     input: {
         paddingVertical: 8,
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     inputInvalid: {
-        backgroundColor: Colors.red500,
+        borderWidth: 2,
+        borderColor: Colors.red200,
     },
 });

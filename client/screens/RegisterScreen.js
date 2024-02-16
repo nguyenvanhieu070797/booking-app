@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Alert} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Input from "../components/ui/Input"
@@ -11,6 +11,17 @@ function RegisterScreen({navigation}) {
     const [enteredPassword, setEnteredPassword] = useState('');
     const [enteredConfirmPassword, setEnteredConfirmPassword] = useState('');
 
+    const [credentialsInvalid, setCredentialsInvalid] = useState({
+        email: false,
+        password: false,
+        confirmPassword: false,
+    });
+
+    const {
+        email: emailIsInvalid,
+        password: passwordIsInvalid,
+        confirmPassword: passwordsDontMatch,
+    } = credentialsInvalid;
 
     function loginScreenHandler() {
         navigation.navigate('LoginScreen');
@@ -30,6 +41,35 @@ function RegisterScreen({navigation}) {
             case 'confirmPassword':
                 setEnteredConfirmPassword(enteredValue);
                 break;
+        }
+    }
+
+    function submitHandler(credentials) {
+        let { email, password, confirmPassword } = credentials;
+        email = email.trim();
+        password = password.trim();
+        confirmPassword = confirmPassword.trim();
+
+        const emailIsValid = email.includes('@');
+        const passwordIsValid = password.length > 6;
+        const passwordConfirmIsValid = confirmPassword.length > 6;
+        const passwordsAreEqual = password === confirmPassword;
+
+        if (
+            !emailIsValid ||
+            !passwordIsValid ||
+            !passwordConfirmIsValid ||
+            !passwordsAreEqual
+        ) {
+            Alert.alert('Invalid input', 'Please check your entered credentials.');
+            setCredentialsInvalid({
+                email: !emailIsValid,
+                password: !passwordIsValid,
+                confirmPassword: !passwordIsValid || !passwordsAreEqual,
+            });
+            return;
+        } else {
+            loginScreenHandler();
         }
     }
 
@@ -64,7 +104,7 @@ function RegisterScreen({navigation}) {
                         onUpdateValue={updateInputValueHandler.bind(this, 'email')}
                         value={enteredEmail}
                         keyboardType="email-address"
-                        isInvalid={false}
+                        isInvalid={emailIsInvalid}
                         style={{
                             input: {
                                 paddingHorizontal: 15,
@@ -79,7 +119,7 @@ function RegisterScreen({navigation}) {
                         placeholder="Nhập mật khẩu"
                         onUpdateValue={updateInputValueHandler.bind(this, 'password')}
                         value={enteredPassword}
-                        isInvalid={false}
+                        isInvalid={passwordIsInvalid}
                         style={{
                             input: {
                                 paddingHorizontal: 15,
@@ -94,7 +134,7 @@ function RegisterScreen({navigation}) {
                         placeholder="Nhập lại mật khẩu"
                         onUpdateValue={updateInputValueHandler.bind(this, 'confirmPassword')}
                         value={enteredConfirmPassword}
-                        isInvalid={false}
+                        isInvalid={passwordsDontMatch}
                         style={{
                             input: {
                                 paddingHorizontal: 15,
@@ -108,7 +148,14 @@ function RegisterScreen({navigation}) {
 
                 <View style={styles.container}>
                     <PrimaryButton
-                        onPress={loginScreenHandler}
+                        onPress={() => submitHandler(
+                            {
+                                userName: enteredUserName,
+                                email: enteredEmail,
+                                password: enteredPassword,
+                                confirmPassword: enteredConfirmPassword,
+                            }
+                        )}
                         style={{
                             text: {
                                 fontSize: 18,
@@ -166,6 +213,7 @@ const styles = StyleSheet.create({
         fontFamily: 'open-sans',
     },
     contentRegister: {
+        fontWeight: 'bold',
         fontSize: 14,
         fontFamily: 'open-sans',
         marginTop: 5,

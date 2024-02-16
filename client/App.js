@@ -1,3 +1,4 @@
+import { useState, useEffect, useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -34,12 +35,11 @@ export default function App() {
     return <Text>Loading...</Text>;
   }
 
-
   return (
       <>
         <StatusBar style="light"/>
         <LinearGradient
-            colors={[Colors.primary700, Colors.accent500]}
+            colors={[Colors.lightBlue300, Colors.lightBlue500]}
             style={styles.rootScreen}
             onLayout={onLayoutRootView}
         >
@@ -54,6 +54,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  rootScreen: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

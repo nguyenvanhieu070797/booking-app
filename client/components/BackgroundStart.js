@@ -3,7 +3,7 @@ import {StyleSheet, ImageBackground} from 'react-native';
 function BackgroundStart({children}) {
     return  <ImageBackground
         source={require('../assets/images/header/background-screen.png')}
-        resizeMode="cover"
+        // resizeMode="stretch"
         style={styles.rootScreen}
         imageStyle={styles.backgroundImage}
     >
@@ -15,10 +15,11 @@ export default BackgroundStart;
 
 const styles = StyleSheet.create({
     rootScreen: {
-        flex: 1,
+        width: '100%', // applied to Image
+        height: '100%'
     },
     backgroundImage: {
-        flex: 1,
+        resizeMode: 'stretch'
     },
 
 })

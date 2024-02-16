@@ -5,12 +5,15 @@ import PrimaryButton from "../components/ui/PrimaryButton";
 import Input from "../components/ui/Input"
 import Colors from "../constants/colors"
 
-function LoginScreen({navigation}) {
+function RegisterScreen({navigation}) {
     const [enteredUserName, setEnteredUserName] = useState('');
+    const [enteredEmail, setEnteredEmail] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
+    const [enteredConfirmPassword, setEnteredConfirmPassword] = useState('');
 
-    function registerScreenHandler() {
-        navigation.navigate('RegisterScreen');
+
+    function loginScreenHandler() {
+        navigation.navigate('LoginScreen');
     }
 
     function updateInputValueHandler(inputType, enteredValue) {
@@ -18,8 +21,14 @@ function LoginScreen({navigation}) {
             case 'userName':
                 setEnteredUserName(enteredValue);
                 break;
+            case 'email':
+                setEnteredEmail(enteredValue);
+                break;
             case 'password':
                 setEnteredPassword(enteredValue);
+                break;
+            case 'confirmPassword':
+                setEnteredConfirmPassword(enteredValue);
                 break;
         }
     }
@@ -29,7 +38,7 @@ function LoginScreen({navigation}) {
             <View style={styles.rootContainer}>
                 <View style={styles.container}>
                     <Text style={styles.titleWelcome}>
-                        Đăng nhập
+                        Đăng Ký Tài Khoản
                     </Text>
                 </View>
 
@@ -39,6 +48,22 @@ function LoginScreen({navigation}) {
                         placeholder="Nhập tên tài khoản"
                         onUpdateValue={updateInputValueHandler.bind(this, 'userName')}
                         value={enteredUserName}
+                        isInvalid={false}
+                        style={{
+                            input: {
+                                paddingHorizontal: 15,
+                            },
+                            label: {
+                                color: Colors.grey700,
+                            }
+                        }}
+                    />
+
+                    <Input
+                        placeholder="Nhập email"
+                        onUpdateValue={updateInputValueHandler.bind(this, 'email')}
+                        value={enteredEmail}
+                        keyboardType="email-address"
                         isInvalid={false}
                         style={{
                             input: {
@@ -64,11 +89,26 @@ function LoginScreen({navigation}) {
                             }
                         }}
                     />
+
+                    <Input
+                        placeholder="Nhập lại mật khẩu"
+                        onUpdateValue={updateInputValueHandler.bind(this, 'confirmPassword')}
+                        value={enteredConfirmPassword}
+                        isInvalid={false}
+                        style={{
+                            input: {
+                                paddingHorizontal: 15,
+                            },
+                            label: {
+                                color: Colors.grey700,
+                            }
+                        }}
+                    />
                 </View>
 
                 <View style={styles.container}>
                     <PrimaryButton
-                        onPress={() => console.log("Đăng nhập")}
+                        onPress={loginScreenHandler}
                         style={{
                             text: {
                                 fontSize: 18,
@@ -84,13 +124,14 @@ function LoginScreen({navigation}) {
                             }
                         }}
                     >
-                        Đăng Nhập
+                        Đăng Ký
                     </PrimaryButton>
+
                     <Text
                         style={styles.contentRegister}
-                        onPress={registerScreenHandler}
+                        onPress={loginScreenHandler}
                     >
-                        Chưa có tài khoản? <Text style={{color: Colors.blue500}}>Đăng ký</Text>
+                        Đã tài khoản? <Text style={{color: Colors.blue500}}>Đăng nhập</Text>
                     </Text>
                 </View>
 
@@ -99,7 +140,7 @@ function LoginScreen({navigation}) {
     );
 }
 
-export default LoginScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {

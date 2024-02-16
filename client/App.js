@@ -1,5 +1,5 @@
-import {useEffect, useCallback, useState} from 'react';
-import { StyleSheet, Text, View, ImageBackground, SafeAreaView } from 'react-native';
+import {useEffect, useCallback} from 'react';
+import { StyleSheet, Text, View} from 'react-native';
 
 // Size Bar
 import { StatusBar } from 'expo-status-bar';
@@ -17,6 +17,7 @@ SplashScreen.preventAutoHideAsync();
 import Navigation from "./components/route/Navigation";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -67,6 +68,16 @@ export default function App() {
         options: {
           headerShown: false,
           title: 'Đăng nhập',
+          animation: 'none',
+          gestureEnabled: false,
+        }
+      },
+      {
+        name: "RegisterScreen",
+        component:  RegisterScreen,
+        options: {
+          headerShown: false,
+          title: 'Đăng ký',
           animation: 'none',
           gestureEnabled: false,
         }

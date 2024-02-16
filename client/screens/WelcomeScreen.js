@@ -28,7 +28,8 @@ function WelcomeScreen() {
                         onPress={startScreen}
                         style={{
                             text: {
-                                fontSize: 18
+                                fontSize: 18,
+                                fontFamily: 'open-sans',
                             },
                             container: {
                                 borderRadius: 6,
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
         fontFamily: 'open-sans',
     },
     contentWelcome: {
-        textAlign: "center"
+        textAlign: "center",
+        fontFamily: 'open-sans',
     }
 });

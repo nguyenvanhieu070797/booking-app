@@ -2,12 +2,10 @@ import {View, Text, StyleSheet} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
-function WelcomeScreen({navigation}) {
+function LoginScreen({navigation}) {
 
-
-    function startScreenHandler() {
-        // navigation.push('LoginScreen');
-        navigation.navigate('LoginScreen');
+    function startScreen() {
+        console.log("hello");
     }
 
     return (
@@ -15,7 +13,7 @@ function WelcomeScreen({navigation}) {
             <View style={styles.rootContainer}>
                 <View style={styles.container}>
                     <Text style={styles.titleWelcome}>
-                        Xin chào!
+                        Đăng nhập
                     </Text>
                 </View>
 
@@ -27,7 +25,7 @@ function WelcomeScreen({navigation}) {
 
                 <View style={styles.container}>
                     <PrimaryButton
-                        onPress={startScreenHandler}
+                        onPress={startScreen}
                         style={{
                             text: {
                                 fontSize: 18,
@@ -42,14 +40,16 @@ function WelcomeScreen({navigation}) {
                                 paddingVertical: 14,
                             }
                         }}
-                    >Bắt đầu</PrimaryButton>
+                    >
+                        Đăng Ký
+                    </PrimaryButton>
                 </View>
             </View>
         </BackgroundStart>
     );
 }
 
-export default WelcomeScreen;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {

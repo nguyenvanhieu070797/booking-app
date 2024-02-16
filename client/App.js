@@ -16,6 +16,7 @@ SplashScreen.preventAutoHideAsync();
 // Screens
 import Navigation from "./components/route/Navigation";
 import WelcomeScreen from "./screens/WelcomeScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -51,11 +52,23 @@ export default function App() {
     },
     screens: [
       {
-        name: "Welcome",
+        name: "WelcomeScreen",
         component:  WelcomeScreen,
         options: {
           headerShown: false,
           title: 'Xin chào',
+          animation: 'none',
+          gestureEnabled: false,
+        }
+      },
+      {
+        name: "LoginScreen",
+        component:  LoginScreen,
+        options: {
+          headerShown: false,
+          title: 'Đăng nhập',
+          animation: 'none',
+          gestureEnabled: false,
         }
       }
     ]

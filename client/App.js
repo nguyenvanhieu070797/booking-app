@@ -1,6 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import {useEffect, useCallback, useState} from 'react';
+import { StyleSheet, Text, View, ImageBackground, SafeAreaView } from 'react-native';
+
+// Size Bar
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 
 // Set Linear Gradient
 import { LinearGradient } from 'expo-linear-gradient';
@@ -11,8 +13,11 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 SplashScreen.preventAutoHideAsync();
 
-export default function App() {
+// Screens
+import Navigation from "./components/route/Navigation";
+import WelcomeScreen from "./screens/WelcomeScreen";
 
+export default function App() {
   const [fontsLoaded] = useFonts({
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
@@ -32,24 +37,44 @@ export default function App() {
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    return <Text>Loading...</Text>;
+    return <View>
+      <Text>
+        Loading...
+      </Text>
+    </View>;
   }
 
+  let navigationOptions = {
+    initialRouteName: "Welcome",
+    screenOptions: {
+      headerShown: false,
+    },
+    screens: [
+      {
+        name: "Welcome",
+        component:  WelcomeScreen,
+        options: {
+          headerShown: false,
+          title: 'Xin chào',
+        }
+      }
+    ]
+  };
+
   return (
-      <>
-        <StatusBar style="light"/>
-        <LinearGradient
-            colors={[Colors.lightBlue300, Colors.lightBlue500]}
-            style={styles.rootScreen}
-            onLayout={onLayoutRootView}
-        >
-            <View>
-              <Text>
-                asdasd
-              </Text>
-            </View>
-        </LinearGradient>
-      </>
+    <>
+      <StatusBar style="dark"/>
+      <LinearGradient
+          colors={[Colors.darkDividers, Colors.darkDividers]}
+          resizeMode="cover"
+          style={styles.rootScreen}
+          onLayout={onLayoutRootView}
+      >
+          <Navigation
+              navigationOptions={navigationOptions}
+          />
+      </LinearGradient>
+    </>
   );
 }
 
@@ -62,5 +87,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  backgroundImage: {
+    flex: 1,
   },
 });

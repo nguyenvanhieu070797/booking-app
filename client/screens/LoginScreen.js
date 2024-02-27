@@ -13,6 +13,10 @@ function LoginScreen({navigation}) {
         navigation.navigate('RegisterScreen');
     }
 
+    function loginScreenHandler() {
+        navigation.navigate('PrizeWheelScreen');
+    }
+
     function updateInputValueHandler(inputType, enteredValue) {
         switch (inputType) {
             case 'userName':
@@ -68,7 +72,7 @@ function LoginScreen({navigation}) {
 
                 <View style={styles.container}>
                     <PrimaryButton
-                        onPress={() => console.log("Đăng nhập")}
+                        onPress={loginScreenHandler}
                         style={{
                             text: {
                                 fontSize: 18,

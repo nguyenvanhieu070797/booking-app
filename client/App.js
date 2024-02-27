@@ -18,6 +18,7 @@ import Navigation from "./components/route/Navigation";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import PrizeWheelScreen from "./screens/PrizeWheelScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -78,6 +79,16 @@ export default function App() {
         options: {
           headerShown: false,
           title: 'Đăng ký',
+          animation: 'none',
+          gestureEnabled: false,
+        }
+      },
+      {
+        name: "PrizeWheelScreen",
+        component:  PrizeWheelScreen,
+        options: {
+          headerShown: false,
+          title: 'Wheel',
           animation: 'none',
           gestureEnabled: false,
         }

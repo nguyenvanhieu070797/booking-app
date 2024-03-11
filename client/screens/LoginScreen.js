@@ -1,16 +1,33 @@
-import {useState} from 'react'
+import {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
 import PrimaryButton from "../components/ui/PrimaryButton";
-import Input from "../components/ui/Input"
-import Colors from "../constants/colors"
+import Input from "../components/ui/Input";
+import Colors from "../constants/colors";
+
+// Redux
+import {useSelector, useDispatch} from 'react-redux';
+import {setUser} from '../store/redux/user';
 
 function LoginScreen({navigation}) {
+    const dispatch = new useDispatch();
+
+    const userId = new useSelector((state) => {
+        console.log({state, id: state?.user?.id});
+        return state?.user?.id || ""
+    });
+
+    console.log({userId});
+
     const [enteredUserName, setEnteredUserName] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
 
     function registerScreenHandler() {
         navigation.navigate('RegisterScreen');
+    }
+
+    function login () {
+        dispatch(setUser({id: "123"}));
     }
 
     function updateInputValueHandler(inputType, enteredValue) {
@@ -68,7 +85,7 @@ function LoginScreen({navigation}) {
 
                 <View style={styles.container}>
                     <PrimaryButton
-                        onPress={() => console.log("Đăng nhập")}
+                        onPress={login}
                         style={{
                             text: {
                                 fontSize: 18,

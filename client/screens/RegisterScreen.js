@@ -12,6 +12,7 @@ function RegisterScreen({navigation}) {
     const [enteredConfirmPassword, setEnteredConfirmPassword] = useState('');
 
     const [credentialsInvalid, setCredentialsInvalid] = useState({
+        userName: false,
         email: false,
         password: false,
         confirmPassword: false,
@@ -21,6 +22,7 @@ function RegisterScreen({navigation}) {
         email: emailIsInvalid,
         password: passwordIsInvalid,
         confirmPassword: passwordsDontMatch,
+        userName: userNameIsInvalid,
     } = credentialsInvalid;
 
     function loginScreenHandler() {
@@ -45,7 +47,7 @@ function RegisterScreen({navigation}) {
     }
 
     function submitHandler(credentials) {
-        let { email, password, confirmPassword } = credentials;
+        let { email, password, confirmPassword, userName } = credentials;
         email = email.trim();
         password = password.trim();
         confirmPassword = confirmPassword.trim();
@@ -54,18 +56,21 @@ function RegisterScreen({navigation}) {
         const passwordIsValid = password.length > 6;
         const passwordConfirmIsValid = confirmPassword.length > 6;
         const passwordsAreEqual = password === confirmPassword;
+        const userNameIsValid = userName !== '';
 
         if (
             !emailIsValid ||
             !passwordIsValid ||
             !passwordConfirmIsValid ||
-            !passwordsAreEqual
+            !passwordsAreEqual ||
+            !userNameIsValid
         ) {
             Alert.alert('Invalid input', 'Please check your entered credentials.');
             setCredentialsInvalid({
                 email: !emailIsValid,
                 password: !passwordIsValid,
                 confirmPassword: !passwordIsValid || !passwordsAreEqual,
+                userName: !userNameIsValid,
             });
             return;
         } else {
@@ -88,7 +93,7 @@ function RegisterScreen({navigation}) {
                         placeholder="Nhập tên tài khoản"
                         onUpdateValue={updateInputValueHandler.bind(this, 'userName')}
                         value={enteredUserName}
-                        isInvalid={false}
+                        isInvalid={userNameIsInvalid}
                         style={{
                             input: {
                                 paddingHorizontal: 15,

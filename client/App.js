@@ -19,10 +19,7 @@ import Navigation from "./components/route/Navigation";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-
-// Redux
-import {Provider} from 'react-redux';
-import {store} from './store/redux/store'
+import HomeScreen from "./screens/HomeScreen";
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -87,6 +84,16 @@ export default function App() {
                     animation: 'none',
                     gestureEnabled: false,
                 }
+            },
+            {
+                name: "HomeScreen",
+                component: HomeScreen,
+                options: {
+                    headerShown: false,
+                    title: 'Home',
+                    animation: 'none',
+                    gestureEnabled: false,
+                }
             }
         ]
     };
@@ -94,18 +101,14 @@ export default function App() {
     return (
         <>
             <StatusBar style="dark"/>
-            <Provider store={store}>
                 <LinearGradient
                     colors={[Colors.darkDividers, Colors.darkDividers]}
                     resizeMode="cover"
                     style={styles.rootScreen}
                     onLayout={onLayoutRootView}
                 >
-                    <Navigation
-                        navigationOptions={navigationOptions}
-                    />
+                    <Navigation navigationOptions={navigationOptions}/>
                 </LinearGradient>
-            </Provider>
         </>
     );
 }

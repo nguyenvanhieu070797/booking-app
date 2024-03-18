@@ -11,23 +11,22 @@ import {setUser} from '../store/redux/user';
 
 function LoginScreen({navigation}) {
     const dispatch = new useDispatch();
-
-    const userId = new useSelector((state) => {
-        console.log({state, id: state?.user?.id});
-        return state?.user?.id || ""
-    });
-
-    console.log({userId});
-
     const [enteredUserName, setEnteredUserName] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
+
+
+    const userId = new useSelector((state) => {
+        return state.user.id
+    });
+    console.log({userId});
 
     function registerScreenHandler() {
         navigation.navigate('RegisterScreen');
     }
 
-    function login () {
+   function login () {
         dispatch(setUser({id: "123"}));
+        navigation.navigate('HomeScreen');
     }
 
     function updateInputValueHandler(inputType, enteredValue) {

@@ -26,7 +26,7 @@ function LoginScreen({navigation}) {
 
    function login () {
         dispatch(setUser({id: "123"}));
-        navigation.navigate('HomeScreen');
+        navigation.navigate('MainScreen');
     }
 
     function updateInputValueHandler(inputType, enteredValue) {

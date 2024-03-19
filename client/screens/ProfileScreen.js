@@ -1,28 +1,30 @@
 import {View, Text, StyleSheet} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
-import Card from "../components/ui/Card";
 import {useSelector} from "react-redux";
 
-function HomeScreen() {
+function ProfileScreen() {
     const userId = useSelector(state => state.user.id);
 
     return (
         <BackgroundStart>
             <View style={styles.rootContainer}>
-                <Card>
-                    <Text>
-                        {userId}
-                    </Text>
-                </Card>
+                <Text>Tài khoản</Text>
+                <Text>{userId}</Text>
             </View>
         </BackgroundStart>
     );
 }
 
-export default HomeScreen;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 24,
+    },
+    container: {
+        margin: 5
     },
 });

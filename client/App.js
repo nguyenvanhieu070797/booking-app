@@ -21,6 +21,9 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import HomeScreen from "./screens/HomeScreen";
 
+// Components
+import NavigatorBottom from './components/route/NavigatorBottom';
+
 export default function App() {
     const [fontsLoaded] = useFonts({
         "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
@@ -86,11 +89,11 @@ export default function App() {
                 }
             },
             {
-                name: "HomeScreen",
-                component: HomeScreen,
+                name: "MainScreen",
+                component: NavigatorBottom,
                 options: {
                     headerShown: false,
-                    title: 'Home',
+                    title: 'Main',
                     animation: 'none',
                     gestureEnabled: false,
                 }

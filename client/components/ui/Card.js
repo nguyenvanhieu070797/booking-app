@@ -2,8 +2,8 @@ import {View, StyleSheet, Dimensions} from 'react-native';
 import Colors from "../../constants/colors";
 
 
-function Card ({children}) {
-    return  <View style={styles.card}>
+function Card ({children, style}) {
+    return  <View style={[styles.card, style]}>
         {children}
     </View>
 }

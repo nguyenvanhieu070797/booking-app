@@ -1,13 +1,25 @@
+import {useEffect} from 'react'
 import {View, Text, StyleSheet} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import {useSelector} from "react-redux";
 
 function WelcomeScreen({navigation}) {
+    console.log("WelcomeScreen");
+    const userId = useSelector(state => state.user.id);
 
+    useEffect(() => {
+        if (userId !== "") {
+            navigation.navigate('MainScreen');
+        }
+    }, [userId]);
 
     function startScreenHandler() {
-        // navigation.push('LoginScreen');
-        navigation.navigate('LoginScreen');
+        if (userId !== "") {
+            navigation.navigate('MainScreen');
+        } else {
+            navigation.navigate('LoginScreen');
+        }
     }
 
     return (

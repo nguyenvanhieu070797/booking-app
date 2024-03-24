@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
 import PrimaryButton from "../components/ui/PrimaryButton";
@@ -10,15 +10,19 @@ import {useSelector, useDispatch} from 'react-redux';
 import {setUser} from '../store/redux/user';
 
 function LoginScreen({navigation}) {
+    console.log("LoginScreen");
     const dispatch = new useDispatch();
     const [enteredUserName, setEnteredUserName] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
-
-
-    const userId = new useSelector((state) => {
+    const userId = useSelector((state) => {
         return state.user.id
     });
-    console.log({userId});
+
+    useEffect(() => {
+        if (userId !== "") {
+            navigation.navigate('MainScreen');
+        }
+    }, [userId]);
 
     function registerScreenHandler() {
         navigation.navigate('RegisterScreen');
@@ -26,7 +30,6 @@ function LoginScreen({navigation}) {
 
    function login () {
         dispatch(setUser({id: "123"}));
-        navigation.navigate('MainScreen');
     }
 
     function updateInputValueHandler(inputType, enteredValue) {

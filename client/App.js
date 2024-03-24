@@ -19,7 +19,6 @@ import Navigation from "./components/route/Navigation";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-import HomeScreen from "./screens/HomeScreen";
 
 // Components
 import NavigatorBottom from './components/route/NavigatorBottom';

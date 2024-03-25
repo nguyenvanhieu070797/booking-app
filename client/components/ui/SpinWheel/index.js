@@ -9,17 +9,6 @@ import {
 
 import WheelOfFortune from './WheelOfFortune';
 
-const participants = [
-    '%10',
-    '%20',
-    '%30',
-    '%40',
-    '%50',
-    '%60',
-    '%70',
-    '%90',
-    'FREE',
-];
 class SpinWheel extends Component {
     constructor(props) {
         super(props);
@@ -28,8 +17,13 @@ class SpinWheel extends Component {
             winnerValue: null,
             winnerIndex: null,
             started: false,
+            data: props.data || []
         };
         this.child = null;
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({data: nextProps.data || []});
     }
 
     buttonPress = () => {
@@ -39,9 +33,16 @@ class SpinWheel extends Component {
         this.child._onPress();
     };
 
+    buttonPressAgain = () => {
+        this.setState({
+            winnerIndex: null
+        });
+        this.child._tryAgain();
+    }
+
     render() {
         const wheelOptions = {
-            rewards: participants,
+            rewards: this.state.data,
             knobSize: 30,
             borderWidth: 5,
             borderColor: '#fff',
@@ -58,8 +59,12 @@ class SpinWheel extends Component {
                 <WheelOfFortune
                     options={wheelOptions}
                     getWinner={(value, index) => {
-                        this.setState({winnerValue: value, winnerIndex: index});
+                        this.setState({
+                            winnerValue: value,
+                            winnerIndex: index
+                        });
                     }}
+                    onPress={(value, index) => this.props.onPress(value, index)}
                 />
                 {!this.state.started && (
                     <View style={styles.startButtonView}>
@@ -73,13 +78,10 @@ class SpinWheel extends Component {
                 {this.state.winnerIndex != null && (
                     <View style={styles.winnerView}>
                         <Text style={styles.winnerText}>
-                            You win {participants[this.state.winnerIndex]}
+                            You win {this.state.data[this.state.winnerIndex]}
                         </Text>
                         <TouchableOpacity
-                            onPress={() => {
-                                this.setState({winnerIndex: null});
-                                this.child._tryAgain();
-                            }}
+                            onPress={() => this.buttonPressAgain()}
                             style={styles.tryAgainButton}>
                             <Text style={styles.tryAgainText}>TRY AGAIN</Text>
                         </TouchableOpacity>

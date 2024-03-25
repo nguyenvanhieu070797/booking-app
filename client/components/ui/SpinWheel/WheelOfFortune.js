@@ -155,6 +155,9 @@ class SpinWheel extends Component {
                 finished: true,
                 winner: this._wheelPaths[winnerIndex].value,
             });
+            if (this.props.onPress) {
+                this.props.onPress(this._wheelPaths[winnerIndex].value);
+            }
             if (this.props.getWinner) {
                 this.props.getWinner(this._wheelPaths[winnerIndex].value, winnerIndex);
             } else {

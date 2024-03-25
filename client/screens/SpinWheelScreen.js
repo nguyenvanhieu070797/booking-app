@@ -4,74 +4,73 @@ import Card from "../components/ui/Card";
 import {useSelector} from "react-redux";
 import SpinWheel from "../components/ui/SpinWheel"
 import Colors from "../constants/colors"
+import {useState, useEffect} from "react"
+
+const participants = [
+    'Hiếu 1',
+    'Hiếu 2',
+    'Hiếu 3',
+    'Hiếu 4',
+    'Hiếu 5',
+    'Hiếu 6',
+    'Hiếu 7',
+    'Hiếu 8',
+];
 
 function SpinWheelScreen() {
     const userId = useSelector(state => state.user.id);
-    console.log("SpinWheelScreen", {userId});
+    const [dataSpinWheel, setDataSpinWheel] = useState(participants)
+    const [dataWinner, setDataWinner] = useState([]);
+
+    // useEffect(() => {
+    //
+    // }, [dataSpinWheel]);
+
+    function spinWheelHandler(value) {
+        if (dataSpinWheel.length) {
+            setDataSpinWheel((spins) =>
+                spins.filter(val => val !== value)
+            );
+            dataWinner.push(value);
+            setDataWinner(dataWinner)
+        } else {
+            setDataSpinWheel(participants);
+        }
+    }
+
     return (
         <BackgroundStart>
             <View style={styles.rootContainer}>
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                     style={styles.scrollViewContainer}>
-                    <SpinWheel/>
+                    <SpinWheel
+                        onPress={spinWheelHandler}
+                        data={dataSpinWheel}
+                    />
+                    {
+                        dataWinner.length && <View style={styles.cardContainer}>
+                            {
+                                dataWinner.map((value, index) => {
+                                    console.log({value, index});
 
-                    <View style={styles.cardContainer}>
-                        <Card style={styles.rankCard}>
-                            <View style={styles.rankContainer}>
-                                <Text style={styles.textRank}>
-                                    1
-                                </Text>
-                                <Text style={styles.textName}>
-                                    Nguyễn Văn Hiếu
-                                </Text>
-                            </View>
-                        </Card>
+                                    return (
+                                        <Card key={index} style={styles.rankCard}>
+                                            <View style={styles.rankContainer}>
+                                                <Text style={styles.textRank}>
+                                                    {index.toString()}
+                                                </Text>
+                                                <Text style={styles.textName}>
+                                                    {value.toString()}
+                                                </Text>
+                                            </View>
+                                        </Card>
+                                    )
+                                })
+                            }
+                        </View>
+                    }
 
-                        <Card style={styles.rankCard}>
-                            <View style={styles.rankContainer}>
-                                <Text style={styles.textRank}>
-                                    2
-                                </Text>
-                                <Text style={styles.textName}>
-                                    Nguyễn Văn Hiếu
-                                </Text>
-                            </View>
-                        </Card>
-
-                        <Card style={styles.rankCard}>
-                            <View style={styles.rankContainer}>
-                                <Text style={styles.textRank}>
-                                    3
-                                </Text>
-                                <Text style={styles.textName}>
-                                    Nguyễn Văn Hiếu
-                                </Text>
-                            </View>
-                        </Card>
-
-                        <Card style={styles.rankCard}>
-                            <View style={styles.rankContainer}>
-                                <Text style={styles.textRank}>
-                                    4
-                                </Text>
-                                <Text style={styles.textName}>
-                                    Nguyễn Văn Hiếu
-                                </Text>
-                            </View>
-                        </Card>
-
-                        <Card style={styles.rankCard}>
-                            <View style={styles.rankContainer}>
-                                <Text style={styles.textRank}>
-                                    5
-                                </Text>
-                                <Text style={styles.textName}>
-                                    Nguyễn Văn Hiếu
-                                </Text>
-                            </View>
-                        </Card>
-                    </View>
                 </ScrollView>
             </View>
         </BackgroundStart>

@@ -49,7 +49,7 @@ function SpinWheelScreen() {
                         data={dataSpinWheel}
                     />
                     {
-                        dataWinner.length && <View style={styles.cardContainer}>
+                        dataWinner.length > 0 ? <View style={styles.cardContainer}>
                             {
                                 dataWinner.map((value, index) => {
                                     console.log({value, index});
@@ -68,7 +68,7 @@ function SpinWheelScreen() {
                                     )
                                 })
                             }
-                        </View>
+                        </View> : ""
                     }
 
                 </ScrollView>

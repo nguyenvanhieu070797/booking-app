@@ -1,18 +1,28 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Colors from '../../constants/colors'
 
+// Screen
 import HomeScreen from '../../screens/HomeScreen'
 import ProfileScreen from '../../screens/ProfileScreen'
 import SpinWheelScreen from '../../screens/SpinWheelScreen'
 
+// Navigator
 const Tab = createBottomTabNavigator();
+
+// UI
 import IconButton from '../UI/IconButton';
 import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
+// Redux
+import {removeToken} from "../../store/redux/auth";
+import {useDispatch} from "react-redux";
+
 function NavigationBottom () {
+    const dispatch = new useDispatch();
+
     return (
         <Tab.Navigator
-            screenOptions={({ navigation }) => ({
+            screenOptions={() => ({
             headerStyle: { backgroundColor: Colors.purple200 },
                 headerTintColor: Colors.grey50,
                 tabBarStyle: { backgroundColor: Colors.purple200 },
@@ -20,11 +30,11 @@ function NavigationBottom () {
                 tabBarInactiveTintColor: Colors.grey50,
                 headerRight: ({ tintColor }) => (
                     <IconButton
-                        icon="bell-ring-outline"
-                        size={24}
+                        icon="exit"
                         color={tintColor}
+                        size={24}
                         onPress={() => {
-                            navigation.navigate('WelcomeScreen');
+                            dispatch(removeToken());
                         }}
                     />
                 ),

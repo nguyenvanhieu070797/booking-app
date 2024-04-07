@@ -7,8 +7,8 @@ import {useNavigation} from '@react-navigation/native'
 
 function AuthForm({onSubmit, credentialsInvalid}) {
     const navigation = useNavigation();
-    const [enteredUserName, setEnteredUserName] = useState('');
-    const [enteredPassword, setEnteredPassword] = useState('');
+    const [enteredUserName, setEnteredUserName] = useState('test@test.com');
+    const [enteredPassword, setEnteredPassword] = useState('qwertyu');
 
     const {
         userName: userNameIsInvalid,

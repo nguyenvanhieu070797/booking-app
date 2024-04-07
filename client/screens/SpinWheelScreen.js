@@ -1,8 +1,8 @@
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
-import Card from "../components/ui/Card";
+import Card from "../components/UI/Card";
 import {useSelector} from "react-redux";
-import SpinWheel from "../components/ui/SpinWheel"
+import SpinWheel from "../components/UI/SpinWheel"
 import Colors from "../constants/colors"
 import {useState, useEffect} from "react"
 

@@ -1,5 +1,5 @@
 import {useEffect, useCallback} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 // Size Bar
 import {StatusBar} from 'expo-status-bar';
@@ -12,16 +12,16 @@ import Colors from './constants/colors';
 import {useFonts} from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
-SplashScreen.preventAutoHideAsync();
-
 // Screens
-import Navigation from "./components/route/Navigation";
-import WelcomeScreen from "./screens/WelcomeScreen";
-import LoginScreen from "./screens/LoginScreen";
-import RegisterScreen from "./screens/RegisterScreen";
+import Navigation from "./components/Route/Navigation";
+import {store} from "./store/redux/store";
 
-// Components
-import NavigatorBottom from './components/route/NavigatorBottom';
+// Redux
+import {Provider} from 'react-redux';
+import LoadingOverlay from "./components/UI/LoadingOverlay";
+
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -33,7 +33,6 @@ export default function App() {
         async function prepare() {
             await SplashScreen.preventAutoHideAsync();
         }
-
         prepare();
     }, []);
 
@@ -44,73 +43,22 @@ export default function App() {
     }, [fontsLoaded]);
 
     if (!fontsLoaded) {
-        return <View>
-            <Text>
-                Loading...
-            </Text>
-        </View>;
+        return  <LoadingOverlay message="Loading..." />;
     }
-
-    let navigationOptions = {
-        initialRouteName: "Welcome",
-        screenOptions: {
-            headerShown: false,
-        },
-        screens: [
-            {
-                name: "WelcomeScreen",
-                component: WelcomeScreen,
-                options: {
-                    headerShown: false,
-                    title: 'Xin chào',
-                    animation: 'none',
-                    gestureEnabled: false,
-                }
-            },
-            {
-                name: "LoginScreen",
-                component: LoginScreen,
-                options: {
-                    headerShown: false,
-                    title: 'Đăng nhập',
-                    animation: 'none',
-                    gestureEnabled: false,
-                }
-            },
-            {
-                name: "RegisterScreen",
-                component: RegisterScreen,
-                options: {
-                    headerShown: false,
-                    title: 'Đăng ký',
-                    animation: 'none',
-                    gestureEnabled: false,
-                }
-            },
-            {
-                name: "MainScreen",
-                component: NavigatorBottom,
-                options: {
-                    headerShown: false,
-                    title: 'Main',
-                    animation: 'none',
-                    gestureEnabled: false,
-                }
-            }
-        ]
-    };
 
     return (
         <>
             <StatusBar style="dark"/>
-                <LinearGradient
+            <LinearGradient
                     colors={[Colors.darkDividers, Colors.darkDividers]}
                     resizeMode="cover"
                     style={styles.rootScreen}
                     onLayout={onLayoutRootView}
                 >
-                    <Navigation navigationOptions={navigationOptions}/>
-                </LinearGradient>
+                <Provider store={store}>
+                    <Navigation/>
+                </Provider>
+            </LinearGradient>
         </>
     );
 }

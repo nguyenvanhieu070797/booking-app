@@ -1,154 +1,37 @@
-import {useEffect, useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import BackgroundStart from "../components/BackgroundStart";
-import PrimaryButton from "../components/ui/PrimaryButton";
-import Input from "../components/ui/Input";
-import Colors from "../constants/colors";
+import {useState} from 'react';
+import AuthContent from '../components/Auth/Login/AuthContent';
+import {login} from "../util/auth";
+import {Alert} from 'react-native';
+import LoadingOverlay from '../components/UI/LoadingOverlay'
+import {setToken} from "../store/redux/auth";
+import {useDispatch} from 'react-redux';
 
-// Redux
-import {useSelector, useDispatch} from 'react-redux';
-import {setUser} from '../store/redux/user';
-
-function LoginScreen({navigation}) {
-    console.log("LoginScreen");
+function LoginScreen() {
+    const [isAuthenticating, setAuthenticating] = useState(false);
     const dispatch = new useDispatch();
-    const [enteredUserName, setEnteredUserName] = useState('');
-    const [enteredPassword, setEnteredPassword] = useState('');
-    const userId = useSelector((state) => {
-        return state.user.id
-    });
 
-    useEffect(() => {
-        if (userId !== "") {
-            navigation.navigate('MainScreen');
+    async function loginHandler({userName, password}) {
+        setAuthenticating(true);
+        try {
+            const token = await login(userName, password);
+            dispatch(setToken({token: token}));
+        } catch (error) {
+            Alert.alert(
+                "Authentication failed",
+                "Could not log you in. Please check your credentials or try again later.");
+            setAuthenticating(false);
         }
-    }, [userId]);
 
-    function registerScreenHandler() {
-        navigation.navigate('RegisterScreen');
     }
 
-   function login () {
-        dispatch(setUser({id: "123"}));
+    if (isAuthenticating) {
+        return <LoadingOverlay message="Logging you ..." />
     }
 
-    function updateInputValueHandler(inputType, enteredValue) {
-        switch (inputType) {
-            case 'userName':
-                setEnteredUserName(enteredValue);
-                break;
-            case 'password':
-                setEnteredPassword(enteredValue);
-                break;
-        }
-    }
-
-    return (
-        <BackgroundStart>
-            <View style={styles.rootContainer}>
-                <View style={styles.container}>
-                    <Text style={styles.titleWelcome}>
-                        Đăng Nhập
-                    </Text>
-                </View>
-
-
-                <View style={styles.formContainer}>
-                    <Input
-                        placeholder="Nhập tên tài khoản"
-                        onUpdateValue={updateInputValueHandler.bind(this, 'userName')}
-                        value={enteredUserName}
-                        isInvalid={false}
-                        style={{
-                            input: {
-                                paddingHorizontal: 15,
-                            },
-                            label: {
-                                color: Colors.grey700,
-                            }
-                        }}
-                    />
-
-                    <Input
-                        placeholder="Nhập mật khẩu"
-                        onUpdateValue={updateInputValueHandler.bind(this, 'password')}
-                        value={enteredPassword}
-                        isInvalid={false}
-                        style={{
-                            input: {
-                                paddingHorizontal: 15,
-                            },
-                            label: {
-                                color: Colors.grey700,
-                            }
-                        }}
-                    />
-                </View>
-
-                <View style={styles.container}>
-                    <PrimaryButton
-                        onPress={login}
-                        style={{
-                            text: {
-                                fontSize: 18,
-                                fontFamily: 'open-sans',
-                            },
-                            container: {
-                                borderRadius: 6,
-                                margin: 0,
-                                width: 246,
-                            },
-                            pressed: {
-                                paddingVertical: 14,
-                            }
-                        }}
-                    >
-                        Đăng Nhập
-                    </PrimaryButton>
-                    <Text
-                        style={styles.contentRegister}
-                        onPress={registerScreenHandler}
-                    >
-                        Chưa có tài khoản? <Text style={{color: Colors.blue500}}>Đăng ký</Text>
-                    </Text>
-                </View>
-
-            </View>
-        </BackgroundStart>
-    );
+    return <AuthContent
+        isLogin
+        onAuthenticate={loginHandler}
+    />;
 }
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({
-    rootContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 24,
-    },
-    container: {
-        margin: 5
-    },
-    formContainer: {
-        margin: 5,
-        width: 325,
-    },
-    titleWelcome: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        fontFamily: 'open-sans',
-    },
-    contentWelcome: {
-        textAlign: "center",
-        fontFamily: 'open-sans',
-    },
-    contentRegister: {
-        fontWeight: 'bold',
-        fontSize: 14,
-        fontFamily: 'open-sans',
-        marginTop: 5,
-        paddingTop: 5,
-        paddingBottom: 5,
-    }
-});

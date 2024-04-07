@@ -6,7 +6,7 @@ import ProfileScreen from '../../screens/ProfileScreen'
 import SpinWheelScreen from '../../screens/SpinWheelScreen'
 
 const Tab = createBottomTabNavigator();
-import IconButton from '../ui/IconButton';
+import IconButton from '../UI/IconButton';
 import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 function NavigationBottom () {

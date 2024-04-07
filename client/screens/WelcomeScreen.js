@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import {View, Text, StyleSheet} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
-import PrimaryButton from "../components/ui/PrimaryButton";
+import PrimaryButton from "../components/UI/PrimaryButton";
 import {useSelector} from "react-redux";
 
 function WelcomeScreen({navigation}) {

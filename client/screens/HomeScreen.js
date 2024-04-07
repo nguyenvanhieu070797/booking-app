@@ -3,7 +3,6 @@ import BackgroundStart from "../components/BackgroundStart";
 import Card from "../components/UI/Card";
 
 function HomeScreen() {
-    console.log("HomeScreen");
     return (
         <BackgroundStart>
             <View style={styles.rootContainer}>

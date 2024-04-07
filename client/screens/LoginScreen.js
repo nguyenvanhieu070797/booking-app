@@ -1,8 +1,16 @@
 import {useState} from 'react';
-import AuthContent from '../components/Auth/Login/AuthContent';
+import {Alert, View} from 'react-native';
+
+// Axios
 import {login} from "../util/auth";
-import {Alert} from 'react-native';
-import LoadingOverlay from '../components/UI/LoadingOverlay'
+
+// UI
+import Loader from '../components/UI/Loader'
+
+// Form
+import AuthContent from '../components/Auth/Login/AuthContent';
+
+// Redux
 import {setToken} from "../store/redux/auth";
 import {useDispatch} from 'react-redux';
 
@@ -24,14 +32,13 @@ function LoginScreen() {
 
     }
 
-    if (isAuthenticating) {
-        return <LoadingOverlay message="Logging you ..." />
-    }
-
-    return <AuthContent
-        isLogin
-        onAuthenticate={loginHandler}
-    />;
+    return <View>
+        <Loader isLoading={isAuthenticating}/>
+        <AuthContent
+            isLogin
+            onAuthenticate={loginHandler}
+        />
+    </View>;
 }
 
 export default LoginScreen;

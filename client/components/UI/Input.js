@@ -28,7 +28,7 @@ function Input({
             <TextInput
                 placeholder={placeholder}
                 style={[styles.input, isInvalid && styles.inputInvalid, styleInput]}
-                autoCapitalize={false}
+                // autoCapitalize={false}
                 autoCapitalize="none"
                 keyboardType={keyboardType}
                 secureTextEntry={secure}

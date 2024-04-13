@@ -1,8 +1,24 @@
-import {View, ScrollView, Text, StyleSheet} from 'react-native';
+import {ScrollView, Text, StyleSheet} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
 import Card from "../components/UI/Card";
+import axios from "axios";
+import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 
 function HomeScreen() {
+    const [fetchedMessage, setFetchedMessage] = useState();
+    const token = useSelector((state) => {
+        return state?.auth?.token || ""
+    });
+
+    useEffect(() => {
+        axios.get("https://react-native-course-e7193-default-rtdb.firebaseio.com/message.json?auth="+token).then(
+            (response) => {
+                setFetchedMessage(response.data);
+            }
+        );
+    }, [token]);
+
     return (
         <BackgroundStart>
             <ScrollView
@@ -10,7 +26,7 @@ function HomeScreen() {
                 style={styles.rootContainer}>
                 <Card>
                     <Text>
-                        Hello world!!!
+                        {fetchedMessage}
                     </Text>
                 </Card>
             </ScrollView>

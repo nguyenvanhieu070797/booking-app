@@ -17,6 +17,9 @@ import { Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icon
 import {removeToken} from "../../store/redux/auth";
 import {useDispatch} from "react-redux";
 
+// Storage
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 function NavigationBottom () {
     const dispatch = new useDispatch();
 
@@ -35,6 +38,7 @@ function NavigationBottom () {
                         size={24}
                         onPress={() => {
                             dispatch(removeToken());
+                            AsyncStorage.removeItem("token");
                         }}
                     />
                 ),

@@ -14,6 +14,9 @@ import AuthContent from '../components/Auth/Login/AuthContent';
 import {setToken} from "../store/redux/auth";
 import {useDispatch} from 'react-redux';
 
+// Storage
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 function LoginScreen() {
     const [isAuthenticating, setAuthenticating] = useState(false);
     const dispatch = new useDispatch();
@@ -23,6 +26,7 @@ function LoginScreen() {
         try {
             const token = await login(userName, password);
             dispatch(setToken({token: token}));
+            AsyncStorage.setItem("token", token);
         } catch (error) {
             Alert.alert(
                 "Authentication failed",

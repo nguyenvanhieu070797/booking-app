@@ -5,7 +5,6 @@ import PrimaryButton from "../components/UI/PrimaryButton";
 import {useSelector} from "react-redux";
 
 function WelcomeScreen({navigation}) {
-    console.log("WelcomeScreen");
     const userId = useSelector(state => state.user.id);
 
     useEffect(() => {
@@ -54,7 +53,9 @@ function WelcomeScreen({navigation}) {
                                 paddingVertical: 14,
                             }
                         }}
-                    >Bắt đầu</PrimaryButton>
+                    >
+                        Bắt đầu
+                    </PrimaryButton>
                 </View>
             </View>
         </BackgroundStart>

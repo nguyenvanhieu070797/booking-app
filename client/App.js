@@ -17,11 +17,32 @@ import Navigation from "./components/Route/Navigation";
 import {store} from "./store/redux/store";
 
 // Redux
-import {Provider} from 'react-redux';
+import {Provider, useDispatch} from 'react-redux';
 import LoadingOverlay from "./components/UI/LoadingOverlay";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {setToken} from "./store/redux/auth";
 
 SplashScreen.preventAutoHideAsync();
+
+/**
+ * Check store token
+ * @returns {JSX.Element}
+ * @constructor
+ */
+function Root() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        async function fetchToken() {
+            const storedToken = await AsyncStorage.getItem("token");
+            if(storedToken) {
+                dispatch(setToken({token: storedToken}));
+            }
+        }
+        fetchToken();
+    }, []);
+
+    return <Navigation/>;
+}
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -56,7 +77,7 @@ export default function App() {
                     onLayout={onLayoutRootView}
                 >
                 <Provider store={store}>
-                    <Navigation/>
+                    <Root/>
                 </Provider>
             </LinearGradient>
         </>
@@ -65,16 +86,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
     rootScreen: {
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    backgroundImage: {
         flex: 1,
     },
 });

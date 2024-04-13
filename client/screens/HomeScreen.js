@@ -1,17 +1,19 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, ScrollView, Text, StyleSheet} from 'react-native';
 import BackgroundStart from "../components/BackgroundStart";
 import Card from "../components/UI/Card";
 
 function HomeScreen() {
     return (
         <BackgroundStart>
-            <View style={styles.rootContainer}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={styles.rootContainer}>
                 <Card>
                     <Text>
                         Hello world!!!
                     </Text>
                 </Card>
-            </View>
+            </ScrollView>
         </BackgroundStart>
     );
 }
@@ -21,5 +23,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
+        paddingVertical: 7,
     },
 });

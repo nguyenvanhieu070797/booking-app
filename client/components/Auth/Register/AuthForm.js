@@ -47,7 +47,7 @@ function AuthForm({onSubmit, credentialsInvalid}) {
         <View style={styles.rootContainer}>
             <View style={styles.container}>
                 <Text style={styles.titleWelcome}>
-                    Đăng Nhập
+                    Đăng Ký
                 </Text>
             </View>
 

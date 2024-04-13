@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-around',
         backgroundColor: '#rgba(0, 0, 0, 0.5)',
-        zIndex: 1000
+        zIndex: 1000,
+
     },
     activityIndicatorWrapper: {
         height: 100,

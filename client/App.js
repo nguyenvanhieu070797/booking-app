@@ -1,4 +1,4 @@
-import {useEffect, useCallback} from 'react';
+import {useState,  useEffect, useCallback} from 'react';
 import {StyleSheet} from 'react-native';
 
 // Size Bar
@@ -30,16 +30,23 @@ SplashScreen.preventAutoHideAsync();
  * @constructor
  */
 function Root() {
+    const [isTryingLogin, setIsTryingLogin] = useState(true);
     const dispatch = useDispatch();
     useEffect(() => {
         async function fetchToken() {
-            const storedToken = await AsyncStorage.getItem("token");
+            const storedToken = await AsyncStorage.getItem("token")
+            console.log({storedToken});
             if(storedToken) {
                 dispatch(setToken({token: storedToken}));
             }
+            setIsTryingLogin(false);
         }
         fetchToken();
     }, []);
+
+    if (isTryingLogin) {
+        return "";
+    }
 
     return <Navigation/>;
 }

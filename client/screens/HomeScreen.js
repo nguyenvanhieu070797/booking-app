@@ -19,6 +19,11 @@ function HomeScreen() {
         );
     }, [token]);
 
+    if (!fetchedMessage) {
+        return "";
+    }
+
+
     return (
         <BackgroundStart>
             <ScrollView

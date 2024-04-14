@@ -1,17 +1,17 @@
 import {View, Text, StyleSheet} from 'react-native';
-import BackgroundStart from "../components/BackgroundStart";
 import {useSelector} from "react-redux";
+import Background from "../components/Profile/Background";
 
 function ProfileScreen() {
     const userId = useSelector(state => state.user.id);
 
     return (
-        <BackgroundStart>
+        <Background>
             <View style={styles.rootContainer}>
                 <Text>Tài khoản</Text>
                 <Text>{userId}</Text>
             </View>
-        </BackgroundStart>
+        </Background>
     );
 }
 

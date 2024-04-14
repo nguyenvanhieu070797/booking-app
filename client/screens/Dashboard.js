@@ -1,7 +1,7 @@
 import {View, ScrollView, StyleSheet, Platform} from "react-native";
 import Totals from "../components/Dashboard/Totals";
 import Background from "../components/Dashboard/Background";
-
+import Content from "../components/Dashboard/Content";
 
 function Dashboard() {
 
@@ -12,7 +12,7 @@ function Dashboard() {
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                     style={styles.rootContainer}>
-
+                    <Content/>
                 </ScrollView>
             </View>
 
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        paddingTop: Platform.OS === 'ios' ? 100 : 120,
+        paddingTop: Platform.OS === 'ios' ? 100 : 90,
     }
 
 })

@@ -11,6 +11,5 @@ export default ProductLists;
 const styles = StyleSheet.create({
    container: {
        paddingBottom: 15,
-       borderRadius: 20,
    }
 });

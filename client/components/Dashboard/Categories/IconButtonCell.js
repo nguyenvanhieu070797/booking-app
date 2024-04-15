@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         width: 48,
         color: Colors.darkPrimary,
         textAlign: 'center',
-        fontFamily: 'open-sans',
+        fontFamily: 'open-sans-bold',
         fontSize: 12,
         fontStyle: 'normal',
         fontWeight: '400',

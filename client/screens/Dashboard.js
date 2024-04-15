@@ -11,7 +11,8 @@ function Dashboard() {
                 <Totals/>
                 <ScrollView
                     showsVerticalScrollIndicator={false}
-                    style={styles.rootContainer}>
+                    style={styles.rootContainer}
+                >
                     <Content/>
                 </ScrollView>
             </View>
@@ -31,5 +32,4 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: Platform.OS === 'ios' ? 100 : 90,
     }
-
 })

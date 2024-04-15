@@ -19,10 +19,11 @@ const styles = StyleSheet.create({
     rootScreen: {
         width: '100%',
         height: '100%',
+        backgroundColor: "#F7F8FA"
     },
     backgroundImage: {
         width: '100%',
-        height: 387,
+        height: 350,
     },
 
 })

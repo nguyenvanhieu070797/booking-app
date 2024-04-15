@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import ProductLists from "./Products/ProductLists";
 
 function Content() {
@@ -8,3 +8,7 @@ function Content() {
 }
 
 export default Content
+
+const styles = StyleSheet.create({
+
+});

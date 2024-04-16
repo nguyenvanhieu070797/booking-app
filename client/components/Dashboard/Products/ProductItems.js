@@ -2,22 +2,51 @@ import {View, Text, StyleSheet} from "react-native"
 import Card from "../../UI/Card";
 import Colors from "../../../constants/colors";
 import {Ionicons} from "@expo/vector-icons";
+import Icons from "../../../constants/icons";
 
 function ProductItems() {
+    const iconCategories = Icons({
+        icon: "computer",
+        type: "MaterialIcons",
+        size: 40,
+        color: Colors.green200
+    });
+    const iconTitle = Icons({
+        icon: "eye",
+        type: "AntDesign",
+        size: 24,
+        color: Colors.green200
+    });
+    const iconDetail = Icons({
+        icon: "card-account-details-outline",
+        type: "MaterialCommunityIcons",
+        size: 24,
+        color: Colors.lightBlue500
+    });
+
+    const iconUser = Icons({
+        icon: "user",
+        type: "FontAwesome",
+        size: 24,
+        color: Colors.lightBlue500
+    });
+
+
     return <Card>
         <View style={styles.rootContainer}>
+
             <View style={styles.Container}>
-                <Ionicons name="home" size={24} color="blue"/>
+                {iconCategories}
                 <View style={styles.Content}>
                     <View style={styles.headerContainer}>
                         <Text style={styles.textHeader}>
-                            {`纳宝帝nabatil巧克力威化饼`}
+                            Thiết bị máy tính
                         </Text>
-                        <Ionicons name="home" size={24} color="blue"/>
+                        {iconTitle}
                     </View>
                     <View style={styles.datetimeContainer}>
                         <Text style={styles.textDatetime}>
-                            {`2023-12-26 14:25:22 付款`}
+                            DATETIME
                         </Text>
 
                     </View>
@@ -28,13 +57,13 @@ function ProductItems() {
                 <View style={styles.informationContent}>
                     <View style={styles.titleInformationContainer}>
                         <Text style={styles.textTitleInformation}>
-                            {`付款金额`}
+                            Tổng số lượng
                         </Text>
                     </View>
                     <View style={styles.information}>
                         <View style={styles.textInformationContainer}>
                             <Text style={styles.textInformation}>
-                                {`26.46`}
+                               50
                             </Text>
                         </View>
                     </View>
@@ -43,13 +72,13 @@ function ProductItems() {
                 <View style={styles.informationContent}>
                     <View style={styles.titleInformationContainer}>
                         <Text style={styles.textTitleInformation}>
-                            {`付款金额`}
+                            Số lượng sử dụng
                         </Text>
                     </View>
                     <View style={styles.information}>
                         <View style={styles.textInformationContainer}>
                             <Text style={styles.textInformation}>
-                                {`26.46`}
+                               30
                             </Text>
                         </View>
                     </View>
@@ -58,13 +87,13 @@ function ProductItems() {
                 <View style={styles.informationContent}>
                     <View style={styles.titleInformationContainer}>
                         <Text style={styles.textTitleInformation}>
-                            {`付款金额`}
+                            Số lượng còn tồn
                         </Text>
                     </View>
                     <View style={styles.information}>
                         <View style={styles.textInformationContainer}>
                             <Text style={styles.textInformation}>
-                                {`26.46`}
+                                20
                             </Text>
                         </View>
                     </View>
@@ -74,12 +103,13 @@ function ProductItems() {
 
             <View style={styles.authorContainer} >
                 <View style={styles.authorInformation} >
+                    {iconUser}
                     {/*<Image source={{uri: ellipse}} style={{width: 20, height: 20}} resizeMode="cover"/>*/}
-                    <Text style={styles.nadilaAulia} >
-                        {`Nadila Aulia`}
+                    <Text style={styles.textAuthorInformation} >
+                        Nguyễn Văn Hiếu
                     </Text>
                 </View>
-                <Ionicons name="home" size={24} color="blue"/>
+                {iconDetail}
             </View>
 
         </View>
@@ -173,6 +203,7 @@ const styles = StyleSheet.create({
     textTitleInformation: {
         flexDirection: 'row',
         alignItems: 'center',
+        fontFamily: 'open-sans-bold',
     },
     information: {
         flexDirection: 'row',
@@ -207,11 +238,12 @@ const styles = StyleSheet.create({
         flexBasis: 0,
     },
     textAuthorInformation: {
-        color: Colors.lightPrimary,
+        marginLeft: 5,
         textAlign: 'center',
         fontFamily: 'open-sans',
-        fontSize: 10,
+        fontSize: 12,
         fontStyle: 'normal',
         fontWeight: '700',
-    }
+    },
+
 })

@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, Pressable} from "react-native";
-import {Ionicons} from "@expo/vector-icons";
+import {Ionicons, MaterialIcons, MaterialCommunityIcons, AntDesign} from "@expo/vector-icons";
 import Colors from "../../constants/colors";
 
 
@@ -9,8 +9,40 @@ function IconButtonCell({
                             icon,
                             size,
                             color = "#ffffff",
-                            iconBackground
+                            iconBackground,
+                            type = ""
 }) {
+    let vectorIcon = "";
+    switch(type) {
+        case "MaterialIcons":
+            vectorIcon = <MaterialIcons
+                style={styles.icon}
+                name={icon}
+                size={size}
+                color={color}/>;
+            break;
+        case "MaterialCommunityIcons":
+            vectorIcon = <MaterialCommunityIcons
+                style={styles.icon}
+                name={icon}
+                size={size}
+                color={color}/>;
+            break;
+        case "AntDesign":
+            vectorIcon = <AntDesign
+                style={styles.icon}
+                name={icon}
+                size={size}
+                color={color}/>;
+            break;
+        default:
+            vectorIcon = <Ionicons
+                style={styles.icon}
+                name={icon}
+                size={size}
+                color={color}/>;
+    }
+
     return (
         <View style={styles.container}>
             <Pressable
@@ -23,11 +55,7 @@ function IconButtonCell({
                 android_ripple={{color: Colors.lightDividers}}>
                 <View style={[styles.iconContainer, {backgroundColor: iconBackground}]
                 }>
-                    <Ionicons
-                        style={styles.icon}
-                        name={icon}
-                        size={size}
-                        color={color}/>
+                    {vectorIcon}
                 </View>
                 <Text style={[styles.buttonText]}>
                     {children}
@@ -48,25 +76,23 @@ const styles = StyleSheet.create({
         columnGap: 4,
     },
     buttonInnerContainer: {
-        paddingVertical: 8,
+        paddingVertical: 4,
         elevation: 2,
         alignItems: "center",
     },
     buttonText: {
-        width: 48,
+        flexWrap: 'wrap',
         color: Colors.darkPrimary,
         textAlign: 'center',
-        fontFamily: 'open-sans',
+        fontFamily: 'open-sans-bold',
         fontSize: 12,
-        fontStyle: 'normal',
-        fontWeight: '400',
     },
     pressed: {
         opacity: 0.75,
     },
     iconContainer: {
         padding: 10,
-        borderRadius: 30,
+        borderRadius: 10,
         marginBottom: 10,
     },
     icon: {

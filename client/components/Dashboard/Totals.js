@@ -3,7 +3,6 @@ import Card from "../UI/Card";
 import IconButtonCell from "./IconButtonCell";
 import Colors from "../../constants/colors";
 
-
 export default function Totals() {
     function buttonCellHandler() {
 
@@ -21,46 +20,50 @@ export default function Totals() {
                <View style={styles.container}>
                    <View style={styles.buttonContainer}>
                        <IconButtonCell
-                           icon="home"
-                           iconBackground={Colors.purple200}
-                           color={Colors.purple500}
+                           icon="devices"
+                           iconBackground={Colors.lightBlue500}
+                           color={Colors.lightBlue50}
                            size={24}
                            onPress={buttonCellHandler}
+                           type="MaterialIcons"
                        >
-                           账号管理
+                           Thiết bị
                        </IconButtonCell>
                    </View>
                    <View style={styles.buttonContainer}>
                        <IconButtonCell
-                           icon="home"
-                           iconBackground={Colors.red200}
-                           color={Colors.red500}
+                           icon="team"
+                           iconBackground={Colors.lightBlue500}
+                           color={Colors.lightBlue50}
                            size={24}
                            onPress={buttonCellHandler}
+                           type="AntDesign"
                        >
-                           账号管理
+                           Thành viên
                        </IconButtonCell>
                    </View>
                    <View style={styles.buttonContainer}>
                        <IconButtonCell
-                           icon="home"
-                           iconBackground={Colors.red200}
-                           color={Colors.red500}
+                           icon="qrcode-scan"
+                           iconBackground={Colors.lightBlue500}
+                           color={Colors.lightBlue50}
                            size={24}
                            onPress={buttonCellHandler}
+                           type="MaterialCommunityIcons"
                        >
-                           账号管理
+                           Quét QR
                        </IconButtonCell>
                    </View>
                    <View style={styles.buttonContainer}>
                        <IconButtonCell
-                           icon="home"
-                           iconBackground={Colors.red200}
-                           color={Colors.red500}
+                           icon="line-scan"
+                           iconBackground={Colors.lightBlue500}
+                           color={Colors.lightBlue50}
                            size={24}
                            onPress={buttonCellHandler}
+                           type="MaterialCommunityIcons"
                        >
-                           账号管理
+                           Quét mã
                        </IconButtonCell>
                    </View>
                </View>

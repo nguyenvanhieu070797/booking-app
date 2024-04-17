@@ -1,5 +1,5 @@
 import {View, ScrollView, StyleSheet, Platform} from "react-native";
-import Totals from "../components/Dashboard/Totals";
+import Header from "../components/Dashboard/Sidebar/Header";
 import Background from "../components/Dashboard/Background";
 import Content from "../components/Dashboard/Content";
 
@@ -8,7 +8,7 @@ function Dashboard() {
     return (
         <Background>
             <View style={styles.container}>
-                <Totals/>
+                <Header/>
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                     style={styles.rootContainer}

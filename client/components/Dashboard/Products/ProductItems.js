@@ -46,18 +46,19 @@ function ProductItems() {
                     </View>
                     <View style={styles.datetimeContainer}>
                         <Text style={styles.textDatetime}>
-                            DATETIME
+                            22/04/2024 12:40
                         </Text>
 
                     </View>
                 </View>
             </View>
 
+
             <View style={styles.informationContainer}>
                 <View style={styles.informationContent}>
                     <View style={styles.titleInformationContainer}>
                         <Text style={styles.textTitleInformation}>
-                            Tổng số lượng
+                            Số lượng
                         </Text>
                     </View>
                     <View style={styles.information}>
@@ -72,7 +73,7 @@ function ProductItems() {
                 <View style={styles.informationContent}>
                     <View style={styles.titleInformationContainer}>
                         <Text style={styles.textTitleInformation}>
-                            Số lượng sử dụng
+                            Sử dụng
                         </Text>
                     </View>
                     <View style={styles.information}>
@@ -87,7 +88,7 @@ function ProductItems() {
                 <View style={styles.informationContent}>
                     <View style={styles.titleInformationContainer}>
                         <Text style={styles.textTitleInformation}>
-                            Số lượng còn tồn
+                            Tồn
                         </Text>
                     </View>
                     <View style={styles.information}>
@@ -99,7 +100,6 @@ function ProductItems() {
                     </View>
                 </View>
             </View>
-
 
             <View style={styles.authorContainer} >
                 <View style={styles.authorInformation} >
@@ -181,22 +181,23 @@ const styles = StyleSheet.create({
         fontWeight: '400',
     },
     informationContainer: {
+        marginVertical: 5,
         flexDirection: 'row',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         rowGap: 8,
         columnGap: 8,
         alignSelf: 'stretch',
     },
     informationContent: {
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         flexGrow: 1,
         flexShrink: 0,
         flexBasis: 0,
     },
     titleInformationContainer: {
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         rowGap: 4,
         columnGap: 4,
     },
@@ -245,5 +246,13 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: '700',
     },
+
+    line: {
+        textAlign: "center",
+        alignItems: 'center',
+        flex: 1,
+        width: "100%",
+        marginVertical: 3,
+    }
 
 })

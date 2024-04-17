@@ -4,6 +4,8 @@ import ProductItems from "./ProductItems";
 function ProductLists() {
     return <View style={styles.container}>
         <ProductItems/>
+        <ProductItems/>
+        <ProductItems/>
     </View>
 }
 

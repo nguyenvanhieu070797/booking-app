@@ -1,4 +1,4 @@
-import {View, ScrollView, StyleSheet, Platform} from "react-native";
+import {View, StyleSheet, Platform} from "react-native";
 import Header from "../components/Dashboard/Sidebar/Header";
 import Background from "../components/Dashboard/Background";
 import Content from "../components/Dashboard/Content";

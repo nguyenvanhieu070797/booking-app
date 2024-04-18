@@ -3,16 +3,16 @@ import Card from "../../UI/Card";
 import Colors from "../../../constants/colors";
 import Icons from "../../../constants/icons";
 
-function ProductItems({data}) {
-
-    if(data === undefined || Object.values(data).length === 0){
+function ProductItems({dataItem, keyItem}) {
+    console.log({dataItem});
+    if(dataItem === undefined || Object.values(dataItem).length === 0){
         return "";
     }
 
-    const iconProdDetail = Icons(data.icons.prodDetail);
-    const iconTitle = Icons(data.icons.title);
-    const iconUserDetail = Icons(data.icons.userDetail);
-    const iconUser = Icons(data.icons.user);
+    const iconProdDetail = Icons(dataItem.icons.prodDetail);
+    const iconTitle = Icons(dataItem.icons.title);
+    const iconUserDetail = Icons(dataItem.icons.userDetail);
+    const iconUser = Icons(dataItem.icons.user);
 
     return(
         <Card>
@@ -22,13 +22,13 @@ function ProductItems({data}) {
                     <View style={styles.Content}>
                         <View style={styles.headerContainer}>
                             <Text style={styles.textHeader}>
-                                {data.title}
+                                {dataItem.title}
                             </Text>
                             {iconProdDetail}
                         </View>
                         <View style={styles.datetimeContainer}>
                             <Text style={styles.textDatetime}>
-                                {data.datetime}
+                                {dataItem.datetime}
                             </Text>
                         </View>
                     </View>
@@ -36,9 +36,9 @@ function ProductItems({data}) {
 
                 <View style={styles.informationContainer}>
                     {
-                        data.parameter && data.parameter.map(total => {
+                        dataItem.parameter && dataItem.parameter.map((total) => {
                             return (
-                                <View style={styles.informationContent}>
+                                <View style={styles.informationContent} key={Math.random().toString()}>
                                     <View style={styles.titleInformationContainer}>
                                         <Text style={styles.textTitleInformation}>
                                             {total.title}
@@ -62,7 +62,7 @@ function ProductItems({data}) {
                         {iconUser}
                         {/*<Image source={{uri: ellipse}} style={{width: 20, height: 20}} resizeMode="cover"/>*/}
                         <Text style={styles.textAuthorInformation} >
-                            {data.author}
+                            {dataItem.author}
                         </Text>
                     </View>
                     {iconUserDetail}

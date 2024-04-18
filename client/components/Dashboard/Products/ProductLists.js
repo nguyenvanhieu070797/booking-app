@@ -1,9 +1,9 @@
-import {View, FlatList, StyleSheet} from "react-native"
+import {View, Text, StyleSheet} from "react-native"
 import ProductItems from "./ProductItems";
 
 function renderProdItem(itemData) {
-    return <View key={itemData.id}>
-        <ProductItems data={itemData.item}/>
+    return <View key={Math.random().toString()}>
+        <ProductItems dataItem={itemData}/>
     </View>;
 }
 

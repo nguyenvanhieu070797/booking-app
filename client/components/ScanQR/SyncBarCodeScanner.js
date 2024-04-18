@@ -26,7 +26,7 @@ export default function SnyBarCodeScanner(props) {
         };
 
         getBarCodeScannerPermissions();
-    }, [hasPermission]);
+    }, []);
 
     useEffect(() => {
         handleAnimationLine();
@@ -59,12 +59,18 @@ export default function SnyBarCodeScanner(props) {
         return <View><Text>No access to camera</Text></View>;
     }
 
+    console.log({hasPermission});
+
     return (
         <View style={styles.main}>
             <StatusBar translucent={true} backgroundColor="transparent" barStyle="light-content" />
 
             {(screen === 'scan' && (
-                <BarCodeScanner onBarCodeScanned={scanned ? undefined : handleBarCodeScanned} style={[styles.container]}>
+                <BarCodeScanner
+                    onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                    style={[styles.container]}
+                    tourch={false}
+                >
                     <View style={styles.layerTop}></View>
                     <View style={styles.layerCenter}>
                         <View style={styles.layerLeft} />
@@ -92,7 +98,9 @@ export default function SnyBarCodeScanner(props) {
             <TouchableOpacity onPress={onClose} style={styles.close}>
                 <View style={{ backgroundColor: 'rgba(0,0,0,.6)', width: 22, height: 22, alignItems: 'center', justifyContent: 'center', borderRadius: 13 }}>
                     {/*<Ionicons name="ios-close" size={20} color="#fff" />*/}
-                    Scan
+                    <Text>
+                        asdsa
+                    </Text>
                 </View>
             </TouchableOpacity>
             <View style={styles.bottomAction}>
@@ -183,7 +191,7 @@ const styles = StyleSheet.create({
 
     // layout
     main: {
-        height: 200,
+        height: "100%",
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center'

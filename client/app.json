@@ -31,7 +31,6 @@
       "favicon": "./assets/icon.jpg"
     },
     "plugins": [
-      "expo-font",
       [
         "expo-barcode-scanner",
         {

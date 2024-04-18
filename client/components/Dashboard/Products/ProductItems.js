@@ -3,8 +3,7 @@ import Card from "../../UI/Card";
 import Colors from "../../../constants/colors";
 import Icons from "../../../constants/icons";
 
-function ProductItems({dataItem, keyItem}) {
-    console.log({dataItem});
+function ProductItems({dataItem}) {
     if(dataItem === undefined || Object.values(dataItem).length === 0){
         return "";
     }

@@ -31,7 +31,21 @@
       "favicon": "./assets/icon.jpg"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      [
+        "expo-barcode-scanner",
+        {
+          "cameraPermission": "All to access camera"
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ]
     ],
     "extra": {
       "eas": {

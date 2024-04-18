@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native'
+import {NavigationContainer} from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 // Redux
@@ -9,8 +9,11 @@ import WelcomeScreen from "../../screens/WelcomeScreen";
 import NavigatorBottom from "./NavigatorBottom";
 import LoginScreen from "../../screens/LoginScreen";
 import RegisterScreen from "../../screens/RegisterScreen";
+import ScanQR from "../../screens/ScanQR";
 
 const Stack = createNativeStackNavigator();
+
+
 
 function AuthenticatedStack() {
     return {
@@ -25,6 +28,16 @@ function AuthenticatedStack() {
                 options: {
                     headerShown: false,
                     title: 'Main',
+                    animation: 'none',
+                    gestureEnabled: false,
+                }
+            },
+            {
+                name: "ScanQR",
+                component: ScanQR,
+                options: {
+                    headerShown: true,
+                    title: 'QR Code',
                     animation: 'none',
                     gestureEnabled: false,
                 }

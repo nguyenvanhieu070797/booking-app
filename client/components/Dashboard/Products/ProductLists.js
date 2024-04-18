@@ -2,17 +2,17 @@ import {View, FlatList, StyleSheet} from "react-native"
 import ProductItems from "./ProductItems";
 
 function renderProdItem(itemData) {
-    return <ProductItems data={itemData.item}/>
+    return <View key={itemData.id}>
+        <ProductItems data={itemData.item}/>
+    </View>;
 }
 
 function ProductLists({data}) {
     return (
         <View>
-            <FlatList
-                data={data}
-                renderItem={renderProdItem}
-                keyExtractor={(item) => item.id}
-            />
+            {
+                data && data.map(itemData => renderProdItem(itemData))
+            }
         </View>
     )
 }

@@ -6,11 +6,7 @@ import Icons from "../../../constants/icons";
 function ProductItems({data}) {
 
     if(data === undefined || Object.values(data).length === 0){
-        return <View>
-            <Text>
-                sad
-            </Text>
-        </View>
+        return "";
     }
 
     const iconProdDetail = Icons(data.icons.prodDetail);

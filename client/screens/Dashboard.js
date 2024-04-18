@@ -9,14 +9,8 @@ function Dashboard() {
         <Background>
             <View style={styles.container}>
                 <Header/>
-                <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    style={styles.rootContainer}
-                >
-                    <Content/>
-                </ScrollView>
+                <Content/>
             </View>
-
         </Background>
     );
 }
@@ -24,10 +18,6 @@ function Dashboard() {
 export default Dashboard;
 
 const styles = StyleSheet.create({
-    rootContainer: {
-        flex: 1,
-        paddingVertical: 7,
-    },
     container: {
         flex: 1,
         paddingTop: Platform.OS === 'ios' ? 100 : 90,

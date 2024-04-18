@@ -1,119 +1,80 @@
 import {View, Text, StyleSheet} from "react-native"
 import Card from "../../UI/Card";
 import Colors from "../../../constants/colors";
-import {Ionicons} from "@expo/vector-icons";
 import Icons from "../../../constants/icons";
 
-function ProductItems() {
-    const iconCategories = Icons({
-        icon: "computer",
-        type: "MaterialIcons",
-        size: 40,
-        color: Colors.green200
-    });
-    const iconTitle = Icons({
-        icon: "eye",
-        type: "AntDesign",
-        size: 24,
-        color: Colors.green200
-    });
-    const iconDetail = Icons({
-        icon: "card-account-details-outline",
-        type: "MaterialCommunityIcons",
-        size: 24,
-        color: Colors.lightBlue500
-    });
+function ProductItems({data}) {
 
-    const iconUser = Icons({
-        icon: "user",
-        type: "FontAwesome",
-        size: 24,
-        color: Colors.lightBlue500
-    });
-
-
-    return <Card>
-        <View style={styles.rootContainer}>
-
-            <View style={styles.Container}>
-                {iconCategories}
-                <View style={styles.Content}>
-                    <View style={styles.headerContainer}>
-                        <Text style={styles.textHeader}>
-                            Thiết bị máy tính
-                        </Text>
-                        {iconTitle}
-                    </View>
-                    <View style={styles.datetimeContainer}>
-                        <Text style={styles.textDatetime}>
-                            22/04/2024 12:40
-                        </Text>
-
-                    </View>
-                </View>
-            </View>
-
-
-            <View style={styles.informationContainer}>
-                <View style={styles.informationContent}>
-                    <View style={styles.titleInformationContainer}>
-                        <Text style={styles.textTitleInformation}>
-                            Số lượng
-                        </Text>
-                    </View>
-                    <View style={styles.information}>
-                        <View style={styles.textInformationContainer}>
-                            <Text style={styles.textInformation}>
-                               50
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-
-                <View style={styles.informationContent}>
-                    <View style={styles.titleInformationContainer}>
-                        <Text style={styles.textTitleInformation}>
-                            Sử dụng
-                        </Text>
-                    </View>
-                    <View style={styles.information}>
-                        <View style={styles.textInformationContainer}>
-                            <Text style={styles.textInformation}>
-                               30
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-
-                <View style={styles.informationContent}>
-                    <View style={styles.titleInformationContainer}>
-                        <Text style={styles.textTitleInformation}>
-                            Tồn
-                        </Text>
-                    </View>
-                    <View style={styles.information}>
-                        <View style={styles.textInformationContainer}>
-                            <Text style={styles.textInformation}>
-                                20
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-            </View>
-
-            <View style={styles.authorContainer} >
-                <View style={styles.authorInformation} >
-                    {iconUser}
-                    {/*<Image source={{uri: ellipse}} style={{width: 20, height: 20}} resizeMode="cover"/>*/}
-                    <Text style={styles.textAuthorInformation} >
-                        Nguyễn Văn Hiếu
-                    </Text>
-                </View>
-                {iconDetail}
-            </View>
-
+    if(data === undefined || Object.values(data).length === 0){
+        return <View>
+            <Text>
+                sad
+            </Text>
         </View>
-    </Card>
+    }
+
+    const iconProdDetail = Icons(data.icons.prodDetail);
+    const iconTitle = Icons(data.icons.title);
+    const iconUserDetail = Icons(data.icons.userDetail);
+    const iconUser = Icons(data.icons.user);
+
+    return(
+        <Card>
+            <View style={styles.rootContainer}>
+                <View style={styles.Container}>
+                    {iconTitle}
+                    <View style={styles.Content}>
+                        <View style={styles.headerContainer}>
+                            <Text style={styles.textHeader}>
+                                {data.title}
+                            </Text>
+                            {iconProdDetail}
+                        </View>
+                        <View style={styles.datetimeContainer}>
+                            <Text style={styles.textDatetime}>
+                                {data.datetime}
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+
+                <View style={styles.informationContainer}>
+                    {
+                        data.parameter && data.parameter.map(total => {
+                            return (
+                                <View style={styles.informationContent}>
+                                    <View style={styles.titleInformationContainer}>
+                                        <Text style={styles.textTitleInformation}>
+                                            {total.title}
+                                        </Text>
+                                    </View>
+                                    <View style={styles.information}>
+                                        <View style={styles.textInformationContainer}>
+                                            <Text style={styles.textInformation}>
+                                                {total.number}
+                                            </Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            );
+                        })
+                    }
+                </View>
+
+                <View style={[styles.authorContainer, styles.lineTop]} >
+                    <View style={styles.authorInformation} >
+                        {iconUser}
+                        {/*<Image source={{uri: ellipse}} style={{width: 20, height: 20}} resizeMode="cover"/>*/}
+                        <Text style={styles.textAuthorInformation} >
+                            {data.author}
+                        </Text>
+                    </View>
+                    {iconUserDetail}
+                </View>
+
+            </View>
+        </Card>
+    );
 }
 
 export default ProductItems;
@@ -247,12 +208,8 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
 
-    line: {
-        textAlign: "center",
-        alignItems: 'center',
-        flex: 1,
-        width: "100%",
-        marginVertical: 3,
+    lineTop: {
+
     }
 
 })

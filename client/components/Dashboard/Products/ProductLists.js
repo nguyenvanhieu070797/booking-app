@@ -1,12 +1,20 @@
-import {View, StyleSheet} from "react-native"
+import {View, FlatList, StyleSheet} from "react-native"
 import ProductItems from "./ProductItems";
 
-function ProductLists() {
-    return <View style={styles.container}>
-        <ProductItems/>
-        <ProductItems/>
-        <ProductItems/>
-    </View>
+function renderProdItem(itemData) {
+    return <ProductItems data={itemData.item}/>
+}
+
+function ProductLists({data}) {
+    return (
+        <View>
+            <FlatList
+                data={data}
+                renderItem={renderProdItem}
+                keyExtractor={(item) => item.id}
+            />
+        </View>
+    )
 }
 
 export default ProductLists;

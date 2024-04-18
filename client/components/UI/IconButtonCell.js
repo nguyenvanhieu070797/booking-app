@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, Pressable} from "react-native";
-import {Ionicons, MaterialIcons, MaterialCommunityIcons, AntDesign} from "@expo/vector-icons";
+import {Ionicons, MaterialIcons, MaterialCommunityIcons, AntDesign, FontAwesome} from "@expo/vector-icons";
 import Colors from "../../constants/colors";
 
 
@@ -30,6 +30,13 @@ function IconButtonCell({
             break;
         case "AntDesign":
             vectorIcon = <AntDesign
+                style={styles.icon}
+                name={icon}
+                size={size}
+                color={color}/>;
+            break;
+        case "FontAwesome":
+            vectorIcon = <FontAwesome
                 style={styles.icon}
                 name={icon}
                 size={size}
@@ -91,10 +98,9 @@ const styles = StyleSheet.create({
         opacity: 0.75,
     },
     iconContainer: {
-        padding: 10,
         borderRadius: 10,
-        marginBottom: 10,
     },
     icon: {
+        margin: 10,
     }
 });

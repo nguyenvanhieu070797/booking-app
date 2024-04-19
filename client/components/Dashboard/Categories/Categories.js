@@ -104,6 +104,8 @@ const styles = StyleSheet.create({
     textTitleContainer: {
         textAlign: "left",
         flex: 1,
+        fontSize: 16,
+        color: Colors.darkPrimary,
         fontFamily: 'open-sans-bold',
     },
     categoriesContainer: {

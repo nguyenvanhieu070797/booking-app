@@ -1,11 +1,11 @@
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {Text, View, StyleSheet, Dimensions} from 'react-native';
 import Colors from "../../constants/colors";
 
 
 function CardTitle ({title = "", children, style={}}) {
 
     return <View>
-        <Text>{title}</Text>
+        <Text style={styles.titleCard}>{title}</Text>
         <View style={[styles.card, style]}>
             {children}
         </View>
@@ -35,8 +35,10 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
     },
     titleCard: {
-        fontStyle: 32,
-        color: Colors.blue500,
+        paddingHorizontal: 16,
+        paddingVertical: 6,
+        fontSize: 20,
+        color: Colors.darkPrimary,
         fontFamily: 'open-sans-bold',
     },
 })

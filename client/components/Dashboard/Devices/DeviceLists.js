@@ -1,5 +1,6 @@
 import {View, Text, StyleSheet} from "react-native"
 import DeviceItems from "./DeviceItems";
+import Colors from "../../../constants/colors";
 
 function renderProdItem(itemData) {
     return <View key={Math.random().toString()}>
@@ -7,9 +8,12 @@ function renderProdItem(itemData) {
     </View>;
 }
 
-function DeviceLists({data}) {
+function DeviceLists({data, title}) {
     return (
         <View>
+            <Text style={styles.title}>
+                {title}
+            </Text>
             {
                 data && data.map(itemData => renderProdItem(itemData))
             }
@@ -19,6 +23,11 @@ function DeviceLists({data}) {
 
 export default DeviceLists;
 const styles = StyleSheet.create({
-   container: {
+   title: {
+       paddingHorizontal: 16,
+       paddingVertical: 6,
+       fontSize: 20,
+       color: Colors.darkPrimary,
+       fontFamily: 'open-sans-bold',
    }
 });

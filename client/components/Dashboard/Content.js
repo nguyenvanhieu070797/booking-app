@@ -1,5 +1,4 @@
-import {View, ScrollView, StyleSheet} from 'react-native';
-import ProductLists from "./Products/ProductLists";
+import {ScrollView, StyleSheet} from 'react-native';
 import Categories from "./Categories/Categories";
 import Devices from "./Devices/DeviceLists";
 import {PRODUCTS} from "../../data/prod-data"
@@ -10,9 +9,8 @@ function Content() {
         showsVerticalScrollIndicator={false}
         style={styles.rootContainer}
     >
-        <Devices data={PRODUCTS}/>
-        <ProductLists data={PRODUCTS}/>
         <Categories/>
+        <Devices data={PRODUCTS} title="Thiết bị"/>
         <OthersLists/>
     </ScrollView>
 }

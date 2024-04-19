@@ -101,15 +101,15 @@ export default function SnyBarCodeScanner(props) {
 
             {/* Actions */}
             <View style={styles.bottomAction}>
-                <TouchableOpacity onPress={scannerStartHandler}>
+                <TouchableOpacity onPress={scannerStartHandler} disabled={!scanned}>
                     <View style={styles.bottomButtonAction}>
                         <Icons
                             icon="qrcode-scan"
                             type="MaterialCommunityIcons"
                             size={24}
-                            color={Colors.white}
+                            color={scanned ? Colors.white : Colors.lightDisabled}
                         />
-                        <Text style={styles.bottomTextAction}>
+                        <Text style={scanned ? styles.bottomTextAction : styles.bottomTextActionDisabled}>
                             {children}
                         </Text>
                     </View>
@@ -186,6 +186,14 @@ const styles = StyleSheet.create({
     },
     bottomTextAction: {
         color: 'white',
+        fontSize: 13,
+        lineHeight: 22,
+        fontFamily: 'open-sans',
+        marginTop: 4
+    },
+
+    bottomTextActionDisabled: {
+        color: Colors.lightDisabled,
         fontSize: 13,
         lineHeight: 22,
         fontFamily: 'open-sans',

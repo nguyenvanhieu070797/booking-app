@@ -1,5 +1,5 @@
 import {View, StyleSheet, Platform} from "react-native";
-import Header from "../components/Dashboard/Sidebar/Header";
+import HeaderMenu from "../components/Dashboard/Sidebar/HeaderMenu";
 import Background from "../components/Dashboard/Background";
 import Content from "../components/Dashboard/Content";
 
@@ -8,7 +8,7 @@ function Dashboard() {
     return (
         <Background>
             <View style={styles.container}>
-                <Header/>
+                <HeaderMenu/>
                 <Content/>
             </View>
         </Background>

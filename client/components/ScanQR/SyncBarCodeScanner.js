@@ -2,15 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, StyleSheet, Dimensions, StatusBar, TouchableOpacity, Animated } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Camera } from 'expo-camera';
+import Icons from "../UI/Icons";
+import Colors from "../../constants/colors";
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
 export default function SnyBarCodeScanner(props) {
-    const { onScan, onClose, children } = props;
+    const { onScan, children } = props;
     const [hasPermission, setHasPermission] = useState();
-    const [screen, setScreen] = useState('scan');
-    const [scanned, setScanned] = useState(false);
+    const [scanned, setScanned] = useState(true);
     const [sizeQrCode, setSizeQrCode] = useState({ width: 0, height: 0 });
     const lineAnim = useRef(new Animated.Value(0)).current;
 
@@ -52,66 +53,65 @@ export default function SnyBarCodeScanner(props) {
         alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     };
 
+    const scannerStartHandler = () => {
+        if (scanned) {
+            setScanned(false);
+        }
+    };
+
     if (hasPermission === null) {
-        return <View><Text>Requesting for camera permission</Text></View>;
+        return <View>
+            <Text>Requesting for camera permission</Text>
+        </View>;
     }
     if (hasPermission === false) {
-        return <View><Text>No access to camera</Text></View>;
+        return <View>
+            <Text>No access to camera</Text>
+        </View>;
     }
 
     return (
         <View style={styles.main}>
-            <StatusBar translucent={true} backgroundColor="transparent" barStyle="light-content" />
-
-            {(screen === 'scan' && (
-                <Camera
-                    onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                    style={[styles.container]}
-                    tourch={false}
-                >
-                    <View style={styles.layerTop}></View>
-                    <View style={styles.layerCenter}>
-                        <View style={styles.layerLeft} />
-                        <View style={styles.focused} onLayout={onLineLayout}>
-                            <EdgeQRCode position="topRight" />
-                            <EdgeQRCode position="topLeft" />
-                            <Animated.View
-                                style={[
-                                    {
-                                        transform: [{ translateY: transformLine }],
-                                    },
-                                    styles.lineAnim,
-                                ]}
-                            />
-                            <EdgeQRCode position="bottomRight" />
-                            <EdgeQRCode position="bottomLeft" />
-                        </View>
-                        <View style={styles.layerRight} />
+            <Camera
+                onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                style={[styles.container]}
+                tourch={false}
+            >
+                <View style={styles.layerTop}></View>
+                <View style={styles.layerCenter}>
+                    <View style={styles.layerLeft} />
+                    <View style={styles.focused} onLayout={onLineLayout}>
+                        <EdgeQRCode position="topRight" />
+                        <EdgeQRCode position="topLeft" />
+                        <Animated.View
+                            style={[
+                                {
+                                    transform: [{ translateY: transformLine }],
+                                },
+                                styles.lineAnim,
+                            ]}
+                        />
+                        <EdgeQRCode position="bottomRight" />
+                        <EdgeQRCode position="bottomLeft" />
                     </View>
-                    <View style={styles.layerBottom} />
-                </Camera>
-            )) ||
-            (screen === 'data' && <View style={{ backgroundColor: 'white' }}>{children}</View>)}
-            {/* Actions */}
-            <TouchableOpacity onPress={onClose} style={styles.close}>
-                <View style={{ backgroundColor: 'rgba(0,0,0,.6)', width: 22, height: 22, alignItems: 'center', justifyContent: 'center', borderRadius: 13 }}>
-                    {/*<Ionicons name="ios-close" size={20} color="#fff" />*/}
-                    <Text>
-                        asdsa
-                    </Text>
+                    <View style={styles.layerRight} />
                 </View>
-            </TouchableOpacity>
+                <View style={styles.layerBottom} />
+            </Camera>
+
+            {/* Actions */}
             <View style={styles.bottomAction}>
-                <TouchableOpacity onPress={() => setScreen('scan')}>
+                <TouchableOpacity onPress={scannerStartHandler}>
                     <View style={styles.bottomButtonAction}>
-                        {/*<IconSnappy name="scan-barcode" color="#fff" size={20} />*/}
-                        <Text style={styles.bottomTextAction}>Quét mã</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => setScreen('data')}>
-                    <View style={styles.bottomButtonAction}>
-                        {/*<IconSnappy name="package-outline" color="#fff" size={20} />*/}
-                        <Text style={styles.bottomTextAction}>Dữ liệu</Text>
+                        <Icons
+                            icon="qrcode-scan"
+                            type="MaterialCommunityIcons"
+                            size={24}
+                            color={Colors.white}
+                        />
+                        <Text style={styles.bottomTextAction}>
+                            {children}
+                        </Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -125,7 +125,7 @@ function  EdgeQRCode ({ position }) {
     const edgeHeight = 20;
     const edgeColor = '#FFF';
     const edgeBorderWidth = 4;
-    const edgeRadius = 0;
+    const edgeRadius = 10;
 
     const defaultStyle = {
         width: edgeWidth,
@@ -169,23 +169,28 @@ function  EdgeQRCode ({ position }) {
 const opacity = 'rgba(0, 0, 0, .6)';
 
 const styles = StyleSheet.create({
-    // action
-    close: { position: 'absolute', left: 20, width: 40, height: 40 },
     bottomAction: {
         backgroundColor: 'rgba(0,0,0,.6)',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         height: 90,
         position: 'absolute',
         width: deviceWidth,
         bottom: 0,
         left: 0,
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
     },
-    bottomButtonAction: { alignItems: 'center', width: deviceWidth / 2 },
-    bottomTextAction: { color: 'white', fontSize: 13, lineHeight: 22, fontFamily: 'open-sans', marginTop: 4 },
+    bottomButtonAction: {
+        alignItems: 'center',
+        width: deviceWidth / 2
+    },
+    bottomTextAction: {
+        color: 'white',
+        fontSize: 13,
+        lineHeight: 22,
+        fontFamily: 'open-sans',
+        marginTop: 4
+    },
 
     // layout
     main: {

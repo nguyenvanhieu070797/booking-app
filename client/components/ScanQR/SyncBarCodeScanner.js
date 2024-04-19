@@ -75,7 +75,7 @@ export default function SnyBarCodeScanner(props) {
             <Camera
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={[styles.container]}
-                tourch={false}
+                autoFocus={true}
             >
                 <View style={styles.layerTop}></View>
                 <View style={styles.layerCenter}>

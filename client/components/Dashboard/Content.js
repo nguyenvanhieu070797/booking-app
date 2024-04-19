@@ -3,6 +3,7 @@ import ProductLists from "./Products/ProductLists";
 import Categories from "./Categories/Categories";
 import Devices from "./Devices/DeviceLists";
 import {PRODUCTS} from "../../data/prod-data"
+import OthersLists from "./Others/OthersLists";
 
 function Content() {
     return  <ScrollView
@@ -12,6 +13,7 @@ function Content() {
         <Devices data={PRODUCTS}/>
         <ProductLists data={PRODUCTS}/>
         <Categories/>
+        <OthersLists/>
     </ScrollView>
 }
 

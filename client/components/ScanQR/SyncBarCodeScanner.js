@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, StyleSheet, Dimensions, StatusBar, TouchableOpacity, Animated } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { Camera } from 'expo-camera';
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
@@ -21,7 +22,6 @@ export default function SnyBarCodeScanner(props) {
     useEffect(() => {
         const getBarCodeScannerPermissions = async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
-            console.log({status});
             setHasPermission(status === 'granted' || false);
         };
 
@@ -59,14 +59,12 @@ export default function SnyBarCodeScanner(props) {
         return <View><Text>No access to camera</Text></View>;
     }
 
-    console.log({hasPermission});
-
     return (
         <View style={styles.main}>
             <StatusBar translucent={true} backgroundColor="transparent" barStyle="light-content" />
 
             {(screen === 'scan' && (
-                <BarCodeScanner
+                <Camera
                     onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                     style={[styles.container]}
                     tourch={false}
@@ -91,7 +89,7 @@ export default function SnyBarCodeScanner(props) {
                         <View style={styles.layerRight} />
                     </View>
                     <View style={styles.layerBottom} />
-                </BarCodeScanner>
+                </Camera>
             )) ||
             (screen === 'data' && <View style={{ backgroundColor: 'white' }}>{children}</View>)}
             {/* Actions */}
@@ -187,7 +185,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 20,
     },
     bottomButtonAction: { alignItems: 'center', width: deviceWidth / 2 },
-    bottomTextAction: { color: 'white', fontSize: 13, lineHeight: 22, fontFamily: 'Roboto_500Medium', marginTop: 4 },
+    bottomTextAction: { color: 'white', fontSize: 13, lineHeight: 22, fontFamily: 'open-sans', marginTop: 4 },
 
     // layout
     main: {

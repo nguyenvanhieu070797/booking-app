@@ -39,8 +39,7 @@ const styles = StyleSheet.create({
         rowGap: 10,
         columnGap: 10,
         alignSelf: 'stretch',
-        marginVertical: 4,
-        paddingVertical: 8,
+        paddingVertical: 10,
     },
     titleContainer: {
         flexDirection: 'row',

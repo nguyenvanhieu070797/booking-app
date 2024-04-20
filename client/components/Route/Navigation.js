@@ -38,7 +38,7 @@ function AuthenticatedStack() {
                 options: {
                     headerShown: true,
                     title: 'QR Code',
-                    animation: 'none',
+                    // animation: 'none',
                     gestureEnabled: false,
                 }
             }

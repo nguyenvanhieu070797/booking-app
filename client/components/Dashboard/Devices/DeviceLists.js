@@ -14,9 +14,7 @@ function DeviceLists({data, title}) {
             <Text style={styles.title}>
                 {title}
             </Text>
-            {
-                data && data.map(itemData => renderProdItem(itemData))
-            }
+            {data && data.map(itemData => renderProdItem(itemData))}
         </View>
     )
 }

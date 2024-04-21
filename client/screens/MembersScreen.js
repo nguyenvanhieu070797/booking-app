@@ -1,6 +1,6 @@
 import {View, Text} from "react-native";
 
-function DevicesScreen() {
+function MembersScreen() {
 
     return (
         <View>
@@ -11,4 +11,4 @@ function DevicesScreen() {
     )
 }
 
-export default DevicesScreen;
+export default MembersScreen;

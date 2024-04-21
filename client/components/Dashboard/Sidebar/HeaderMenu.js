@@ -10,7 +10,10 @@ export default function HeaderMenu() {
     function buttonCellHandler(action) {
         switch(action) {
             case "devices":
-            case "team":
+                navigation.navigate("DevicesScreen");
+                break;
+            case "members":
+                navigation.navigate("MembersScreen");
                 break;
             case "qrcode-scan":
                 navigation.navigate("ScanQR");
@@ -49,7 +52,7 @@ export default function HeaderMenu() {
                             iconBackground={Colors.lightBlue500}
                             color={Colors.lightBlue50}
                             size={24}
-                            onPress={() => buttonCellHandler("team")}
+                            onPress={() => buttonCellHandler("members")}
                             type="AntDesign"
                         >
                             Thành viên

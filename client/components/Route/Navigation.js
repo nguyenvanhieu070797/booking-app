@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 // Redux
 import {useSelector} from 'react-redux';
+import Colors from "../../constants/colors";
 
 // Screens
 import WelcomeScreen from "../../screens/WelcomeScreen";
@@ -11,7 +12,8 @@ import LoginScreen from "../../screens/LoginScreen";
 import RegisterScreen from "../../screens/RegisterScreen";
 import ScanQRScreen from "../../screens/ScanQRScreen";
 import ScanQRLineScreen from "../../screens/ScanQRLineScreen";
-import Colors from "../../constants/colors";
+import MembersScreen from "../../screens/MembersScreen";
+import DevicesScreen from "../../screens/DevicesScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +51,30 @@ function AuthenticatedStack() {
             {
                 name: "ScanQRLine",
                 component: ScanQRLineScreen,
+                options: {
+                    headerShown: true,
+                    title: 'QR Code',
+                    gestureEnabled: false,
+                    headerTransparent: true,
+                    headerShadowVisible: false,
+                    headerTintColor: Colors.lightPrimary,
+                }
+            },
+            {
+                name: "MembersScreen",
+                component: MembersScreen,
+                options: {
+                    headerShown: true,
+                    title: 'QR Code',
+                    gestureEnabled: false,
+                    headerTransparent: true,
+                    headerShadowVisible: false,
+                    headerTintColor: Colors.lightPrimary,
+                }
+            },
+            {
+                name: "DevicesScreen",
+                component: DevicesScreen,
                 options: {
                     headerShown: true,
                     title: 'QR Code',

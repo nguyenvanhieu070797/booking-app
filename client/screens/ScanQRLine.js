@@ -3,7 +3,8 @@ import IconButton from "../components/UI/IconButton";
 import {useEffect} from "react";
 import SnyBarCodeScanner from "../components/ScanQR/SyncBarCodeScanner";
 
-function ScanQR({navigation}) {
+function ScanQRLine({navigation}) {
+
     useEffect(() => {
         navigation.setOptions({
             headerLeft: ({tintColor}) => (
@@ -39,4 +40,4 @@ function ScanQR({navigation}) {
     </View>
 }
 
-export default ScanQR;
+export default ScanQRLine;

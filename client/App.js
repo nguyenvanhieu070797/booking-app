@@ -76,7 +76,7 @@ export default function App() {
 
     return (
         <>
-            <StatusBar style="dark"/>
+            <StatusBar style="light"/>
             <LinearGradient
                     colors={[Colors.darkDividers, Colors.darkDividers]}
                     resizeMode="cover"

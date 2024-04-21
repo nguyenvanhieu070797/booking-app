@@ -16,6 +16,7 @@ export default function HeaderMenu() {
                 navigation.navigate("ScanQR");
                 break;
             case "line-scan":
+                navigation.navigate("ScanQRLine");
                 break;
         }
     }

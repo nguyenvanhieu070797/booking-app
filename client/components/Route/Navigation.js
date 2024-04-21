@@ -9,7 +9,7 @@ import WelcomeScreen from "../../screens/WelcomeScreen";
 import NavigatorBottom from "./NavigatorBottom";
 import LoginScreen from "../../screens/LoginScreen";
 import RegisterScreen from "../../screens/RegisterScreen";
-import ScanQR from "../../screens/ScanQR";
+import ScanQRScreen from "../../screens/ScanQRScreen";
 import CameraScanQRLine from "../ScanQRLine/CameraScanQRLine";
 import Colors from "../../constants/colors";
 
@@ -36,7 +36,7 @@ function AuthenticatedStack() {
             },
             {
                 name: "ScanQR",
-                component: ScanQR,
+                component: ScanQRScreen,
                 options: {
                     headerShown: true,
                     title: 'QR Code',

@@ -8,7 +8,7 @@ import Colors from "../../constants/colors";
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
-export default function SnyBarCodeScanner(props) {
+export default function SyncBarCodeScanner(props) {
     const { onScan, children } = props;
     const [hasPermission, setHasPermission] = useState();
     const [scanned, setScanned] = useState(true);

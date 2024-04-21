@@ -10,7 +10,7 @@ import NavigatorBottom from "./NavigatorBottom";
 import LoginScreen from "../../screens/LoginScreen";
 import RegisterScreen from "../../screens/RegisterScreen";
 import ScanQRScreen from "../../screens/ScanQRScreen";
-import CameraScanQRLine from "../ScanQRLine/CameraScanQRLine";
+import ScanQRLineScreen from "../../screens/ScanQRLineScreen";
 import Colors from "../../constants/colors";
 
 const Stack = createNativeStackNavigator();
@@ -48,7 +48,7 @@ function AuthenticatedStack() {
             },
             {
                 name: "ScanQRLine",
-                component: CameraScanQRLine,
+                component: ScanQRLineScreen,
                 options: {
                     headerShown: true,
                     title: 'QR Code',

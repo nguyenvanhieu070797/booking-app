@@ -5,7 +5,7 @@ function MembersScreen() {
     return (
         <View>
             <Text>
-                asdasd
+                member
             </Text>
         </View>
     )

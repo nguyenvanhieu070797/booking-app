@@ -65,11 +65,8 @@ function AuthenticatedStack() {
                 component: MembersScreen,
                 options: {
                     headerShown: true,
-                    title: 'QR Code',
+                    title: 'Thành viên',
                     gestureEnabled: false,
-                    headerTransparent: true,
-                    headerShadowVisible: false,
-                    headerTintColor: Colors.lightPrimary,
                 }
             },
             {
@@ -77,11 +74,8 @@ function AuthenticatedStack() {
                 component: DevicesScreen,
                 options: {
                     headerShown: true,
-                    title: 'QR Code',
+                    title: 'Thiết bị',
                     gestureEnabled: false,
-                    headerTransparent: true,
-                    headerShadowVisible: false,
-                    headerTintColor: Colors.lightPrimary,
                 }
             }
         ]

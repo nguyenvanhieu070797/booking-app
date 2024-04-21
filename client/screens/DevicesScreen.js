@@ -5,7 +5,7 @@ function DevicesScreen() {
     return (
         <View>
             <Text>
-                asdasd
+                Device
             </Text>
         </View>
     )

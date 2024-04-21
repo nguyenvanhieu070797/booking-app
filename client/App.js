@@ -45,7 +45,7 @@ function Root() {
     }, []);
 
     if (isTryingLogin) {
-        return "";
+        return <LoadingOverlay message="Waring for you...." />
     }
 
     return <Navigation/>;

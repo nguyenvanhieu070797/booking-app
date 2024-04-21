@@ -2,7 +2,7 @@ import {Pressable, SafeAreaView, View, Text, StyleSheet} from "react-native";
 import Icons from "../../UI/Icons";
 import Colors from "../../../constants/colors";
 
-function OthersItems({data = {}, index = "0", onPress}) {
+function OthersItems({data = {}, onPress}) {
     if (data && Object.values(data).length === 0) {
         return ""
     }

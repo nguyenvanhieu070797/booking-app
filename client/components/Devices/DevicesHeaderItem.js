@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         color: Colors.darkSecondary,
         fontFamily: 'open-sans-bold',
-        fontSize: 20,
+        fontSize: 16,
         fontStyle: 'normal',
         fontWeight: '500',
         justifyContent: "flex-start",

@@ -2,314 +2,26 @@ import {
     View,
     FlatList,
     Platform,
-    StyleSheet
+    StyleSheet,
+    SafeAreaView
 } from "react-native";
 import Colors from "../../constants/colors";
 import DevicesContainerItem from "./DevicesContainerItem";
 
-function DevicesListItem() {
+function DevicesListItem({data}) {
 
     function _onPress(item) {
         console.log({item});
     }
 
     return (
-        <View>
+        <SafeAreaView style={styles.rootContainer}>
             <FlatList
                 ItemSeparatorComponent={
                     Platform.OS !== 'android' &&
                     (({highlighted}) => (<View style={[styles.separator, highlighted && {marginLeft: 0}]}/>))
                 }
-                data={[
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    },
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    },
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    },
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    },
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    },
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    },
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    },
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    },
-                    {
-                        title: "Máy tính",
-                        parameter: [
-                            {
-                                title: "Số lượng",
-                                number: 50,
-                            },
-                            {
-                                title: "Sử dụng",
-                                number: 30,
-                            },
-                            {
-                                title: "Hư",
-                                number: 20,
-                            },
-                            {
-                                title: "Tồn",
-                                number: 20,
-                            },
-                        ],
-                        icons: {
-                            title: {
-                                icon: "computer",
-                                type: "MaterialIcons",
-                                size: 40,
-                                color: Colors.blueGrey500
-                            },
-                        },
-                        code: "EL-VM1995",
-                        userName: "Nguyễn Văn Hiếu",
-                        datetime: "22/04/2024 6:30 am"
-                    }
-                ]}
+                data={data}
                 renderItem={({item, index}) => {
                     const isMod = index % 2 === 0;
                     return <DevicesContainerItem
@@ -319,7 +31,7 @@ function DevicesListItem() {
                         onPress={_onPress}/>
                 }}
             />
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -327,13 +39,17 @@ export default DevicesListItem;
 
 
 const styles = StyleSheet.create({
+    rootContainer: {
+        paddingBottom: 10,
+        flex: 1,
+    },
     separator: {
         opacity: 0.25,
     },
     _DevicesContainer: {
-        backgroundColor: Colors.grey50,
+        backgroundColor: Colors.lightBlue50,
     },
     __DevicesContainer: {
-        backgroundColor: Colors.blueGrey50,
+        backgroundColor: Colors.white,
     },
 })

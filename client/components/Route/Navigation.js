@@ -41,7 +41,6 @@ function AuthenticatedStack() {
                 options: {
                     headerShown: true,
                     title: 'QR Code',
-                    gestureEnabled: false,
                     headerTransparent: true,
                     headerShadowVisible: false,
                     headerTintColor: Colors.lightPrimary,
@@ -53,7 +52,6 @@ function AuthenticatedStack() {
                 options: {
                     headerShown: true,
                     title: 'QR Code',
-                    gestureEnabled: false,
                     headerTransparent: true,
                     headerShadowVisible: false,
                     headerTintColor: Colors.lightPrimary,
@@ -65,7 +63,6 @@ function AuthenticatedStack() {
                 options: {
                     headerShown: true,
                     title: 'Thành viên',
-                    gestureEnabled: false,
                 }
             },
             {
@@ -74,7 +71,6 @@ function AuthenticatedStack() {
                 options: {
                     headerShown: true,
                     title: 'Thiết bị',
-                    gestureEnabled: false,
                 }
             }
         ]

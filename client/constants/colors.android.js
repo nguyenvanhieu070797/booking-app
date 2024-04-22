@@ -91,7 +91,7 @@ const Colors = {
     "blueA400": "#2979ff",
     "blueA700": "#2962ff",
 
-    "lightBlue50": "#e1f5fe",
+    "lightBlue50": "#f3f8ff",
     "lightBlue100": "#b3e5fc",
     "lightBlue200": "#81d4fa",
     "lightBlue300": "#4fc3f7",

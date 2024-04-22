@@ -37,7 +37,7 @@ function Categories() {
                     onPress={buttonCellHandler}
                     type="MaterialIcons"
                 >
-                   Danh mục
+                    Danh mục
                 </IconButtonCell>
             </View>
             <View style={styles.buttonContainer}>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
     categoriesContainer: {
         flex: 1,
-        flexDirection:'row',
+        flexDirection: 'row',
         flexWrap: "wrap",
     },
     buttonContainer: {

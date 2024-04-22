@@ -55,7 +55,7 @@ class SpinWheel extends Component {
         };
         return (
             <View style={styles.container}>
-                <StatusBar barStyle={'light-content'} />
+                <StatusBar barStyle={'light-content'}/>
                 <WheelOfFortune
                     options={wheelOptions}
                     getWinner={(value, index) => {
@@ -91,6 +91,7 @@ class SpinWheel extends Component {
         );
     }
 }
+
 export default SpinWheel;
 
 const styles = StyleSheet.create({

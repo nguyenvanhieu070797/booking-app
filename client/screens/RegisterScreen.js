@@ -24,7 +24,7 @@ function LoginScreen() {
     }
 
     if (isAuthenticating) {
-        return <LoadingOverlay message="Logging you ..." />
+        return <LoadingOverlay message="Logging you ..."/>
     }
 
     return <AuthContent

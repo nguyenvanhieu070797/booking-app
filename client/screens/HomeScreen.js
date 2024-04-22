@@ -12,7 +12,7 @@ function HomeScreen() {
     });
 
     useEffect(() => {
-        axios.get("https://react-native-course-e7193-default-rtdb.firebaseio.com/message.json?auth="+token).then(
+        axios.get("https://react-native-course-e7193-default-rtdb.firebaseio.com/message.json?auth=" + token).then(
             (response) => {
                 setFetchedMessage(response.data);
             }

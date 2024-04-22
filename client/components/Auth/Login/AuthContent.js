@@ -1,18 +1,18 @@
 import {useState} from "react";
-import { StyleSheet, View, Alert } from 'react-native';
+import {StyleSheet, View, Alert} from 'react-native';
 import BackgroundStart from "../../BackgroundStart";
 
 // Form Login
 import AuthForm from "./AuthForm";
 
-function AuthContent({ onAuthenticate }) {
+function AuthContent({onAuthenticate}) {
     const [credentialsInvalid, setCredentialsInvalid] = useState({
         userName: false,
         password: false,
     });
 
     function submitHandler(credentials) {
-        let { userName, password } = credentials;
+        let {userName, password} = credentials;
 
         userName = userName.trim();
         password = password.trim();
@@ -31,7 +31,7 @@ function AuthContent({ onAuthenticate }) {
             });
             return;
         }
-        onAuthenticate({ userName, password });
+        onAuthenticate({userName, password});
     }
 
     return (
@@ -46,7 +46,4 @@ function AuthContent({ onAuthenticate }) {
 
 export default AuthContent;
 
-const styles = StyleSheet.create({
-
-
-});
+const styles = StyleSheet.create({});

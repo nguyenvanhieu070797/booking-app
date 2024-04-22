@@ -20,7 +20,7 @@ function renderWinnerItem(itemData) {
 
 }
 
-function WinnerList ({data}) {
+function WinnerList({data}) {
     useEffect(() => {
         console.log("SpinWheelScreen Use", {data});
     }, [data]);

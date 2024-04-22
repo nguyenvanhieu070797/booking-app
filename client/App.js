@@ -1,4 +1,4 @@
-import {useState,  useEffect, useCallback} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import {StyleSheet} from 'react-native';
 
 // Size Bar
@@ -36,16 +36,17 @@ function Root() {
         async function fetchToken() {
             const storedToken = await AsyncStorage.getItem("token")
             console.log({storedToken});
-            if(storedToken) {
+            if (storedToken) {
                 dispatch(setToken({token: storedToken}));
             }
             setIsTryingLogin(false);
         }
+
         fetchToken();
     }, []);
 
     if (isTryingLogin) {
-        return <LoadingOverlay message="Waring for you...." />
+        return <LoadingOverlay message="Waring for you...."/>
     }
 
     return <Navigation/>;
@@ -61,6 +62,7 @@ export default function App() {
         async function prepare() {
             await SplashScreen.preventAutoHideAsync();
         }
+
         prepare();
     }, []);
 
@@ -71,18 +73,18 @@ export default function App() {
     }, [fontsLoaded]);
 
     if (!fontsLoaded) {
-        return  <LoadingOverlay message="Loading..." />;
+        return <LoadingOverlay message="Loading..."/>;
     }
 
     return (
         <>
             <StatusBar style="light"/>
             <LinearGradient
-                    colors={[Colors.darkDividers, Colors.darkDividers]}
-                    resizeMode="cover"
-                    style={styles.rootScreen}
-                    onLayout={onLayoutRootView}
-                >
+                colors={[Colors.darkDividers, Colors.darkDividers]}
+                resizeMode="cover"
+                style={styles.rootScreen}
+                onLayout={onLayoutRootView}
+            >
                 <Provider store={store}>
                     <Root/>
                 </Provider>

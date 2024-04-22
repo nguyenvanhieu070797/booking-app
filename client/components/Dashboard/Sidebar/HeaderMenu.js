@@ -8,7 +8,7 @@ export default function HeaderMenu() {
     const navigation = useNavigation();
 
     function buttonCellHandler(action) {
-        switch(action) {
+        switch (action) {
             case "devices":
                 navigation.navigate("DevicesScreen");
                 break;
@@ -90,8 +90,7 @@ export default function HeaderMenu() {
 
 const styles = StyleSheet.create(
     {
-        rootContainer: {
-        },
+        rootContainer: {},
         container: {
             flexDirection: 'row',
             justifyContent: "center",

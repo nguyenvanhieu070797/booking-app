@@ -11,9 +11,9 @@ function IconButtonCell({
                             color = "#ffffff",
                             iconBackground,
                             type = ""
-}) {
+                        }) {
     let vectorIcon = "";
-    switch(type) {
+    switch (type) {
         case "MaterialIcons":
             vectorIcon = <MaterialIcons
                 style={styles.icon}

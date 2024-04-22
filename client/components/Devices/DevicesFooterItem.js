@@ -17,11 +17,11 @@ function DevicesFooterItem({item}) {
     });
 
     return (
-        <View style={[styles.authorContainer, styles.lineTop]} >
-            <View style={styles.authorInformation} >
+        <View style={[styles.authorContainer, styles.lineTop]}>
+            <View style={styles.authorInformation}>
                 {iconUser}
                 {/*<Image source={{uri: ellipse}} style={{width: 20, height: 20}} resizeMode="cover"/>*/}
-                <Text style={styles.textAuthorInformation} >
+                <Text style={styles.textAuthorInformation}>
                     {item.userName}
                 </Text>
             </View>

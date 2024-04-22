@@ -1,7 +1,7 @@
 import {View, StyleSheet, ImageBackground} from 'react-native';
 
 function Background({children}) {
-    return  <View>
+    return <View>
         <ImageBackground
             source={require('../../assets/images/dashboard/background.jpg')}
             style={styles.rootScreen}

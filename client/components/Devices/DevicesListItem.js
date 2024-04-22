@@ -5,7 +5,7 @@ import {
     StyleSheet
 } from "react-native";
 import Colors from "../../constants/colors";
-import DevicesItem from "./DevicesItem";
+import DevicesContainerItem from "./DevicesContainerItem";
 
 function DevicesListItem() {
 
@@ -312,7 +312,7 @@ function DevicesListItem() {
                 ]}
                 renderItem={({item, index}) => {
                     const isMod = index % 2 === 0;
-                    return <DevicesItem
+                    return <DevicesContainerItem
                         item={item}
                         key={Math.random()}
                         style={isMod ? styles._DevicesContainer : styles.__DevicesContainer}

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, Dimensions, StatusBar, TouchableOpacity, Animated } from 'react-native';
-import { BarCodeScanner } from 'expo-barcode-scanner';
-import { Camera } from 'expo-camera';
+import React, {useState, useEffect, useRef} from 'react';
+import {Text, View, StyleSheet, Dimensions, StatusBar, TouchableOpacity, Animated} from 'react-native';
+import {BarCodeScanner} from 'expo-barcode-scanner';
+import {Camera} from 'expo-camera';
 import Icons from "../UI/Icons";
 import Colors from "../../constants/colors";
 
@@ -9,20 +9,20 @@ const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
 export default function SyncBarCodeScanner(props) {
-    const { onScan, children } = props;
+    const {onScan, children} = props;
     const [hasPermission, setHasPermission] = useState();
     const [scanned, setScanned] = useState(true);
-    const [sizeQrCode, setSizeQrCode] = useState({ width: 0, height: 0 });
+    const [sizeQrCode, setSizeQrCode] = useState({width: 0, height: 0});
     const lineAnim = useRef(new Animated.Value(0)).current;
 
     const onLineLayout = (event) => {
-        const { x, y, height, width } = event.nativeEvent.layout;
-        setSizeQrCode({ width: width, height: height });
+        const {x, y, height, width} = event.nativeEvent.layout;
+        setSizeQrCode({width: width, height: height});
     };
 
     useEffect(() => {
         const getBarCodeScannerPermissions = async () => {
-            const { status } = await BarCodeScanner.requestPermissionsAsync();
+            const {status} = await BarCodeScanner.requestPermissionsAsync();
             setHasPermission(status === 'granted' || false);
         };
 
@@ -47,7 +47,7 @@ export default function SyncBarCodeScanner(props) {
         outputRange: [0, sizeQrCode?.height],
     });
 
-    const handleBarCodeScanned = ({ type, data }) => {
+    const handleBarCodeScanned = ({type, data}) => {
         onScan && onScan(data);
         setScanned(true);
         alert(`Bar code with type ${type} and data ${data} has been scanned!`);
@@ -79,24 +79,24 @@ export default function SyncBarCodeScanner(props) {
             >
                 <View style={styles.layerTop}></View>
                 <View style={styles.layerCenter}>
-                    <View style={styles.layerLeft} />
+                    <View style={styles.layerLeft}/>
                     <View style={styles.focused} onLayout={onLineLayout}>
-                        <EdgeQRCode position="topRight" />
-                        <EdgeQRCode position="topLeft" />
+                        <EdgeQRCode position="topRight"/>
+                        <EdgeQRCode position="topLeft"/>
                         <Animated.View
                             style={[
                                 {
-                                    transform: [{ translateY: transformLine }],
+                                    transform: [{translateY: transformLine}],
                                 },
                                 styles.lineAnim,
                             ]}
                         />
-                        <EdgeQRCode position="bottomRight" />
-                        <EdgeQRCode position="bottomLeft" />
+                        <EdgeQRCode position="bottomRight"/>
+                        <EdgeQRCode position="bottomLeft"/>
                     </View>
-                    <View style={styles.layerRight} />
+                    <View style={styles.layerRight}/>
                 </View>
-                <View style={styles.layerBottom} />
+                <View style={styles.layerBottom}/>
             </Camera>
 
             {/* Actions */}
@@ -120,7 +120,7 @@ export default function SyncBarCodeScanner(props) {
 }
 
 
-function  EdgeQRCode ({ position }) {
+function EdgeQRCode({position}) {
     const edgeWidth = 20;
     const edgeHeight = 20;
     const edgeColor = '#FFF';
@@ -162,7 +162,7 @@ function  EdgeQRCode ({ position }) {
             left: edgeRadius,
         },
     };
-    return <View style={[defaultStyle, styles[position + 'Edge'], edgeBorderStyle[position]]} />;
+    return <View style={[defaultStyle, styles[position + 'Edge'], edgeBorderStyle[position]]}/>;
 }
 
 
@@ -265,5 +265,5 @@ const styles = StyleSheet.create({
         bottom: 0,
         right: 0,
     },
-    lineAnim: { height: 2, backgroundColor: '#fff' },
+    lineAnim: {height: 2, backgroundColor: '#fff'},
 });

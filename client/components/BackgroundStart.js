@@ -1,7 +1,7 @@
 import {StyleSheet, ImageBackground} from 'react-native';
 
 function BackgroundStart({children}) {
-    return  <ImageBackground
+    return <ImageBackground
         source={require('../assets/images/header/background-screen.png')}
         // resizeMode="stretch"
         style={styles.rootScreen}

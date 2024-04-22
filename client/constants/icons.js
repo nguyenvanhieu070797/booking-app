@@ -4,11 +4,12 @@ import {
     AntDesign,
     Ionicons,
     MaterialCommunityIcons,
-    MaterialIcons} from "@expo/vector-icons";
+    MaterialIcons
+} from "@expo/vector-icons";
 
 function Icons({icon, type, size, color, style}) {
     let vectorIcon = "";
-    switch(type) {
+    switch (type) {
         case "MaterialIcons":
             vectorIcon = <MaterialIcons
                 style={[styles.icon, style]}
@@ -51,6 +52,5 @@ export default Icons;
 
 
 const styles = StyleSheet.create({
-    icon: {
-    }
+    icon: {}
 });

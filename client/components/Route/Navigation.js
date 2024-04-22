@@ -1,5 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
 // Redux
 import {useSelector} from 'react-redux';
@@ -16,7 +16,6 @@ import MembersScreen from "../../screens/MembersScreen";
 import DevicesScreen from "../../screens/DevicesScreen";
 
 const Stack = createNativeStackNavigator();
-
 
 
 function AuthenticatedStack() {
@@ -124,8 +123,7 @@ function AuthStack() {
 }
 
 
-
-function Navigation () {
+function Navigation() {
     const isAuthenticated = useSelector((state) => {
         return state?.auth?.isAuthenticated || false
     });
@@ -140,7 +138,7 @@ function Navigation () {
                 screenOptions={navigationOptions?.screenOptions || {}}
             >
                 {
-                    screens.map((screen ) => {
+                    screens.map((screen) => {
                         return <Stack.Screen
                             key={screen?.name || ""}
                             name={screen?.name || ""}

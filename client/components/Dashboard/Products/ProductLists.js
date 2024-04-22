@@ -19,6 +19,5 @@ function ProductLists({data}) {
 
 export default ProductLists;
 const styles = StyleSheet.create({
-   container: {
-   }
+    container: {}
 });

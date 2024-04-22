@@ -5,7 +5,7 @@ import {PRODUCTS} from "../../data/prod-data"
 import OthersLists from "./Others/OthersLists";
 
 function Content() {
-    return  <ScrollView
+    return <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.rootContainer}
     >

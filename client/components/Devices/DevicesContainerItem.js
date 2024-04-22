@@ -1,11 +1,11 @@
-import { StyleSheet, TouchableHighlight, View } from "react-native";
+import {StyleSheet, TouchableHighlight, View} from "react-native";
 import Colors from "../../constants/colors";
 import DevicesHeaderItem from "./DevicesHeaderItem";
 import DevicesContentItem from "./DevicesContentItem";
 import DevicesFooterItem from "./DevicesFooterItem";
 
-function DevicesItem({item, onPress, style}) {
-    if(item === undefined || Object.values(item).length === 0){
+function DevicesContainerItem({item, onPress, style}) {
+    if (item === undefined || Object.values(item).length === 0) {
         return "";
     }
 
@@ -20,7 +20,7 @@ function DevicesItem({item, onPress, style}) {
     )
 }
 
-export default DevicesItem;
+export default DevicesContainerItem;
 
 
 const styles = StyleSheet.create({

@@ -21,11 +21,11 @@ function DeviceLists({data, title}) {
 
 export default DeviceLists;
 const styles = StyleSheet.create({
-   title: {
-       paddingHorizontal: 16,
-       paddingVertical: 6,
-       fontSize: 20,
-       color: Colors.darkPrimary,
-       fontFamily: 'open-sans-bold',
-   }
+    title: {
+        paddingHorizontal: 16,
+        paddingVertical: 6,
+        fontSize: 20,
+        color: Colors.darkPrimary,
+        fontFamily: 'open-sans-bold',
+    }
 });

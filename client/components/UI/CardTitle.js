@@ -2,7 +2,7 @@ import {Text, View, StyleSheet, Dimensions} from 'react-native';
 import Colors from "../../constants/colors";
 
 
-function CardTitle ({title = "", children, style={}}) {
+function CardTitle({title = "", children, style = {}}) {
 
     return <View>
         <Text style={styles.titleCard}>{title}</Text>
@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     card: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: deviceWidths < 300 ? 4: 7,
-        marginHorizontal: deviceWidths < 300 ? 8: 14,
+        marginVertical: deviceWidths < 300 ? 4 : 7,
+        marginHorizontal: deviceWidths < 300 ? 8 : 14,
         padding: 16,
         backgroundColor: Colors.grey50,
         borderRadius: 6,

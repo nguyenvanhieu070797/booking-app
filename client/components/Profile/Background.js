@@ -1,7 +1,7 @@
 import {StyleSheet, ImageBackground} from 'react-native';
 
 function Background({children}) {
-    return  <ImageBackground
+    return <ImageBackground
         source={require('../../assets/images/dashboard/background.jpg')}
         // resizeMode="stretch"
         style={styles.rootScreen}
@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
         width: '100%', // applied to Image
         height: 387,
     },
-    backgroundImage: {
-    },
+    backgroundImage: {},
 
 })

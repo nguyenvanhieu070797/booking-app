@@ -4,7 +4,7 @@ import Colors from "../../../constants/colors";
 import Icons from "../../../constants/icons";
 
 function ProductItems({dataItem}) {
-    if(dataItem === undefined || Object.values(dataItem).length === 0){
+    if (dataItem === undefined || Object.values(dataItem).length === 0) {
         return "";
     }
 
@@ -13,7 +13,7 @@ function ProductItems({dataItem}) {
     const iconUserDetail = Icons(dataItem.icons.userDetail);
     const iconUser = Icons(dataItem.icons.user);
 
-    return(
+    return (
         <Card>
             <View style={styles.rootContainer}>
                 <View style={styles.Container}>
@@ -56,11 +56,11 @@ function ProductItems({dataItem}) {
                     }
                 </View>
 
-                <View style={[styles.authorContainer, styles.lineTop]} >
-                    <View style={styles.authorInformation} >
+                <View style={[styles.authorContainer, styles.lineTop]}>
+                    <View style={styles.authorInformation}>
                         {iconUser}
                         {/*<Image source={{uri: ellipse}} style={{width: 20, height: 20}} resizeMode="cover"/>*/}
-                        <Text style={styles.textAuthorInformation} >
+                        <Text style={styles.textAuthorInformation}>
                             {dataItem.author}
                         </Text>
                     </View>
@@ -203,8 +203,6 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
 
-    lineTop: {
-
-    }
+    lineTop: {}
 
 })

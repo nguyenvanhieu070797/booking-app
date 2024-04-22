@@ -251,7 +251,7 @@ class SpinWheel extends Component {
 
                                 return (
                                     <G key={`arc-${i}`}>
-                                        <Path d={arc.path} strokeWidth={2} fill={arc.color} />
+                                        <Path d={arc.path} strokeWidth={2} fill={arc.color}/>
                                         <G
                                             rotation={
                                                 (i * this.oneTurn) / this.numberOfSegments +
@@ -323,7 +323,7 @@ class SpinWheel extends Component {
                                 ? this.props.options.knobSource
                                 : require("../../../assets/images/knob.png")
                         }
-                        style={{ width: knobSize, height: (knobSize * 100) / 57 }}
+                        style={{width: knobSize, height: (knobSize * 100) / 57}}
                     />
                 </Svg>
             </Animated.View>

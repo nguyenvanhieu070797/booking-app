@@ -1,11 +1,11 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 import Icons from "../../constants/icons";
 
-function IconButton({ mode = "default", icon, size, color, onPress, style }) {
+function IconButton({mode = "default", icon, size, color, onPress, style}) {
     return (
         <Pressable
             onPress={onPress}
-            style={({ pressed }) => pressed && styles.pressed}
+            style={({pressed}) => pressed && styles.pressed}
         >
             <View style={[styles.buttonContainer, style]}>
                 <Icons

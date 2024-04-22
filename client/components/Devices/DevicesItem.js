@@ -12,7 +12,7 @@ function DevicesItem({item, onPress, style}) {
     return (
         <TouchableHighlight key={item.key} onPress={() => onPress(item)}>
             <View style={[styles.rootContainer, style]}>
-                <DevicesHeaderItem key={item.key} title={item.title} status={item.status}/>
+                <DevicesHeaderItem key={item.key} title={item.title} code={item.code}/>
                 <DevicesContentItem key={item.key} item={item}/>
                 <DevicesFooterItem key={item.key} item={item}/>
             </View>

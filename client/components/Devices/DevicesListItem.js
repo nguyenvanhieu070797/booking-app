@@ -49,7 +49,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     },
@@ -81,7 +81,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     },
@@ -113,7 +113,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     },
@@ -145,7 +145,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     },
@@ -177,7 +177,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     },
@@ -209,7 +209,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     },
@@ -241,7 +241,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     },
@@ -273,7 +273,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     },
@@ -305,7 +305,7 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use",
+                        code: "EL-VM1995",
                         userName: "Nguyễn Văn Hiếu",
                         datetime: "22/04/2024 6:30 am"
                     }

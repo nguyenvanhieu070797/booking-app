@@ -6,25 +6,16 @@ import {
 import Colors from "../../constants/colors";
 import React from "react";
 
-function DevicesHeaderItem({title, status}) {
-    let classes = {};
-    let titleStatus = "";
-
-    switch (status) {
-        case "use":
-            titleStatus = "Đang dùng";
-            classes = styles.use;
-            break;
-    }
+function DevicesHeaderItem({title, code}) {
 
     return (
         <View style={styles.headerContainer}>
             <Text style={styles.textHeader}>
                 {title}
             </Text>
-            <View style={[styles.statusHeader, classes]}>
+            <View style={[styles.statusHeader]}>
                 <Text style={styles.textStatusHeader}>
-                    {titleStatus}
+                    {code}
                 </Text>
             </View>
         </View>
@@ -58,15 +49,14 @@ const styles = StyleSheet.create({
         color: Colors.darkSecondary,
         fontFamily: 'open-sans-bold',
         fontSize: 12,
-        paddingHorizontal: 4,
-        paddingVertical: 2,
-        borderRadius: 5,
+
     },
     statusHeader: {
         justifyContent: "flex-end",
         flexDirection: "row",
+        backgroundColor: Colors.grey300,
+        paddingHorizontal: 4,
+        paddingVertical: 2,
+        borderRadius: 5,
     },
-    use: {
-        backgroundColor: Colors.green100,
-    }
 })

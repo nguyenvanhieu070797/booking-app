@@ -49,9 +49,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     },
                     {
                         title: "Máy tính",
@@ -79,9 +80,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     },
                     {
                         title: "Máy tính",
@@ -109,9 +111,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     },
                     {
                         title: "Máy tính",
@@ -139,9 +142,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     },
                     {
                         title: "Máy tính",
@@ -169,9 +173,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     },
                     {
                         title: "Máy tính",
@@ -199,9 +204,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     },
                     {
                         title: "Máy tính",
@@ -229,9 +235,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     },
                     {
                         title: "Máy tính",
@@ -259,9 +266,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     },
                     {
                         title: "Máy tính",
@@ -289,9 +297,10 @@ function DevicesListItem() {
                                 icon: "computer",
                                 type: "MaterialIcons",
                                 size: 40,
-                                color: Colors.green200
+                                color: Colors.blueGrey500
                             },
-                        }
+                        },
+                        status: "use"
                     }
                 ]}
                 renderItem={({item, index}) => {

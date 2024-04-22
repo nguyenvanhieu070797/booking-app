@@ -1,5 +1,4 @@
 import {
-    SafeAreaView,
     Text,
     StyleSheet, TouchableHighlight, View
 } from "react-native";
@@ -20,11 +19,10 @@ function DevicesItem({item, onPress, style}) {
             onPress={() => onPress(item)}
         >
             <View style={[styles.rootContainer, style]}>
-                <DevicesHeaderItem key={item.key} title={item.title}/>
+                <DevicesHeaderItem key={item.key} title={item.title} status={item.status}/>
                 <View style={styles.Container}>
                     {iconTitle}
                     <View style={styles.containerContent}>
-
                         <View style={styles.informationContainer}>
                             {
                                 item.parameter && item.parameter.map((total) => {
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
         rowGap: 8,
         columnGap: 8,
         paddingVertical: 16,
-        paddingHorizontal: 8,
+        paddingHorizontal: 16,
     },
     Container: {
         flexDirection: 'row',
@@ -95,10 +93,12 @@ const styles = StyleSheet.create({
     },
     informationContent: {
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         flexGrow: 1,
-        flexShrink: 0,
         flexBasis: 0,
+        borderStartWidth: 1,
+        borderStartColor: Colors.grey300,
+        marginLeft: 3,
     },
     titleInformationContainer: {
         flexDirection: 'column',

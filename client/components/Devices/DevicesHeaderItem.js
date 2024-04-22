@@ -4,26 +4,28 @@ import {
     StyleSheet
 } from "react-native";
 import Colors from "../../constants/colors";
-import Icons from "../UI/Icons";
 import React from "react";
 
-function DevicesHeaderItem({title}) {
+function DevicesHeaderItem({title, status}) {
+    let classes = {};
+    let titleStatus = "";
+
+    switch (status) {
+        case "use":
+            titleStatus = "Đang dùng";
+            classes = styles.use;
+            break;
+    }
 
     return (
         <View style={styles.headerContainer}>
             <Text style={styles.textHeader}>
                 {title}
             </Text>
-            <View style={styles.statusHeader}>
+            <View style={[styles.statusHeader, classes]}>
                 <Text style={styles.textStatusHeader}>
-                    Trạng thái
+                    {titleStatus}
                 </Text>
-                <Icons
-                    icon="qrcode-scan"
-                    type="MaterialCommunityIcons"
-                    size={14}
-                    color={Colors.green500}
-                />
             </View>
         </View>
     )
@@ -56,12 +58,15 @@ const styles = StyleSheet.create({
         color: Colors.darkSecondary,
         fontFamily: 'open-sans-bold',
         fontSize: 12,
-        fontStyle: 'normal',
-        fontWeight: '500',
-        marginRight: 5
+        paddingHorizontal: 4,
+        paddingVertical: 2,
+        borderRadius: 5,
     },
     statusHeader: {
         justifyContent: "flex-end",
         flexDirection: "row",
+    },
+    use: {
+        backgroundColor: Colors.green100,
     }
 })

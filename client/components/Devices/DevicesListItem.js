@@ -1,9 +1,7 @@
 import {
     View,
-    Text,
     FlatList,
     Platform,
-    TouchableHighlight,
     StyleSheet
 } from "react-native";
 import Colors from "../../constants/colors";
@@ -25,7 +23,6 @@ function DevicesListItem() {
                 data={[
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -52,11 +49,12 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     },
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -83,11 +81,12 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     },
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -114,11 +113,12 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     },
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -145,11 +145,12 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     },
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -176,11 +177,12 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     },
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -207,11 +209,12 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     },
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -238,11 +241,12 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     },
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -269,11 +273,12 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     },
                     {
                         title: "Máy tính",
-                        datetime: "22/04/2024 4:30am",
                         parameter: [
                             {
                                 title: "Số lượng",
@@ -300,14 +305,18 @@ function DevicesListItem() {
                                 color: Colors.blueGrey500
                             },
                         },
-                        status: "use"
+                        status: "use",
+                        userName: "Nguyễn Văn Hiếu",
+                        datetime: "22/04/2024 6:30 am"
                     }
                 ]}
                 renderItem={({item, index}) => {
                     const isMod = index % 2 === 0;
-                    return <DevicesItem item={item} key={Math.random()}
-                                        style={isMod ? styles._DevicesContainer : styles.__DevicesContainer}
-                                        onPress={_onPress}/>
+                    return <DevicesItem
+                        item={item}
+                        key={Math.random()}
+                        style={isMod ? styles._DevicesContainer : styles.__DevicesContainer}
+                        onPress={_onPress}/>
                 }}
             />
         </View>

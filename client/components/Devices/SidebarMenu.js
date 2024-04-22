@@ -4,21 +4,22 @@ import {
     ScrollView,
     StyleSheet,
     Pressable,
+    Dimensions
 } from "react-native";
 import Colors from "../../constants/colors";
 
 function SidebarMenu({onPress}) {
+    const screenWidth = Dimensions.get('window').width;
+
     return (
-        <View style={{backgroundColor: Colors.blueGrey100,}}>
+        <View style={ [styles.viewContainer]}>
             <ScrollView
-                style={styles.rootContainer}
+                style={[styles.rootContainer, {width: screenWidth}]}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{
-                    flexGrow: 1,
-                    justifyContent: "flex-start",
-                    width: '100%',
-                }}
+                snapToInterval={screenWidth}
+                decelerationRate={"fast"}
+                contentContainerStyle={{flexGrow: 1}}
             >
                 <View style={styles.container}>
                     <Pressable
@@ -45,10 +46,27 @@ function SidebarMenu({onPress}) {
                         }
                         onPress={onPress}>
                         <Text style={[styles.buttonText]}>
-                            Thiết bị mạng
+                            Phụ kiện laptop
                         </Text>
                     </Pressable>
-
+                    <Pressable
+                        style={
+                            ({pressed}) => [styles.itemContainer, pressed &&  styles.pressed]
+                        }
+                        onPress={onPress}>
+                        <Text style={[styles.buttonText]}>
+                            Phụ kiện laptop
+                        </Text>
+                    </Pressable>
+                    <Pressable
+                        style={
+                            ({pressed}) => [styles.itemContainer, pressed &&  styles.pressed]
+                        }
+                        onPress={onPress}>
+                        <Text style={[styles.buttonText]}>
+                            Phụ kiện laptop
+                        </Text>
+                    </Pressable>
                 </View>
             </ScrollView>
         </View>
@@ -59,15 +77,25 @@ export default SidebarMenu;
 
 
 const styles = StyleSheet.create({
+    viewContainer: {
+        backgroundColor: Colors.blueGrey100,
+        justifyContent:'stretch',
+    },
     rootContainer: {
+        width: "100%",
     },
     container: {
         flexDirection: 'row',
         justifyContent: "center",
         textAlign: "center",
         alignItems: "center",
+        width: "100%",
     },
     itemContainer: {
+        flex: 1,
+        flexGrow: 1,
+        flexBasis: 0,
+        flexShrink: 0,
         paddingHorizontal: 12,
         paddingVertical: 10,
         backgroundColor: Colors.blueGrey100,

@@ -1,7 +1,8 @@
-import {View, StyleSheet} from "react-native";
+import {View, Text, StyleSheet} from "react-native";
 import SidebarMenu from "../components/Devices/SidebarMenu";
 import DevicesListItem from "../components/Devices/DevicesListItem";
 import Colors from "../constants/colors";
+import Header from "../components/Devices/Header";
 
 function DevicesScreen() {
     function categoriesActiveHandler(item) {}
@@ -299,7 +300,10 @@ function DevicesScreen() {
 
     return (
         <View style={styles.rootContainer}>
-            <SidebarMenu onPress={categoriesActiveHandler}/>
+            <View style={styles.header}>
+                <Header/>
+                <SidebarMenu onPress={categoriesActiveHandler}/>
+            </View>
             <DevicesListItem data={dataItems}/>
         </View>
     )
@@ -310,5 +314,9 @@ export default DevicesScreen;
 const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
+    },
+    header: {
+        backgroundColor: Colors.grey50,
+        paddingTop: 40,
     }
 });

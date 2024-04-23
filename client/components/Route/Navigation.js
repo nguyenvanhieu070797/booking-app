@@ -69,8 +69,8 @@ function AuthenticatedStack() {
                 name: "DevicesScreen",
                 component: DevicesScreen,
                 options: {
-                    headerShown: true,
                     title: 'Thiết bị',
+                    headerShown: false
                 }
             }
         ]

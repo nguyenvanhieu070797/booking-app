@@ -78,7 +78,7 @@ export default SidebarMenu;
 
 const styles = StyleSheet.create({
     viewContainer: {
-        backgroundColor: Colors.blueGrey100,
+        backgroundColor: Colors.grey50,
         justifyContent:'stretch',
     },
     rootContainer: {
@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
         flexBasis: 0,
         flexShrink: 0,
         paddingHorizontal: 12,
-        paddingVertical: 10,
-        backgroundColor: Colors.blueGrey100,
+        paddingVertical: 12,
+        backgroundColor:  Colors.grey50,
     },
     itemContainerActive: {
         borderBottomWidth: 2,

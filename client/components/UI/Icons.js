@@ -40,7 +40,7 @@ function Icons({icon, type, size, color, style}) {
             break;
         default:
             vectorIcon = <Ionicons
-                style={[styles.icon, style]}
+                iconStyle={[styles.icon, style]}
                 name={icon}
                 size={size}
                 color={color}/>;

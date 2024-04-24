@@ -4,22 +4,23 @@ import {useEffect} from "react";
 import SyncBarCodeScanner from "../components/ScanQR/SyncBarCodeScanner";
 
 function ScanQRScreen({navigation}) {
+
     useEffect(() => {
         navigation.setOptions({
+            gestureEnabled: false,
             headerLeft: ({tintColor}) => (
                 <IconButton
-                    icon="arrow-back"
-                    type="MaterialIcons"
+                    icon="chevron-back-outline"
                     color={tintColor}
                     size={24}
                     style={{
-                        borderRadius: 0,
-                        padding: 0,
+                        borderRadius: 5,
+                        padding: 10,
                         marginHorizontal: 0,
-                        marginVertical: 0
+                        marginVertical: 0,
                     }}
                     onPress={() => {
-                        navigation.navigate("MainScreen");
+                        navigation.replace("MainScreen");
                     }}
                 />
             )

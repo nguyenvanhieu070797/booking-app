@@ -1,30 +1,38 @@
-import {View, SafeAreaView, StyleSheet, Pressable, Dimensions} from "react-native";
+import {View, StyleSheet, Pressable} from "react-native";
 import Colors from "../../constants/colors";
 import Icons from "../UI/Icons";
+import {useNavigation} from "@react-navigation/native";
+import IconButton from "../UI/IconButton";
 
 function Header() {
+    const navigation = useNavigation();
+
     function backScreenHandler() {
-        console.log("123");
+        navigation.navigate("MainScreen");
     }
-    const screenWidth = Dimensions.get('window').width;
 
     return (
-        <SafeAreaView style={[styles.rootContainer, {width: screenWidth}]}>
-            <Pressable
-                style={
-                    ({pressed}) => [styles.back, pressed && styles.pressed]
-                }
-                onPress={backScreenHandler}>
-                <Icons style={32} icon="home" color={Colors.darkSecondary}/>
-            </Pressable>
-            <Pressable
-                style={
-                    ({pressed}) => [styles.search, pressed && styles.pressed]
-                }
-                onPress={backScreenHandler}>
-                <Icons style={32} icon="home" color={Colors.darkSecondary}/>
-            </Pressable>
-        </SafeAreaView>
+        <View style={[styles.rootContainer]}>
+            <View style={styles.containerLeft}>
+                <IconButton
+                    icon="chevron-back-outline"
+                    color={Colors.white}
+                    size={24}
+                    style={styles.icon}
+                    onPress={backScreenHandler}
+                />
+            </View>
+            <View style={styles.containerRight}>
+                <Pressable
+                    style={
+                        ({pressed}) => [styles.search, pressed && styles.pressed]
+                    }
+                    onPress={backScreenHandler}>
+                    <Icons style={32} icon="home" color={Colors.darkSecondary}/>
+                </Pressable>
+            </View>
+
+        </View>
     )
 }
 
@@ -32,20 +40,39 @@ export default Header;
 
 const styles = StyleSheet.create({
     rootContainer: {
-        backgroundColor: Colors.grey50,
         flexDirection: "row",
-        justifyContent:'stretch',
+        marginBottom: 10,
+    },
+    containerLeft: {
+        flex: 1,
+        justifyContent: "flex-start",
+        alignItems:  "flex-start",
+        paddingLeft: 10,
     },
     back: {
-        justifyContent: "flex-start",
-        padding: 15,
-        backgroundColor: Colors.green500,
-        borderRadius: 20,
-        marginLeft: 10,
+        flex: 1,
+        backgroundColor: Colors.greyOpacity25,
+        width: 40,
+        borderRadius: "50%",
+    },
+    containerRight: {
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+        paddingRight: 10,
+
     },
     search: {
-        flex: 2,
         padding: 15,
-        textAlign: "right"
+        borderRadius: 20,
+        backgroundColor: Colors.green500,
     },
+
+    icon: {
+        borderRadius: "50%",
+        padding: 10,
+        marginHorizontal: 0,
+        marginVertical: 0,
+        backgroundColor: Colors.greyOpacity25,
+    }
 });

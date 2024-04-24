@@ -99,6 +99,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         paddingVertical: 12,
         backgroundColor:  Colors.grey50,
+        borderBottomWidth: 2,
+        borderBottomColor: Colors.grey50,
     },
     itemContainerActive: {
         borderBottomWidth: 2,
@@ -110,10 +112,10 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         flexWrap: 'wrap',
-        color: Colors.darkPrimary,
         textAlign: 'center',
         fontFamily: 'open-sans-bold',
         fontSize: 13,
+        color: Colors.darkPrimary,
     },
     buttonTextActive:{
         color: Colors.red500,

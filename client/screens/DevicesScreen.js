@@ -318,6 +318,6 @@ const styles = StyleSheet.create({
     },
     header: {
         backgroundColor: Colors.blue400,
-        paddingTop: 40,
+        paddingTop: 42,
     }
 });

@@ -1,23 +1,15 @@
-import { useState } from "react";
 import {View, StyleSheet} from "react-native";
 import Colors from "../../constants/colors";
 import {useNavigation} from "@react-navigation/native";
 import IconButton from "../UI/IconButton";
-import InputSearch from "../UI/InputSearch";
 
 function Header() {
-    const [search, setSearch] = useState("");
     const navigation = useNavigation();
 
     function backScreenHandler() {
         navigation.navigate("MainScreen");
     }
 
-    function updateInputValueHandler(enteredValue) {
-        setSearch(enteredValue);
-    }
-
-    console.log({search});
 
     return (
         <View style={[styles.rootContainer]}>
@@ -30,14 +22,14 @@ function Header() {
                     onPress={backScreenHandler}
                 />
             </View>
-            <View style={styles.containerRight}>
-                <InputSearch
-                    placeholder="Tìm kiếm"
-                    onUpdateValue={updateInputValueHandler.bind(this)}
-                    value={search}
-                    style={styles.inSearch}
-                />
-            </View>
+            {/*<View style={styles.containerRight}>*/}
+            {/*    <InputSearch*/}
+            {/*        placeholder="Tìm kiếm"*/}
+            {/*        onUpdateValue={updateInputValueHandler.bind(this)}*/}
+            {/*        value={search}*/}
+            {/*        style={styles.inSearch}*/}
+            {/*    />*/}
+            {/*</View>*/}
         </View>
     )
 }

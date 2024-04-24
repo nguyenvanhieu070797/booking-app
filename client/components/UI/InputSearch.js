@@ -15,9 +15,11 @@ function InputSearch({
                      }) {
 
     const styleContainer = style?.container || {};
+    const styleIconContainer = style?.iconContainer || {};
     const styleInput = style?.input || {};
     const styleLabel = style?.label || {};
     const styleIconColor = style?.icon.color || "#fff";
+    const styleIconSize = style?.icon.size || 24;
     const styleIcon = style?.icon || "#fff";
     const styleLabelInvalid = style?.labelInvalid || {};
 
@@ -30,11 +32,11 @@ function InputSearch({
                 </Text>
             }
 
-            <View style={styles.iconContainer}>
+            <View style={[styles.iconContainer, styleIconContainer]}>
                 <Icons
                     icon="search-sharp"
                     color={styleIconColor}
-                    size={32}
+                    size={styleIconSize}
                     style={[styles.searchIcon, styleIcon]}
                 />
             </View>
@@ -42,7 +44,6 @@ function InputSearch({
             <TextInput
                 placeholder={placeholder}
                 style={[styles.input, isInvalid && styles.inputInvalid, styleInput]}
-                // autoCapitalize={false}
                 autoCapitalize="none"
                 keyboardType={keyboardType}
                 secureTextEntry={secure}
@@ -73,14 +74,14 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.lightPrimary,
         borderRadius: 100,
         fontSize: 16,
-        paddingLeft: 45,
+        paddingLeft: 35,
+        color: Colors.darkSecondary,
     },
     inputInvalid: {
         borderWidth: 2,
         borderColor: Colors.red200,
     },
     searchIcon: {
-        position: "absolute",
     },
     iconContainer: {
         position: "absolute",

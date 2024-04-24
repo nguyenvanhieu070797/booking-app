@@ -1,14 +1,20 @@
-import {View, StyleSheet, Pressable} from "react-native";
+import { useState } from "react";
+import {View, StyleSheet} from "react-native";
 import Colors from "../../constants/colors";
-import Icons from "../UI/Icons";
 import {useNavigation} from "@react-navigation/native";
 import IconButton from "../UI/IconButton";
+import InputSearch from "../UI/InputSearch";
 
 function Header() {
+    const [search, setSearch] = useState("");
     const navigation = useNavigation();
 
     function backScreenHandler() {
         navigation.navigate("MainScreen");
+    }
+
+    function updateInputValueHandler(enteredValue) {
+        setSearch(enteredValue);
     }
 
     return (
@@ -23,13 +29,24 @@ function Header() {
                 />
             </View>
             <View style={styles.containerRight}>
-                <Pressable
-                    style={
-                        ({pressed}) => [styles.search, pressed && styles.pressed]
-                    }
-                    onPress={backScreenHandler}>
-                    <Icons style={32} icon="home" color={Colors.darkSecondary}/>
-                </Pressable>
+                <InputSearch
+                    placeholder="Tìm kiếm"
+                    onUpdateValue={updateInputValueHandler.bind(this)}
+                    value={search}
+                    style={{
+                        container: {
+                            marginVertical: 0,
+                            width: "100%",
+                        },
+                        input: {
+                            paddingHorizontal: 15,
+                            height: 44,
+                        },
+                        icon: {
+                            color: Colors.grey300,
+                        }
+                    }}
+                />
             </View>
 
         </View>
@@ -44,16 +61,17 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     containerLeft: {
-        flex: 1,
+        flex: 0.15,
         justifyContent: "flex-start",
         alignItems:  "flex-start",
         paddingLeft: 10,
+        width: 50,
     },
     back: {
         flex: 1,
         backgroundColor: Colors.greyOpacity25,
         width: 40,
-        borderRadius: "50%",
+        borderRadius: 100,
     },
     containerRight: {
         flex: 1,
@@ -69,7 +87,7 @@ const styles = StyleSheet.create({
     },
 
     icon: {
-        borderRadius: "50%",
+        borderRadius: 100,
         padding: 10,
         marginHorizontal: 0,
         marginVertical: 0,

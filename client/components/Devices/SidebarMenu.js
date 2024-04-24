@@ -46,7 +46,7 @@ function SidebarMenu({onPress}) {
                         }
                         onPress={onPress}>
                         <Text style={[styles.buttonText]}>
-                            Phụ kiện laptop
+                            Thiết bị mạng
                         </Text>
                     </Pressable>
                     <Pressable
@@ -55,7 +55,7 @@ function SidebarMenu({onPress}) {
                         }
                         onPress={onPress}>
                         <Text style={[styles.buttonText]}>
-                            Phụ kiện laptop
+                            Đồ dùng gia dụng
                         </Text>
                     </Pressable>
                     <Pressable
@@ -64,7 +64,7 @@ function SidebarMenu({onPress}) {
                         }
                         onPress={onPress}>
                         <Text style={[styles.buttonText]}>
-                            Phụ kiện laptop
+                            Khác
                         </Text>
                     </Pressable>
                 </View>

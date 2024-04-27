@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text, Image} from "react-native"
+import {StyleSheet, View, Image} from "react-native"
 import Card from "../UI/Card";
 import Colors from "../../constants/colors";
 import PrimaryButton from "../UI/PrimaryButton";
@@ -22,9 +22,6 @@ function SideMenu() {
                 />
             </View>
             <View style={styles.buttonUpdateContainer}>
-                {/*<PrimaryButton onPress={updatePictureHandler} style={styles.buttonPrimaryLeft}>*/}
-                {/*    Cap nhap hinh anh*/}
-                {/*</PrimaryButton>*/}
                 <PrimaryButton onPress={updatePictureHandler} style={styles.buttonPrimaryRight}>
                     Chỉnh sửa
                 </PrimaryButton>

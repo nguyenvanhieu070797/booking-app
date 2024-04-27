@@ -7,7 +7,7 @@ function Header() {
     const navigation = useNavigation();
 
     function backScreenHandler() {
-        navigation.navigate("MainScreen");
+        navigation.goBack();
     }
 
 

@@ -26,12 +26,8 @@ export default function HeaderMenu() {
 
     return (
         <Card>
-            <ScrollView
+            <View
                 style={styles.rootContainer}
-                horizontal={true}
-                vertical={false}
-                showsHorizontalScrollIndicator={false}
-
             >
                 <View style={styles.container}>
                     <View style={styles.buttonContainer}>
@@ -83,7 +79,7 @@ export default function HeaderMenu() {
                         </IconButtonCell>
                     </View>
                 </View>
-            </ScrollView>
+            </View>
         </Card>
     );
 }

@@ -7,11 +7,13 @@ import {
 } from "react-native";
 import Colors from "../../constants/colors";
 import DevicesContainerItem from "./DevicesContainerItem";
+import {useNavigation} from "@react-navigation/native";
 
 function DevicesListItem({data}) {
-
+    const navigation = useNavigation();
     function _onPress(item) {
         console.log({item});
+        navigation.navigate("DevicesDetailScreen", {data: item});
     }
 
     return (

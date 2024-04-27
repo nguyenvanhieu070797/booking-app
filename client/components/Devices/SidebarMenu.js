@@ -46,7 +46,7 @@ function SidebarMenu({onPress}) {
                         }
                         onPress={onPress}>
                         <Text style={[styles.buttonText]}>
-                            Phụ kiện laptop
+                            Thiết bị mạng
                         </Text>
                     </Pressable>
                     <Pressable
@@ -55,7 +55,7 @@ function SidebarMenu({onPress}) {
                         }
                         onPress={onPress}>
                         <Text style={[styles.buttonText]}>
-                            Phụ kiện laptop
+                            Đồ dùng gia dụng
                         </Text>
                     </Pressable>
                     <Pressable
@@ -64,7 +64,7 @@ function SidebarMenu({onPress}) {
                         }
                         onPress={onPress}>
                         <Text style={[styles.buttonText]}>
-                            Phụ kiện laptop
+                            Khác
                         </Text>
                     </Pressable>
                 </View>
@@ -99,6 +99,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         paddingVertical: 12,
         backgroundColor:  Colors.grey50,
+        borderBottomWidth: 2,
+        borderBottomColor: Colors.grey50,
     },
     itemContainerActive: {
         borderBottomWidth: 2,
@@ -110,10 +112,10 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         flexWrap: 'wrap',
-        color: Colors.darkPrimary,
         textAlign: 'center',
         fontFamily: 'open-sans-bold',
         fontSize: 13,
+        color: Colors.darkPrimary,
     },
     buttonTextActive:{
         color: Colors.red500,

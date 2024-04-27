@@ -313,10 +313,11 @@ export default DevicesScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {
+        flexDirection: "column",
         flex: 1,
     },
     header: {
-        backgroundColor: Colors.grey50,
-        paddingTop: 40,
+        backgroundColor: Colors.blue400,
+        paddingTop: 42,
     }
 });

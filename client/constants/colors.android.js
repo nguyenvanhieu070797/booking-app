@@ -289,7 +289,11 @@ const Colors = {
     "lightIconInactive": "rgba(255, 255, 255, 0.5)",
 
     "white": "#ffffff",
-    "black": "#000000"
+    "black": "#000000",
+
+    "greyOpacity25": "rgba(101,100,100, 0.25)",
+    "greyOpacity50": "rgba(101,100,100, 0.5)",
+    "greyOpacity75": "rgba(101,100,100, 0.75)",
 }
 
 export default Colors;

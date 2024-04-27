@@ -72,13 +72,27 @@ const styles = StyleSheet.create({
             borderRadius: 5,
             flex: 1,
             marginRight: 2,
+        },
+        text: {
+            fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
         }
     },
     buttonPrimaryRight: {
         container: {
             borderRadius: 5,
             flex: 1,
-            // marginLeft: 2,
+            marginRight: 2,
+        },
+        text: {
+            fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
         }
     }
 })

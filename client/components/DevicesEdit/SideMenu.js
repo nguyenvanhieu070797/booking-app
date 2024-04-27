@@ -1,18 +1,15 @@
-import {StyleSheet, View, Image} from "react-native"
+import {StyleSheet, View, Image} from "react-native";
+import {useState} from "react";
 import Card from "../UI/Card";
 import ImagePicker from "../UI/ImagePicker";
-import {useState} from "react";
+import ImageChoose from "../UI/ImageChoose";
 
 function SideMenu() {
-
     const [selectedImage, setSelectedImage] = useState("");
 
     function takeImageHandler(imageUri) {
-        console.log({imageUri});
         setSelectedImage(imageUri);
     }
-
-    console.log({selectedImage});
 
     return (
         <Card style={styles.card}>
@@ -29,10 +26,15 @@ function SideMenu() {
                     />
                 }
             </View>
+
             <View style={styles.buttonUpdateContainer}>
+                <ImageChoose
+                    title={"Chọn hình ảnh"}
+                    style={styles.buttonPrimaryLeft}
+                    onTakenImage={takeImageHandler}/>
                 <ImagePicker
-                    title={"Cập nhập hình"}
-                    style={styles.buttonImage}
+                    title={"Chụp hình"}
+                    style={styles.buttonPrimaryRight}
                     onTakenImage={takeImageHandler}/>
             </View>
         </Card>
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
         left: 16,
     },
     buttonUpdateContainer: {
-        marginTop: 55,
+        marginTop: 60,
         flexDirection: "row",
         width: "100%",
     },
@@ -72,5 +74,33 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flex: 1,
+    },
+    buttonPrimaryLeft: {
+        container: {
+            borderRadius: 5,
+            flex: 1,
+            marginRight: 2,
+        },
+        text: {
+            fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
+        }
+    },
+    buttonPrimaryRight: {
+        container: {
+            borderRadius: 5,
+            flex: 1,
+            marginLeft: 2,
+        },
+        text: {
+            fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
+        }
     }
 })

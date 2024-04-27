@@ -1,5 +1,5 @@
 import {Alert} from 'react-native';
-import {launchCameraAsync, useCameraPermissions, useMediaLibraryPermissions, PermissionStatus, MediaTypeOptions} from 'expo-image-picker';
+import {launchImageLibraryAsync, useCameraPermissions, useMediaLibraryPermissions, PermissionStatus, MediaTypeOptions} from 'expo-image-picker';
 import PrimaryButton from "./PrimaryButton";
 
 function ImageChoose({title = "take image", style = {}, onTakenImage}) {
@@ -52,7 +52,7 @@ function ImageChoose({title = "take image", style = {}, onTakenImage}) {
             return;
         }
 
-        const image = await launchCameraAsync({
+        const image = await launchImageLibraryAsync({
             allowsEditing: true,
             aspect: [4, 4],
             quality: 1,

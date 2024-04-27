@@ -15,6 +15,7 @@ import ScanQRLineScreen from "../../screens/ScanQRLineScreen";
 import MembersScreen from "../../screens/MembersScreen";
 import DevicesScreen from "../../screens/DevicesScreen";
 import DevicesDetailScreen from "../../screens/DevicesDetailScreen";
+import DevicesEditScreen from "../../screens/DevicesEditScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -77,6 +78,14 @@ function AuthenticatedStack() {
             {
                 name: "DevicesDetailScreen",
                 component: DevicesDetailScreen,
+                options: {
+                    title: 'Thông tin thiết bị',
+                    headerShown: false
+                }
+            },
+            {
+                name: "DevicesEditScreen",
+                component: DevicesEditScreen,
                 options: {
                     title: 'Thông tin thiết bị',
                     headerShown: false

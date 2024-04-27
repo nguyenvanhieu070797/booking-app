@@ -2,22 +2,22 @@ import {StyleSheet, View, Text} from "react-native"
 import Card from "../UI/Card";
 import Colors from "../../constants/colors";
 
-function DevicesTotal() {
+function Information() {
 
     return <View>
         <Text style={styles.title}>
-            So luong xuat
+            Thong tin
         </Text>
         <Card style={styles.card}>
             <View style={styles.container}>
                 <View style={styles.containerLeft}>
                     <Text style={styles.textLeft}>
-                        Tong so luong
+                        Ten san pham
                     </Text>
                 </View>
                 <View style={styles.containerRight}>
                     <Text style={styles.textRight}>
-                        50
+                        May tinh
                     </Text>
                 </View>
             </View>
@@ -26,12 +26,12 @@ function DevicesTotal() {
             <View style={styles.container}>
                 <View style={styles.containerLeft}>
                     <Text style={styles.textLeft}>
-                        So luong su dung
+                        Ma thiet bi
                     </Text>
                 </View>
                 <View style={styles.containerRight}>
                     <Text style={styles.textRight}>
-                        30
+                        VNVM1008
                     </Text>
                 </View>
             </View>
@@ -40,12 +40,12 @@ function DevicesTotal() {
             <View style={styles.container}>
                 <View style={styles.containerLeft}>
                     <Text style={styles.textLeft}>
-                        So luong hu hai
+                        Ngay cap nhap
                     </Text>
                 </View>
                 <View style={styles.containerRight}>
                     <Text style={styles.textRight}>
-                        5
+                        27/04/2024
                     </Text>
                 </View>
             </View>
@@ -54,12 +54,12 @@ function DevicesTotal() {
             <View style={styles.container}>
                 <View style={styles.containerLeft}>
                     <Text style={styles.textLeft}>
-                        So luong ton
+                        Nguoi cap nhap
                     </Text>
                 </View>
                 <View style={styles.containerRight}>
                     <Text style={styles.textRight}>
-                        15
+                        Nguyen Van Hieu
                     </Text>
                 </View>
             </View>
@@ -67,7 +67,7 @@ function DevicesTotal() {
     </View>
 }
 
-export default DevicesTotal;
+export default Information;
 
 
 const styles = StyleSheet.create({

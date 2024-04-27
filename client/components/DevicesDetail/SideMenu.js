@@ -2,11 +2,13 @@ import {StyleSheet, View, Text, Image} from "react-native"
 import Card from "../UI/Card";
 import Colors from "../../constants/colors";
 import PrimaryButton from "../UI/PrimaryButton";
+import {useNavigation} from "@react-navigation/native";
 
-function DevicesSideMenu() {
+function SideMenu() {
+    const navigation = useNavigation();
 
-    function updatePicture() {
-
+    function updatePictureHandler() {
+        navigation.navigate("DevicesEditScreen");
     }
 
     return (
@@ -20,18 +22,18 @@ function DevicesSideMenu() {
                 />
             </View>
             <View style={styles.buttonUpdateContainer}>
-                <PrimaryButton onPress={updatePicture} style={styles.buttonPrimaryLeft}>
-                    Cap nhap hinh anh
-                </PrimaryButton>
-                <PrimaryButton onPress={updatePicture} style={styles.buttonPrimaryRight}>
-                    Cap nhap hinh anh
+                {/*<PrimaryButton onPress={updatePictureHandler} style={styles.buttonPrimaryLeft}>*/}
+                {/*    Cap nhap hinh anh*/}
+                {/*</PrimaryButton>*/}
+                <PrimaryButton onPress={updatePictureHandler} style={styles.buttonPrimaryRight}>
+                    Chỉnh sửa
                 </PrimaryButton>
             </View>
         </Card>
     )
 }
 
-export default DevicesSideMenu;
+export default SideMenu;
 
 
 const styles = StyleSheet.create({
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
         container: {
             borderRadius: 5,
             flex: 1,
-            marginLeft: 2,
+            // marginLeft: 2,
         }
     }
 })

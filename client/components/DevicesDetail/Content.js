@@ -1,15 +1,15 @@
 import {ScrollView, StyleSheet} from "react-native"
-import DevicesInformation from "./DevicesInformation";
-import DevicesTotal from "./DevicesTotal";
-import DevicesSideMenu from "./DevicesSideMenu";
+import Information from "./Information";
+import Total from "./Total";
+import SideMenu from "./SideMenu";
 
 function Content() {
 
 
     return <ScrollView style={styles.container}>
-        <DevicesSideMenu/>
-        <DevicesInformation/>
-        <DevicesTotal/>
+        <SideMenu/>
+        <Information/>
+        <Total/>
     </ScrollView>
 }
 

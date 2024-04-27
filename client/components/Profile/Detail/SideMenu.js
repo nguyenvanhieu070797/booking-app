@@ -73,6 +73,10 @@ const styles = StyleSheet.create({
         },
         text: {
             fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
         }
     },
     buttonPrimaryRight: {
@@ -83,6 +87,10 @@ const styles = StyleSheet.create({
         },
         text: {
             fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
         }
     }
 })

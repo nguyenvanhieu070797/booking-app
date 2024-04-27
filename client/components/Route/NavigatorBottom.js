@@ -43,17 +43,17 @@ function NavigationBottom() {
                     headerTransparent: true,
                     headerShadowVisible: false,
                     headerTintColor: Colors.darkPrimary,
-                    headerRight: ({tintColor}) => (
-                        <IconButton
-                            icon="exit"
-                            color={tintColor}
-                            size={24}
-                            onPress={() => {
-                                dispatch(removeToken());
-                                AsyncStorage.removeItem("token");
-                            }}
-                        />
-                    ),
+                    // headerRight: ({tintColor}) => (
+                    //     <IconButton
+                    //         icon="exit"
+                    //         color={tintColor}
+                    //         size={24}
+                    //         onPress={() => {
+                    //             dispatch(removeToken());
+                    //             AsyncStorage.removeItem("token");
+                    //         }}
+                    //     />
+                    // ),
                 }}
             />
             <Tab.Screen

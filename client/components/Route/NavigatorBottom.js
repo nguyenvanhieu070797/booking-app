@@ -65,6 +65,7 @@ function NavigationBottom() {
                     tabBarIcon: ({color, size}) => (
                         <MaterialCommunityIcons name="account-box" size={size} color={color}/>
                     ),
+                    headerShown: false,
                     headerStyle: {},
                     headerTransparent: true,
                     headerShadowVisible: false,

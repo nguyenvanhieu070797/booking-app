@@ -1,15 +1,20 @@
-import {View, Text, StyleSheet} from 'react-native';
-import {useSelector} from "react-redux";
+import {View, StyleSheet} from 'react-native';
+// import {useSelector} from "react-redux";
 import Background from "../components/Profile/Background";
+import Header from "../components/Profile/Detail/Header";
+import Content from "../components/Profile/Detail/Content";
+import Colors from "../constants/colors";
 
 function ProfileScreen() {
-    const userId = useSelector(state => state.user.id);
+    // const userId = useSelector(state => state.user.id);
 
     return (
         <Background>
             <View style={styles.rootContainer}>
-                <Text>Tài khoản</Text>
-                <Text>{userId}</Text>
+                <View style={styles.header}>
+                    <Header/>
+                </View>
+                <Content/>
             </View>
         </Background>
     );
@@ -19,12 +24,11 @@ export default ProfileScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {
+        flexDirection: "column",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 24,
     },
-    container: {
-        margin: 5
-    },
+    header: {
+        backgroundColor: Colors.blue400,
+        paddingTop: 42,
+    }
 });

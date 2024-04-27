@@ -1,4 +1,4 @@
-import {ScrollView} from "react-native"
+import {ScrollView, StyleSheet} from "react-native"
 import DevicesInformation from "./DevicesInformation";
 import DevicesTotal from "./DevicesTotal";
 import DevicesSideMenu from "./DevicesSideMenu";
@@ -6,7 +6,7 @@ import DevicesSideMenu from "./DevicesSideMenu";
 function Content() {
 
 
-    return <ScrollView>
+    return <ScrollView style={styles.container}>
         <DevicesSideMenu/>
         <DevicesInformation/>
         <DevicesTotal/>
@@ -14,3 +14,9 @@ function Content() {
 }
 
 export default Content;
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: 10,
+    }
+})

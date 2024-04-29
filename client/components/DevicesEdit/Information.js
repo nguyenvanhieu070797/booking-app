@@ -14,11 +14,11 @@ function Information() {
             </Text>
             <Card style={styles.card}>
                 <View style={styles.container}>
-                    <View style={styles.containerLeft}>
-                        <Text style={styles.textLeft}>
-                            Ten san pham
-                        </Text>
-                    </View>
+                    {/*<View style={styles.containerLeft}>*/}
+                    {/*    <Text style={styles.textLeft}>*/}
+                    {/*        Ten san pham*/}
+                    {/*    </Text>*/}
+                    {/*</View>*/}
 
                     <View style={styles.containerRight}>
                         <InputCustom
@@ -30,11 +30,11 @@ function Information() {
                 </View>
 
                 <View style={styles.container}>
-                    <View style={styles.containerLeft}>
-                        <Text style={styles.textLeft}>
-                            Mã thiết bị
-                        </Text>
-                    </View>
+                    {/*<View style={styles.containerLeft}>*/}
+                    {/*    <Text style={styles.textLeft}>*/}
+                    {/*        Mã thiết bị*/}
+                    {/*    </Text>*/}
+                    {/*</View>*/}
 
                     <View style={styles.containerRight}>
                         <InputCustom

@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Text, View, StyleSheet, Dimensions, StatusBar, TouchableOpacity, Animated} from 'react-native';
+import {Text, View, StyleSheet, Dimensions, TouchableOpacity, Animated} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
-import {Camera} from 'expo-camera';
 import Icons from "../UI/Icons";
 import Colors from "../../constants/colors";
 
@@ -10,11 +9,10 @@ const deviceWidth = Dimensions.get('window').width;
 
 export default function SyncBarCodeScanner(props) {
     const {onScan, children} = props;
-    const [hasPermission, setHasPermission] = useState();
+    const [hasPermission, setHasPermission] = useState(true);
     const [scanned, setScanned] = useState(true);
     const [sizeQrCode, setSizeQrCode] = useState({width: 0, height: 0});
     const lineAnim = useRef(new Animated.Value(0)).current;
-
     const onLineLayout = (event) => {
         const {x, y, height, width} = event.nativeEvent.layout;
         setSizeQrCode({width: width, height: height});
@@ -72,10 +70,9 @@ export default function SyncBarCodeScanner(props) {
 
     return (
         <View style={styles.main}>
-            <Camera
+            <BarCodeScanner
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={[styles.container]}
-                autoFocus={true}
             >
                 <View style={styles.layerTop}></View>
                 <View style={styles.layerCenter}>
@@ -97,7 +94,7 @@ export default function SyncBarCodeScanner(props) {
                     <View style={styles.layerRight}/>
                 </View>
                 <View style={styles.layerBottom}/>
-            </Camera>
+            </BarCodeScanner>
 
             {/* Actions */}
             <View style={styles.bottomAction}>
@@ -124,8 +121,8 @@ function EdgeQRCode({position}) {
     const edgeWidth = 20;
     const edgeHeight = 20;
     const edgeColor = '#FFF';
-    const edgeBorderWidth = 4;
-    const edgeRadius = 10;
+    const edgeBorderWidth = 1;
+    const edgeRadius = 8;
 
     const defaultStyle = {
         width: edgeWidth,
@@ -200,7 +197,6 @@ const styles = StyleSheet.create({
         marginTop: 4
     },
 
-    // layout
     main: {
         height: "100%",
         flexDirection: 'column',

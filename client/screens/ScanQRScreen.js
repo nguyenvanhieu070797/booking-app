@@ -1,7 +1,7 @@
-import {View, Text} from "react-native"
+import {View} from "react-native"
 import IconButton from "../components/UI/IconButton";
 import {useEffect} from "react";
-import SyncBarCodeScanner from "../components/ScanQR/SyncBarCodeScanner";
+import CameraScanQR from "../components/ScanQR/CameraScanQR";
 
 function ScanQRScreen({navigation}) {
 
@@ -32,11 +32,11 @@ function ScanQRScreen({navigation}) {
     }
 
     return <View>
-        <SyncBarCodeScanner
+        <CameraScanQR
             onScan={onScanHandler}
         >
             Quét mã QR Code
-        </SyncBarCodeScanner>
+        </CameraScanQR>
     </View>
 }
 

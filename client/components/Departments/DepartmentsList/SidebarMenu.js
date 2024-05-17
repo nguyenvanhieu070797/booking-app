@@ -4,9 +4,10 @@ import {
     ScrollView,
     StyleSheet,
     Pressable,
-    Dimensions
+    Dimensions, Image
 } from "react-native";
 import Colors from "../../../constants/colors";
+import React from "react";
 
 function SidebarMenu({onPress, idActive}) {
     const screenWidth = Dimensions.get('window').width;
@@ -23,17 +24,21 @@ function SidebarMenu({onPress, idActive}) {
             title: "CYLLENGE HOSHIRIMA",
             locate: "jp",
             id: 2,
-        },,{
+        },{
             title: "CYLLENGE HOSHIRIMA",
             locate: "jp",
             id: 3,
-        },,{
+        },{
             title: "CYLLENGE HOSHIRIMA",
             locate: "jp",
             id: 4,
         },
     ];
 
+    const images = {
+        vn: require('../../../assets/images/icons/vietnam.png'),
+        jp: require('../../../assets/images/icons/japan.png')
+    }
 
     return (
         <View style={ [styles.viewContainer]}>
@@ -55,9 +60,16 @@ function SidebarMenu({onPress, idActive}) {
                                     ({pressed}) => [styles.itemContainer, isActive && styles.itemContainerActive, pressed && styles.pressed]
                                 }
                                 onPress={() => onPress(item)}>
-                                <Text style={[styles.buttonText, isActive && styles.buttonTextActive]}>
-                                    {item.title}
-                                </Text>
+                                <View style={styles.buttonContent}>
+                                    <Image
+                                        source={images[item.locate]}
+                                        style={styles.image}
+                                    />
+                                    <Text style={[styles.buttonText, isActive && styles.buttonTextActive]}>
+
+                                        {item.title}
+                                    </Text>
+                                </View>
                             </Pressable>
                         })
                         : null
@@ -73,7 +85,7 @@ export default SidebarMenu;
 
 const styles = StyleSheet.create({
     viewContainer: {
-        backgroundColor: Colors.grey50,
+        backgroundColor: Colors.greyOpacity75,
         justifyContent:'stretch',
     },
     rootContainer: {
@@ -105,7 +117,11 @@ const styles = StyleSheet.create({
         opacity: 0.75,
         backgroundColor: Colors.blueGrey200,
     },
+    buttonContent: {
+        flexDirection: "row",
+    },
     buttonText: {
+        flex: 1,
         flexWrap: 'wrap',
         textAlign: 'center',
         fontFamily: 'open-sans-bold',
@@ -114,5 +130,11 @@ const styles = StyleSheet.create({
     },
     buttonTextActive:{
         color: Colors.red500,
-    }
+    },
+    image: {
+        marginRight: 3,
+        flex: 1,
+        width: 24,
+        height: "auto",
+    },
 })

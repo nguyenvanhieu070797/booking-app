@@ -12,9 +12,9 @@ function DevicesContainerItem({item, onPress, style}) {
     return (
         <TouchableHighlight activeOpacity={0.95} key={item.key} onPress={() => onPress(item)}>
             <View style={[styles.rootContainer, style]}>
-                <HeaderItem key={item.key} title={item.title} code={item.code}/>
+                {/*<HeaderItem key={item.key} title={item.title} code={item.code}/>*/}
                 <ContentItem key={item.key} item={item}/>
-                <FooterItem key={item.key} item={item}/>
+                {/*<FooterItem key={item.key} item={item}/>*/}
             </View>
         </TouchableHighlight>
     )

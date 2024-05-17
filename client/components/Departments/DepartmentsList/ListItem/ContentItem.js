@@ -1,39 +1,42 @@
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet, Image
 } from "react-native";
 import React from "react";
 import Colors from "../../../../constants/colors";
-import Icons from "../../../../constants/icons";
 
 function ContentItem({item}) {
-
-    const iconTitle = Icons(item.icons.title);
-
+    // const iconTitle = Icons(item.icons.title);
+    console.log(item);
     return (
         <View style={styles.rootContainer}>
-            {iconTitle}
+            {/*{iconTitle}*/}
+            <Image
+                source={
+                    require("../../../../assets/icon.png")
+                }
+                style={styles.imageDevice}
+            />
             <View style={styles.container}>
                 <View style={styles.content}>
-                    {
-                        item.parameter && item.parameter.map((prams) => {
-                            return (
-                                <View style={styles.itemContent} key={Math.random().toString()}>
-                                    <View style={styles.itemTitle}>
-                                        <Text style={styles.textTitle}>
-                                            {prams.title}
-                                        </Text>
-                                    </View>
-                                    <View style={styles.itemNumber}>
-                                        <Text style={styles.textInformation}>
-                                            {prams.number}
-                                        </Text>
-                                    </View>
-                                </View>
-                            );
-                        })
-                    }
+                    <View style={styles.itemContent} key={Math.random().toString()}>
+                        <View style={styles.itemTitle}>
+                            <Text style={styles.textTitle}>
+                                {item.user_name.toUpperCase()}
+                            </Text>
+                        </View>
+                        <View style={styles.itemMail}>
+                            <Text style={styles.textInformation}>
+                                {item.mail}
+                            </Text>
+                        </View>
+                        <View style={styles.itemMail}>
+                            <Text style={styles.textInformation}>
+                               Su dung {item.num_of_use} thiet bi
+                            </Text>
+                        </View>
+                    </View>
                 </View>
             </View>
         </View>
@@ -68,12 +71,12 @@ const styles = StyleSheet.create({
     },
     itemContent: {
         flexDirection: 'column',
-        alignItems: 'flex-end',
+        alignItems: 'flex-start',
         flexGrow: 1,
         flexBasis: 0,
         borderStartWidth: 1,
         borderStartColor: Colors.grey300,
-        marginLeft: 3,
+        paddingLeft: 5,
     },
     itemTitle: {
         flexDirection: 'column',
@@ -82,20 +85,19 @@ const styles = StyleSheet.create({
         columnGap: 4,
     },
     textTitle: {
+        fontSize: 18,
         flexDirection: 'row',
         alignItems: 'center',
         fontFamily: 'open-sans-bold',
     },
-    itemNumber: {
+    itemMail: {
         flexDirection: 'row',
         alignItems: 'center',
-    },
-    number: {
-        color: Colors.darkPrimary,
-        textAlign: 'center',
         fontFamily: 'open-sans',
-        fontSize: 14,
-        fontStyle: 'normal',
-        fontWeight: '500',
+    },
+    imageDevice: {
+        width: 50,
+        height: 50,
+        borderRadius: 50,
     },
 })

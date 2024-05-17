@@ -11,295 +11,31 @@ function DepartmentsList() {
         setIdDepartment(item.id);
     }
 
-    const dataItems = [
+    const Users = [
         {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
+            user_id: 0,
+            user_name: "Nguyen Van Hieu",
+            mail: "n-hieu@cyllenge.com",
+            num_of_use: 10,
         },
         {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
+            user_id: 1,
+            user_name: "Tran Van Tan",
+            mail: "n-hieu@cyllenge.com",
+            num_of_use: 10,
         },
         {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
+            user_id: 2,
+            user_name: "Bui Van Dung",
+            mail: "n-hieu@cyllenge.com",
+            num_of_use: 10,
         },
         {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
+            user_id: 3,
+            user_name: "Tran Duc Lam",
+            mail: "n-hieu@cyllenge.com",
+            num_of_use: 10,
         },
-        {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
-        },
-        {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
-        },
-        {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
-        },
-        {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
-        },
-        {
-            title: "Máy tính",
-            parameter: [
-                {
-                    title: "Số lượng",
-                    number: 50,
-                },
-                {
-                    title: "Sử dụng",
-                    number: 30,
-                },
-                {
-                    title: "Hư",
-                    number: 20,
-                },
-                {
-                    title: "Tồn",
-                    number: 20,
-                },
-            ],
-            icons: {
-                title: {
-                    icon: "computer",
-                    type: "MaterialIcons",
-                    size: 40,
-                    color: Colors.blueGrey500
-                },
-            },
-            code: "EL-VM1995",
-            userName: "Nguyễn Văn Hiếu",
-            datetime: "22/04/2024 6:30 am"
-        }
     ];
 
     return (
@@ -308,7 +44,7 @@ function DepartmentsList() {
                 <Header/>
                 <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>
             </View>
-            <ListItem data={dataItems}/>
+            <ListItem data={Users}/>
         </View>
     )
 }

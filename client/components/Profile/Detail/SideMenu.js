@@ -19,13 +19,74 @@ function SideMenu() {
                     style={styles.imageDevice}
                 />
             </View>
-            <View style={styles.buttonUpdateContainer}>
-                <PrimaryButton onPress={updatePicture} style={styles.buttonPrimaryLeft}>
-                    Chỉnh sửa
-                </PrimaryButton>
-                <PrimaryButton onPress={updatePicture} style={styles.buttonPrimaryRight}>
-                    Cập nhập hình ảnh
-                </PrimaryButton>
+
+            <View style={[styles.container, styles.containerTop]}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Tên
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        NGUYEN VAN HIEU
+                    </Text>
+                </View>
+            </View>
+            <View style={styles.line}/>
+
+            <View style={styles.container}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Email
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        n-hieu@cyllenge.com
+                    </Text>
+                </View>
+            </View>
+            <View style={styles.line}/>
+
+            <View style={styles.container}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Ngay sinh
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        07/07/1997
+                    </Text>
+                </View>
+            </View>
+            <View style={styles.line}/>
+
+            <View style={styles.container}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Giới tính
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        Nam
+                    </Text>
+                </View>
+            </View>
+            <View style={styles.line}/>
+
+            <View style={styles.container}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Chức vụ
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        Nhân viên
+                    </Text>
+                </View>
             </View>
         </Card>
     )
@@ -47,6 +108,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         textAlign: "center",
         width: "100%",
+        marginBottom: 200,
     },
     imageDevice: {
         width: 120,
@@ -92,5 +154,38 @@ const styles = StyleSheet.create({
             paddingVertical: 10,
             elevation: 2,
         }
+    },
+
+    // Information
+    container: {
+        flexDirection: "row",
+    },
+    containerTop: {
+        marginTop: 75,
+    },
+    containerLeft: {
+        flex: 1,
+    },
+    containerRight: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+    },
+    textLeft: {
+        fontSize: 16,
+        fontFamily: 'open-sans-bold',
+        color: Colors.greyOpacity75,
+    },
+    textRight: {
+        fontSize: 16,
+        fontFamily: 'open-sans-bold',
+        color: Colors.greyOpacity50,
+    },
+    title: {
+        paddingHorizontal: 16,
+        paddingVertical: 5,
+        fontSize: 20,
+        color: Colors.darkPrimary,
+        fontFamily: 'open-sans-bold',
     }
 })

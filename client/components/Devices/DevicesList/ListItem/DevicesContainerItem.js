@@ -1,5 +1,5 @@
 import {StyleSheet, TouchableHighlight, View} from "react-native";
-import Colors from "../../../constants/colors";
+import Colors from "../../../../constants/colors";
 import DevicesHeaderItem from "./DevicesHeaderItem";
 import DevicesContentItem from "./DevicesContentItem";
 import DevicesFooterItem from "./DevicesFooterItem";

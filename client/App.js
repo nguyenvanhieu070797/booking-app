@@ -13,7 +13,7 @@ import {useFonts} from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
 // Screens
-import Navigation from "./components/Route/Navigation";
+import Navigation from "./routes/Navigation";
 import {store} from "./store/redux/store";
 
 // Redux

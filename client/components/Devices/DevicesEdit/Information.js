@@ -1,8 +1,8 @@
 import {StyleSheet, View, Text} from "react-native";
-import Card from "../UI/Card";
-import Colors from "../../constants/colors";
+import Card from "../../UI/Card";
+import Colors from "../../../constants/colors";
 import React, {useState} from "react";
-import InputCustom from "../UI/InputCustom";
+import InputCustom from "../../UI/InputCustom";
 
 function Information() {
     const [text, setText] = useState();

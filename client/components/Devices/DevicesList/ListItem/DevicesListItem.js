@@ -5,7 +5,7 @@ import {
     StyleSheet,
     SafeAreaView
 } from "react-native";
-import Colors from "../../../constants/colors";
+import Colors from "../../../../constants/colors";
 import DevicesContainerItem from "./DevicesContainerItem";
 import {useNavigation} from "@react-navigation/native";
 

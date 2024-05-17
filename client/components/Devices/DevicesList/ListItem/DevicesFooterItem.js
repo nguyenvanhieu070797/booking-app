@@ -3,9 +3,9 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-import Colors from "../../../constants/colors";
+import Colors from "../../../../constants/colors";
 import React from "react";
-import Icons from "../../../constants/icons";
+import Icons from "../../../../constants/icons";
 
 function DevicesFooterItem({item}) {
 

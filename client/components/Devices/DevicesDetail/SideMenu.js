@@ -1,7 +1,7 @@
 import {StyleSheet, View, Image} from "react-native"
-import Card from "../UI/Card";
-import Colors from "../../constants/colors";
-import PrimaryButton from "../UI/PrimaryButton";
+import Card from "../../UI/Card";
+import Colors from "../../../constants/colors";
+import PrimaryButton from "../../UI/PrimaryButton";
 import {useNavigation} from "@react-navigation/native";
 
 function SideMenu() {
@@ -16,7 +16,7 @@ function SideMenu() {
             <View style={styles.imageDeviceContainer}>
                 <Image
                     source={
-                        require("../../assets/icon.png")
+                        require("../../../assets/icon.png")
                     }
                     style={styles.imageDevice}
                 />

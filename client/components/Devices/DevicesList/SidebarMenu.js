@@ -6,7 +6,7 @@ import {
     Pressable,
     Dimensions
 } from "react-native";
-import Colors from "../../constants/colors";
+import Colors from "../../../constants/colors";
 
 function SidebarMenu({onPress}) {
     const screenWidth = Dimensions.get('window').width;

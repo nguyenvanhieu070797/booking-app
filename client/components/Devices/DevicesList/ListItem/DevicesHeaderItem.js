@@ -3,7 +3,7 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-import Colors from "../../../constants/colors";
+import Colors from "../../../../constants/colors";
 import React from "react";
 
 function DevicesHeaderItem({title, code}) {

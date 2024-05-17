@@ -1,7 +1,7 @@
 import {useState,} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import Input from "../UI/Input";
-import Colors from "../../constants/colors";
+import Input from "../../UI/Input";
+import Colors from "../../../constants/colors";
 import {useNavigation} from '@react-navigation/native'
 
 function Form({onSubmit, credentialsInvalid}) {

@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from "react-native";
-import Header from "../components/DevicesDetail/Header";
+import Header from "../components/Devices/DevicesDetail/Header";
 import Colors from "../constants/colors";
-import Content from "../components/DevicesDetail/Content";
+import Content from "../components/Devices/DevicesDetail/Content";
 
 function DevicesDetailScreen() {
 

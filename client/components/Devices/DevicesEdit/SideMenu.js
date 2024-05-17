@@ -1,8 +1,8 @@
 import {StyleSheet, View, Image} from "react-native";
 import {useState} from "react";
-import Card from "../UI/Card";
-import ImagePicker from "../UI/ImagePicker";
-import ImageChoose from "../UI/ImageChoose";
+import Card from "../../UI/Card";
+import ImagePicker from "../../UI/ImagePicker";
+import ImageChoose from "../../UI/ImageChoose";
 
 function SideMenu() {
     const [selectedImage, setSelectedImage] = useState("");
@@ -20,7 +20,7 @@ function SideMenu() {
                         style={styles.imageDevice}
                     /> :  <Image
                         source={
-                            require("../../assets/icon.png")
+                            require("../../../assets/icon.png")
                         }
                         style={styles.imageDevice}
                     />

@@ -3,19 +3,19 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
 // Redux
 import {useSelector} from 'react-redux';
-import Colors from "../../constants/colors";
+import Colors from "../constants/colors";
 
 // Screens
-import WelcomeScreen from "../../screens/WelcomeScreen";
+import WelcomeScreen from "../screens/WelcomeScreen";
 import NavigatorBottom from "./NavigatorBottom";
-import LoginScreen from "../../screens/LoginScreen";
-import RegisterScreen from "../../screens/RegisterScreen";
-import ScanQRScreen from "../../screens/ScanQRScreen";
-import ScanQRLineScreen from "../../screens/ScanQRLineScreen";
-import MembersScreen from "../../screens/MembersScreen";
-import DevicesScreen from "../../screens/DevicesScreen";
-import DevicesDetailScreen from "../../screens/DevicesDetailScreen";
-import DevicesEditScreen from "../../screens/DevicesEditScreen";
+import LoginScreen from "../screens/LoginScreen";
+import RegisterScreen from "../screens/RegisterScreen";
+import ScanQRScreen from "../screens/ScanQRScreen";
+import ScanQRLineScreen from "../screens/ScanQRLineScreen";
+import MembersScreen from "../screens/MembersScreen";
+import DevicesScreen from "../screens/DevicesScreen";
+import DevicesDetailScreen from "../screens/DevicesDetailScreen";
+import DevicesEditScreen from "../screens/DevicesEditScreen";
 
 const Stack = createNativeStackNavigator();
 

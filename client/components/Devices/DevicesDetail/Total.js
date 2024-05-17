@@ -1,23 +1,23 @@
 import {StyleSheet, View, Text} from "react-native"
-import Card from "../UI/Card";
-import Colors from "../../constants/colors";
+import Card from "../../UI/Card";
+import Colors from "../../../constants/colors";
 
-function Information() {
+function Total() {
 
     return <View>
         <Text style={styles.title}>
-            Thong tin
+            So luong xuat
         </Text>
         <Card style={styles.card}>
             <View style={styles.container}>
                 <View style={styles.containerLeft}>
                     <Text style={styles.textLeft}>
-                        Ten san pham
+                        Tong so luong
                     </Text>
                 </View>
                 <View style={styles.containerRight}>
                     <Text style={styles.textRight}>
-                        May tinh
+                        50
                     </Text>
                 </View>
             </View>
@@ -26,12 +26,12 @@ function Information() {
             <View style={styles.container}>
                 <View style={styles.containerLeft}>
                     <Text style={styles.textLeft}>
-                        Ma thiet bi
+                        So luong su dung
                     </Text>
                 </View>
                 <View style={styles.containerRight}>
                     <Text style={styles.textRight}>
-                        VNVM1008
+                        30
                     </Text>
                 </View>
             </View>
@@ -40,12 +40,12 @@ function Information() {
             <View style={styles.container}>
                 <View style={styles.containerLeft}>
                     <Text style={styles.textLeft}>
-                        Ngay cap nhap
+                        So luong hu hai
                     </Text>
                 </View>
                 <View style={styles.containerRight}>
                     <Text style={styles.textRight}>
-                        27/04/2024
+                        5
                     </Text>
                 </View>
             </View>
@@ -54,12 +54,12 @@ function Information() {
             <View style={styles.container}>
                 <View style={styles.containerLeft}>
                     <Text style={styles.textLeft}>
-                        Nguoi cap nhap
+                        So luong ton
                     </Text>
                 </View>
                 <View style={styles.containerRight}>
                     <Text style={styles.textRight}>
-                        Nguyen Van Hieu
+                        15
                     </Text>
                 </View>
             </View>
@@ -67,7 +67,7 @@ function Information() {
     </View>
 }
 
-export default Information;
+export default Total;
 
 
 const styles = StyleSheet.create({

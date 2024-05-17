@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {View, StyleSheet} from "react-native";
-import Colors from "../../constants/colors";
+import Colors from "../../../constants/colors";
 import {useNavigation} from "@react-navigation/native";
-import IconButton from "../UI/IconButton";
-import InputSearch from "../UI/InputSearch";
+import IconButton from "../../UI/IconButton";
+import InputSearch from "../../UI/InputSearch";
 
 function Header() {
     const [search, setSearch] = useState("");

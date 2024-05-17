@@ -1,23 +1,23 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Colors from '../../constants/colors'
+import Colors from '../constants/colors'
 
 // Screen
-import ProfileScreen from '../../screens/ProfileScreen'
+import ProfileScreen from '../screens/ProfileScreen'
 
 // Navigator
 const Tab = createBottomTabNavigator();
 
 // UI
-import IconButton from '../UI/IconButton';
+import IconButton from '../components/UI/IconButton';
 import {Ionicons, FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons';
 
 // Redux
-import {removeToken} from "../../store/redux/auth";
+import {removeToken} from "../store/redux/auth";
 import {useDispatch} from "react-redux";
 
 // Storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Dashboard from "../../screens/Dashboard";
+import Dashboard from "../screens/Dashboard";
 
 function NavigationBottom() {
     const dispatch = new useDispatch();

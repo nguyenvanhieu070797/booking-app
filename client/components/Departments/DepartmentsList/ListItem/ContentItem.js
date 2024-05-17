@@ -3,11 +3,11 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-import Colors from "../../constants/colors";
 import React from "react";
-import Icons from "../../constants/icons";
+import Colors from "../../../../constants/colors";
+import Icons from "../../../../constants/icons";
 
-function DevicesContentItem({item}) {
+function ContentItem({item}) {
 
     const iconTitle = Icons(item.icons.title);
 
@@ -40,7 +40,7 @@ function DevicesContentItem({item}) {
     )
 }
 
-export default DevicesContentItem;
+export default ContentItem;
 
 const styles = StyleSheet.create({
     rootContainer: {

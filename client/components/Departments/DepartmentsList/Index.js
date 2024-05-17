@@ -1,11 +1,15 @@
-import {View, Text, StyleSheet} from "react-native";
-import SidebarMenu from "../components/Devices/SidebarMenu";
-import DevicesListItem from "../components/Devices/ListItem/DevicesListItem";
-import Colors from "../constants/colors";
-import Header from "../components/Devices/Header";
+import {useState} from "react";
+import {View, StyleSheet} from "react-native";
+import SidebarMenu from "./SidebarMenu";
+import Header from "./Header";
+import ListItem from "./ListItem/Index";
+import Colors from "../../../constants/colors";
 
-function DevicesScreen() {
-    function categoriesActiveHandler(item) {}
+function DepartmentsList() {
+    const [idDepartment, setIdDepartment] = useState(null);
+    function categoriesActiveHandler(item) {
+        setIdDepartment(item.id);
+    }
 
     const dataItems = [
         {
@@ -302,14 +306,14 @@ function DevicesScreen() {
         <View style={styles.rootContainer}>
             <View style={styles.header}>
                 <Header/>
-                <SidebarMenu onPress={categoriesActiveHandler}/>
+                <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>
             </View>
-            <DevicesListItem data={dataItems}/>
+            <ListItem data={dataItems}/>
         </View>
     )
 }
 
-export default DevicesScreen;
+export default DepartmentsList;
 
 const styles = StyleSheet.create({
     rootContainer: {

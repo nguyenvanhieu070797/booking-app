@@ -5,14 +5,15 @@ import {
     StyleSheet,
     SafeAreaView
 } from "react-native";
-import Colors from "../../constants/colors";
-import DevicesContainerItem from "./DevicesContainerItem";
+import Colors from "../../../../constants/colors";
+import ContainerItem from "./ContainerItem";
 import {useNavigation} from "@react-navigation/native";
 
-function DevicesListItem({data}) {
+function ListItem({data}) {
     const navigation = useNavigation();
     function _onPress(item) {
-        navigation.navigate("DevicesDetailScreen", {data: item});
+        console.log({item});
+        // navigation.navigate("DevicesDetailScreen", {data: item});
     }
 
     return (
@@ -25,7 +26,7 @@ function DevicesListItem({data}) {
                 data={data}
                 renderItem={({item, index}) => {
                     const isMod = index % 2 === 0;
-                    return <DevicesContainerItem
+                    return <ContainerItem
                         item={item}
                         key={Math.random()}
                         style={isMod ? styles._DevicesContainer : styles.__DevicesContainer}
@@ -36,7 +37,7 @@ function DevicesListItem({data}) {
     )
 }
 
-export default DevicesListItem;
+export default ListItem;
 
 
 const styles = StyleSheet.create({

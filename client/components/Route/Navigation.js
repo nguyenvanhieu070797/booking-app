@@ -63,7 +63,7 @@ function AuthenticatedStack() {
                 name: "MembersScreen",
                 component: MembersScreen,
                 options: {
-                    headerShown: true,
+                    headerShown: false,
                     title: 'Thành viên',
                 }
             },

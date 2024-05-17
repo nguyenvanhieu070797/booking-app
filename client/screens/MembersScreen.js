@@ -1,14 +1,7 @@
-import {View, Text} from "react-native";
+import DepartmentsList from '../components/Departments/DepartmentsList/Index';
 
 function MembersScreen() {
-
-    return (
-        <View>
-            <Text>
-                member
-            </Text>
-        </View>
-    )
+    return <DepartmentsList/>
 }
 
 export default MembersScreen;

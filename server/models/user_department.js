@@ -11,7 +11,7 @@ const UserDepartment = sequelize.define('users_departments', {
   },
   delete: Sequelize.BOOLEAN,
   edit: Sequelize.BOOLEAN,
-  description: Sequelize.STRING,
+  description: Sequelize.TEXT,
 });
 
 module.exports = UserDepartment;

@@ -12,7 +12,7 @@ const Department = sequelize.define('departments', {
   title: Sequelize.STRING,
   locate: Sequelize.STRING,
   image: Sequelize.STRING,
-  description: Sequelize.STRING,
+  description: Sequelize.TEXT,
 });
 
 module.exports = Department;

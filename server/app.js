@@ -10,6 +10,11 @@ const sequelize = require('./util/database');
 const User = require('./models/user');
 const Department = require('./models/department');
 const UserDepartment = require('./models/user_department');
+const Device = require('./models/device');
+const DeviceImport = require('./models/device_import');
+const DeviceCount = require('./models/device_count');
+const Category = require('./models/category');
+const CategoryDevice = require('./models/category_device');
 
 const app = express();
 
@@ -54,8 +59,8 @@ User.hasOne(UserDepartment);
 Department.hasOne(UserDepartment);
 
 sequelize
-  .sync({ force: true })
-  // .sync()
+  // .sync({ force: true })
+  .sync()
   .then(result => {
     app.listen(3005);
   }).catch(err => {

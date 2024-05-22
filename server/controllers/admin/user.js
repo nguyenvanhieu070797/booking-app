@@ -7,14 +7,26 @@ exports.getUsers = (req, res, next) => {
     }).then(users => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({data: users}, null, 3)).status(200);
-        next();
     }).catch(err => {
         console.log({err});
-    })
+    });
+    next();
+};
+
+exports.getUser = (req, res, next) => {
+    const userId = req.params.user_id;
+    User.findByPk(userId, {
+        include: Department
+    }).then(users => {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({data: users}, null, 3)).status(200);
+    }).catch(err => {
+        console.log({err});
+    });
+    next();
 };
 
 exports.postAddUser = (req, res, next) => {
-    console.log(req.body);
     const username = req.body.user_name;
     const email = req.body.email;
     const password = req.body.password;
@@ -27,10 +39,10 @@ exports.postAddUser = (req, res, next) => {
     }).then((user ) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({data: user}, null, 3)).status(200);
-        next();
     }).catch(err => {
         console.log(err);
     });
+    next();
 };
 
 exports.postEditUser = (req, res, next) => {
@@ -38,7 +50,7 @@ exports.postEditUser = (req, res, next) => {
     const username = req.body.user_name;
     const email = req.body.email;
     const password = req.body.password;
-    const description = req.body.description
+    const description = req.body.description;
     User.findByPk(userId)
         .then(user => {
             user.user_name = username;
@@ -48,14 +60,12 @@ exports.postEditUser = (req, res, next) => {
             return user.save();
         })
         .then(result => {
-            console.log('UPDATED PRODUCT!');
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({data: result}, null, 3)).status(200);
-            next();
         })
         .catch(err => console.log(err));
+    next();
 };
-
 
 exports.postDeleteUser = (req, res, next) => {
     const userId = req.body.user_id;
@@ -67,7 +77,7 @@ exports.postDeleteUser = (req, res, next) => {
             console.log('UPDATED PRODUCT!');
             res.setHeader('Content-Type', 'application/json');
             res.end().status(200);
-            next();
         })
         .catch(err => console.log(err));
+    next();
 };

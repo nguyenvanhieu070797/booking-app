@@ -65,12 +65,13 @@ exports.postEditUser = (req, res, next) => {
 
 exports.postDeleteUser = (req, res, next) => {
     const userId = req.body.user_id;
+    console.log({userId});
     User.findByPk(userId)
         .then(user => {
             return user.destroy();
         })
         .then(result => {
-            console.log('UPDATED PRODUCT!');
+            console.log('DESTROYED PRODUCT');
             res.setHeader('Content-Type', 'application/json');
             res.end().status(200);
         })

@@ -10,7 +10,6 @@ exports.getUsers = (req, res, next) => {
     }).catch(err => {
         console.log({err});
     });
-    next();
 };
 
 exports.getUser = (req, res, next) => {
@@ -23,7 +22,6 @@ exports.getUser = (req, res, next) => {
     }).catch(err => {
         console.log({err});
     });
-    next();
 };
 
 exports.postAddUser = (req, res, next) => {
@@ -42,7 +40,6 @@ exports.postAddUser = (req, res, next) => {
     }).catch(err => {
         console.log(err);
     });
-    next();
 };
 
 exports.postEditUser = (req, res, next) => {
@@ -64,7 +61,6 @@ exports.postEditUser = (req, res, next) => {
             res.end(JSON.stringify({data: result}, null, 3)).status(200);
         })
         .catch(err => console.log(err));
-    next();
 };
 
 exports.postDeleteUser = (req, res, next) => {
@@ -79,5 +75,4 @@ exports.postDeleteUser = (req, res, next) => {
             res.end().status(200);
         })
         .catch(err => console.log(err));
-    next();
 };

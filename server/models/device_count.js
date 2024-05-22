@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const DeviceCount = sequelize.define('devices-count', {
+const DeviceCount = sequelize.define('device-count', {
     device_count_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,

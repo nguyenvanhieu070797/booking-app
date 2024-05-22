@@ -12,10 +12,12 @@ const sequelize = new Sequelize('internal-device', 'root', '@Toikhongbiet97', {
     host: 'localhost',
     define: {
         // If don't want createdAt
-        createdAt: true,
+        createdAt: false,
         // If don't want updatedAt
-        updatedAt: true,
-        timestamps: true
+        updatedAt: false,
+        timestamps: false,
+        underscored: true,
+        freezeTableName: true,
     },
 });
 

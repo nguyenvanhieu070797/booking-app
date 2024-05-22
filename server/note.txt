@@ -1,9 +1,12 @@
 1. A.hasOne(B) : chỉ ra sự liên kết 1 1 giữa A và B và khóa ngoại sẽ được đặt ở B
 
-2. A.beLongsTo(B) chỉ ra sự liên kết 1 1 giữa A và B và khóa ngoại được đặt ở A
+2. A.hasMany(B) chỉ ra sự liên kết 1 N giữa a và B và khóa ngoại được đặt ở B
 
-3. A.hasMany(B) chỉ ra sự liên kết 1 N giữa a và B và khóa ngoại được đặt ở B
+3. A.beLongsTo(B) chỉ ra sự liên kết 1 1 giữa A và B và khóa ngoại được đặt ở A
 
 4. a.belongsToMany(B, { through: 'C' }): Chỉ ra liên kết N-N giữa A và B thông qua bảng C,
 bảng C phải có khóa ngoại của 2 bảng A và B, Sequelize sẽ tự động tạo bảng C nếu bảng C
 không tồn tại.
+
+
+https://sequelize.org/docs/v6/advanced-association-concepts/advanced-many-to-many/

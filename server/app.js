@@ -21,47 +21,63 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-// const adminRoutes = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 // const shopRoutes = require('./routes/shop');
+
+app.use((req, res, next) => {
+    User.findByPk(1)
+        .then(user => {
+            req.user = user;
+            next();
+        })
+        .catch(err => console.log(err));
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-  User.findByPk(1)
-    .then(user => {
-        conosle.log({user});
-      req.user = user;
-      next();
-    })
-    .catch(err => console.log(err));
-});
-
-// app.use('/admin', adminRoutes);
+app.use('/admin', adminRoutes);
 // app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-// Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
-// User.hasMany(Product);
-// User.hasOne(Cart);
-// Cart.belongsTo(User);
-// Cart.belongsToMany(Product, { through: CartItem });
-// Product.belongsToMany(Cart, { through: CartItem });
-// Order.belongsTo(User);
-// User.hasMany(Order);
-// Order.belongsToMany(Product, { through: OrderItem });
-
 // User <-> Department => User Department
-User.belongsToMany(Department, { through: UserDepartment });
-Department.belongsToMany(User, { through: UserDepartment });
-User.hasOne(UserDepartment);
-Department.hasOne(UserDepartment);
+User.belongsToMany(Department, {
+    through: UserDepartment,
+    foreignKey: 'department_id'
+});
+Department.belongsToMany(User, {
+    through: UserDepartment,
+    foreignKey: 'user_id'
+});
+
+// Category <-> CategoryDevice => Device
+Category.hasMany(Device, {
+    foreignKey: 'category_id'
+});
+CategoryDevice.hasMany(Device, {
+    foreignKey: 'category_device_id'
+});
+
+// Device <-> User Department => Device Count
+UserDepartment.belongsToMany(Device, {
+    through: DeviceCount,
+    foreignKey: 'device_id'
+});
+Device.belongsToMany(UserDepartment, {
+    through: DeviceCount,
+    foreignKey: 'user_department_id'
+});
+
+// Device <-> Device Inport
+Device.hasMany(DeviceImport, {
+    foreignKey: 'device_id'
+})
 
 sequelize
-  // .sync({ force: true })
-  .sync()
-  .then(result => {
+  .sync({ force: true })
+  // .sync()
+  .then(() => {
     app.listen(3005);
   }).catch(err => {
     console.log(err);

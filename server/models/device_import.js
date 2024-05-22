@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const DeviceImport = sequelize.define('devices-import', {
+const DeviceImport = sequelize.define('device-import', {
     device_import_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,

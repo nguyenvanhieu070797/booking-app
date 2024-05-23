@@ -45,12 +45,14 @@ app.use(errorController.get404);
 User.belongsToMany(Department, {
     through: UserDepartment,
     foreignKey: 'department_id',
-    foreignKeyConstraint:true
+    foreignKeyConstraint:true,
+    unique: false
 });
 Department.belongsToMany(User, {
     through: UserDepartment,
     foreignKey: 'user_id',
-    foreignKeyConstraint:true
+    foreignKeyConstraint:true,
+    unique: false
 });
 
 // Category <-> CategoryDevice => Device
@@ -67,12 +69,14 @@ CategoryDevice.hasMany(Device, {
 UserDepartment.belongsToMany(Device, {
     through: DeviceCount,
     foreignKey: 'device_id',
-    foreignKeyConstraint:true
+    foreignKeyConstraint:true,
+    unique: false
 });
 Device.belongsToMany(UserDepartment, {
     through: DeviceCount,
     foreignKey: 'user_department_id',
-    foreignKeyConstraint:true
+    foreignKeyConstraint:true,
+    unique: false
 });
 
 // Device <-> Device Inport
@@ -82,8 +86,8 @@ Device.hasMany(DeviceImport, {
 })
 
 sequelize
-  .sync({ force: true })
-  // .sync()
+  // .sync({ force: true })
+  .sync()
   .then(() => {
     app.listen(3005);
   }).catch(err => {

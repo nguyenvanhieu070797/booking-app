@@ -9,12 +9,12 @@ const sequelize = require('./util/database');
 // Models
 const User = require('./models/user');
 const Department = require('./models/department');
-const UserDepartment = require('./models/user_department');
+const UserDepartment = require('./models/user-department');
 const Device = require('./models/device');
-const DeviceImport = require('./models/device_import');
-const DeviceCount = require('./models/device_count');
+const DeviceImport = require('./models/device-import');
+const DeviceCount = require('./models/device-count');
 const Category = require('./models/category');
-const CategoryDevice = require('./models/category_device');
+const CategoryDevice = require('./models/category-device');
 
 const app = express();
 
@@ -75,8 +75,8 @@ Device.hasMany(DeviceImport, {
 })
 
 sequelize
-  .sync({ force: true })
-  // .sync()
+  // .sync({ force: true })
+  .sync()
   .then(() => {
     app.listen(3005);
   }).catch(err => {

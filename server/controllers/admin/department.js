@@ -34,27 +34,27 @@ exports.postAddDepartment = (req, res, next) => {
         locate,
         image,
         description
-    }).then((user ) => {
+    }).then((department ) => {
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({data: user}, null, 3)).status(200);
+        res.end(JSON.stringify({data: department}, null, 3)).status(200);
     }).catch(err => {
         console.log(err);
     });
 };
 
-exports.postEditUser = (req, res, next) => {
-    const userId = req.params.user_id;
-    const username = req.body.user_name;
-    const email = req.body.email;
-    const password = req.body.password;
-    const description = req.body.description;
-    User.findByPk(userId)
-        .then(user => {
-            user.user_name = username;
-            user.email = email;
-            user.password = password;
-            user.description = description;
-            return user.save();
+exports.postEditDepartment = (req, res, next) => {
+    const departmentId = req.params.department_id;
+    const title = req.body.title;
+    const locate = req.body.locate;
+    const image = req.body.image;
+    const description = req.body.description
+    Department.findByPk(departmentId)
+        .then(department => {
+            department.title = title;
+            department.locate = locate;
+            department.image = image;
+            department.description = description;
+            return department.save();
         })
         .then(result => {
             res.setHeader('Content-Type', 'application/json');
@@ -63,15 +63,13 @@ exports.postEditUser = (req, res, next) => {
         .catch(err => console.log(err));
 };
 
-exports.postDeleteUser = (req, res, next) => {
-    const userId = req.body.user_id;
-    console.log({userId});
-    User.findByPk(userId)
-        .then(user => {
-            return user.destroy();
+exports.postDeleteDepartment = (req, res, next) => {
+    const departmentId = req.body.department_id;
+    Department.findByPk(departmentId)
+        .then(department => {
+            return department.destroy();
         })
         .then(result => {
-            console.log('DESTROYED PRODUCT');
             res.setHeader('Content-Type', 'application/json');
             res.end().status(200);
         })

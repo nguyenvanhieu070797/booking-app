@@ -1,20 +1,21 @@
 const Sequelize = require('sequelize');
 const host = 'localhost'
-const database = 'node-complete'
-const user = 'postgres'
-const password = '0905135826'
-const port = '5432'
+const database = 'internal-device'
 
+// const user = 'postgres'
+// const password = '0905135826'
+// const dialect = 'mysql'
 
+const user = 'root'
+const password = '@Toikhongbiet97'
+const dialect = 'mysql'
 
-const sequelize = new Sequelize('internal-device', 'postgres', '0905135826', {
-    dialect: 'postgres',
-    host: 'localhost',
+const sequelize = new Sequelize(database, user, password, {
+    dialect,
+    host,
     define: {
-        // If don't want createdAt
-        createdAt: false,
-        // If don't want updatedAt
-        updatedAt: false,
+        createdAt: false,  // If don't want createdAt
+        updatedAt: false,  // If don't want updatedAt
         timestamps: false,
         underscored: true,
         freezeTableName: true,

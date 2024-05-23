@@ -7,8 +7,8 @@ const port = '5432'
 
 
 
-const sequelize = new Sequelize('internal-device', 'root', '@Toikhongbiet97', {
-    dialect: 'mysql',
+const sequelize = new Sequelize('internal-device', 'postgres', '0905135826', {
+    dialect: 'postgres',
     host: 'localhost',
     define: {
         // If don't want createdAt

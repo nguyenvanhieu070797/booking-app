@@ -9,7 +9,7 @@ const Department = sequelize.define('department', {
     allowNull: false,
     primaryKey: true
   },
-  title: Sequelize.STRING,
+  department_name: Sequelize.STRING,
   locate: Sequelize.STRING,
   image: Sequelize.STRING,
   description: Sequelize.TEXT,

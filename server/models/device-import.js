@@ -9,6 +9,7 @@ const DeviceImport = sequelize.define('device-import', {
         allowNull: false,
         primaryKey: true
     },
+    device_import_name: Sequelize.STRING,
     total: Sequelize.DOUBLE,
     access: Sequelize.BOOLEAN,
     delete: Sequelize.BOOLEAN,

@@ -46,13 +46,13 @@ User.belongsToMany(Department, {
     through: UserDepartment,
     foreignKey: 'department_id',
     foreignKeyConstraint:true,
-    unique: false
+    unique: false,
 });
 Department.belongsToMany(User, {
     through: UserDepartment,
     foreignKey: 'user_id',
     foreignKeyConstraint:true,
-    unique: false
+    unique: false,
 });
 
 // Category <-> CategoryDevice => Device
@@ -66,18 +66,15 @@ CategoryDevice.hasMany(Device, {
 });
 
 // Device <-> User Department => Device Count
-UserDepartment.belongsToMany(Device, {
-    through: DeviceCount,
+Device.hasMany(DeviceCount, {
     foreignKey: 'device_id',
-    foreignKeyConstraint:true,
-    unique: false
+    foreignKeyConstraint:true
 });
-Device.belongsToMany(UserDepartment, {
-    through: DeviceCount,
+UserDepartment.hasMany(DeviceCount, {
     foreignKey: 'user_department_id',
-    foreignKeyConstraint:true,
-    unique: false
+    foreignKeyConstraint:true
 });
+
 
 // Device <-> Device Inport
 Device.hasMany(DeviceImport, {

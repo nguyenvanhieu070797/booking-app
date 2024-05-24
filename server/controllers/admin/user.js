@@ -6,7 +6,7 @@ exports.getUsers = (req, res, next) => {
         include: Department
     }).then(users => {
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({data: users}, null, 3)).status(200);
+        res.status(200).end(JSON.stringify({data: users}, null, 3)).status(200);
     }).catch(err => {
         console.log({err});
     });

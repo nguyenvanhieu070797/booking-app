@@ -1,7 +1,6 @@
 const UserDepartment = require('../../models/user-department');
 
 exports.getUserDepartment = (req, res, next) => {
-    console.log(req.body);
     let where = {};
     const userId = req.body.user_id ?? "";
     const departmentId = req.body.department_id ?? "";

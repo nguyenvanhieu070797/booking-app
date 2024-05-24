@@ -1,7 +1,6 @@
-import DepartmentsList from '../components/Departments/DepartmentsList/Index';
-
+import MembersList from '../components/Members/MembersList/Index';
 function MembersScreen() {
-    return <DepartmentsList/>
+    return <MembersList/>
 }
 
 export default MembersScreen;

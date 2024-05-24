@@ -9,6 +9,7 @@ const UserDepartment = sequelize.define('user_department', {
     allowNull: false,
     primaryKey: true
   },
+  user_department_name: Sequelize.STRING,
   delete: Sequelize.BOOLEAN,
   edit: Sequelize.BOOLEAN,
   description: Sequelize.TEXT,

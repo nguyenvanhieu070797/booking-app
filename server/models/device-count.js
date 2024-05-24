@@ -9,6 +9,7 @@ const DeviceCount = sequelize.define('device-count', {
         allowNull: false,
         primaryKey: true
     },
+    device_count_name: Sequelize.STRING,
     amount_use: Sequelize.DOUBLE,
     delete: Sequelize.BOOLEAN,
     used: Sequelize.BOOLEAN,

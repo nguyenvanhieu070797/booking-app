@@ -2,13 +2,13 @@ const Sequelize = require('sequelize');
 const host = 'localhost'
 const database = 'internal-device'
 
-// const user = 'postgres'
-// const password = '0905135826'
-// const dialect = 'mysql'
+const user = 'postgres'
+const password = '0905135826'
+const dialect = 'postgres'
 
-const user = 'root'
-const password = '@Toikhongbiet97'
-const dialect = 'mysql'
+// const user = 'root'
+// const password = '@Toikhongbiet97'
+// const dialect = 'mysql'
 
 const sequelize = new Sequelize(database, user, password, {
     dialect,

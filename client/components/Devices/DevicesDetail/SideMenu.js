@@ -21,11 +21,6 @@ function SideMenu() {
                     style={styles.imageDevice}
                 />
             </View>
-            <View style={styles.buttonUpdateContainer}>
-                <PrimaryButton onPress={updatePictureHandler} style={styles.buttonPrimaryRight}>
-                    Chỉnh sửa
-                </PrimaryButton>
-            </View>
         </Card>
     )
 }
@@ -54,42 +49,4 @@ const styles = StyleSheet.create({
         bottom: 55,
         left: 16,
     },
-    line: {
-        marginVertical: 8,
-        width: "100%",
-        borderBottomColor: Colors.greyOpacity25,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-    buttonUpdateContainer: {
-        marginTop: 60,
-        flexDirection: "row",
-    },
-    buttonPrimaryLeft: {
-        container: {
-            borderRadius: 5,
-            flex: 1,
-            marginRight: 2,
-        },
-        text: {
-            fontFamily: 'open-sans-bold',
-        },
-        pressed: {
-            paddingVertical: 10,
-            elevation: 2,
-        }
-    },
-    buttonPrimaryRight: {
-        container: {
-            borderRadius: 5,
-            flex: 1,
-            marginRight: 2,
-        },
-        text: {
-            fontFamily: 'open-sans-bold',
-        },
-        pressed: {
-            paddingVertical: 10,
-            elevation: 2,
-        }
-    }
 })

@@ -6,7 +6,7 @@ import {
 import React from "react";
 import Colors from "../../../../constants/colors";
 
-function ContentItem({item}) {
+function ContentItem({key, item}) {
     // const iconTitle = Icons(item.icons.title);
     return (
         <View style={styles.rootContainer}>
@@ -22,6 +22,7 @@ function ContentItem({item}) {
                     <View style={styles.itemContent} key={Math.random().toString()}>
                         <View style={styles.itemTitle}>
                             <Text style={styles.textTitle}>
+                                {item.user_id}
                                 {item.user_name.toUpperCase()}
                             </Text>
                         </View>

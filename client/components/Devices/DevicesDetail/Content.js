@@ -3,13 +3,9 @@ import Information from "./Information";
 import Total from "./Total";
 import SideMenu from "./SideMenu";
 
-function Content() {
-
-
+function Content({data}) {
     return <ScrollView style={styles.container}>
-        <SideMenu/>
-        <Information/>
-        <Total/>
+        <Information data={data}/>
     </ScrollView>
 }
 

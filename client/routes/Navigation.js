@@ -13,6 +13,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 import ScanQRScreen from "../screens/ScanQRScreen";
 import ScanQRLineScreen from "../screens/ScanQRLineScreen";
 import MembersScreen from "../screens/Members/MembersScreen";
+import MembersDetailScreen from "../screens/Members/MembersDetailScreen";
 import DevicesScreen from "../screens/Devices/DevicesScreen";
 import DevicesDetailScreen from "../screens/Devices/DevicesDetailScreen";
 import DevicesEditScreen from "../screens/Devices/DevicesEditScreen";
@@ -62,6 +63,14 @@ function AuthenticatedStack() {
             {
                 name: "MembersScreen",
                 component: MembersScreen,
+                options: {
+                    headerShown: false,
+                    title: 'Thành viên',
+                }
+            },
+            {
+                name: "MembersDetailScreen",
+                component: MembersDetailScreen,
                 options: {
                     headerShown: false,
                     title: 'Thành viên',

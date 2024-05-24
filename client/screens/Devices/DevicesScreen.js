@@ -1,8 +1,8 @@
 import {View, Text, StyleSheet} from "react-native";
-import SidebarMenu from "../components/Devices/DevicesList/SidebarMenu";
-import DevicesListItem from "../components/Devices/DevicesList/ListItem/DevicesListItem";
-import Colors from "../constants/colors";
-import Header from "../components/Devices/DevicesList/Header";
+import SidebarMenu from "../../components/Devices/DevicesList/SidebarMenu";
+import DevicesListItem from "../../components/Devices/DevicesList/ListItem/DevicesListItem";
+import Colors from "../../constants/colors";
+import Header from "../../components/Devices/DevicesList/Header";
 
 function DevicesScreen() {
     function categoriesActiveHandler(item) {}

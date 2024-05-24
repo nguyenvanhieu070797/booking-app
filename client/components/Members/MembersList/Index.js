@@ -7,19 +7,28 @@ import Colors from "../../../constants/colors";
 
 // Get list user
 import {getUsers} from "../../../util/users";
-import {login} from "../../../util/auth";
-import {setToken} from "../../../store/redux/auth";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import ButtonDropdown from "./ListItem/ButtonDropdown";
+import ViewDropdown from "./ViewDropdown";
 
 function MembersList() {
+    const showSidebar = false;
     const [idDepartment, setIdDepartment] = useState(null);
     const [isFetchUser, setIsFetchUser] = useState(true);
     const [users, setUsers] = useState([]);
+    const [showDropdown, setShowDropdown] = useState(false);
 
     function categoriesActiveHandler(item) {
         setIdDepartment(item.id);
         setIsFetchUser(true);
+    }
+
+    function onShowDropdownMenuHandler() {
+        console.log({showDropdown});
+        setShowDropdown(!showDropdown);
+    }
+
+    function dropdownMenuHandler(data) {
+        console.log({data});
+        setShowDropdown(false);
     }
 
     useEffect(() => {
@@ -30,16 +39,32 @@ function MembersList() {
             });
             setIsFetchUser(false)
         }
-    }, [isFetchUser])
+    }, [isFetchUser]);
+
+
+    const dropdownMenu = [
+        {
+            id: 0,
+            icon: {
+                name: "adduser",
+                type: "AntDesign",
+                color: Colors.blue400,
+                size: 20,
+            },
+            text: "Thêm thành viên",
+        },
+    ];
+
+    console.log({users});
 
     return (
         <View style={styles.rootContainer}>
-            <ButtonDropdown/>
             <View style={styles.header}>
-                <Header/>
-                <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>
+                <Header onShowDropdownMenu={onShowDropdownMenuHandler}/>
+                {showSidebar && <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>}
             </View>
             <ListItem data={users}/>
+            <ViewDropdown data={dropdownMenu} show={showDropdown} onPress={dropdownMenuHandler}/>
         </View>
     )
 }

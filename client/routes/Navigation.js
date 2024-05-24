@@ -12,10 +12,10 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import ScanQRScreen from "../screens/ScanQRScreen";
 import ScanQRLineScreen from "../screens/ScanQRLineScreen";
-import MembersScreen from "../screens/MembersScreen";
-import DevicesScreen from "../screens/DevicesScreen";
-import DevicesDetailScreen from "../screens/DevicesDetailScreen";
-import DevicesEditScreen from "../screens/DevicesEditScreen";
+import MembersScreen from "../screens/Members/MembersScreen";
+import DevicesScreen from "../screens/Devices/DevicesScreen";
+import DevicesDetailScreen from "../screens/Devices/DevicesDetailScreen";
+import DevicesEditScreen from "../screens/Devices/DevicesEditScreen";
 
 const Stack = createNativeStackNavigator();
 

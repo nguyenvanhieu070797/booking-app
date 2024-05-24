@@ -1,4 +1,4 @@
-import DepartmentsList from '../components/Departments/DepartmentsList/Index';
+import DepartmentsList from '../../components/Departments/DepartmentsList';
 
 function DepartmentsScreen() {
     return <DepartmentsList/>

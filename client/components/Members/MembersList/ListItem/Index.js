@@ -7,13 +7,15 @@ import {
 } from "react-native";
 import Colors from "../../../../constants/colors";
 import ContainerItem from "./ContainerItem";
-import {useNavigation} from "@react-navigation/native";
+// import {useNavigation} from "@react-navigation/native";
 
 function ListItem({data}) {
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
     function _onPress(item) {
         // navigation.navigate("DevicesDetailScreen", {data: item});
     }
+
+    console.log({data});
 
     return (
         <SafeAreaView style={styles.rootContainer}>

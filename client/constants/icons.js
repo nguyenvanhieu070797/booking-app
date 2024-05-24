@@ -1,5 +1,6 @@
 import {StyleSheet} from "react-native";
 import {
+    Entypo,
     FontAwesome,
     AntDesign,
     Ionicons,
@@ -33,6 +34,13 @@ function Icons({icon, type, size, color, style}) {
             break;
         case "FontAwesome":
             vectorIcon = <FontAwesome
+                style={[styles.icon, style]}
+                name={icon}
+                size={size}
+                color={color}/>;
+            break;
+        case "Entypo":
+            vectorIcon = <Entypo
                 style={[styles.icon, style]}
                 name={icon}
                 size={size}

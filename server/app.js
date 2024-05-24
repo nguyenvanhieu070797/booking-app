@@ -44,13 +44,13 @@ app.use(errorController.get404);
 // User <-> Department => User Department
 User.belongsToMany(Department, {
     through: UserDepartment,
-    foreignKey: 'department_id',
+    foreignKey: 'user_id',
     foreignKeyConstraint:true,
     unique: false,
 });
 Department.belongsToMany(User, {
     through: UserDepartment,
-    foreignKey: 'user_id',
+    foreignKey: 'department_id',
     foreignKeyConstraint:true,
     unique: false,
 });

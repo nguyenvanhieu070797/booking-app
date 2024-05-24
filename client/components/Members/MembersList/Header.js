@@ -4,9 +4,9 @@ import Colors from "../../../constants/colors";
 import {useNavigation} from "@react-navigation/native";
 import IconButton from "../../UI/IconButton";
 import InputSearch from "../../UI/InputSearch";
-import ButtonDropdown from "./ListItem/ButtonDropdown";
+import ViewDropdown from "./ViewDropdown";
 
-function Header() {
+function Header({onShowDropdownMenu}) {
     const [search, setSearch] = useState("");
     const navigation = useNavigation();
 
@@ -29,15 +29,25 @@ function Header() {
                     onPress={backScreenHandler}
                 />
             </View>
-            <View style={styles.containerRight}>
+            <View style={styles.containerSearch}>
                 <InputSearch
                     placeholder="Tìm kiếm"
                     onUpdateValue={updateInputValueHandler.bind(this)}
                     value={search}
                     style={styles.inSearch}
                 />
-            </View>
 
+            </View>
+            <View style={styles.containerDropdownMenu}>
+                <IconButton
+                    mode="Entypo"
+                    icon="dots-three-horizontal"
+                    color={Colors.greyOpacity75}
+                    size={24}
+                    style={styles.iconDropdown}
+                    onPress={() => onShowDropdownMenu()}
+                />
+            </View>
         </View>
     )
 }
@@ -62,12 +72,9 @@ const styles = StyleSheet.create({
         width: 40,
         borderRadius: 100,
     },
-    containerRight: {
+    containerSearch: {
         flex: 1,
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
-        paddingRight: 10,
-
+        paddingRight: 6,
     },
     search: {
         padding: 15,
@@ -97,5 +104,17 @@ const styles = StyleSheet.create({
         marginHorizontal: 0,
         marginVertical: 0,
         backgroundColor: Colors.greyOpacity25,
-    }
+    },
+    containerDropdownMenu: {
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+        paddingRight: 10,
+    },
+    iconDropdown: {
+        borderRadius: 100,
+        padding: 5,
+        marginHorizontal: 0,
+        marginVertical: 0,
+        backgroundColor: Colors.white,
+    },
 });

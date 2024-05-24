@@ -1,7 +1,7 @@
 import {View, StyleSheet} from "react-native";
-import Header from "../components/Devices/DevicesEdit/Header";
-import Colors from "../constants/colors";
-import Content from "../components/Devices/DevicesEdit/Content";
+import Header from "../../components/Devices/DevicesEdit/Header";
+import Colors from "../../constants/colors";
+import Content from "../../components/Devices/DevicesEdit/Content";
 
 function DevicesEditScreen() {
 

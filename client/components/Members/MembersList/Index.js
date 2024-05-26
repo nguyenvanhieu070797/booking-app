@@ -38,14 +38,14 @@ function MembersList() {
 
     function dropdownMenuHandler(data) {
         const action  = data.action || "";
+        setState(currentState => {
+            return {...currentState, showDropdown: !showDropdown};
+        });
         switch (action) {
             case "addMember":
                 navigation.navigate("MembersCreateScreen");
                 break;
         }
-        setState(currentState => {
-            return {...currentState, showDropdown: false};
-        });
     }
 
     useEffect(() => {

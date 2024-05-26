@@ -16,13 +16,13 @@ const DeviceCount = require('./models/device-count');
 const Category = require('./models/category');
 const CategoryDevice = require('./models/category-device');
 
+const adminRoutes = require('./routes/admin');
+// const shopRoutes = require('./routes/shop');
+
 const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-
-const adminRoutes = require('./routes/admin');
-// const shopRoutes = require('./routes/shop');
 
 app.use((req, res, next) => {
     User.findByPk(1)

@@ -103,6 +103,7 @@ function Form({onSubmit}) {
         if (isValidForm) {
             Alert.alert("Giá trị nhập không hợp lệ");
         } else {
+            setState({...initState});
             onSubmit(state.formData);
         }
     }

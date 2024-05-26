@@ -23,6 +23,7 @@ function Content() {
             } else {
                 Alert.alert("Đăng ký thành viên thất bại.");
             }
+            return true;
         }).catch(err => {
             console.log({err});
         })

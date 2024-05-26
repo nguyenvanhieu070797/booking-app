@@ -1,13 +1,26 @@
 import axios from 'axios'
-import {authenticate} from "./auth";
 
-export async function User() {
-    const url = `http://192.168.147.81:3000/admin/user`;
+export async function getList() {
+    const url = `http://192.168.2.14:3000/admin/user`;
     return axios.get(url).then(result => {
         return result.data;
     }).catch(err => console.log(err));
 }
 
+export async function postData(mode, formData) {
+    const url = `http://192.168.2.14:3000/admin/user/${mode}`;
+    const response = await axios.post(
+        url,
+        formData
+    );
+    return response?.data || "";
+}
+
+
 export function  getUsers() {
-    return User();
+    return getList();
+}
+
+export function createUsers(data) {
+    return postData("create", data);
 }

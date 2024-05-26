@@ -5,27 +5,35 @@ import Header from "./Header";
 import ListItem from "./ListItem/Index";
 import Colors from "../../../constants/colors";
 import {useNavigation} from "@react-navigation/native";
+import { useIsFocused } from '@react-navigation/core';
 
 // Get list user
 import {getUsers} from "../../../util/users";
 import ViewDropdown from "./ViewDropdown";
 
-function MembersList() {
-    const navigation = useNavigation();
-    const showSidebar = false;
-    const [idDepartment, setIdDepartment] = useState(null);
-    const [isFetchUser, setIsFetchUser] = useState(true);
-    const [users, setUsers] = useState([]);
-    const [showDropdown, setShowDropdown] = useState(false);
+const initState = {
+    idDepartment: null,
+    isFetchUsers: true,
+    users: [],
+    showDropdown: false,
+}
 
+function MembersList() {
+    const showSidebar = false;
+    const isFocused = useIsFocused();
+    const navigation = useNavigation();
+    const [state, setState] = useState(initState);
+    const {showDropdown, users, isFetchUsers, idDepartment} = state;
     function categoriesActiveHandler(item) {
-        setIdDepartment(item.id);
-        setIsFetchUser(true);
+        setState(currentState => {
+            return {...currentState, idDepartment: item.id, isFetchUsers: true};
+        });
     }
 
     function onShowDropdownMenuHandler() {
-        console.log({showDropdown});
-        setShowDropdown(!showDropdown);
+        setState(currentState => {
+            return {...currentState, showDropdown: !showDropdown};
+        });
     }
 
     function dropdownMenuHandler(data) {
@@ -35,22 +43,22 @@ function MembersList() {
                 navigation.navigate("MembersCreateScreen");
                 break;
         }
-
-        setShowDropdown(false);
+        setState(currentState => {
+            return {...currentState, showDropdown: false};
+        });
     }
 
     useEffect(() => {
-        if(isFetchUser) {
+        if(isFetchUsers || isFocused) {
             getUsers().then(result => {
-                setIsFetchUser(false)
-                return result.data;
-            }).then((data) => {
-                setUsers(data)
+                setState(currentState => {
+                    return {...currentState, users: result.data, isFetchUsers: false};
+                });
             }).catch((err) => {
                 console.log({err});
             })
         }
-    }, [isFetchUser]);
+    }, [isFocused, isFetchUsers]);
 
 
     const dropdownMenu = [
@@ -66,8 +74,6 @@ function MembersList() {
             action: "addMember"
         },
     ];
-
-    console.log("MembersList");
 
     return (
         <View style={styles.rootContainer}>

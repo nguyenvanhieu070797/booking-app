@@ -1,50 +1,109 @@
 import React, {useState,} from 'react';
 import {View, Pressable, StyleSheet, Image, Modal, Alert} from 'react-native';
 import Colors from "../../../constants/colors";
-import {useNavigation} from '@react-navigation/native'
 import Card from "../../UI/Card";
 import InputCustomLabel from "../../UI/InputCustomLabel";
 import ImageChoose from "../../UI/ImageChoose";
 import ImagePicker from "../../UI/ImagePicker";
+import SecondaryButton from "../../UI/SecondaryButton";
+import PrimaryButton from "../../UI/PrimaryButton";
 
-function Form({onSubmit, credentialsInvalid}) {
-    const navigation = useNavigation();
-    const [enteredUserName, setEnteredUserName] = useState('Nguyen Van Hieu');
-    const [enteredPassword, setEnteredPassword] = useState('1111');
-    const [enteredEmail, setEnteredEmail] = useState('n-hieu@cyllenge.com');
-    const [enteredDescription, setEnteredDescription] = useState('n-hieu@cyllenge.com');
-    const [selectedImage, setSelectedImage] = useState("");
-    const [modalVisible, setModalVisible] = useState(false);
+const initState = {
+    formData: {
+        user_name: 'Nguyen Van Hieu',
+        password: '11111111',
+        email: 'n-hieu@cyllenge.com',
+        description: 'n-hieu@cyllenge.com',
+        image: '',
+    },
+    modalVisible: false,
+}
 
-    const {
-        userName: userNameIsInvalid,
-        password: passwordIsInvalid,
-        email: emailIsInvalid,
-    } = credentialsInvalid;
+function Form({onSubmit}) {
+    const [state, setState] = useState(initState);
+    const {modalVisible} = state;
+    const {user_name: userName, password, email, description, image} = state.formData;
+    const {userNameIsInvalid, passwordIsInvalid, emailIsInvalid} = checkErrorInputHandler(state.formData);
+    const isValidForm = userNameIsInvalid || passwordIsInvalid || emailIsInvalid;
 
-
-    function takeImageHandler(imageUri) {
-        setSelectedImage(imageUri);
-    }
-
+    /**
+     * Show modal image
+     */
     function chooseImageHandler() {
-        setModalVisible(!modalVisible)
+        setState({...state, modalVisible: !state["modalVisible"]});
     }
 
+    /**
+     *
+     * @param inputType
+     * @param enteredValue
+     */
     function updateInputValueHandler(inputType, enteredValue) {
-        switch (inputType) {
-            case 'userName':
-                setEnteredUserName(enteredValue);
-                break;
-            case 'password':
-                setEnteredPassword(enteredValue);
-                break;
-            case 'email':
-                setEnteredEmail(enteredValue);
-                break;
-            case 'description':
-                setEnteredDescription(enteredValue);
-                break;
+        setState(currentState => {
+            switch (inputType) {
+                case 'userName':
+                    currentState["formData"]["user_name"] = enteredValue;
+                    break;
+                case 'password':
+                    currentState["formData"]["password"] = enteredValue;
+                    break;
+                case 'email':
+                    currentState["formData"]["email"] = enteredValue;
+                    break;
+                case 'image':
+                    currentState["formData"]["image"] = enteredValue;
+                    currentState["modalVisible"] = false;
+                    break;
+                case 'description':
+                    currentState["formData"]["description"] = enteredValue;
+                    break;
+            }
+            return {...currentState}
+        })
+    }
+
+    /**
+     *
+     * @param data
+     * @returns {{passwordIsInvalid: boolean, userNameIsInvalid: boolean, emailIsInvalid: boolean}}
+     */
+    function checkErrorInputHandler(data) {
+        let {user_name: userName, password, email} = data;
+        let inValid = {
+            userNameIsInvalid: false,
+            passwordIsInvalid: false,
+            emailIsInvalid: false,
+        };
+        userName = userName.trim();
+        password = password.trim();
+        email = email.trim();
+
+        const userNameIsValid = userName.length > 0;
+        const passwordIsValid = password.length > 6;
+        const emailIsIsValid = email.length > 0;
+
+        if (
+            !userNameIsValid ||
+            !passwordIsValid ||
+            !emailIsIsValid
+        ) {
+            inValid = {
+                userNameIsInvalid: !userNameIsValid,
+                passwordIsInvalid: !passwordIsValid,
+                emailIsInvalid: !emailIsIsValid,
+            }
+        }
+        return inValid;
+    }
+
+    /**
+     * Handle submit data
+     */
+    function submitDataHandler() {
+        if (isValidForm) {
+            Alert.alert("Giá trị nhập không hợp lệ");
+        } else {
+            onSubmit(state.formData);
         }
     }
 
@@ -54,10 +113,10 @@ function Form({onSubmit, credentialsInvalid}) {
                 <View style={styles.imageDeviceContainer}>
                     <Pressable onPress={chooseImageHandler}>
                         {
-                            selectedImage ?  <Image
-                                source={{uri: selectedImage}}
+                            image ? <Image
+                                source={{uri: image}}
                                 style={styles.imageDevice}
-                            /> :  <Image
+                            /> : <Image
                                 source={
                                     require("../../../assets/icon.png")
                                 }
@@ -70,7 +129,7 @@ function Form({onSubmit, credentialsInvalid}) {
                     <View style={styles.containerRight}>
                         <InputCustomLabel
                             label="Nhap ten"
-                            value={enteredUserName}
+                            value={userName}
                             isInvalid={userNameIsInvalid}
                             name="userName"
                             onChange={updateInputValueHandler}
@@ -82,7 +141,7 @@ function Form({onSubmit, credentialsInvalid}) {
                     <View style={styles.containerRight}>
                         <InputCustomLabel
                             label="Email"
-                            value={enteredEmail}
+                            value={email}
                             isInvalid={emailIsInvalid}
                             name="email"
                             onChange={updateInputValueHandler}
@@ -94,7 +153,7 @@ function Form({onSubmit, credentialsInvalid}) {
                     <View style={styles.containerRight}>
                         <InputCustomLabel
                             label="Nhap mat khau"
-                            value={enteredPassword}
+                            value={password}
                             isInvalid={passwordIsInvalid}
                             name="password"
                             onChange={updateInputValueHandler}
@@ -106,36 +165,40 @@ function Form({onSubmit, credentialsInvalid}) {
                     <View style={styles.containerRight}>
                         <InputCustomLabel
                             label="Mo ta"
-                            value={enteredDescription}
+                            value={description}
                             name="description"
                             onChange={updateInputValueHandler}
                         />
                     </View>
                 </View>
-
             </Card>
 
+            <PrimaryButton
+                style={styles.buttonPrimary}
+                disabled={isValidForm}
+                onPress={submitDataHandler}>
+                Thêm người dùng
+            </PrimaryButton>
 
             <Modal
                 animationType="slide"
                 transparent={true}
                 visible={modalVisible}
-                onRequestClose={() => {
-                    console.log("!23");
-                    Alert.alert('Modal has been closed.');
-                    chooseImageHandler();
-                }}
-                >
+                onRequestClose={() => chooseImageHandler()}
+            >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <ImageChoose
                             title={"Chọn hình ảnh"}
-                            style={styles.buttonPrimaryLeft}
-                            onTakenImage={takeImageHandler}/>
+                            style={styles.buttonChooseImage}
+                            onTakenImage={updateInputValueHandler.bind(this, "image")}/>
                         <ImagePicker
                             title={"Chụp hình"}
                             style={styles.buttonChooseImage}
-                            onTakenImage={takeImageHandler}/>
+                            onTakenImage={updateInputValueHandler.bind(this, "image")}/>
+                        <SecondaryButton style={styles.buttonCancelChooseImage} onPress={chooseImageHandler}>
+                            Hủy
+                        </SecondaryButton>
                     </View>
                 </View>
             </Modal>
@@ -198,7 +261,6 @@ const styles = StyleSheet.create({
         backgroundColor: "blue",
     },
 
-
     // Image
     imageDeviceContainer: {
         position: "absolute",
@@ -223,27 +285,63 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 22,
     },
     modalView: {
         width: "80%",
         margin: 20,
         backgroundColor: 'white',
-        borderRadius: 20,
+        borderRadius: 5,
         paddingVertical: 20,
         alignItems: 'center',
-        shadowColor: '#000',
+        shadowColor: Colors.grey500,
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 0,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 4,
+        shadowRadius: 5,
         elevation: 5,
     },
 
     // Select Image
     buttonChooseImage: {
+        container: {
+            borderRadius: 5,
+            width: "90%",
+            marginVertical: 5,
+        },
+        text: {
+            fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
+        }
+    },
+
+    buttonCancelChooseImage: {
+        container: {
+            borderRadius: 5,
+            width: "90%",
+            marginVertical: 5,
+        },
+        text: {
+            fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
+        }
+    },
+
+    // Button Submit
+    buttonPrimary: {
+        container: {
+            marginTop: 10,
+            marginHorizontal: 12,
+            borderRadius: 5,
+            justifyContent: "center",
+        },
         text: {
             fontFamily: 'open-sans-bold',
         },

@@ -28,15 +28,20 @@ exports.postAddUser = (req, res, next) => {
     const username = req.body.user_name;
     const email = req.body.email;
     const password = req.body.password;
-    const description = req.body.description
+    const description = req.body.description;
+    const image = req.body.image;
     User.create({
         user_name: username,
         email: email,
         password: password,
-        description: description
+        description: description,
+        image: image
     }).then((user ) => {
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({data: user}, null, 3)).status(200);
+        res.end(JSON.stringify({
+            data: user,
+            status: 200,
+        }, null, 3)).status(200);
     }).catch(err => {
         console.log(err);
     });
@@ -48,12 +53,14 @@ exports.postEditUser = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     const description = req.body.description;
+    const image = req.body.image;
     User.findByPk(userId)
         .then(user => {
             user.user_name = username;
             user.email = email;
             user.password = password;
             user.description = description;
+            user.image = image;
             return user.save();
         })
         .then(result => {
@@ -65,7 +72,6 @@ exports.postEditUser = (req, res, next) => {
 
 exports.postDeleteUser = (req, res, next) => {
     const userId = req.body.user_id;
-    console.log({userId});
     User.findByPk(userId)
         .then(user => {
             return user.destroy();

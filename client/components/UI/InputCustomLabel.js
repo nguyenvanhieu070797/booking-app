@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {
     View,
     TextInput,
@@ -7,9 +6,8 @@ import {
 } from 'react-native';
 import Colors from "../../constants/colors";
 
-function InputCustomLabel({label, value, name, onChange, isInvalid = false}) {
+function InputCustomLabel({label, value, name, onChange, isInvalid}) {
     const styleIsInvalid = isInvalid && styles.inputInvalid || {};
-
     return (
         <View style={{flex: 1}}>
             <Text style={[styles.label]}>

@@ -29,7 +29,7 @@ router.post('/user-department/delete', userDepartmentController.postDeleteUserDe
 
 router.get("/img-upload", (req, res) => {
     return Tesseract
-        .recognize(path.join(__dirname, "../public/images/img.png"))
+        .recognize(path.join(__dirname, "../public/images/orc/img.png"))
         .then((result) => {
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({

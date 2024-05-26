@@ -1,7 +1,7 @@
 import {Text, View, Pressable, StyleSheet} from "react-native";
 import Colors from "../../constants/colors";
 
-function PrimaryButton({children, onPress, style}) {
+function PrimaryButton({children, onPress, style, disabled = false}) {
     const styleText = style?.text || {};
     const stylePressed = style?.pressed || {};
     const styleContainer = style?.container || {};
@@ -9,6 +9,7 @@ function PrimaryButton({children, onPress, style}) {
     return (
         <View style={[styles.buttonOuterContainer, styleContainer]}>
             <Pressable
+                disabled={disabled}
                 style={
                     ({pressed}) => pressed
                         ? [styles.buttonInnerContainer, styles.pressed, stylePressed]

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Colors from "../../constants/colors";
 
-function InputCustom({label, value, onChange, isInvalid = true}) {
+function InputCustom({label, value, name, onChange, isInvalid = true}) {
     const [isFocused, setIsFocused] = useState(false);
 
     function handleFocusHandler() {
@@ -30,10 +30,11 @@ function InputCustom({label, value, onChange, isInvalid = true}) {
             </Text>
             <TextInput
                 value={value}
-                onChangeText={(text) => onChange(text)}
+                onChangeText={onChange.bind(this, name)}
                 style={[styles.inputText, styleInputNotFocus, styleInputFocus, styleIsInvalid]}
                 onFocus={handleFocusHandler}
                 onBlur={handleBlurHandler}
+                isInvalid={isInvalid}
                 blurOnSubmit
             />
         </View>

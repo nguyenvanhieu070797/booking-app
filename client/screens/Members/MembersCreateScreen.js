@@ -1,21 +1,21 @@
-import {View, StyleSheet} from "react-native";
-import Header from "../../components/Members/MembsersEdit/Header";
+import {View, Text, StyleSheet} from "react-native";
 import Colors from "../../constants/colors";
-import Content from "../../components/Members/MembsersEdit/Content";
+import Header from "../../components/Members/MembersCreate/Header";
+import Content from "../../components/Members/MembersCreate/Content";
 
-function MembersDetailScreen({route}) {
-    const { data } = route.params;
+function MembersCreateScreen() {
+
     return (
         <View style={styles.rootContainer}>
             <View style={styles.header}>
                 <Header/>
             </View>
-            <Content data={data}/>
+            <Content/>
         </View>
     )
 }
 
-export default MembersDetailScreen;
+export default MembersCreateScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {

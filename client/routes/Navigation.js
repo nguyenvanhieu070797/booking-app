@@ -6,14 +6,21 @@ import {useSelector} from 'react-redux';
 import Colors from "../constants/colors";
 
 // Screens
-import WelcomeScreen from "../screens/WelcomeScreen";
 import NavigatorBottom from "./NavigatorBottom";
+import WelcomeScreen from "../screens/WelcomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
+
+// Screen ScanQR
 import ScanQRScreen from "../screens/ScanQRScreen";
 import ScanQRLineScreen from "../screens/ScanQRLineScreen";
+
+// Screen Member
 import MembersScreen from "../screens/Members/MembersScreen";
 import MembersDetailScreen from "../screens/Members/MembersDetailScreen";
+import MembersCreateScreen from "../screens/Members/MembersCreateScreen";
+
+// Screen Device
 import DevicesScreen from "../screens/Devices/DevicesScreen";
 import DevicesDetailScreen from "../screens/Devices/DevicesDetailScreen";
 import DevicesEditScreen from "../screens/Devices/DevicesEditScreen";
@@ -77,6 +84,14 @@ function AuthenticatedStack() {
                 }
             },
             {
+                name: "MembersCreateScreen",
+                component: MembersCreateScreen,
+                options: {
+                    title: 'Thông tin thiết bị',
+                    headerShown: false
+                }
+            },
+            {
                 name: "DevicesScreen",
                 component: DevicesScreen,
                 options: {
@@ -99,7 +114,8 @@ function AuthenticatedStack() {
                     title: 'Thông tin thiết bị',
                     headerShown: false
                 }
-            }
+            },
+
         ]
     }
 }

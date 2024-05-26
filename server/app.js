@@ -86,7 +86,7 @@ sequelize
   // .sync({ force: true })
   .sync()
   .then(() => {
-    app.listen(3005);
+    app.listen(3000);
   }).catch(err => {
     console.log(err);
   });

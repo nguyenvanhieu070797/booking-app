@@ -2,7 +2,7 @@ import axios from 'axios'
 import {authenticate} from "./auth";
 
 export async function User() {
-    const url = `http://192.168.2.14:3005/admin/user`;
+    const url = `http://192.168.147.81:3000/admin/user`;
     return axios.get(url).then(result => {
         return result.data;
     }).catch(err => console.log(err));

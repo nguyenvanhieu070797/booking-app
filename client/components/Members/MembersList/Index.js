@@ -4,12 +4,14 @@ import SidebarMenu from "./SidebarMenu";
 import Header from "./Header";
 import ListItem from "./ListItem/Index";
 import Colors from "../../../constants/colors";
+import {useNavigation} from "@react-navigation/native";
 
 // Get list user
 import {getUsers} from "../../../util/users";
 import ViewDropdown from "./ViewDropdown";
 
 function MembersList() {
+    const navigation = useNavigation();
     const showSidebar = false;
     const [idDepartment, setIdDepartment] = useState(null);
     const [isFetchUser, setIsFetchUser] = useState(true);
@@ -27,17 +29,26 @@ function MembersList() {
     }
 
     function dropdownMenuHandler(data) {
-        console.log({data});
+        const action  = data.action || "";
+        switch (action) {
+            case "addMember":
+                navigation.navigate("MembersCreateScreen");
+                break;
+        }
+
         setShowDropdown(false);
     }
 
     useEffect(() => {
         if(isFetchUser) {
             getUsers().then(result => {
-                console.log(result.data);
-                setUsers(result.data)
-            });
-            setIsFetchUser(false)
+                setIsFetchUser(false)
+                return result.data;
+            }).then((data) => {
+                setUsers(data)
+            }).catch((err) => {
+                console.log({err});
+            })
         }
     }, [isFetchUser]);
 
@@ -52,10 +63,11 @@ function MembersList() {
                 size: 20,
             },
             text: "Thêm thành viên",
+            action: "addMember"
         },
     ];
 
-    console.log({users});
+    console.log("MembersList");
 
     return (
         <View style={styles.rootContainer}>

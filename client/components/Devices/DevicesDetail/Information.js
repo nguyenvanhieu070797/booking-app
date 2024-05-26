@@ -1,80 +1,79 @@
-import {StyleSheet, View, Text, Image} from "react-native"
+import {StyleSheet, View, Text} from "react-native"
 import Card from "../../UI/Card";
 import Colors from "../../../constants/colors";
 
-function Information({data}) {
-    return <Card style={styles.card}>
-        <View style={styles.imageDeviceContainer}>
-            <Image
-                source={
-                    require("../../../assets/icon.png")
-                }
-                style={styles.imageDevice}
-            />
-        </View>
-        <View style={[styles.container, styles.containerTop]}>
-            <View style={styles.containerLeft}>
-                <Text style={styles.textLeft}>
-                    Tên
-                </Text>
+function DevicesInformation() {
+
+    return <View>
+        <Text style={styles.title}>
+            Thong tin
+        </Text>
+        <Card style={styles.card}>
+            <View style={styles.container}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Ten san pham
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        May tinh
+                    </Text>
+                </View>
             </View>
-            <View style={styles.containerRight}>
-                <Text style={styles.textRight}>
-                    {data.user_name.toUpperCase()}
-                </Text>
+            <View style={styles.line}/>
+
+            <View style={styles.container}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Ma thiet bi
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        VNVM1008
+                    </Text>
+                </View>
             </View>
-        </View>
-        <View style={styles.line}/>
-        <View style={styles.container}>
-            <View style={styles.containerLeft}>
-                <Text style={styles.textLeft}>
-                    Email
-                </Text>
+            <View style={styles.line}/>
+
+            <View style={styles.container}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Ngay cap nhap
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        27/04/2024
+                    </Text>
+                </View>
             </View>
-            <View style={styles.containerRight}>
-                <Text style={styles.textRight}>
-                    {data.email}
-                </Text>
+            <View style={styles.line}/>
+
+            <View style={styles.container}>
+                <View style={styles.containerLeft}>
+                    <Text style={styles.textLeft}>
+                        Nguoi cap nhap
+                    </Text>
+                </View>
+                <View style={styles.containerRight}>
+                    <Text style={styles.textRight}>
+                        Nguyen Van Hieu
+                    </Text>
+                </View>
             </View>
-        </View>
-        <View style={styles.line}/>
-        <View style={styles.container}>
-            <View style={styles.containerLeft}>
-                <Text style={styles.textLeft}>
-                    Giới thiệu
-                </Text>
-            </View>
-            <View style={styles.containerRight}>
-                <Text style={styles.textRight}>
-                    {data.description}
-                </Text>
-            </View>
-        </View>
-    </Card>
+        </Card>
+    </View>
 }
 
-export default Information;
+export default DevicesInformation;
+
 
 const styles = StyleSheet.create({
     card: {
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
-        position: "relative",
-        marginTop: 55,
-    },
-    imageDeviceContainer: {
-        position: "absolute",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        width: "100%",
-    },
-    imageDevice: {
-        width: 120,
-        height: 120,
-        borderRadius: 100,
-        bottom: 55,
-        left: 16,
     },
     line: {
         marginVertical: 8,
@@ -85,14 +84,11 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
     },
-    containerTop: {
-        marginTop: 60,
-    },
     containerLeft: {
         flex: 1,
     },
     containerRight: {
-        flex: 3,
+        flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
     },
@@ -112,5 +108,5 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: Colors.darkPrimary,
         fontFamily: 'open-sans-bold',
-    },
+    }
 })

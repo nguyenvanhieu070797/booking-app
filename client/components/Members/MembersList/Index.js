@@ -47,7 +47,6 @@ function MembersList() {
                 break;
         }
     }
-
     useEffect(() => {
         if(isFetchUsers || isFocused) {
             getUsers().then(result => {

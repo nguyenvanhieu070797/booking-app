@@ -24,3 +24,8 @@ export function  getUsers() {
 export function createUsers(data) {
     return postData("create", data);
 }
+
+export function updateUsers(data) {
+    const {user_id} = data;
+    return postData(`update/${user_id}`, data);
+}

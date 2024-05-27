@@ -65,7 +65,7 @@ exports.postEditUser = (req, res, next) => {
         })
         .then(result => {
             res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({data: result}, null, 3)).status(200);
+            res.end(JSON.stringify({data: result, status: 200}, null, 3)).status(200);
         })
         .catch(err => console.log(err));
 };

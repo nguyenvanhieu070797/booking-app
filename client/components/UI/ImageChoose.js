@@ -53,6 +53,7 @@ function ImageChoose({title = "take image", style = {}, onTakenImage}) {
         }
 
         const image = await launchImageLibraryAsync({
+            base64: true,
             allowsEditing: true,
             aspect: [4, 4],
             quality: 1,

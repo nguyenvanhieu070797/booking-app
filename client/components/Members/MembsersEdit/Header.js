@@ -10,7 +10,6 @@ function Header() {
         navigation.goBack();
     }
 
-
     return (
         <View style={[styles.rootContainer]}>
             <View style={styles.containerLeft}>
@@ -46,40 +45,11 @@ const styles = StyleSheet.create({
         width: 40,
         borderRadius: 100,
     },
-    containerRight: {
-        flex: 1,
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
-        paddingRight: 10,
-
-    },
-    search: {
-        padding: 15,
-        borderRadius: 20,
-        backgroundColor: Colors.green500,
-    },
-    inSearch: {
-        container: {
-            marginVertical: 0,
-            width: "100%",
-        },
-        input: {
-            paddingHorizontal: 15,
-            height: 34,
-        },
-        icon: {
-            color: Colors.grey300,
-            size: 24,
-        },
-        iconContainer: {
-            marginTop: 5,
-        }
-    },
     icon: {
         borderRadius: 100,
         padding: 5,
         marginHorizontal: 0,
         marginVertical: 0,
         backgroundColor: Colors.greyOpacity25,
-    }
+    },
 });

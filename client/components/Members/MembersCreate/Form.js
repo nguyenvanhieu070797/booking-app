@@ -7,21 +7,24 @@ import ImageChoose from "../../UI/ImageChoose";
 import ImagePicker from "../../UI/ImagePicker";
 import SecondaryButton from "../../UI/SecondaryButton";
 import PrimaryButton from "../../UI/PrimaryButton";
+import {useNavigation} from "@react-navigation/native";
 
-const initState = {
-    formData: {
-        user_name: 'Nguyen Van Hieu',
-        password: '11111111',
-        email: 'n-hieu@cyllenge.com',
-        description: 'n-hieu@cyllenge.com',
-        image: '',
-    },
-    modalVisible: false,
-}
+const formData = {
+    user_name: "",
+    password: "",
+    email: "",
+    description: "",
+    image: "",
+};
 
 function Form({onSubmit}) {
-    const [state, setState] = useState(initState);
-    const {modalVisible} = state;
+    const navigation = useNavigation();
+    const [state, setState] = useState({
+        formData: JSON.parse(JSON.stringify(formData)),
+        modalVisible: false,
+        isChanged: [],
+    });
+    const {modalVisible, isChanged} = state;
     const {user_name: userName, password, email, description, image} = state.formData;
     const {userNameIsInvalid, passwordIsInvalid, emailIsInvalid} = checkErrorInputHandler(state.formData);
     const isValidForm = userNameIsInvalid || passwordIsInvalid || emailIsInvalid;
@@ -31,6 +34,13 @@ function Form({onSubmit}) {
      */
     function chooseImageHandler() {
         setState({...state, modalVisible: !state["modalVisible"]});
+    }
+
+    /**
+     *
+     */
+    function goBackHandler() {
+        navigation.goBack();
     }
 
     /**
@@ -57,6 +67,9 @@ function Form({onSubmit}) {
                 case 'description':
                     currentState["formData"]["description"] = enteredValue;
                     break;
+            }
+            if (!currentState["isChanged"].includes(inputType)) {
+                currentState["isChanged"].push(inputType);
             }
             return {...currentState}
         })
@@ -103,8 +116,17 @@ function Form({onSubmit}) {
         if (isValidForm) {
             Alert.alert("Giá trị nhập không hợp lệ");
         } else {
-            setState({...initState});
-            onSubmit(state.formData);
+            onSubmit(state.formData).then(result => {
+                if (result) {
+                    Alert.alert(
+                        "Thành công",
+                        "Đăng ký thành công",
+                        [{text: 'Đồng ý', style: 'destructive', onPress: goBackHandler }]
+                    )
+                } else {
+                    Alert.alert("Đăng ký thất bại");
+                }
+            });
         }
     }
 
@@ -131,7 +153,7 @@ function Form({onSubmit}) {
                         <InputCustomLabel
                             label="Nhap ten"
                             value={userName}
-                            isInvalid={userNameIsInvalid}
+                            isInvalid={isChanged.includes("userName") && userNameIsInvalid}
                             name="userName"
                             onChange={updateInputValueHandler}
                         />
@@ -143,7 +165,7 @@ function Form({onSubmit}) {
                         <InputCustomLabel
                             label="Email"
                             value={email}
-                            isInvalid={emailIsInvalid}
+                            isInvalid={isChanged.includes("email") && emailIsInvalid}
                             name="email"
                             onChange={updateInputValueHandler}
                         />
@@ -155,7 +177,7 @@ function Form({onSubmit}) {
                         <InputCustomLabel
                             label="Nhap mat khau"
                             value={password}
-                            isInvalid={passwordIsInvalid}
+                            isInvalid={isChanged.includes("password") && passwordIsInvalid}
                             name="password"
                             onChange={updateInputValueHandler}
                         />
@@ -178,7 +200,7 @@ function Form({onSubmit}) {
                 style={styles.buttonPrimary}
                 disabled={isValidForm}
                 onPress={submitDataHandler}>
-                Thêm người dùng
+                Thêm
             </PrimaryButton>
 
             <Modal

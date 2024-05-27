@@ -38,20 +38,23 @@ function MembersList() {
 
     function dropdownMenuHandler(data) {
         const action  = data.action || "";
-        setState(currentState => {
-            return {...currentState, showDropdown: !showDropdown};
-        });
         switch (action) {
             case "addMember":
                 navigation.navigate("MembersCreateScreen");
                 break;
         }
     }
+
     useEffect(() => {
         if(isFetchUsers || isFocused) {
             getUsers().then(result => {
                 setState(currentState => {
-                    return {...currentState, users: result.data, isFetchUsers: false};
+                    return {
+                        ...currentState,
+                        users: result?.data || [],
+                        isFetchUsers: false,
+                        showDropdown: false,
+                    };
                 });
             }).catch((err) => {
                 console.log({err});

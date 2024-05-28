@@ -4,13 +4,27 @@ const departmentController = require('../controllers/admin/department');
 const userDepartmentController = require('../controllers/admin/user-department');
 const Tesseract = require("tesseract.js");
 const path = require("path");
+const multer = require('multer');
 
 const router = express.Router();
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    },
+
+})
+
+const upload = multer({storage: storage});
 
 // /admin/users
 router.get('/user', userController.getUsers);
 router.get('/user/:user_id', userController.getUser);
-router.post('/user/create', userController.postAddUser);
+router.post('/user/create', upload.single('image'), userController.postAddUser);
 router.post('/user/update/:user_id', userController.postEditUser);
 router.post('/user/delete', userController.postDeleteUser);
 

@@ -7,10 +7,15 @@ import {createUsers} from "../../../util/users";
 function Content() {
 
     function submitHandler(data) {
-        return createUsers(data).then(({status}) => {
+        let formData = new FormData();
+        const headers =  {  'Content-Type': 'multipart/form-data', };
+        Object.keys(data).forEach((key) => {
+            formData.append(key, data[key]);
+        });
+
+        return createUsers(formData, headers).then(({status}) => {
             return status === 200;
         }).catch(err => {
-            console.log({err});
             return false;
         })
     }

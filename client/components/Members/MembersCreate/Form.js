@@ -61,7 +61,12 @@ function Form({onSubmit}) {
                     currentState["formData"]["email"] = enteredValue;
                     break;
                 case 'image':
-                    currentState["formData"]["image"] = enteredValue;
+                    const fileName = enteredValue.uri.split('/').pop();
+                    currentState["formData"]["image"] = {
+                        uri: enteredValue.uri,
+                        type: enteredValue.mimeType,
+                        name: fileName,
+                    };
                     currentState["modalVisible"] = false;
                     break;
                 case 'description':
@@ -137,7 +142,7 @@ function Form({onSubmit}) {
                     <Pressable onPress={chooseImageHandler}>
                         {
                             image ? <Image
-                                source={{uri: image}}
+                                source={{uri: image.uri}}
                                 style={styles.imageDevice}
                             /> : <Image
                                 source={

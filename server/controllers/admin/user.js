@@ -29,13 +29,13 @@ exports.postAddUser = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     const description = req.body.description;
-    const image = req.body.image;
+    // const image = req.body.image;
     User.create({
         user_name: username,
         email: email,
         password: password,
         description: description,
-        image: image
+        // image: image
     }).then((user ) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({

@@ -47,14 +47,13 @@ export default function CameraScanQRLine() {
     };
 
     const performOCR = (file) => {
-        let myHeaders = new Headers();
         // myHeaders.append(
         //     "apikey",
         //
         //     // ADDD YOUR API KEY HERE
         //     "FEmvQr5uj99ZUvk3essuYb6P5lLLBS20"
         // );
-
+        let myHeaders = new Headers();
         myHeaders.append(
             "Content-Type",
             "multipart/form-data"

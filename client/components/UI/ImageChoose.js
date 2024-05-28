@@ -53,7 +53,6 @@ function ImageChoose({title = "take image", style = {}, onTakenImage}) {
         }
 
         const image = await launchImageLibraryAsync({
-            base64: true,
             allowsEditing: true,
             aspect: [4, 4],
             quality: 1,
@@ -61,7 +60,7 @@ function ImageChoose({title = "take image", style = {}, onTakenImage}) {
         });
 
         if(!image.canceled) {
-            onTakenImage(!image.canceled ? image?.assets?.[0].uri || "" : "");
+            onTakenImage(!image.canceled ? image?.assets?.[0] || {} : {});
         }
     }
 

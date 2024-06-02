@@ -1,55 +1,34 @@
-import {useState} from "react";
-import {View, StyleSheet} from "react-native";
+import {useEffect, useState} from "react";
+import {View, StyleSheet, Alert} from "react-native";
 import SidebarMenu from "./SidebarMenu";
 import Header from "./Header";
 import ListItem from "./ListItem/Index";
 import Colors from "../../../constants/colors";
+import {useNavigation} from "@react-navigation/native";
+import { useIsFocused } from '@react-navigation/core';
+
+// Get list department
+import {getDepartment} from "../../../util/departments";
 import MenuDropdown from "./MenuDropdown";
 
 const initState = {
     idDepartment: null,
-    isFetchUsers: true,
-    users: [],
+    isFetchDepartments: true,
+    departments: [],
     showDropdown: false,
 }
 
-function DepartmentsList() {
+function MembersList() {
+    const showSidebar = false;
+    const isFocused = useIsFocused();
+    const navigation = useNavigation();
     const [state, setState] = useState(initState);
-    const {showDropdown, idDepartment} = state;
-
+    const {showDropdown, departments, isFetchDepartments, idDepartment} = state;
     function categoriesActiveHandler(item) {
         setState(currentState => {
-            return {...currentState, idDepartment: item.id};
+            return {...currentState, idDepartment: item.id, isFetchDepartments: true};
         });
     }
-
-    const Users = [
-        {
-            user_id: 0,
-            user_name: "Nguyen Van Hieu",
-            mail: "n-hieu@cyllenge.com",
-            num_of_use: 10,
-        },
-        {
-            user_id: 1,
-            user_name: "Tran Van Tan",
-            mail: "n-hieu@cyllenge.com",
-            num_of_use: 10,
-        },
-        {
-            user_id: 2,
-            user_name: "Bui Van Dung",
-            mail: "n-hieu@cyllenge.com",
-            num_of_use: 10,
-        },
-        {
-            user_id: 3,
-            user_name: "Tran Duc Lam",
-            mail: "n-hieu@cyllenge.com",
-            num_of_use: 10,
-        },
-    ];
-
 
     function dropdownMenuHandler() {
         setState(currentState => {
@@ -65,6 +44,24 @@ function DepartmentsList() {
                 break;
         }
     }
+
+    useEffect(() => {
+        if(isFetchDepartments || isFocused) {
+            getDepartment().then(result => {
+                setState(currentState => {
+                    return {
+                        ...currentState,
+                        departments: result?.data || [],
+                        isFetchDepartments: false,
+                        showDropdown: false,
+                    };
+                });
+            }).catch((err) => {
+                console.log({err});
+            })
+        }
+    }, [isFocused, isFetchDepartments]);
+
 
     const dropdownMenu = [
         {
@@ -83,24 +80,26 @@ function DepartmentsList() {
     return (
         <View style={styles.rootContainer}>
             <View style={styles.header}>
-                <Header dropdownMenu={dropdownMenuHandler}/>
-                <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>
+                <Header onShowDropdownMenu={dropdownMenuHandler}/>
+                {showSidebar && <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>}
             </View>
-            <ListItem data={Users}/>
+            <ListItem data={departments}/>
             <MenuDropdown data={dropdownMenu} show={showDropdown} onPress={onDropdownMenuHandler}/>
         </View>
     )
 }
 
-export default DepartmentsList;
+export default MembersList;
 
 const styles = StyleSheet.create({
     rootContainer: {
         flexDirection: "column",
         flex: 1,
+        position: "relative"
     },
     header: {
         backgroundColor: Colors.blue400,
         paddingTop: 42,
+        position: "relative"
     }
 });

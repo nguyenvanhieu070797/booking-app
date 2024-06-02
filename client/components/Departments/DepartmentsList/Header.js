@@ -1,11 +1,12 @@
 import { useState } from "react";
-import {View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet} from "react-native";
 import Colors from "../../../constants/colors";
 import {useNavigation} from "@react-navigation/native";
 import IconButton from "../../UI/IconButton";
 import InputSearch from "../../UI/InputSearch";
+import MenuDropdown from "./MenuDropdown";
 
-function Header({dropdownMenu}) {
+function Header({onShowDropdownMenu}) {
     const [search, setSearch] = useState("");
     const navigation = useNavigation();
 
@@ -28,13 +29,14 @@ function Header({dropdownMenu}) {
                     onPress={backScreenHandler}
                 />
             </View>
-            <View style={styles.containerRight}>
+            <View style={styles.containerSearch}>
                 <InputSearch
                     placeholder="Tìm kiếm"
                     onUpdateValue={updateInputValueHandler.bind(this)}
                     value={search}
                     style={styles.inSearch}
                 />
+
             </View>
             <View style={styles.containerDropdownMenu}>
                 <IconButton
@@ -43,7 +45,7 @@ function Header({dropdownMenu}) {
                     color={Colors.greyOpacity75}
                     size={24}
                     style={styles.iconDropdown}
-                    onPress={() => dropdownMenu()}
+                    onPress={() => onShowDropdownMenu()}
                 />
             </View>
         </View>
@@ -70,12 +72,9 @@ const styles = StyleSheet.create({
         width: 40,
         borderRadius: 100,
     },
-    containerRight: {
+    containerSearch: {
         flex: 1,
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
-        paddingRight: 10,
-
+        paddingRight: 6,
     },
     search: {
         padding: 15,

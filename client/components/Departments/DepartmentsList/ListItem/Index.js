@@ -12,10 +12,8 @@ import {useNavigation} from "@react-navigation/native";
 function ListItem({data}) {
     const navigation = useNavigation();
     function _onPress(item) {
-        console.log({item});
-        // navigation.navigate("DevicesDetailScreen", {data: item});
+        navigation.navigate("MembersDetailScreen", {data: item});
     }
-
     return (
         <SafeAreaView style={styles.rootContainer}>
             <FlatList

@@ -7,11 +7,8 @@ import React from "react";
 import Colors from "../../../../constants/colors";
 
 function ContentItem({item}) {
-    // const iconTitle = Icons(item.icons.title);
-    console.log(item);
     return (
         <View style={styles.rootContainer}>
-            {/*{iconTitle}*/}
             <Image
                 source={
                     require("../../../../assets/icon.png")
@@ -28,12 +25,7 @@ function ContentItem({item}) {
                         </View>
                         <View style={styles.itemMail}>
                             <Text style={styles.textInformation}>
-                                {item.mail}
-                            </Text>
-                        </View>
-                        <View style={styles.itemMail}>
-                            <Text style={styles.textInformation}>
-                               Su dung {item.num_of_use} thiet bi
+                                {item.email}
                             </Text>
                         </View>
                     </View>

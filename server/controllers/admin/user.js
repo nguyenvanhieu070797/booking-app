@@ -1,7 +1,12 @@
 const User = require('../../models/user');
 const Department = require('../../models/department');
 
-exports.getUsers = (req, res, next) => {
+/**
+ *
+ * @param req
+ * @param res
+ */
+exports.getUsers = (req, res) => {
     User.findAll({
         include: Department
     }).then(users => {
@@ -12,7 +17,12 @@ exports.getUsers = (req, res, next) => {
     });
 };
 
-exports.getUser = (req, res, next) => {
+/**
+ *
+ * @param req
+ * @param res
+ */
+exports.getUser = (req, res) => {
     const userId = req.params.user_id;
     User.findByPk(userId, {
         include: Department
@@ -24,7 +34,12 @@ exports.getUser = (req, res, next) => {
     });
 };
 
-exports.postAddUser = (req, res, next) => {
+/**
+ *
+ * @param req
+ * @param res
+ */
+exports.postAddUser = (req, res) => {
     const username = req.body.user_name;
     const email = req.body.email;
     const password = req.body.password;
@@ -36,7 +51,7 @@ exports.postAddUser = (req, res, next) => {
         password: password,
         description: description,
         // image: image
-    }).then((user ) => {
+    }).then((user) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({
             data: user,
@@ -47,7 +62,12 @@ exports.postAddUser = (req, res, next) => {
     });
 };
 
-exports.postEditUser = (req, res, next) => {
+/**
+ *
+ * @param req
+ * @param res
+ */
+exports.postEditUser = (req, res) => {
     const userId = req.params.user_id;
     const username = req.body.user_name;
     const email = req.body.email;
@@ -70,16 +90,21 @@ exports.postEditUser = (req, res, next) => {
         .catch(err => console.log(err));
 };
 
-exports.postDeleteUser = (req, res, next) => {
+/**
+ *
+ * @param req
+ * @param res
+ */
+exports.postDeleteUser = (req, res) => {
     const userId = req.body.user_id;
     User.findByPk(userId)
         .then(user => {
             return user.destroy();
         })
-        .then(result => {
+        .then(() => {
             console.log('DESTROYED PRODUCT');
             res.setHeader('Content-Type', 'application/json');
-            res.end().status(200);
+            res.end(JSON.stringify({status: 200}, null, 3)).status(200);
         })
         .catch(err => console.log(err));
 };

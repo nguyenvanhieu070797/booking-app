@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Colors from "../../constants/colors";
 
-function InputCustomLabel({label, value, name, onChange, isInvalid}) {
+function InputCustomLabel({label, value, name, onChange, isInvalid, secureTextEntry = false}) {
     const styleIsInvalid = isInvalid && styles.inputInvalid || {};
     return (
         <View style={{flex: 1}}>
@@ -19,6 +19,7 @@ function InputCustomLabel({label, value, name, onChange, isInvalid}) {
                 style={[styles.inputText, styleIsInvalid]}
                 isInvalid={isInvalid}
                 blurOnSubmit
+                secureTextEntry={secureTextEntry}
             />
         </View>
     )

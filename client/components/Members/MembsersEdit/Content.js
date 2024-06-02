@@ -2,19 +2,19 @@ import {StyleSheet, ScrollView, Alert} from 'react-native';
 
 // Form Login
 import Form from "./Form";
-import {updateUsers} from "../../../util/users";
+import {deleteUser, updateUsers} from "../../../util/users";
 import {useNavigation, useRoute} from "@react-navigation/native";
 
 function Content() {
     const navigation = useNavigation();
     const route = useRoute();
-    const {data} = route.params;
+    const {data, data: {user_id}} = route.params;
 
     function goBackHandler() {
         navigation.goBack()
     }
 
-    function submitHandler(data) {
+    function updateDataHandler(data) {
         updateUsers(data).then(({status}) => {
             if (status === 200) {
                 Alert.alert(
@@ -31,9 +31,23 @@ function Content() {
         })
     }
 
+    function deleteDataHandler() {
+        deleteUser({user_id}).then(({status}) => {
+            if (status === 200) {
+                goBackHandler();
+            }
+        }).catch(() => {
+            return false;
+        });
+    }
+
     return (
         <ScrollView style={styles.form}>
-            <Form onSubmit={submitHandler} data={data}/>
+            <Form
+                onUpdateData={updateDataHandler}
+                onDeleteData={deleteDataHandler}
+                data={data}
+            />
         </ScrollView>
     );
 }

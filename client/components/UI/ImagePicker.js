@@ -60,7 +60,7 @@ function ImageChoose({title = "take image", style = {}, onTakenImage}) {
         });
 
         if(!image.canceled) {
-            onTakenImage(!image.canceled ? image?.assets?.[0].uri || "" : "");
+            onTakenImage(!image.canceled ? image?.assets?.[0] || {} : {});
         }
     }
 

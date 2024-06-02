@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const http = "http://192.168.2.14:3000";
 
-export async function getList() {
+export async function getData() {
     const url = `${http}/admin/user`;
     return axios.get(url).then(result => {
         return result.data;
@@ -29,7 +29,7 @@ export async function postData(mode, data, headers = {}) {
 
 
 export function getUsers() {
-    return getList();
+    return getData();
 }
 
 export function createUsers(data, headers = {}) {
@@ -39,4 +39,8 @@ export function createUsers(data, headers = {}) {
 export function updateUsers(data) {
     const {user_id} = data;
     return postData(`update/${user_id}`, data);
+}
+
+export function deleteUser(data) {
+    return postData("delete", data);
 }

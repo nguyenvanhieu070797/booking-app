@@ -185,6 +185,7 @@ function Form({onSubmit}) {
                             isInvalid={isChanged.includes("password") && passwordIsInvalid}
                             name="password"
                             onChange={updateInputValueHandler}
+                            secureTextEntry={true}
                         />
                     </View>
                 </View>

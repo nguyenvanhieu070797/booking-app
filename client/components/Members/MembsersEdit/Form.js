@@ -1,27 +1,27 @@
-import React, {useEffect, useState,} from 'react';
-import {View, Pressable, StyleSheet, Image, Modal, Alert} from 'react-native';
+import React, { useState } from 'react';
+import {View, Pressable, StyleSheet, Image, Alert} from 'react-native';
 import Colors from "../../../constants/colors";
 import Card from "../../UI/Card";
 import InputCustomLabel from "../../UI/InputCustomLabel";
-import ImageChoose from "../../UI/ImageChoose";
-import ImagePicker from "../../UI/ImagePicker";
-import SecondaryButton from "../../UI/SecondaryButton";
 import PrimaryButton from "../../UI/PrimaryButton";
+import DangerButton from "../../UI/DangerButton";
+import TakeImageModal from "./Modal/TakeImageModal";
 
-function Form({onSubmit, data}) {
+function Form({onUpdateData, onDeleteData, data}) {
     const [state, setState] = useState({
         formData: data,
         modalVisible: false,
+        imageUri: data?.image || "",
     });
-    const {modalVisible} = state;
-    const {user_name: userName, password, email, description, image} = state.formData;
+    const {modalVisible, imageUri} = state;
+    const {user_name: userName, password, email, description} = state.formData;
     const {userNameIsInvalid, passwordIsInvalid, emailIsInvalid} = checkErrorInputHandler(state.formData);
     const isValidForm = userNameIsInvalid || passwordIsInvalid || emailIsInvalid;
 
     /**
      * Show modal image
      */
-    function chooseImageHandler() {
+    function takeImageHandler() {
         setState({...state, modalVisible: !state["modalVisible"]});
     }
 
@@ -44,6 +44,7 @@ function Form({onSubmit, data}) {
                     break;
                 case 'image':
                     currentState["formData"]["image"] = enteredValue;
+                    currentState["imageUri"] = enteredValue?.uri || "";
                     currentState["modalVisible"] = false;
                     break;
                 case 'description':
@@ -89,24 +90,45 @@ function Form({onSubmit, data}) {
     }
 
     /**
-     * Handle submit data
+     * Handle update data
      */
-    function submitDataHandler() {
+    function updateDataHandler() {
         if (isValidForm) {
             Alert.alert("Giá trị nhập không hợp lệ");
         } else {
-            onSubmit(state.formData);
+            onUpdateData(state.formData);
         }
+    }
+
+    /**
+     * Handler delete data
+     */
+    function deleteDataHandler() {
+        Alert.alert(
+            "Xóa",
+            "Bạn có chắc muốn xóa?",
+            [
+                {
+                    text: 'Đồng ý',
+                    style: 'destructive',
+                    onPress: () => onDeleteData()
+                },
+                {
+                    text: 'Hủy',
+                    style: 'cancel'
+                }
+            ]
+        );
     }
 
     return (
         <View style={styles.rootContainer}>
             <Card style={styles.card}>
                 <View style={styles.imageDeviceContainer}>
-                    <Pressable onPress={chooseImageHandler}>
+                    <Pressable onPress={takeImageHandler}>
                         {
-                            image ? <Image
-                                source={{uri: image}}
+                            imageUri ? <Image
+                                source={{uri: imageUri}}
                                 style={styles.imageDevice}
                             /> : <Image
                                 source={
@@ -148,6 +170,7 @@ function Form({onSubmit, data}) {
                             value={password}
                             isInvalid={passwordIsInvalid}
                             name="password"
+                            secureTextEntry={true}
                             onChange={updateInputValueHandler}
                         />
                     </View>
@@ -165,35 +188,23 @@ function Form({onSubmit, data}) {
                 </View>
             </Card>
 
-            <PrimaryButton
-                style={styles.buttonPrimary}
-                disabled={isValidForm}
-                onPress={submitDataHandler}>
-                Cập nhập
-            </PrimaryButton>
+            <View style={styles.containerAction}>
+                <PrimaryButton
+                    style={styles.buttonPrimary}
+                    disabled={isValidForm}
+                    onPress={updateDataHandler}>
+                    Cập nhập
+                </PrimaryButton>
 
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => chooseImageHandler()}
-            >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <ImageChoose
-                            title={"Chọn hình ảnh"}
-                            style={styles.buttonChooseImage}
-                            onTakenImage={updateInputValueHandler.bind(this, "image")}/>
-                        <ImagePicker
-                            title={"Chụp hình"}
-                            style={styles.buttonChooseImage}
-                            onTakenImage={updateInputValueHandler.bind(this, "image")}/>
-                        <SecondaryButton style={styles.buttonCancelChooseImage} onPress={chooseImageHandler}>
-                            Hủy
-                        </SecondaryButton>
-                    </View>
-                </View>
-            </Modal>
+                <DangerButton
+                    style={styles.buttonDanger}
+                    disabled={isValidForm}
+                    onPress={deleteDataHandler}>
+                    Xóa
+                </DangerButton>
+            </View>
+
+            <TakeImageModal show={modalVisible} onClose={takeImageHandler} onPress={updateInputValueHandler} />
         </View>
     );
 }
@@ -272,63 +283,33 @@ const styles = StyleSheet.create({
         zIndex: 3,
     },
 
-    // Modal
-    centeredView: {
+    // Action
+    containerAction: {
+        flexDirection: "row",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
-    modalView: {
-        width: "80%",
-        margin: 20,
-        backgroundColor: 'white',
-        borderRadius: 5,
-        paddingVertical: 20,
-        alignItems: 'center',
-        shadowColor: Colors.grey500,
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5,
-        elevation: 5,
-    },
-
-    // Select Image
-    buttonChooseImage: {
-        container: {
-            borderRadius: 5,
-            width: "90%",
-            marginVertical: 5,
-        },
-        text: {
-            fontFamily: 'open-sans-bold',
-        },
-        pressed: {
-            paddingVertical: 10,
-            elevation: 2,
-        }
-    },
-
-    buttonCancelChooseImage: {
-        container: {
-            borderRadius: 5,
-            width: "90%",
-            marginVertical: 5,
-        },
-        text: {
-            fontFamily: 'open-sans-bold',
-        },
-        pressed: {
-            paddingVertical: 10,
-            elevation: 2,
-        }
-    },
-
-    // Button Submit
+    // Button Edit
     buttonPrimary: {
         container: {
+            flex: 1,
+            marginTop: 10,
+            marginHorizontal: 12,
+            borderRadius: 5,
+            justifyContent: "center",
+        },
+        text: {
+            fontFamily: 'open-sans-bold',
+        },
+        pressed: {
+            paddingVertical: 10,
+            elevation: 2,
+        }
+    },
+
+    // Button Delete
+    buttonDanger: {
+        container: {
+            flex: 1,
             marginTop: 10,
             marginHorizontal: 12,
             borderRadius: 5,

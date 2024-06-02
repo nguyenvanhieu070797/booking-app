@@ -9,7 +9,7 @@ import { useIsFocused } from '@react-navigation/core';
 
 // Get list user
 import {getUsers} from "../../../util/users";
-import ViewDropdown from "./ViewDropdown";
+import MenuDropdown from "./MenuDropdown";
 
 const initState = {
     idDepartment: null,
@@ -30,13 +30,13 @@ function MembersList() {
         });
     }
 
-    function onShowDropdownMenuHandler() {
+    function dropdownMenuHandler() {
         setState(currentState => {
             return {...currentState, showDropdown: !showDropdown};
         });
     }
 
-    function dropdownMenuHandler(data) {
+    function onDropdownMenuHandler(data) {
         const action  = data.action || "";
         switch (action) {
             case "addMember":
@@ -80,11 +80,11 @@ function MembersList() {
     return (
         <View style={styles.rootContainer}>
             <View style={styles.header}>
-                <Header onShowDropdownMenu={onShowDropdownMenuHandler}/>
+                <Header onShowDropdownMenu={dropdownMenuHandler}/>
                 {showSidebar && <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>}
             </View>
             <ListItem data={users}/>
-            <ViewDropdown data={dropdownMenu} show={showDropdown} onPress={dropdownMenuHandler}/>
+            <MenuDropdown data={dropdownMenu} show={showDropdown} onPress={onDropdownMenuHandler}/>
         </View>
     )
 }

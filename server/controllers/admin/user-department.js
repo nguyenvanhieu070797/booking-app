@@ -1,6 +1,6 @@
 const UserDepartment = require('../../models/user-department');
 
-exports.getUserDepartment = (req, res, next) => {
+exports.getUserDepartment = (req, res) => {
     let where = {};
     const userId = req.body.user_id ?? "";
     const departmentId = req.body.department_id ?? "";
@@ -21,7 +21,7 @@ exports.getUserDepartment = (req, res, next) => {
     });
 };
 
-exports.postAddUserDepartment = (req, res, next) => {
+exports.postAddUserDepartment = (req, res) => {
     const isEdit = req.body.edit;
     const isDelete = req.body.delete;
     const description = req.body.description;
@@ -41,7 +41,7 @@ exports.postAddUserDepartment = (req, res, next) => {
     });
 };
 
-exports.postEditUserDepartment = (req, res, next) => {
+exports.postEditUserDepartment = (req, res) => {
     const isEdit = req.body.edit;
     const isDelete = req.body.delete;
     const description = req.body.description;
@@ -63,7 +63,7 @@ exports.postEditUserDepartment = (req, res, next) => {
         .catch(err => console.log(err));
 };
 
-exports.postDeleteUserDepartment = (req, res, next) => {
+exports.postDeleteUserDepartment = (req, res) => {
     const userDepartmentId = req.body.user_department_id;
     UserDepartment.findByPk(userDepartmentId)
         .then(userDepartment => {

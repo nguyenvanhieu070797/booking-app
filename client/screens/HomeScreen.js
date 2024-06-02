@@ -23,7 +23,6 @@ function HomeScreen() {
         return "";
     }
 
-
     return (
         <BackgroundStart>
             <ScrollView

@@ -2,10 +2,17 @@ import {View, Text, StyleSheet} from "react-native"
 import Card from "../../UI/Card";
 import Colors from "../../../constants/colors";
 import IconButtonCell from "../../UI/IconButtonCell";
+import {useNavigation} from '@react-navigation/native'
 
 function Categories() {
-    function buttonCellHandler() {
+    const navigation = useNavigation();
 
+    function buttonCellHandler(action = "") {
+        switch (action) {
+            case "departments":
+                navigation.navigate("DepartmentsScreen");
+                break;
+        }
     }
 
     return <Card>
@@ -18,6 +25,18 @@ function Categories() {
         <View style={styles.categoriesContainer}>
             <View style={styles.buttonContainer}>
                 <IconButtonCell
+                    icon="team"
+                    iconBackground="transparent"
+                    color={Colors.purple500}
+                    size={24}
+                    onPress={() => buttonCellHandler("departments")}
+                    type="AntDesign"
+                >
+                    Phòng ban
+                </IconButtonCell>
+            </View>
+            <View style={styles.buttonContainer}>
+                <IconButtonCell
                     icon="inventory"
                     iconBackground="transparent"
                     color={Colors.pink500}
@@ -25,7 +44,7 @@ function Categories() {
                     onPress={buttonCellHandler}
                     type="MaterialIcons"
                 >
-                    Kiểm kê
+                    Phân loại
                 </IconButtonCell>
             </View>
             <View style={styles.buttonContainer}>
@@ -40,42 +59,7 @@ function Categories() {
                     Danh mục
                 </IconButtonCell>
             </View>
-            <View style={styles.buttonContainer}>
-                <IconButtonCell
-                    icon="product-hunt"
-                    iconBackground="transparent"
-                    color={Colors.lightBlue600}
-                    size={24}
-                    onPress={buttonCellHandler}
-                    type="FontAwesome"
-                >
-                    Sản phẩm
-                </IconButtonCell>
-            </View>
-            <View style={styles.buttonContainer}>
-                <IconButtonCell
-                    icon="team"
-                    iconBackground="transparent"
-                    color={Colors.purple500}
-                    size={24}
-                    onPress={buttonCellHandler}
-                    type="AntDesign"
-                >
-                    Thành viên
-                </IconButtonCell>
-            </View>
-            <View style={styles.buttonContainer}>
-                <IconButtonCell
-                    icon="rule"
-                    iconBackground="transparent"
-                    color={Colors.lightBlue600}
-                    size={24}
-                    onPress={buttonCellHandler}
-                    type="MaterialIcons"
-                >
-                    Quy định SKU
-                </IconButtonCell>
-            </View>
+
             <View style={styles.buttonContainer}>
                 <IconButtonCell
                     icon="devices"

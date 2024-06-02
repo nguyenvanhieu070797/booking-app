@@ -25,6 +25,9 @@ import DevicesScreen from "../screens/Devices/DevicesScreen";
 import DevicesDetailScreen from "../screens/Devices/DevicesDetailScreen";
 import DevicesEditScreen from "../screens/Devices/DevicesEditScreen";
 
+// Screen Department
+import DepartmentsScreen from "../screens/Departments/DepartmentsScreen"
+
 const Stack = createNativeStackNavigator();
 
 
@@ -45,6 +48,8 @@ function AuthenticatedStack() {
                     gestureEnabled: false,
                 }
             },
+
+            // Scanner
             {
                 name: "ScanQR",
                 component: ScanQRScreen,
@@ -67,6 +72,8 @@ function AuthenticatedStack() {
                     headerTintColor: Colors.lightPrimary,
                 }
             },
+
+            // Member
             {
                 name: "MembersScreen",
                 component: MembersScreen,
@@ -91,6 +98,8 @@ function AuthenticatedStack() {
                     headerShown: false
                 }
             },
+
+            // Device
             {
                 name: "DevicesScreen",
                 component: DevicesScreen,
@@ -112,6 +121,16 @@ function AuthenticatedStack() {
                 component: DevicesEditScreen,
                 options: {
                     title: 'Thông tin thiết bị',
+                    headerShown: false
+                }
+            },
+
+            // Department
+            {
+                name: "DepartmentsScreen",
+                component: DepartmentsScreen,
+                options: {
+                    title: 'Phòng ban',
                     headerShown: false
                 }
             },

@@ -79,8 +79,8 @@ Device.hasMany(DeviceImport, {
 })
 
 sequelize
-  .sync({ force: true })
-  // .sync()
+  // .sync({ force: true })
+  .sync()
   .then(() => {
     app.listen(3000);
   }).catch(err => {

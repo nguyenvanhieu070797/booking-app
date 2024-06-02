@@ -2,7 +2,7 @@ import React  from 'react';
 import { View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Icons from "../../../constants/icons";
 
-const ViewDropdown = ({show = true, data = [], onPress}) => {
+const MenuDropdown = ({show = true, data = [], onPress}) => {
     if (!show) {
         return;
     }
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ViewDropdown;
+export default MenuDropdown;

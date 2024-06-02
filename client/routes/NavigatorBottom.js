@@ -8,19 +8,12 @@ import ProfileScreen from '../screens/ProfileScreen'
 const Tab = createBottomTabNavigator();
 
 // UI
-import IconButton from '../components/UI/IconButton';
-import {Ionicons, FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons';
-
-// Redux
-import {removeToken} from "../store/redux/auth";
-import {useDispatch} from "react-redux";
+import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons';
 
 // Storage
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Dashboard from "../screens/Dashboard";
 
 function NavigationBottom() {
-    const dispatch = new useDispatch();
 
     return (
         <Tab.Navigator

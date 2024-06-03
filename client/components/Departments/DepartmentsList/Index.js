@@ -77,6 +77,8 @@ function MembersList() {
         },
     ];
 
+    console.log({departments});
+
     return (
         <View style={styles.rootContainer}>
             <View style={styles.header}>

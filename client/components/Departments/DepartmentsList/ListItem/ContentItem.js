@@ -20,12 +20,7 @@ function ContentItem({item}) {
                     <View style={styles.itemContent} key={Math.random().toString()}>
                         <View style={styles.itemTitle}>
                             <Text style={styles.textTitle}>
-                                {item.user_name.toUpperCase()}
-                            </Text>
-                        </View>
-                        <View style={styles.itemMail}>
-                            <Text style={styles.textInformation}>
-                                {item.email}
+                                {item?.department_name ? item.department_name.toUpperCase() : ""}
                             </Text>
                         </View>
                     </View>
@@ -81,11 +76,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         fontFamily: 'open-sans-bold',
-    },
-    itemMail: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        fontFamily: 'open-sans',
     },
     imageDevice: {
         width: 50,

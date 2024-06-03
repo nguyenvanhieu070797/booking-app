@@ -12,7 +12,7 @@ import {useNavigation} from "@react-navigation/native";
 function ListItem({data}) {
     const navigation = useNavigation();
     function _onPress(item) {
-        navigation.navigate("MembersDetailScreen", {data: item});
+        navigation.navigate("DepartmentsEditScreen", {data: item});
     }
     return (
         <SafeAreaView style={styles.rootContainer}>

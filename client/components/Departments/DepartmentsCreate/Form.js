@@ -159,7 +159,7 @@ function Form({onSubmit}) {
                 <View style={styles.container}>
                     <View style={styles.containerRight}>
                         <InputCustomLabel
-                            label="Email"
+                            label="Vị trí"
                             value={locate}
                             isInvalid={isChanged.includes("locate") && locateIsInvalid}
                             name="locate"

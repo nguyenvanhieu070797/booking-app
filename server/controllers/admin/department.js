@@ -25,18 +25,19 @@ exports.getDepartment = (req, res, next) => {
 };
 
 exports.postAddDepartment = (req, res, next) => {
-    const title = req.body.title;
+    const department_name = req.body.department_name;
     const locate = req.body.locate;
     const image = req.body.image;
-    const description = req.body.description
+    const description = req.body.description;
+    console.log(req.body);
     Department.create({
-        title,
+        department_name,
         locate,
         image,
         description
     }).then((department ) => {
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({data: department}, null, 3)).status(200);
+        res.end(JSON.stringify({data: department, status: 200}, null, 3)).status(200);
     }).catch(err => {
         console.log(err);
     });
@@ -44,13 +45,13 @@ exports.postAddDepartment = (req, res, next) => {
 
 exports.postEditDepartment = (req, res, next) => {
     const departmentId = req.params.department_id;
-    const title = req.body.title;
+    const department_name = req.body.department_name;
     const locate = req.body.locate;
     const image = req.body.image;
     const description = req.body.description
     Department.findByPk(departmentId)
         .then(department => {
-            department.title = title;
+            department.department_name = department_name;
             department.locate = locate;
             department.image = image;
             department.description = description;
@@ -58,7 +59,7 @@ exports.postEditDepartment = (req, res, next) => {
         })
         .then(result => {
             res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({data: result}, null, 3)).status(200);
+            res.end(JSON.stringify({data: result, status: 200}, null, 3)).status(200);
         })
         .catch(err => console.log(err));
 };
@@ -69,9 +70,9 @@ exports.postDeleteDepartment = (req, res, next) => {
         .then(department => {
             return department.destroy();
         })
-        .then(result => {
+        .then(() => {
             res.setHeader('Content-Type', 'application/json');
-            res.end().status(200);
+            res.end(JSON.stringify({status: 200}, null, 3)).status(200);
         })
         .catch(err => console.log(err));
 };

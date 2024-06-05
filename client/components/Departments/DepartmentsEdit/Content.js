@@ -45,11 +45,11 @@ function Content() {
 
     return (
         <ScrollView style={styles.form}>
-            {/*<Form*/}
-            {/*    onUpdateData={updateDataHandler}*/}
-            {/*    onDeleteData={deleteDataHandler}*/}
-            {/*    data={data}*/}
-            {/*/>*/}
+            <Form
+                onUpdateData={updateDataHandler}
+                onDeleteData={deleteDataHandler}
+                data={data}
+            />
         </ScrollView>
     );
 }

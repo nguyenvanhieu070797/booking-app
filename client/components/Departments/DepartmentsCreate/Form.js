@@ -10,9 +10,8 @@ import PrimaryButton from "../../UI/PrimaryButton";
 import {useNavigation} from "@react-navigation/native";
 
 const formData = {
-    user_name: "",
-    password: "",
-    email: "",
+    department_name: "",
+    locate: "",
     description: "",
     image: "",
 };
@@ -25,9 +24,9 @@ function Form({onSubmit}) {
         isChanged: [],
     });
     const {modalVisible, isChanged} = state;
-    const {user_name: userName, password, email, description, image} = state.formData;
-    const {userNameIsInvalid, passwordIsInvalid, emailIsInvalid} = checkErrorInputHandler(state.formData);
-    const isValidForm = userNameIsInvalid || passwordIsInvalid || emailIsInvalid;
+    const {department_name: departmentName, locate, description, image} = state.formData;
+    const {departmentNameIsInvalid, locateIsInvalid} = checkErrorInputHandler(state.formData);
+    const isValidForm = departmentNameIsInvalid || locateIsInvalid;
 
     /**
      * Show modal image
@@ -51,14 +50,11 @@ function Form({onSubmit}) {
     function updateInputValueHandler(inputType, enteredValue) {
         setState(currentState => {
             switch (inputType) {
-                case 'userName':
-                    currentState["formData"]["user_name"] = enteredValue;
+                case 'departmentName':
+                    currentState["formData"]["department_name"] = enteredValue;
                     break;
-                case 'password':
-                    currentState["formData"]["password"] = enteredValue;
-                    break;
-                case 'email':
-                    currentState["formData"]["email"] = enteredValue;
+                case 'locate':
+                    currentState["formData"]["locate"] = enteredValue;
                     break;
                 case 'image':
                     const fileName = enteredValue.uri.split('/').pop();
@@ -83,32 +79,27 @@ function Form({onSubmit}) {
     /**
      *
      * @param data
-     * @returns {{passwordIsInvalid: boolean, userNameIsInvalid: boolean, emailIsInvalid: boolean}}
+     * @returns {{passwordIsInvalid: boolean, departmentNameIsInvalid: boolean, locateIsInvalid: boolean}}
      */
     function checkErrorInputHandler(data) {
-        let {user_name: userName, password, email} = data;
+        let {department_name: departmentName, locate} = data;
         let inValid = {
-            userNameIsInvalid: false,
-            passwordIsInvalid: false,
-            emailIsInvalid: false,
+            departmentNameIsInvalid: false,
+            locateIsInvalid: false,
         };
-        userName = userName.trim();
-        password = password.trim();
-        email = email.trim();
+        departmentName = departmentName.trim();
+        locate = locate.trim();
 
-        const userNameIsValid = userName.length > 0;
-        const passwordIsValid = password.length > 6;
-        const emailIsIsValid = email.length > 0;
+        const departmentNameIsValid = departmentName.length > 0;
+        const locateIsIsValid = locate.length > 0;
 
         if (
-            !userNameIsValid ||
-            !passwordIsValid ||
-            !emailIsIsValid
+            !departmentNameIsValid ||
+            !locateIsIsValid
         ) {
             inValid = {
-                userNameIsInvalid: !userNameIsValid,
-                passwordIsInvalid: !passwordIsValid,
-                emailIsInvalid: !emailIsIsValid,
+                departmentNameIsInvalid: !departmentNameIsValid,
+                locateIsInvalid: !locateIsIsValid,
             }
         }
         return inValid;
@@ -157,9 +148,9 @@ function Form({onSubmit}) {
                     <View style={styles.containerRight}>
                         <InputCustomLabel
                             label="Nhap ten"
-                            value={userName}
-                            isInvalid={isChanged.includes("userName") && userNameIsInvalid}
-                            name="userName"
+                            value={departmentName}
+                            isInvalid={isChanged.includes("departmentName") && departmentNameIsInvalid}
+                            name="departmentName"
                             onChange={updateInputValueHandler}
                         />
                     </View>
@@ -169,23 +160,10 @@ function Form({onSubmit}) {
                     <View style={styles.containerRight}>
                         <InputCustomLabel
                             label="Email"
-                            value={email}
-                            isInvalid={isChanged.includes("email") && emailIsInvalid}
-                            name="email"
+                            value={locate}
+                            isInvalid={isChanged.includes("locate") && locateIsInvalid}
+                            name="locate"
                             onChange={updateInputValueHandler}
-                        />
-                    </View>
-                </View>
-
-                <View style={styles.container}>
-                    <View style={styles.containerRight}>
-                        <InputCustomLabel
-                            label="Nhap mat khau"
-                            value={password}
-                            isInvalid={isChanged.includes("password") && passwordIsInvalid}
-                            name="password"
-                            onChange={updateInputValueHandler}
-                            secureTextEntry={true}
                         />
                     </View>
                 </View>

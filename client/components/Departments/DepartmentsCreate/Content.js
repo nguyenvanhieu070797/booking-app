@@ -2,18 +2,12 @@ import {StyleSheet, ScrollView,} from 'react-native';
 
 // Form Login
 import Form from "./Form";
-import {createUsers} from "../../../util/users";
+import {createDepartment} from "../../../util/departments";
 
 function Content() {
 
     function submitHandler(data) {
-        let formData = new FormData();
-        const headers =  {  'Content-Type': 'multipart/form-data', };
-        Object.keys(data).forEach((key) => {
-            formData.append(key, data[key]);
-        });
-
-        return createUsers(formData, headers).then(({status}) => {
+        return createDepartment(data).then(({status}) => {
             return status === 200;
         }).catch(err => {
             return false;

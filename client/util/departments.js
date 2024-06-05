@@ -37,8 +37,8 @@ export function createDepartment(data, headers = {}) {
 }
 
 export function updateDepartment(data) {
-    const {user_id} = data;
-    return postData(`update/${user_id}`, data);
+    const {department_id} = data;
+    return postData(`update/${department_id}`, data);
 }
 
 export function deleteDepartment(data) {

@@ -28,6 +28,7 @@ import DevicesEditScreen from "../screens/Devices/DevicesEditScreen";
 // Screen Department
 import DepartmentsScreen from "../screens/Departments/DepartmentsScreen"
 import DepartmentsEditScreen from "../screens/Departments/DepartmentsEditScreen"
+import DepartmentsCreateScreen from "../screens/Departments/DepartmentsCreateScreen"
 
 const Stack = createNativeStackNavigator();
 
@@ -138,6 +139,13 @@ function AuthenticatedStack() {
             {
                 name: "DepartmentsEditScreen",
                 component: DepartmentsEditScreen,
+                options: {
+                    title: 'Phòng ban',
+                    headerShown: false
+                }
+            }, {
+                name: "DepartmentsCreateScreen",
+                component: DepartmentsCreateScreen,
                 options: {
                     title: 'Phòng ban',
                     headerShown: false

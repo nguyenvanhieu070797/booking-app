@@ -38,9 +38,10 @@ function MembersList() {
 
     function onDropdownMenuHandler(data) {
         const action  = data.action || "";
+        console.log({action});
         switch (action) {
             case "addDepartment":
-                navigation.navigate("MembersCreateScreen");
+                navigation.navigate("DepartmentsCreateScreen");
                 break;
         }
     }

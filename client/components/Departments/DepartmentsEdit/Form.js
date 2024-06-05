@@ -14,9 +14,9 @@ function Form({onUpdateData, onDeleteData, data}) {
         imageUri: data?.image || "",
     });
     const {modalVisible, imageUri} = state;
-    const {user_name: userName, password, email, description} = state.formData;
-    const {userNameIsInvalid, passwordIsInvalid, emailIsInvalid} = checkErrorInputHandler(state.formData);
-    const isValidForm = userNameIsInvalid || passwordIsInvalid || emailIsInvalid;
+    const {department_name: departmentName, locate, description} = state.formData;
+    const {departmentNameIsInvalid, locateIsInvalid} = checkErrorInputHandler(state.formData);
+    const isValidForm = departmentNameIsInvalid || locateIsInvalid;
 
     /**
      * Show modal image
@@ -33,14 +33,11 @@ function Form({onUpdateData, onDeleteData, data}) {
     function updateInputValueHandler(inputType, enteredValue) {
         setState(currentState => {
             switch (inputType) {
-                case 'userName':
-                    currentState["formData"]["user_name"] = enteredValue;
+                case 'departmentName':
+                    currentState["formData"]["department_name"] = enteredValue;
                     break;
-                case 'password':
-                    currentState["formData"]["password"] = enteredValue;
-                    break;
-                case 'email':
-                    currentState["formData"]["email"] = enteredValue;
+                case 'locate':
+                    currentState["formData"]["locate"] = enteredValue;
                     break;
                 case 'image':
                     currentState["formData"]["image"] = enteredValue;
@@ -61,29 +58,24 @@ function Form({onUpdateData, onDeleteData, data}) {
      * @returns {{passwordIsInvalid: boolean, userNameIsInvalid: boolean, emailIsInvalid: boolean}}
      */
     function checkErrorInputHandler(data) {
-        let {user_name: userName, password, email} = data;
+        let {department_name: departmentName, locate} = data;
         let inValid = {
-            userNameIsInvalid: false,
-            passwordIsInvalid: false,
-            emailIsInvalid: false,
+            departmentNameIsInvalid: false,
+            locate: false,
         };
-        userName = userName.trim();
-        password = password.trim();
-        email = email.trim();
+        departmentName = departmentName ? departmentName.trim() : "";
+        locate = locate ? locate.trim() : "";
 
-        const userNameIsValid = userName.length > 0;
-        const passwordIsValid = password.length > 6;
-        const emailIsIsValid = email.length > 0;
+        const departmentNameIsValid = departmentName.length > 0;
+        const locateIsValid = locate.length > 0;
 
         if (
-            !userNameIsValid ||
-            !passwordIsValid ||
-            !emailIsIsValid
+            !departmentNameIsValid ||
+            !locateIsValid
         ) {
             inValid = {
-                userNameIsInvalid: !userNameIsValid,
-                passwordIsInvalid: !passwordIsValid,
-                emailIsInvalid: !emailIsIsValid,
+                departmentNameIsInvalid: !departmentNameIsValid,
+                locateIsInvalid: !locateIsValid,
             }
         }
         return inValid;
@@ -142,10 +134,10 @@ function Form({onUpdateData, onDeleteData, data}) {
                 <View style={[styles.container, styles.containerTop]}>
                     <View style={styles.containerRight}>
                         <InputCustomLabel
-                            label="Nhap ten"
-                            value={userName}
-                            isInvalid={userNameIsInvalid}
-                            name="userName"
+                            label="Tên phòng ban"
+                            value={departmentName}
+                            isInvalid={departmentNameIsInvalid}
+                            name="departmentName"
                             onChange={updateInputValueHandler}
                         />
                     </View>
@@ -154,32 +146,20 @@ function Form({onUpdateData, onDeleteData, data}) {
                 <View style={styles.container}>
                     <View style={styles.containerRight}>
                         <InputCustomLabel
-                            label="Email"
-                            value={email}
-                            isInvalid={emailIsInvalid}
-                            name="email"
+                            label="locate"
+                            value={locate}
+                            isInvalid={locateIsInvalid}
+                            name="locate"
                             onChange={updateInputValueHandler}
                         />
                     </View>
                 </View>
 
-                <View style={styles.container}>
-                    <View style={styles.containerRight}>
-                        <InputCustomLabel
-                            label="Nhap mat khau"
-                            value={password}
-                            isInvalid={passwordIsInvalid}
-                            name="password"
-                            secureTextEntry={true}
-                            onChange={updateInputValueHandler}
-                        />
-                    </View>
-                </View>
 
                 <View style={styles.container}>
                     <View style={styles.containerRight}>
                         <InputCustomLabel
-                            label="Mo ta"
+                            label="Mô tả"
                             value={description}
                             name="description"
                             onChange={updateInputValueHandler}

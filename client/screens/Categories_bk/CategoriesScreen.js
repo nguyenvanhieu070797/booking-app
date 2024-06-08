@@ -1,6 +1,6 @@
 import MembersList from '../../components/Members/MembersList/Index';
-function CategoriesDevicesScreen() {
+function CategoriesScreen() {
     return <MembersList/>
 }
 
-export default CategoriesDevicesScreen;
+export default CategoriesScreen;

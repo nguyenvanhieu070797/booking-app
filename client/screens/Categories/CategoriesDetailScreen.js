@@ -1,9 +1,10 @@
+
 import {View, StyleSheet} from "react-native";
 import Header from "../../components/Members/MembsersEdit/Header";
 import Colors from "../../constants/colors";
 import Content from "../../components/Members/MembsersEdit/Content";
 
-function CategoriesDetailScreen({route}) {
+function CategoriesDevicesDetailScreen({route}) {
     const { data } = route.params;
     return (
         <View style={styles.rootContainer}>
@@ -15,7 +16,7 @@ function CategoriesDetailScreen({route}) {
     )
 }
 
-export default CategoriesDetailScreen;
+export default CategoriesDevicesDetailScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {

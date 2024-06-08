@@ -3,7 +3,7 @@ import Colors from "../../constants/colors";
 import Header from "../../components/Members/MembersCreate/Header";
 import Content from "../../components/Members/MembersCreate/Content";
 
-function CategoriesDevicesCreateScreen() {
+function CategoriesCreateScreen() {
 
     return (
         <View style={styles.rootContainer}>
@@ -15,7 +15,7 @@ function CategoriesDevicesCreateScreen() {
     )
 }
 
-export default CategoriesDevicesCreateScreen;
+export default CategoriesCreateScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {

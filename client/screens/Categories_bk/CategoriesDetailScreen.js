@@ -1,21 +1,21 @@
-import {View, Text, StyleSheet} from "react-native";
+import {View, StyleSheet} from "react-native";
+import Header from "../../components/Members/MembsersEdit/Header";
 import Colors from "../../constants/colors";
-import Header from "../../components/Members/MembersCreate/Header";
-import Content from "../../components/Members/MembersCreate/Content";
+import Content from "../../components/Members/MembsersEdit/Content";
 
-function CategoriesDevicesCreateScreen() {
-
+function CategoriesDetailScreen({route}) {
+    const { data } = route.params;
     return (
         <View style={styles.rootContainer}>
             <View style={styles.header}>
                 <Header/>
             </View>
-            <Content/>
+            <Content data={data}/>
         </View>
     )
 }
 
-export default CategoriesDevicesCreateScreen;
+export default CategoriesDetailScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {

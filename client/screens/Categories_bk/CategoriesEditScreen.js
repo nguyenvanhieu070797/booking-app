@@ -1,9 +1,9 @@
-import {View, Text, StyleSheet} from "react-native";
+import {View, StyleSheet} from "react-native";
+import Header from "../../components/Devices/DevicesEdit/Header";
 import Colors from "../../constants/colors";
-import Header from "../../components/Members/MembersCreate/Header";
-import Content from "../../components/Members/MembersCreate/Content";
+import Content from "../../components/Devices/DevicesEdit/Content";
 
-function CategoriesDevicesCreateScreen() {
+function DevicesEditScreen() {
 
     return (
         <View style={styles.rootContainer}>
@@ -15,7 +15,7 @@ function CategoriesDevicesCreateScreen() {
     )
 }
 
-export default CategoriesDevicesCreateScreen;
+export default DevicesEditScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {

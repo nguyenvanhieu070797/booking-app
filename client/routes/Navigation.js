@@ -30,6 +30,16 @@ import DepartmentsScreen from "../screens/Departments/DepartmentsScreen"
 import DepartmentsEditScreen from "../screens/Departments/DepartmentsEditScreen"
 import DepartmentsCreateScreen from "../screens/Departments/DepartmentsCreateScreen"
 
+// Screen Department
+import CategoriesScreen from "../screens/Categories/CategoriesScreen"
+import CategoriesEditScreen from "../screens/Categories/CategoriesEditScreen"
+import CategoriesCreateScreen from "../screens/Categories/CategoriesCreateScreen"
+
+// Screen Department Device
+import CategoriesDevicesScreen from "../screens/CategoriesDevices/CategoriesDevicesScreen"
+import CategoriesDevicesEditScreen from "../screens/CategoriesDevices/CategoriesDevicesEditScreen"
+import CategoriesDevicesCreateScreen from "../screens/CategoriesDevices/CategoriesDevicesCreateScreen"
+
 const Stack = createNativeStackNavigator();
 
 
@@ -152,6 +162,55 @@ function AuthenticatedStack() {
                 }
             },
 
+            // Category
+            {
+                name: "CategoriesScreen",
+                component: CategoriesScreen,
+                options: {
+                    title: 'Phòng ban',
+                    headerShown: false
+                }
+            },
+            {
+                name: "CategoriesEditScreen",
+                component: CategoriesEditScreen,
+                options: {
+                    title: 'Phòng ban',
+                    headerShown: false
+                }
+            }, {
+                name: "CategoriesCreateScreen",
+                component: CategoriesCreateScreen,
+                options: {
+                    title: 'Phòng ban',
+                    headerShown: false
+                }
+            },
+
+            // Category Device
+            {
+                name: "CategoriesDevicesScreen",
+                component: CategoriesDevicesScreen,
+                options: {
+                    title: 'Phòng ban',
+                    headerShown: false
+                }
+            },
+            {
+                name: "CategoriesDevicesEditScreen",
+                component: CategoriesDevicesEditScreen,
+                options: {
+                    title: 'Phòng ban',
+                    headerShown: false
+                }
+            }, {
+                name: "CategoriesDevicesCreateScreen",
+                component: CategoriesDevicesCreateScreen,
+                options: {
+                    title: 'Phòng ban',
+                    headerShown: false
+                }
+            },
         ]
     }
 }

@@ -9,8 +9,17 @@ function Categories() {
 
     function buttonCellHandler(action = "") {
         switch (action) {
-            case "departments":
+            case "Departments":
                 navigation.navigate("DepartmentsScreen");
+                break;
+            case "Categories":
+                navigation.navigate("CategoriesScreen");
+                break;
+            case "CategoriesDevices":
+                navigation.navigate("CategoriesDevicesScreen");
+                break;
+            case "Devices":
+                navigation.navigate("DevicesScreen");
                 break;
         }
     }
@@ -29,22 +38,10 @@ function Categories() {
                     iconBackground="transparent"
                     color={Colors.purple500}
                     size={24}
-                    onPress={() => buttonCellHandler("departments")}
+                    onPress={() => buttonCellHandler("Departments")}
                     type="AntDesign"
                 >
                     Phòng ban
-                </IconButtonCell>
-            </View>
-            <View style={styles.buttonContainer}>
-                <IconButtonCell
-                    icon="inventory"
-                    iconBackground="transparent"
-                    color={Colors.pink500}
-                    size={24}
-                    onPress={buttonCellHandler}
-                    type="MaterialIcons"
-                >
-                    Phân loại
                 </IconButtonCell>
             </View>
             <View style={styles.buttonContainer}>
@@ -53,20 +50,31 @@ function Categories() {
                     iconBackground="transparent"
                     color={Colors.green500}
                     size={24}
-                    onPress={buttonCellHandler}
+                    onPress={() => buttonCellHandler("CategoriesDevices")}
                     type="MaterialIcons"
                 >
                     Danh mục
                 </IconButtonCell>
             </View>
-
+            <View style={styles.buttonContainer}>
+                <IconButtonCell
+                    icon="inventory"
+                    iconBackground="transparent"
+                    color={Colors.pink500}
+                    size={24}
+                    onPress={() => buttonCellHandler("Categories")}
+                    type="MaterialIcons"
+                >
+                    Phân loại thiết bị
+                </IconButtonCell>
+            </View>
             <View style={styles.buttonContainer}>
                 <IconButtonCell
                     icon="devices"
                     iconBackground="transparent"
                     color={Colors.red500}
                     size={24}
-                    onPress={buttonCellHandler}
+                    onPress={() => buttonCellHandler("Devices")}
                     type="MaterialCommunityIcons"
                 >
                     Thiết bị

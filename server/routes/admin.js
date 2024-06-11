@@ -2,6 +2,11 @@ const express = require('express');
 const userController = require('../controllers/admin/user');
 const departmentController = require('../controllers/admin/department');
 const userDepartmentController = require('../controllers/admin/user-department');
+const deviceController = require('../controllers/admin/device');
+const categoryController = require('../controllers/admin/category');
+const categoryDeviceController = require('../controllers/admin/category-device');
+
+
 const Tesseract = require("tesseract.js");
 const path = require("path");
 const multer = require('multer');
@@ -40,6 +45,24 @@ router.post('/user-department', userDepartmentController.getUserDepartment);
 router.post('/user-department/create', userDepartmentController.postAddUserDepartment);
 router.post('/user-department/update/:department_id', userDepartmentController.postEditUserDepartment);
 router.post('/user-department/delete', userDepartmentController.postDeleteUserDepartment);
+
+// /admin/categories
+router.post('/categories', categoryController.getCategories);
+router.post('/categories/create', categoryController.postAddCategory);
+router.post('/categories/update/:category_id', categoryController.postEditCategory);
+router.post('/categories/delete', categoryController.postDeleteCategory);
+
+// /admin/categories-devices
+router.post('/categories-devices', categoryDeviceController.getCategoryDevices);
+router.post('/categories-devices/create', categoryDeviceController.postAddCategoryDevice);
+router.post('/categories-devices/update/:category_device_id', categoryDeviceController.postEditCategoryDevice);
+router.post('/categories-devices/delete', categoryDeviceController.postDeleteCategoryDevice);
+
+// /admin/devices
+router.post('/devices', deviceController.getDevices);
+router.post('/devices/create', deviceController.postAddDevice);
+router.post('/devices/update/:device_id', deviceController.postEditDevice);
+router.post('/devices/delete', deviceController.postDeleteDevice);
 
 router.get("/img-upload", (req, res) => {
     return Tesseract

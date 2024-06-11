@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {View, StyleSheet, Alert} from "react-native";
+import {View, StyleSheet} from "react-native";
 import SidebarMenu from "./SidebarMenu";
 import Header from "./Header";
 import ListItem from "./ListItem/Index";
@@ -24,6 +24,7 @@ function MembersList() {
     const navigation = useNavigation();
     const [state, setState] = useState(initState);
     const {showDropdown, departments, isFetchDepartments, idDepartment} = state;
+
     function categoriesActiveHandler(item) {
         setState(currentState => {
             return {...currentState, idDepartment: item.id, isFetchDepartments: true};

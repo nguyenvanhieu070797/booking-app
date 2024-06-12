@@ -40,26 +40,39 @@ exports.getUser = (req, res) => {
  * @param res
  */
 exports.postAddUser = (req, res) => {
-    const username = req.body.user_name;
-    const email = req.body.email;
-    const password = req.body.password;
-    const description = req.body.description;
-    // const image = req.body.image;
-    User.create({
-        user_name: username,
-        email: email,
-        password: password,
-        description: description,
-        // image: image
-    }).then((user) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({
-            data: user,
-            status: 200,
-        }, null, 3)).status(200);
-    }).catch(err => {
-        console.log(err);
+    const imageUrl = req.file.path;
+    const username = req.body.user_name || "";
+    const email = req.body.email  || "";
+    const password = req.body.password  || "";
+    const description = req.body.description || "";
+
+    console.log({
+        username,
+        email,
+        password,
+        description,
+        imageUrl
     });
+
+    res.end(JSON.stringify({
+        status: 400,
+    }, null, 3)).status(200);
+    // const image = req.body.image;
+    // User.create({
+    //     user_name: username,
+    //     email: email,
+    //     password: password,
+    //     description: description,
+    //     // image: image
+    // }).then((user) => {
+    //     res.setHeader('Content-Type', 'application/json');
+    //     res.end(JSON.stringify({
+    //         data: user,
+    //         status: 200,
+    //     }, null, 3)).status(200);
+    // }).catch(err => {
+    //     console.log(err);
+    // });
 };
 
 /**

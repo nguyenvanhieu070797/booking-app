@@ -2,6 +2,7 @@ const Category = require('../../models/category');
 
 exports.getCategories = (req, res, next) => {
     Category.findAll().then(categories => {
+        console.log({categories});
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({data: categories}, null, 3)).status(200);
     }).catch(err => {

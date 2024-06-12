@@ -4,7 +4,6 @@ import Colors from "../../../constants/colors";
 import {useNavigation} from "@react-navigation/native";
 import IconButton from "../../UI/IconButton";
 import InputSearch from "../../UI/InputSearch";
-import MenuDropdown from "./MenuDropdown";
 
 function Header({onShowDropdownMenu}) {
     const [search, setSearch] = useState("");

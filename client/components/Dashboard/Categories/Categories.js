@@ -50,7 +50,7 @@ function Categories() {
                     iconBackground="transparent"
                     color={Colors.green500}
                     size={24}
-                    onPress={() => buttonCellHandler("CategoriesDevices")}
+                    onPress={() => buttonCellHandler("Categories")}
                     type="MaterialIcons"
                 >
                     Danh mục
@@ -62,7 +62,7 @@ function Categories() {
                     iconBackground="transparent"
                     color={Colors.pink500}
                     size={24}
-                    onPress={() => buttonCellHandler("Categories")}
+                    onPress={() => buttonCellHandler("CategoriesDevices")}
                     type="MaterialIcons"
                 >
                     Phân loại thiết bị

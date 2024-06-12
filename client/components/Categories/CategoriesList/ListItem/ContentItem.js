@@ -7,6 +7,7 @@ import React from "react";
 import Colors from "../../../../constants/colors";
 
 function ContentItem({item}) {
+    console.log({item});
     return (
         <View style={styles.rootContainer}>
             <Image

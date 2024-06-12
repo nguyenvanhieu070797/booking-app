@@ -4,30 +4,30 @@ import SidebarMenu from "./SidebarMenu";
 import Header from "./Header";
 import ListItem from "./ListItem/Index";
 import Colors from "../../../constants/colors";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from '@react-navigation/core';
 
 // Get list department
-import {getDepartment} from "../../../util/departments";
+import { getCategories } from "../../../util/categories";
 import MenuDropdown from "./MenuDropdown";
 
 const initState = {
-    idDepartment: null,
-    isFetchDepartments: true,
-    departments: [],
+    idCategory: null,
+    isFetch: true,
+    categories: [],
     showDropdown: false,
 }
 
-function MembersList() {
+function CategoriesList() {
     const showSidebar = false;
     const isFocused = useIsFocused();
     const navigation = useNavigation();
     const [state, setState] = useState(initState);
-    const {showDropdown, departments, isFetchDepartments, idDepartment} = state;
+    const {showDropdown, categories, isFetch, idCategory} = state;
 
     function categoriesActiveHandler(item) {
         setState(currentState => {
-            return {...currentState, idDepartment: item.id, isFetchDepartments: true};
+            return {...currentState, idCategory: item.id, isFetch: true};
         });
     }
 
@@ -39,22 +39,22 @@ function MembersList() {
 
     function onDropdownMenuHandler(data) {
         const action  = data.action || "";
-        console.log({action});
         switch (action) {
             case "addDepartment":
-                navigation.navigate("DepartmentsCreateScreen");
+                navigation.navigate("CategoriesCreateScreen");
                 break;
         }
     }
 
     useEffect(() => {
-        if(isFetchDepartments || isFocused) {
-            getDepartment().then(result => {
+        if(isFetch || isFocused) {
+            getCategories().then(result => {
+                console.log({result});
                 setState(currentState => {
                     return {
                         ...currentState,
-                        departments: result?.data || [],
-                        isFetchDepartments: false,
+                        categories: result?.data || [],
+                        isFetch: false,
                         showDropdown: false,
                     };
                 });
@@ -62,8 +62,7 @@ function MembersList() {
                 console.log({err});
             })
         }
-    }, [isFocused, isFetchDepartments]);
-
+    }, [isFocused, isFetch]);
 
     const dropdownMenu = [
         {
@@ -79,21 +78,21 @@ function MembersList() {
         },
     ];
 
-    console.log({departments});
+    console.log({categories});
 
     return (
         <View style={styles.rootContainer}>
             <View style={styles.header}>
                 <Header onShowDropdownMenu={dropdownMenuHandler}/>
-                {showSidebar && <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>}
+                {showSidebar && <SidebarMenu onPress={categoriesActiveHandler} idActive={idCategory}/>}
             </View>
-            <ListItem data={departments}/>
+            <ListItem data={categories}/>
             <MenuDropdown data={dropdownMenu} show={showDropdown} onPress={onDropdownMenuHandler}/>
         </View>
     )
 }
 
-export default MembersList;
+export default CategoriesList;
 
 const styles = StyleSheet.create({
     rootContainer: {

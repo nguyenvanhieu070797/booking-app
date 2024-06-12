@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const errorController = require('./controllers/error');
 const sequelize = require('./util/database');
+const multer = require('multer');
+
 // Models
 const User = require('./models/user');
 const Department = require('./models/department');
@@ -12,13 +14,11 @@ const DeviceImport = require('./models/device-import');
 const DeviceCount = require('./models/device-count');
 const Category = require('./models/category');
 const CategoryDevice = require('./models/category-device');
+
 // Route
 const adminRoutes = require('./routes/admin');
 
-const multer = require('multer');
-
 const app = express();
-
 
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {

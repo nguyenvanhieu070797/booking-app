@@ -1,6 +1,6 @@
-import MembersList from '../../components/Members/MembersList/Index';
+import CategoriesList from '../../components/Categories/CategoriesList/Index';
 function CategoriesDevicesScreen() {
-    return <MembersList/>
+    return <CategoriesList/>
 }
 
 export default CategoriesDevicesScreen;

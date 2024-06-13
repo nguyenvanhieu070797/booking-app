@@ -10,8 +10,7 @@ import PrimaryButton from "../../UI/PrimaryButton";
 import {useNavigation} from "@react-navigation/native";
 
 const formData = {
-    department_name: "",
-    locate: "",
+    category_name: "",
     description: "",
     image: "",
 };
@@ -24,9 +23,9 @@ function Form({onSubmit}) {
         isChanged: [],
     });
     const {modalVisible, isChanged} = state;
-    const {department_name: departmentName, locate, description, image} = state.formData;
-    const {departmentNameIsInvalid, locateIsInvalid} = checkErrorInputHandler(state.formData);
-    const isValidForm = departmentNameIsInvalid || locateIsInvalid;
+    const {category_name: categoryName, description, image} = state.formData;
+    const {categoryNameIsInvalid} = checkErrorInputHandler(state.formData);
+    const isValidForm = categoryNameIsInvalid;
 
     /**
      * Show modal image
@@ -50,11 +49,8 @@ function Form({onSubmit}) {
     function updateInputValueHandler(inputType, enteredValue) {
         setState(currentState => {
             switch (inputType) {
-                case 'departmentName':
-                    currentState["formData"]["department_name"] = enteredValue;
-                    break;
-                case 'locate':
-                    currentState["formData"]["locate"] = enteredValue;
+                case 'categoryName':
+                    currentState["formData"]["category_name"] = enteredValue;
                     break;
                 case 'image':
                     const fileName = enteredValue.uri.split('/').pop();
@@ -79,27 +75,23 @@ function Form({onSubmit}) {
     /**
      *
      * @param data
-     * @returns {{passwordIsInvalid: boolean, departmentNameIsInvalid: boolean, locateIsInvalid: boolean}}
+     * @returns {{passwordIsInvalid: boolean, categoryNameIsInvalid: boolean}}
      */
     function checkErrorInputHandler(data) {
-        let {department_name: departmentName, locate} = data;
+        let {category_name: categoryName} = data;
         let inValid = {
-            departmentNameIsInvalid: false,
-            locateIsInvalid: false,
+            categoryNameIsInvalid: false,
         };
-        departmentName = departmentName.trim();
-        locate = locate.trim();
 
-        const departmentNameIsValid = departmentName.length > 0;
-        const locateIsIsValid = locate.length > 0;
+        categoryName = categoryName.trim();
+
+        const categoryNameIsValid = categoryName.length > 0;
 
         if (
-            !departmentNameIsValid ||
-            !locateIsIsValid
+            !categoryNameIsValid
         ) {
             inValid = {
-                departmentNameIsInvalid: !departmentNameIsValid,
-                locateIsInvalid: !locateIsIsValid,
+                categoryNameIsInvalid: !categoryNameIsValid,
             }
         }
         return inValid;
@@ -148,21 +140,9 @@ function Form({onSubmit}) {
                     <View style={styles.containerRight}>
                         <InputCustomLabel
                             label="Nhap ten"
-                            value={departmentName}
-                            isInvalid={isChanged.includes("departmentName") && departmentNameIsInvalid}
-                            name="departmentName"
-                            onChange={updateInputValueHandler}
-                        />
-                    </View>
-                </View>
-
-                <View style={styles.container}>
-                    <View style={styles.containerRight}>
-                        <InputCustomLabel
-                            label="Vị trí"
-                            value={locate}
-                            isInvalid={isChanged.includes("locate") && locateIsInvalid}
-                            name="locate"
+                            value={categoryName}
+                            isInvalid={isChanged.includes("categoryName") && categoryNameIsInvalid}
+                            name="categoryName"
                             onChange={updateInputValueHandler}
                         />
                     </View>

@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from "react-native";
 import Colors from "../../constants/colors";
-import Header from "../../components/Members/MembersCreate/Header";
-import Content from "../../components/Members/MembersCreate/Content";
+import Header from "../../components/Categories/CategoriesCreate/Header";
+import Content from "../../components/Categories/CategoriesCreate/Content";
 
 function CategoriesDevicesCreateScreen() {
 

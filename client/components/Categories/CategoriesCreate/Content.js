@@ -2,12 +2,12 @@ import {StyleSheet, ScrollView,} from 'react-native';
 
 // Form Login
 import Form from "./Form";
-import {createDepartment} from "../../../util/departments";
+import {createCategories} from "../../../util/categories";
 
 function Content() {
 
     function submitHandler(data) {
-        return createDepartment(data).then(({status}) => {
+        return createCategories(data).then(({status}) => {
             return status === 200;
         }).catch(err => {
             return false;

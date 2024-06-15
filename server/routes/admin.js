@@ -6,7 +6,6 @@ const deviceController = require('../controllers/admin/device');
 const categoryController = require('../controllers/admin/category');
 const categoryDeviceController = require('../controllers/admin/category-device');
 
-const { body } = require('express-validator');
 const Tesseract = require("tesseract.js");
 const path = require("path");
 
@@ -15,14 +14,7 @@ const router = express.Router();
 // /admin/users
 router.get('/user', userController.getUsers);
 router.get('/user/:user_id', userController.getUser);
-router.post('/user/create', [
-    body('user_name')
-        .trim(),
-    body('email')
-        .trim(),
-    body('password')
-        .trim()
-], userController.postAddUser);
+router.post('/user/create', userController.postAddUser);
 router.post('/user/update/:user_id', userController.postEditUser);
 router.post('/user/delete', userController.postDeleteUser);
 
@@ -40,7 +32,6 @@ router.post('/user-department/update/:department_id', userDepartmentController.p
 router.post('/user-department/delete', userDepartmentController.postDeleteUserDepartment);
 
 // /admin/categories
-router.get('/categories', categoryController.getCategories);
 router.post('/categories', categoryController.getCategories);
 router.post('/categories/create', categoryController.postAddCategory);
 router.post('/categories/update/:category_id', categoryController.postEditCategory);

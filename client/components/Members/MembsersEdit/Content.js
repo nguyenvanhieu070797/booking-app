@@ -15,7 +15,12 @@ function Content() {
     }
 
     function updateDataHandler(data) {
-        updateUsers(data).then(({status}) => {
+        let formData = new FormData();
+        const headers =  {  'Content-Type': 'multipart/form-data', };
+        Object.keys(data).forEach((key) => {
+            formData.append(key, data[key]);
+        });
+        updateUsers(data["user_id"], formData, headers).then(({status}) => {
             if (status === 200) {
                 Alert.alert(
                     "Thành công",

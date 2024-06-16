@@ -6,17 +6,21 @@ import {
 import React from "react";
 import Colors from "../../../../constants/colors";
 
-function ContentItem({key, item}) {
-    // const iconTitle = Icons(item.icons.title);
+function ContentItem({item}) {
+    const uriImage = `http://192.168.179.81:3000/${item.image}`;
     return (
         <View style={styles.rootContainer}>
-            {/*{iconTitle}*/}
-            <Image
-                source={
-                    require("../../../../assets/icon.png")
-                }
-                style={styles.imageDevice}
-            />
+            {
+                item.image ?  <Image
+                    source={{uri: uriImage}}
+                    style={styles.imageDevice}
+                /> :  <Image
+                    source={
+                        require("../../../../assets/icon.png")
+                    }
+                    style={styles.imageDevice}
+                />
+            }
             <View style={styles.container}>
                 <View style={styles.content}>
                     <View style={styles.itemContent} key={Math.random().toString()}>

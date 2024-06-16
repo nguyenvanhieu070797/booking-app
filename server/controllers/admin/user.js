@@ -46,33 +46,20 @@ exports.postAddUser = (req, res) => {
     const password = req.body.password  || "";
     const description = req.body.description || "";
 
-    console.log({
-        username,
-        email,
-        password,
-        description,
-        imageUrl
+    User.create({
+        user_name: username,
+        email: email,
+        password: password,
+        description: description,
+        image: imageUrl
+    }).then((user) => {
+        res.end(JSON.stringify({
+            data: user,
+            status: 200,
+        }, null, 3)).status(200);
+    }).catch(err => {
+        console.log(err);
     });
-
-    res.end(JSON.stringify({
-        status: 400,
-    }, null, 3)).status(200);
-    // const image = req.body.image;
-    // User.create({
-    //     user_name: username,
-    //     email: email,
-    //     password: password,
-    //     description: description,
-    //     // image: image
-    // }).then((user) => {
-    //     res.setHeader('Content-Type', 'application/json');
-    //     res.end(JSON.stringify({
-    //         data: user,
-    //         status: 200,
-    //     }, null, 3)).status(200);
-    // }).catch(err => {
-    //     console.log(err);
-    // });
 };
 
 /**
@@ -81,23 +68,25 @@ exports.postAddUser = (req, res) => {
  * @param res
  */
 exports.postEditUser = (req, res) => {
-    const userId = req.params.user_id;
-    const username = req.body.user_name;
-    const email = req.body.email;
-    const password = req.body.password;
-    const description = req.body.description;
-    const image = req.body.image;
+    const userId = req?.params?.user_id || "";
+    const username = req?.body?.user_name || "";
+    const email = req?.body?.email || "";
+    const password = req?.body?.password || "";
+    const description = req?.body?.description || "";
+    const imageUrl = req?.file?.path || "";
+
     User.findByPk(userId)
         .then(user => {
             user.user_name = username;
             user.email = email;
             user.password = password;
             user.description = description;
-            user.image = image;
+            if(imageUrl) {
+                user.image = imageUrl;
+            }
             return user.save();
         })
         .then(result => {
-            res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({data: result, status: 200}, null, 3)).status(200);
         })
         .catch(err => console.log(err));

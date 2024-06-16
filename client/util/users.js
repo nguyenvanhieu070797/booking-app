@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const http = "http://192.168.2.14:3000";
+const http = "http://192.168.179.81:3000";
 
 export async function getData() {
     const url = `${http}/admin/user`;
@@ -10,6 +10,7 @@ export async function getData() {
 }
 
 export async function postData(mode, data, headers = {}) {
+    console.log({uri: `${http}/admin/user/${mode}`});
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
@@ -23,7 +24,7 @@ export async function postData(mode, data, headers = {}) {
              return response.data;
         })
         .catch((error) => {
-            console.log(error);
+            return false;
         });
 }
 
@@ -36,9 +37,8 @@ export function createUsers(data, headers = {}) {
     return postData("create", data, headers);
 }
 
-export function updateUsers(data) {
-    const {user_id} = data;
-    return postData(`update/${user_id}`, data);
+export function updateUsers(user_id, data, headers) {
+    return postData(`update/${user_id}`, data, headers);
 }
 
 export function deleteUser(data) {

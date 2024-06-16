@@ -8,10 +8,18 @@ import DangerButton from "../../UI/DangerButton";
 import TakeImageModal from "./Modal/TakeImageModal";
 
 function Form({onUpdateData, onDeleteData, data}) {
+    console.log({data});
+
     const [state, setState] = useState({
-        formData: data,
+        formData: {
+            user_id: data?.user_id || "",
+            user_name: data?.user_name || "",
+            password: data?.password || "",
+            email: data?.email || "",
+            description: data?.description || "",
+        },
         modalVisible: false,
-        imageUri: data?.image || "",
+        imageUri: data?.image ? `http://192.168.179.81:3000/${data.image}` : "",
     });
     const {modalVisible, imageUri} = state;
     const {user_name: userName, password, email, description} = state.formData;
@@ -43,7 +51,12 @@ function Form({onUpdateData, onDeleteData, data}) {
                     currentState["formData"]["email"] = enteredValue;
                     break;
                 case 'image':
-                    currentState["formData"]["image"] = enteredValue;
+                    const fileName = enteredValue.uri.split('/').pop();
+                    currentState["formData"]["image"] = {
+                        uri: enteredValue.uri,
+                        type: enteredValue.mimeType,
+                        name: fileName,
+                    };
                     currentState["imageUri"] = enteredValue?.uri || "";
                     currentState["modalVisible"] = false;
                     break;
@@ -67,9 +80,9 @@ function Form({onUpdateData, onDeleteData, data}) {
             passwordIsInvalid: false,
             emailIsInvalid: false,
         };
-        userName = userName.trim();
-        password = password.trim();
-        email = email.trim();
+        userName = userName && userName.trim() || "";
+        password = password && password.trim() || "";
+        email = email && email.trim() || "";
 
         const userNameIsValid = userName.length > 0;
         const passwordIsValid = password.length > 6;

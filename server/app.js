@@ -22,10 +22,17 @@ const app = express();
 
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'images');
+        const path = req?.originalUrl || "";
+        let pathFile = "";
+        switch (path) {
+            case "/admin/user/create":
+                pathFile = "user";
+
+        }
+        cb(null, pathFile !== "" ? `images/users` : 'images');
     },
     filename: (req, file, cb) => {
-        cb(null, new Date().toISOString() + '-' + file.originalname);
+        cb(null, new Date().getDate() + '-' + file.originalname );
     }
 });
 
@@ -42,7 +49,7 @@ const fileFilter = (req, file, cb) => {
 };
 
 
-// app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
+app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
 app.use(bodyParser.json()); // application/json
 app.use(
     multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
@@ -55,7 +62,7 @@ app.use((req, res, next) => {
         'Access-Control-Allow-Methods',
         'OPTIONS, GET, POST, PUT, PATCH, DELETE'
     );
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
 

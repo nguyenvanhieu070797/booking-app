@@ -5,9 +5,11 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../../../constants/colors";
+import {API_URL} from '@env';
 
 function ContentItem({item}) {
-    const uriImage = `http://192.168.179.81:3000/${item.image}`;
+    const uriImage = `${API_URL}/${item.image}`;
+    console.log({uriImage});
     return (
         <View style={styles.rootContainer}>
             {
@@ -27,6 +29,7 @@ function ContentItem({item}) {
                         <View style={styles.itemTitle}>
                             <Text style={styles.textTitle}>
                                 {item.user_name.toUpperCase()}
+                                {uriImage}
                             </Text>
                         </View>
                         <View style={styles.itemMail}>

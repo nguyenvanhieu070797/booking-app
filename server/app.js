@@ -26,10 +26,11 @@ const fileStorage = multer.diskStorage({
         let pathFile = "";
         switch (path) {
             case "/admin/user/create":
-                pathFile = "user";
+                pathFile = "users";
 
         }
-        cb(null, pathFile !== "" ? `images/users` : 'images');
+        console.log({pathFile, path});
+        cb(null, pathFile !== "" ? `images/${pathFile}` : 'images');
     },
     filename: (req, file, cb) => {
         cb(null, new Date().getDate() + '-' + file.originalname );
@@ -128,8 +129,8 @@ Device.hasMany(DeviceImport, {
 })
 
 sequelize
-  // .sync({ force: true })
-  .sync()
+  .sync({ force: true })
+  // .sync()
   .then(() => {
     app.listen(3000);
   }).catch(err => {

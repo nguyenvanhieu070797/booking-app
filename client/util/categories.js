@@ -1,9 +1,8 @@
 import axios from 'axios'
-
-const http = "http://192.168.65.81:3000";
+import {API_URL} from '@env';
 
 export async function getData() {
-    const url = `${http}/admin/categories`;
+    const url = `${API_URL}/admin/categories`;
     return axios.get(url).then(result => {
         return result.data;
     }).catch(err => console.log(err));
@@ -13,7 +12,7 @@ export async function postData(mode, data, headers = {}) {
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${http}/admin/categories/${mode}`,
+        url: `${API_URL}/admin/categories/${mode}`,
         headers,
         data
     };

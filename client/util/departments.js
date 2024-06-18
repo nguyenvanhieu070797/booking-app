@@ -1,9 +1,8 @@
 import axios from 'axios'
-
-const http = "http://192.168.2.14:3000";
+import {API_URL} from '@env';
 
 export async function getData() {
-    const url = `${http}/admin/department`;
+    const url = `${API_URL}/admin/department`;
     return axios.get(url).then(result => {
         return result.data;
     }).catch(err => console.log(err));
@@ -13,7 +12,7 @@ export async function postData(mode, data, headers = {}) {
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${http}/admin/department/${mode}`,
+        url: `${API_URL}/admin/department/${mode}`,
         headers,
         data
     };

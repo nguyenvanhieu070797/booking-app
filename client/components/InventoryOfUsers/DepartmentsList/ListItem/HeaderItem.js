@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         flexBasis: 0,
         overflow: 'hidden',
         color: Colors.darkSecondary,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
         fontSize: 16,
         fontStyle: 'normal',
         fontWeight: '500',
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     },
     textStatusHeader: {
         color: Colors.darkSecondary,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
         fontSize: 12,
 
     },

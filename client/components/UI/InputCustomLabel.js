@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         paddingHorizontal: 5,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     },
     label: {
         top:  0,
         fontSize: 16,
         color: Colors.greyOpacity75,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     inputTextFocused: {
         borderColor: Colors.blue500,

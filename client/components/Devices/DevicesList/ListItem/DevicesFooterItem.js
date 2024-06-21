@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     textAuthorInformation: {
         marginLeft: 5,
         textAlign: 'center',
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         fontSize: 14,
         fontStyle: 'normal',
         fontWeight: '500',
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     textDatetime: {
         fontSize: 14,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         fontStyle: 'normal',
         fontWeight: '500',
         color: Colors.darkSecondary,

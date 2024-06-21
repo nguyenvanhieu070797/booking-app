@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     textTitle: {
         flexDirection: 'row',
         alignItems: 'center',
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     itemNumber: {
         flexDirection: 'row',
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     number: {
         color: Colors.darkPrimary,
         textAlign: 'center',
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         fontSize: 14,
         fontStyle: 'normal',
         fontWeight: '500',

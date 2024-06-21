@@ -42,7 +42,7 @@ function WelcomeScreen({navigation}) {
                         style={{
                             text: {
                                 fontSize: 18,
-                                fontFamily: 'open-sans',
+                                fontFamily: 'font-regular',
                             },
                             container: {
                                 borderRadius: 6,
@@ -77,10 +77,10 @@ const styles = StyleSheet.create({
     titleWelcome: {
         fontSize: 24,
         fontWeight: 'bold',
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     },
     contentWelcome: {
         textAlign: "center",
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     }
 });

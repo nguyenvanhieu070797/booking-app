@@ -88,12 +88,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
         flexDirection: 'row',
         alignItems: 'center',
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     itemMail: {
         flexDirection: 'row',
         alignItems: 'center',
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     },
     imageDevice: {
         width: 50,

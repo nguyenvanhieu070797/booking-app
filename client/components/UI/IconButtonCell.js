@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         color: Colors.darkPrimary,
         textAlign: 'center',
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
         fontSize: 12,
     },
     pressed: {

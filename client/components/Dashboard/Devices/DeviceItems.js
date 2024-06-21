@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         flexBasis: 0,
         overflow: 'hidden',
         color: Colors.darkSecondary,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         fontSize: 14,
         fontStyle: 'normal',
         fontWeight: '500',
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
         flexShrink: 0,
         flexBasis: 0,
         color: Colors.darkSecondary,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         fontSize: 10,
         fontStyle: 'normal',
         fontWeight: '400',
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     textTitleInformation: {
         flexDirection: 'row',
         alignItems: 'center',
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     information: {
         flexDirection: 'row',
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     textInformation: {
         color: Colors.darkPrimary,
         textAlign: 'center',
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         fontSize: 14,
         fontStyle: 'normal',
         fontWeight: '500',
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     textAuthorInformation: {
         marginLeft: 5,
         textAlign: 'center',
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         fontSize: 12,
         fontStyle: 'normal',
         fontWeight: '700',

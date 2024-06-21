@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
         paddingVertical: 6,
         fontSize: 20,
         color: Colors.darkPrimary,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     }
 });

@@ -17,6 +17,7 @@ import {useDispatch} from 'react-redux';
 // Storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 function LoginScreen() {
     const [isAuthenticating, setAuthenticating] = useState(false);
     const dispatch = new useDispatch();

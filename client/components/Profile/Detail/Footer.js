@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
             marginRight: 2,
         },
         text: {
-            fontFamily: 'open-sans-bold',
+            fontFamily: 'font-bold',
         },
         pressed: {
             paddingVertical: 10,

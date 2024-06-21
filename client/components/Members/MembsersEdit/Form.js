@@ -19,7 +19,7 @@ function Form({onUpdateData, onDeleteData, data}) {
             description: data?.description || "",
         },
         modalVisible: false,
-        imageUri: data?.image ? `http://192.168.179.81:3000/${data.image}` : "",
+        imageUri: data?.image ? `http://192.168.20.147:3000/${data.image}` : "",
     });
     const {modalVisible, imageUri} = state;
     const {user_name: userName, password, email, description} = state.formData;
@@ -256,12 +256,12 @@ const styles = StyleSheet.create({
     },
     textLeft: {
         fontSize: 16,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
         color: Colors.greyOpacity75,
     },
     textRight: {
         fontSize: 16,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
         color: Colors.greyOpacity50,
     },
     title: {
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         fontSize: 20,
         color: Colors.darkPrimary,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     inputStyle: {
         width: "100%",
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
             justifyContent: "center",
         },
         text: {
-            fontFamily: 'open-sans-bold',
+            fontFamily: 'font-bold',
         },
         pressed: {
             paddingVertical: 10,
@@ -329,7 +329,7 @@ const styles = StyleSheet.create({
             justifyContent: "center",
         },
         text: {
-            fontFamily: 'open-sans-bold',
+            fontFamily: 'font-bold',
         },
         pressed: {
             paddingVertical: 10,

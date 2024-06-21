@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
             marginVertical: 5,
         },
         text: {
-            fontFamily: 'open-sans-bold',
+            fontFamily: 'font-bold',
         },
         pressed: {
             paddingVertical: 10,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
             marginVertical: 5,
         },
         text: {
-            fontFamily: 'open-sans-bold',
+            fontFamily: 'font-bold',
         },
         pressed: {
             paddingVertical: 10,

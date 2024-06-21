@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         paddingTop: 18,
         paddingHorizontal: 6,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     },
     label: {
         position: 'absolute',
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
         top: 10,
         fontSize: 18,
         color: Colors.greyOpacity75,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     },
     labelFocus: {
         top:  2,
         fontSize: 14,
         color: Colors.greyOpacity75,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     inputTextNotFocused: {
         paddingTop: 0,

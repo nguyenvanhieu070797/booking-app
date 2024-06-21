@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 16,
         color: Colors.darkPrimary,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     categoriesContainer: {
         flex: 1,

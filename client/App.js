@@ -53,8 +53,8 @@ function Root() {
 
 export default function App() {
     const [fontsLoaded] = useFonts({
-        "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-        "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+        "font-regular": require("./assets/fonts/NotoSansJP/NotoSansJP-Regular.ttf"),
+        "font-bold": require("./assets/fonts/NotoSansJP/NotoSansJP-Bold.ttf"),
     });
 
     useEffect(() => {

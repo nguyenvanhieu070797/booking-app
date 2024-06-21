@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 13,
         lineHeight: 22,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         marginTop: 4
     },
 
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
         color: Colors.lightDisabled,
         fontSize: 13,
         lineHeight: 22,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         marginTop: 4
     },
 

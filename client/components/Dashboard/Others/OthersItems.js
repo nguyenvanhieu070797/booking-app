@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     textTitle: {
         marginLeft: 10,
         textAlign: 'left',
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         fontSize: 17,
         fontWeight: "700",
         color: Colors.darkPrimary,

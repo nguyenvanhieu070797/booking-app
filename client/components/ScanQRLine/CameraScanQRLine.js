@@ -68,7 +68,7 @@ export default function CameraScanQRLine() {
 
         // Send a POST request to the OCR API
         fetch(
-            "http://192.168.2.14:3005/admin/img-upload",
+            "http://192.168.20.147:3005/admin/img-upload",
             requestOptions
         )
             .then((response) => response.json())

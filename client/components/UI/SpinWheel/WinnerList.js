@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 24,
         color: Colors.blue500,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     textName: {
         fontSize: 24,
         color: Colors.blue500,
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     }
 })

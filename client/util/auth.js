@@ -1,20 +1,16 @@
 import axios from 'axios'
-
-const API_KEY = 'AIzaSyAWuIqeTDxI8RQNRt749moZWoFZyEUx5R4';
+import {API_URL} from "@env"
 
 export async function authenticate(mode, userName, password) {
-    const url = `https://identitytoolkit.googleapis.com/v1/accounts:${mode}?key=${API_KEY}`;
-
+    const url = `${API_URL}/auth/login`;
     const response = await axios.post(
         url,
         {
-            email: userName,
+            user_name: userName,
             password: password,
-            returnSecureToken: true
         }
     );
-
-    return response?.data?.idToken || "";
+    return response?.data?.token || "";
 }
 
 export function createUser(userName, password) {

@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     },
     icon: {
         marginRight: 5,

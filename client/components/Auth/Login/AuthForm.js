@@ -7,8 +7,8 @@ import {useNavigation} from '@react-navigation/native'
 
 function AuthForm({onSubmit, credentialsInvalid}) {
     const navigation = useNavigation();
-    const [enteredUserName, setEnteredUserName] = useState('test@test.com');
-    const [enteredPassword, setEnteredPassword] = useState('qwertyu');
+    const [enteredUserName, setEnteredUserName] = useState('n-hieu');
+    const [enteredPassword, setEnteredPassword] = useState('admin123');
 
     const {
         userName: userNameIsInvalid,
@@ -84,7 +84,7 @@ function AuthForm({onSubmit, credentialsInvalid}) {
                     style={{
                         text: {
                             fontSize: 18,
-                            fontFamily: 'open-sans',
+                            fontFamily: 'font-regular',
                         },
                         container: {
                             borderRadius: 6,
@@ -129,16 +129,16 @@ const styles = StyleSheet.create({
     titleWelcome: {
         fontSize: 24,
         fontWeight: 'bold',
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     },
     contentWelcome: {
         textAlign: "center",
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
     },
     contentRegister: {
         fontWeight: 'bold',
         fontSize: 14,
-        fontFamily: 'open-sans',
+        fontFamily: 'font-regular',
         marginTop: 5,
         paddingTop: 5,
         paddingBottom: 5,

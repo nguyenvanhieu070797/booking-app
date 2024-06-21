@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexWrap: 'wrap',
         textAlign: 'center',
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
         fontSize: 13,
         color: Colors.darkPrimary,
     },

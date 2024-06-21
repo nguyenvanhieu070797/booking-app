@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     buttonText: {
         flexWrap: 'wrap',
         textAlign: 'center',
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
         fontSize: 13,
         color: Colors.darkPrimary,
     },

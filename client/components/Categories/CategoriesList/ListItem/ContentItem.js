@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         flexDirection: 'row',
         alignItems: 'center',
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'font-bold',
     },
     imageDevice: {
         width: 50,

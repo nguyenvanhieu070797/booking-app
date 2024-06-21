@@ -1,4 +1,5 @@
 const UserDepartment = require('../../models/user-department');
+const uuid = require('uuid');
 
 exports.getUserDepartment = (req, res) => {
     let where = {};
@@ -27,7 +28,9 @@ exports.postAddUserDepartment = (req, res) => {
     const description = req.body.description;
     const userId = req.body.user_id;
     const departmentId = req.body.department_id;
+
     UserDepartment.create({
+        user_department_id: uuid.v4(),
         edit: isEdit,
         delete: isDelete,
         user_id: userId,
@@ -65,14 +68,26 @@ exports.postEditUserDepartment = (req, res) => {
 
 exports.postDeleteUserDepartment = (req, res) => {
     const userDepartmentId = req.body.user_department_id;
-    UserDepartment.findByPk(userDepartmentId)
-        .then(userDepartment => {
-            return userDepartment.destroy();
-        })
+    const userId = req.body.user_id ?? "";
+    const departmentId = req.body.department_id ?? "";
+    let where = {};
+    if (userDepartmentId) {
+        where = {
+            user_department_id: userId
+        }
+    } else if (userId) {
+        where = {
+            user_id: userId
+        }
+    } else if (departmentId) {
+        where = {
+            department_id: departmentId
+        }
+    }
+    UserDepartment.destroy({where}, {truncate: false})
         .then(result => {
-            console.log('DESTROYED PRODUCT');
             res.setHeader('Content-Type', 'application/json');
-            res.end().status(200);
+            res.end(JSON.stringify({status: 200}, null, 3)).status(200);
         })
         .catch(err => console.log(err));
 };

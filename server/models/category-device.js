@@ -4,8 +4,8 @@ const sequelize = require('../util/database');
 
 const CategoryDevice = sequelize.define('category-device', {
     category_device_id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.STRING,
+        autoIncrement: false,
         allowNull: false,
         primaryKey: true
     },

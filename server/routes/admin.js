@@ -6,62 +6,50 @@ const deviceController = require('../controllers/admin/device');
 const categoryController = require('../controllers/admin/category');
 const categoryDeviceController = require('../controllers/admin/category-device');
 
-const Tesseract = require("tesseract.js");
-const path = require("path");
+const {userCreateValidation, userUpdateValidation} = require('../validation/user');
+const {departmentCreateValidation, departmentUpdateValidation} = require('../validation/department');
+const {departmentDepartmentCreateValidation, departmentDepartmentUpdateValidation} = require('../validation/user-department');
 
 const router = express.Router();
+const isAuth = require("../middleware/is-auth");
 
 // /admin/users
-router.get('/user', userController.getUsers);
-router.get('/user/:user_id', userController.getUser);
-router.post('/user/create', userController.postAddUser);
-router.post('/user/update/:user_id', userController.postEditUser);
-router.post('/user/delete', userController.postDeleteUser);
+router.get('/user', isAuth, userController.getUsers);
+router.get('/user/:user_id', isAuth, userController.getUser);
+router.post('/user/create', userCreateValidation, userController.postAddUser);
+router.post('/user/update/:user_id', isAuth, userUpdateValidation, userController.postEditUser);
+router.post('/user/delete', isAuth, userController.postDeleteUser);
 
 // /admin/department
-router.get('/department', departmentController.getDepartments);
-router.get('/department/:department_id', departmentController.getDepartment);
-router.post('/department/create', departmentController.postAddDepartment);
-router.post('/department/update/:department_id', departmentController.postEditDepartment);
-router.post('/department/delete', departmentController.postDeleteDepartment);
+router.get('/department', isAuth, departmentController.getDepartments);
+router.get('/department/:department_id', isAuth, departmentController.getDepartment);
+router.post('/department/create', isAuth, departmentCreateValidation, departmentController.postAddDepartment);
+router.post('/department/update/:department_id', isAuth, departmentUpdateValidation, departmentController.postEditDepartment);
+router.post('/department/delete', isAuth, departmentController.postDeleteDepartment);
 
 // /admin/user-department
-router.post('/user-department', userDepartmentController.getUserDepartment);
-router.post('/user-department/create', userDepartmentController.postAddUserDepartment);
-router.post('/user-department/update/:department_id', userDepartmentController.postEditUserDepartment);
-router.post('/user-department/delete', userDepartmentController.postDeleteUserDepartment);
+router.post('/user-department', isAuth, userDepartmentController.getUserDepartment);
+router.post('/user-department/create', isAuth, departmentDepartmentCreateValidation, userDepartmentController.postAddUserDepartment);
+router.post('/user-department/update/:department_id', isAuth, departmentDepartmentUpdateValidation, userDepartmentController.postEditUserDepartment);
+router.post('/user-department/delete', isAuth, userDepartmentController.postDeleteUserDepartment);
 
 // /admin/categories
-router.post('/categories', categoryController.getCategories);
-router.post('/categories/create', categoryController.postAddCategory);
-router.post('/categories/update/:category_id', categoryController.postEditCategory);
-router.post('/categories/delete', categoryController.postDeleteCategory);
+router.post('/categories', isAuth, categoryController.getCategories);
+router.post('/categories/create', isAuth, categoryController.postAddCategory);
+router.post('/categories/update/:category_id', isAuth, categoryController.postEditCategory);
+router.post('/categories/delete', isAuth, categoryController.postDeleteCategory);
 
 // /admin/categories-devices
-router.post('/categories-devices', categoryDeviceController.getCategoryDevices);
-router.post('/categories-devices/create', categoryDeviceController.postAddCategoryDevice);
-router.post('/categories-devices/update/:category_device_id', categoryDeviceController.postEditCategoryDevice);
-router.post('/categories-devices/delete', categoryDeviceController.postDeleteCategoryDevice);
+router.post('/categories-devices', isAuth, categoryDeviceController.getCategoryDevices);
+router.post('/categories-devices/create', isAuth, categoryDeviceController.postAddCategoryDevice);
+router.post('/categories-devices/update/:category_device_id', isAuth, categoryDeviceController.postEditCategoryDevice);
+router.post('/categories-devices/delete', isAuth, categoryDeviceController.postDeleteCategoryDevice);
 
 // /admin/devices
-router.post('/devices', deviceController.getDevices);
-router.post('/devices/create', deviceController.postAddDevice);
-router.post('/devices/update/:device_id', deviceController.postEditDevice);
-router.post('/devices/delete', deviceController.postDeleteDevice);
+router.post('/devices', isAuth, deviceController.getDevices);
+router.post('/devices/create', isAuth, deviceController.postAddDevice);
+router.post('/devices/update/:device_id', isAuth, deviceController.postEditDevice);
+router.post('/devices/delete', isAuth, deviceController.postDeleteDevice);
 
-router.get("/img-upload", (req, res) => {
-    return Tesseract
-        .recognize(path.join(__dirname, "../public/images/orc/img.png"))
-        .then((result) => {
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({
-                data: result.data.text
-            }, null, 3)).status(200);
-        })
-        .catch((error) => {
-            res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({message: error.message}, null, 3)).status(302);
-        })
-})
 
 module.exports = router;

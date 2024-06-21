@@ -17,6 +17,13 @@ const CategoryDevice = require('./models/category-device');
 
 // Route
 const adminRoutes = require('./routes/admin');
+const authRoutes = require('./routes/auth');
+const ocrRoutes = require('./routes/ocr');
+const isAuth = require("./middleware/is-auth");
+
+const uuid = require('uuid');
+
+require('dotenv').config();
 
 const app = express();
 
@@ -24,16 +31,35 @@ const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         const path = req?.originalUrl || "";
         let pathFile = "";
-        switch (path) {
-            case "/admin/user/create":
-                pathFile = "users";
 
+        if (path.includes("/admin/user")) {
+            pathFile = "users";
+        } else if (path.includes("/admin/department")) {
+            pathFile = "departments";
+        } else if (path.includes("/admin/device")) {
+            pathFile = "devices";
+        } else if (path.includes("/ocr/upload")) {
+            pathFile = "ocr";
         }
-        console.log({pathFile, path});
+
         cb(null, pathFile !== "" ? `images/${pathFile}` : 'images');
     },
     filename: (req, file, cb) => {
-        cb(null, new Date().getDate() + '-' + file.originalname );
+        let extension = "";
+        switch (file.mimetype.toLowerCase()) {
+            case "image/png":
+                extension = "png";
+                break;
+            case "image/jpg":
+                extension = "jpg";
+                break;
+            case "image/jpeg":
+                extension = "jpeg";
+                break;
+            default:
+                extension = "png";
+        }
+        cb(null,  `${uuid.v4()}.${extension}` );
     }
 });
 
@@ -55,7 +81,7 @@ app.use(bodyParser.json()); // application/json
 app.use(
     multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
 );
-app.use('/images', express.static(path.join(__dirname, 'images')));
+
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -63,10 +89,9 @@ app.use((req, res, next) => {
         'Access-Control-Allow-Methods',
         'OPTIONS, GET, POST, PUT, PATCH, DELETE'
     );
-    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
-
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -74,18 +99,12 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRoutes);
+app.use('/auth', authRoutes);
+app.use('/ocr', ocrRoutes);
+app.use('/images', isAuth, express.static(path.join(__dirname, 'images')));
 
 app.use(errorController.get404);
-app.use((req, res, next) => {
-    User.findByPk(1)
-        .then(user => {
-            req.user = user;
-            next();
-        })
-        .catch(err => console.log(err));
-});
 
 // User <-> Department => User Department
 User.belongsToMany(Department, {
@@ -121,7 +140,6 @@ UserDepartment.hasMany(DeviceCount, {
     foreignKeyConstraint:true
 });
 
-
 // Device <-> Device Inport
 Device.hasMany(DeviceImport, {
     foreignKey: 'device_id',
@@ -129,8 +147,8 @@ Device.hasMany(DeviceImport, {
 })
 
 sequelize
-  .sync({ force: true })
-  // .sync()
+  // .sync({ force: true })
+  .sync()
   .then(() => {
     app.listen(3000);
   }).catch(err => {

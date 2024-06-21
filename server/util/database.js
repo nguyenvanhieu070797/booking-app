@@ -1,39 +1,25 @@
 const Sequelize = require('sequelize');
-const host = 'localhost'
-const database = 'internal-device'
+require('dotenv').config();
 
-// const user = 'postgres'
-// const password = '0905135826'
-// const dialect = 'postgres'
+const host      = process.env.DB_HOST     || 'localhost'
+const database  = process.env.DB_NAME     || 'internal-device'
+const user      = process.env.DB_USER     || 'postgres'
+const password  = process.env.DB_PASS     || ''
+const dialect   = process.env.DB_DIALECT  || 'postgres'
 
-const user = 'root'
-const password = '@Toikhongbiet97'
-const dialect = 'mysql'
-
-const sequelize = new Sequelize(database, user, password, {
-    dialect,
-    host,
-    define: {
-        createdAt: false,  // If don't want createdAt
-        updatedAt: false,  // If don't want updatedAt
-        timestamps: false,
-        underscored: true,
-        freezeTableName: true,
-    },
-});
-
-//
-// const sequelize = new Sequelize(database, user, password, {
-//     host,
-//     port,
-//     dialect: 'postgres',
-//     define: {
-//         // If don't want createdAt
-//         createdAt: true,
-//         // If don't want updatedAt
-//         updatedAt: true,
-//         timestamps: true
-//     },
-// })
+const sequelize = new Sequelize(
+    database,
+    user,
+    password, {
+        dialect,
+        host,
+        define: {
+            createdAt: false,  // If don't want createdAt
+            updatedAt: false,  // If don't want updatedAt
+            timestamps: false,
+            underscored: true,
+            freezeTableName: true,
+        },
+    });
 
 module.exports = sequelize;

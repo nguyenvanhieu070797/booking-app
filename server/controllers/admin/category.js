@@ -1,6 +1,6 @@
 const Category = require('../../models/category');
 
-exports.getCategories = (req, res, next) => {
+exports.getCategories = (req, res) => {
     Category.findAll().then(categories => {
         console.log({categories});
         res.setHeader('Content-Type', 'application/json');
@@ -10,7 +10,7 @@ exports.getCategories = (req, res, next) => {
     });
 };
 
-exports.getCategory = (req, res, next) => {
+exports.getCategory = (req, res) => {
     const categoryId = req.params.category_id;
     Category.findByPk(categoryId).then(categories => {
         res.setHeader('Content-Type', 'application/json');
@@ -20,7 +20,7 @@ exports.getCategory = (req, res, next) => {
     });
 };
 
-exports.postAddCategory = (req, res, next) => {
+exports.postAddCategory = (req, res) => {
     const categoryName = req.body.category_name;
     const categoryCode = req.body.category_code;
     const description = req.body.description
@@ -36,7 +36,7 @@ exports.postAddCategory = (req, res, next) => {
     });
 };
 
-exports.postEditCategory = (req, res, next) => {
+exports.postEditCategory = (req, res) => {
     const categoryId = req.params.category_id;
     const categoryName = req.body.category_name;
     const categoryCode = req.body.category_code;
@@ -55,7 +55,7 @@ exports.postEditCategory = (req, res, next) => {
         .catch(err => console.log(err));
 };
 
-exports.postDeleteCategory = (req, res, next) => {
+exports.postDeleteCategory = (req, res) => {
     const categoryId = req.body.category_id;
     Category.findByPk(categoryId)
         .then(category => {

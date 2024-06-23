@@ -6,9 +6,13 @@ const deviceController = require('../controllers/admin/device');
 const categoryController = require('../controllers/admin/category');
 const categoryDeviceController = require('../controllers/admin/category-device');
 
+// User
 const {userCreateValidation, userUpdateValidation} = require('../validation/user');
 const {departmentCreateValidation, departmentUpdateValidation} = require('../validation/department');
 const {departmentDepartmentCreateValidation, departmentDepartmentUpdateValidation} = require('../validation/user-department');
+
+// Device
+const {deviceCreateValidation, deviceUpdateValidation} = require('../validation/device');
 
 const router = express.Router();
 const isAuth = require("../middleware/is-auth");
@@ -33,23 +37,25 @@ router.post('/user-department/create', isAuth, departmentDepartmentCreateValidat
 router.post('/user-department/update/:department_id', isAuth, departmentDepartmentUpdateValidation, userDepartmentController.postEditUserDepartment);
 router.post('/user-department/delete', isAuth, userDepartmentController.postDeleteUserDepartment);
 
-// /admin/categories
-router.post('/categories', isAuth, categoryController.getCategories);
-router.post('/categories/create', isAuth, categoryController.postAddCategory);
-router.post('/categories/update/:category_id', isAuth, categoryController.postEditCategory);
-router.post('/categories/delete', isAuth, categoryController.postDeleteCategory);
+// /admin/category
+router.get('/category', isAuth, categoryController.getCategories);
+router.get('/category/:category_id', isAuth, categoryController.getCategory);
+router.post('/category/create', isAuth, categoryController.postAddCategory);
+router.post('/category/update/:category_id', isAuth, categoryController.postEditCategory);
+router.post('/category/delete', isAuth, categoryController.postDeleteCategory);
 
-// /admin/categories-devices
-router.post('/categories-devices', isAuth, categoryDeviceController.getCategoryDevices);
-router.post('/categories-devices/create', isAuth, categoryDeviceController.postAddCategoryDevice);
-router.post('/categories-devices/update/:category_device_id', isAuth, categoryDeviceController.postEditCategoryDevice);
-router.post('/categories-devices/delete', isAuth, categoryDeviceController.postDeleteCategoryDevice);
+// /admin/category-device
+router.get('/category-device', isAuth, categoryDeviceController.getCategoryDevices);
+router.get('/category-device/:category_device_id', isAuth, categoryDeviceController.getCategoryDevice);
+router.post('/category-device/create', isAuth, categoryDeviceController.postAddCategoryDevice);
+router.post('/category-device/update/:category_device_id', isAuth, categoryDeviceController.postEditCategoryDevice);
+router.post('/category-device/delete', isAuth, categoryDeviceController.postDeleteCategoryDevice);
 
-// /admin/devices
-router.post('/devices', isAuth, deviceController.getDevices);
-router.post('/devices/create', isAuth, deviceController.postAddDevice);
-router.post('/devices/update/:device_id', isAuth, deviceController.postEditDevice);
-router.post('/devices/delete', isAuth, deviceController.postDeleteDevice);
+// /admin/device
+router.get('/device', isAuth, deviceController.getDevices);
+router.post('/device/create', isAuth, deviceCreateValidation, deviceController.postAddDevice);
+router.post('/device/update/:device_id', isAuth, deviceUpdateValidation, deviceController.postEditDevice);
+router.post('/device/delete', isAuth, deviceController.postDeleteDevice);
 
 
 module.exports = router;

@@ -134,7 +134,6 @@ exports.postDeleteUser = (req, res) => {
             return user.destroy();
         })
         .then(() => {
-            console.log('DESTROYED PRODUCT');
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({status: 200}, null, 3)).status(200);
         })

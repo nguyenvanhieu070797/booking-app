@@ -1,4 +1,5 @@
 const CategoryDevice = require('../../models/category-device');
+const uuid = require('uuid');
 
 exports.getCategoryDevices = (req, res, next) => {
     CategoryDevice.findAll().then(categoryDevices => {
@@ -24,8 +25,9 @@ exports.postAddCategoryDevice = (req, res, next) => {
     const categoryDeviceCode = req.body.category_device_code;
     const description = req.body.description
     CategoryDevice.create({
-        category_name: categoryDeviceName,
-        category_code: categoryDeviceCode,
+        category_device_id: uuid.v4(),
+        category_device_name: categoryDeviceName,
+        category_device_code: categoryDeviceCode,
         description: description
     }).then((category ) => {
         res.setHeader('Content-Type', 'application/json');

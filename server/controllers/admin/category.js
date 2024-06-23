@@ -1,4 +1,5 @@
 const Category = require('../../models/category');
+const uuid = require('uuid');
 
 exports.getCategories = (req, res) => {
     Category.findAll().then(categories => {
@@ -25,8 +26,9 @@ exports.postAddCategory = (req, res) => {
     const categoryCode = req.body.category_code;
     const description = req.body.description
     Category.create({
+        category_id: uuid.v4(),
         category_name: categoryName,
-        password: categoryCode,
+        category_code: categoryCode,
         description: description
     }).then((category ) => {
         res.setHeader('Content-Type', 'application/json');
@@ -61,10 +63,9 @@ exports.postDeleteCategory = (req, res) => {
         .then(category => {
             return category.destroy();
         })
-        .then(result => {
-            console.log('DESTROYED CATEGORY');
+        .then(() => {
             res.setHeader('Content-Type', 'application/json');
-            res.end().status(200);
+            res.end(JSON.stringify({status: 200}, null, 3)).status(200);
         })
         .catch(err => console.log(err));
 };

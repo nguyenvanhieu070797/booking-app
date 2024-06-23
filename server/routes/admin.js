@@ -5,6 +5,7 @@ const userDepartmentController = require('../controllers/admin/user-department')
 const deviceController = require('../controllers/admin/device');
 const categoryController = require('../controllers/admin/category');
 const categoryDeviceController = require('../controllers/admin/category-device');
+const deviceImportController = require('../controllers/admin/device-import');
 
 // User
 const {userCreateValidation, userUpdateValidation} = require('../validation/user');
@@ -57,5 +58,16 @@ router.post('/device/create', isAuth, deviceCreateValidation, deviceController.p
 router.post('/device/update/:device_id', isAuth, deviceUpdateValidation, deviceController.postEditDevice);
 router.post('/device/delete', isAuth, deviceController.postDeleteDevice);
 
+// /admin/device-import
+router.get('/device-import', isAuth, deviceImportController.get);
+router.post('/device-import/create', isAuth, deviceImportController.postAddDevice);
+router.post('/device-import/update/:device_id', isAuth, deviceImportController.postEditDevice);
+router.post('/device-import/delete', isAuth, deviceImportController.postDeleteDevice);
+
+// /admin/device-count
+router.get('/device-count', isAuth, deviceController.getDevices);
+router.post('/device-count/create', isAuth, deviceCreateValidation, deviceController.postAddDevice);
+router.post('/device-count/update/:device_id', isAuth, deviceUpdateValidation, deviceController.postEditDevice);
+router.post('/device-count/delete', isAuth, deviceController.postDeleteDevice);
 
 module.exports = router;

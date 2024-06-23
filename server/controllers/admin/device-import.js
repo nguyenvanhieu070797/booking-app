@@ -1,51 +1,51 @@
-const Category = require('../../models/category');
+const DeviceImport = require('../../models/device-import');
 
-exports.getCategories = (req, res, next) => {
-    Category.findAll().then(categories => {
+exports.getDeviceImport = (req, res, next) => {
+    DeviceImport.findAll().then(deviceImports => {
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({data: categories}, null, 3)).status(200);
+        res.end(JSON.stringify({data: deviceImports}, null, 3)).status(200);
     }).catch(err => {
         console.log({err});
     });
 };
 
 exports.getCategory = (req, res, next) => {
-    const categoryId = req.params.category_id;
-    Category.findByPk(categoryId).then(categories => {
+    const deviceImportId = req.params.device_import_id;
+    DeviceImport.findByPk(deviceImportId).then(deviceImports => {
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({data: categories}, null, 3)).status(200);
+        res.end(JSON.stringify({data: deviceImports}, null, 3)).status(200);
     }).catch(err => {
         console.log({err});
     });
 };
 
 exports.postAddCategory = (req, res, next) => {
-    const categoryName = req.body.category_name;
-    const categoryCode = req.body.category_code;
+    const deviceImportName = req.body.device_import_name;
+    const deviceImportCode = req.body.device_import_code;
     const description = req.body.description
-    Category.create({
-        category_name: categoryName,
-        password: categoryCode,
+    DeviceImport.create({
+        deviceImport_name: deviceImportName,
+        password: deviceImportCode,
         description: description
-    }).then((category ) => {
+    }).then((deviceImport ) => {
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({data: category}, null, 3)).status(200);
+        res.end(JSON.stringify({data: deviceImport}, null, 3)).status(200);
     }).catch(err => {
         console.log(err);
     });
 };
 
 exports.postEditCategory = (req, res, next) => {
-    const categoryId = req.params.category_id;
-    const categoryName = req.body.category_name;
-    const categoryCode = req.body.category_code;
+    const deviceImportId = req.params.device_import_id;
+    const deviceImportName = req.body.device_import_name;
+    const deviceImportCode = req.body.device_import_code;
     const description = req.body.description
-    Category.findByPk(categoryId)
-        .then(category => {
-            category.category_name = categoryName;
-            category.category_code = categoryCode;
-            category.description = description;
-            return category.save();
+    DeviceImport.findByPk(deviceImportId)
+        .then(deviceImport => {
+            deviceImport.device_import_name = deviceImportName;
+            deviceImport.device_import_code = deviceImportCode;
+            deviceImport.description = description;
+            return deviceImport.save();
         })
         .then(result => {
             res.setHeader('Content-Type', 'application/json');
@@ -55,10 +55,10 @@ exports.postEditCategory = (req, res, next) => {
 };
 
 exports.postDeleteCategory = (req, res, next) => {
-    const categoryId = req.body.category_id;
-    Category.findByPk(categoryId)
-        .then(category => {
-            return category.destroy();
+    const deviceImportId = req.body.device_import_id;
+    DeviceImport.findByPk(deviceImportId)
+        .then(deviceImport => {
+            return deviceImport.destroy();
         })
         .then(result => {
             console.log('DESTROYED CATEGORY');

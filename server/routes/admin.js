@@ -14,6 +14,7 @@ const {departmentDepartmentCreateValidation, departmentDepartmentUpdateValidatio
 
 // Device
 const {deviceCreateValidation, deviceUpdateValidation} = require('../validation/device');
+const {deviceImportCreateValidation, deviceImportUpdateValidation} = require('../validation/device-import');
 
 const router = express.Router();
 const isAuth = require("../middleware/is-auth");
@@ -59,10 +60,11 @@ router.post('/device/update/:device_id', isAuth, deviceUpdateValidation, deviceC
 router.post('/device/delete', isAuth, deviceController.postDeleteDevice);
 
 // /admin/device-import
-router.get('/device-import', isAuth, deviceImportController.get);
-router.post('/device-import/create', isAuth, deviceImportController.postAddDevice);
-router.post('/device-import/update/:device_id', isAuth, deviceImportController.postEditDevice);
-router.post('/device-import/delete', isAuth, deviceImportController.postDeleteDevice);
+router.get('/device-import', isAuth, deviceImportController.getDeviceImports);
+router.get('/device-import/:device_import_id', isAuth, deviceImportController.getDeviceImport);
+router.post('/device-import/create', isAuth, deviceImportCreateValidation, deviceImportController.postAddDeviceImport);
+router.post('/device-import/update/:device_import_id', isAuth, deviceImportUpdateValidation, deviceImportController.postEditDeviceImport);
+router.post('/device-import/delete', isAuth, deviceImportController.postDeleteDeviceImport);
 
 // /admin/device-count
 router.get('/device-count', isAuth, deviceController.getDevices);

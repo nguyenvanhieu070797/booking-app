@@ -1,6 +1,6 @@
 const DeviceImport = require('../../models/device-import');
 
-exports.getDeviceImport = (req, res, next) => {
+exports.getDeviceImports = (req, res, next) => {
     DeviceImport.findAll().then(deviceImports => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({data: deviceImports}, null, 3)).status(200);
@@ -9,7 +9,7 @@ exports.getDeviceImport = (req, res, next) => {
     });
 };
 
-exports.getCategory = (req, res, next) => {
+exports.getDeviceImport = (req, res, next) => {
     const deviceImportId = req.params.device_import_id;
     DeviceImport.findByPk(deviceImportId).then(deviceImports => {
         res.setHeader('Content-Type', 'application/json');
@@ -19,7 +19,7 @@ exports.getCategory = (req, res, next) => {
     });
 };
 
-exports.postAddCategory = (req, res, next) => {
+exports.postAddDeviceImport = (req, res, next) => {
     const deviceImportName = req.body.device_import_name;
     const deviceImportCode = req.body.device_import_code;
     const description = req.body.description
@@ -35,7 +35,7 @@ exports.postAddCategory = (req, res, next) => {
     });
 };
 
-exports.postEditCategory = (req, res, next) => {
+exports.postEditDeviceImport = (req, res, next) => {
     const deviceImportId = req.params.device_import_id;
     const deviceImportName = req.body.device_import_name;
     const deviceImportCode = req.body.device_import_code;
@@ -54,7 +54,7 @@ exports.postEditCategory = (req, res, next) => {
         .catch(err => console.log(err));
 };
 
-exports.postDeleteCategory = (req, res, next) => {
+exports.postDeleteDeviceImport = (req, res, next) => {
     const deviceImportId = req.body.device_import_id;
     DeviceImport.findByPk(deviceImportId)
         .then(deviceImport => {

@@ -6,14 +6,15 @@ import {
     SafeAreaView
 } from "react-native";
 import Colors from "../../../../constants/colors";
-import ContainerItem from "./ContainerItem";
 import {useNavigation} from "@react-navigation/native";
+import UsersContainerItem from "./ContainerItem";
 
 function ListItem({data}) {
     const navigation = useNavigation();
     function _onPress(item) {
         navigation.navigate("MembersDetailScreen", {data: item});
     }
+    console.log("ListItem");
     return (
         <SafeAreaView style={styles.rootContainer}>
             <FlatList
@@ -24,7 +25,7 @@ function ListItem({data}) {
                 data={data}
                 renderItem={({item, index}) => {
                     const isMod = index % 2 === 0;
-                    return <ContainerItem
+                    return <UsersContainerItem
                         item={item}
                         key={Math.random()}
                         style={isMod ? styles._DevicesContainer : styles.__DevicesContainer}

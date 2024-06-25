@@ -5,22 +5,37 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../../../constants/colors";
+import {API_URL} from "@env"
+import {useSelector} from 'react-redux'
 
 function ContentItem({item}) {
-    const uriImage = `http://192.168.20.147:3000/${item.image}`;
+    const uriImage = `${API_URL}/${item.image}`;
+    const token = useSelector((state) => {
+        return state?.auth?.token || ""
+    });
     return (
         <View style={styles.rootContainer}>
-            {
-                item.image ?  <Image
-                    source={{uri: uriImage}}
-                    style={styles.imageDevice}
-                /> :  <Image
-                    source={
-                        require("../../../../assets/icon.png")
-                    }
-                    style={styles.imageDevice}
-                />
-            }
+            {/*{*/}
+            {/*    item.image && token ?  <Image*/}
+            {/*        source={{*/}
+            {/*            method: 'GET',*/}
+            {/*            uri: uriImage,*/}
+            {/*            headers: {Authorization: 'Bearer ' + token}*/}
+            {/*        }}*/}
+            {/*        style={styles.imageDevice}*/}
+            {/*    /> :  <Image*/}
+            {/*        source={*/}
+            {/*            require("../../../../assets/icon.png")*/}
+            {/*        }*/}
+            {/*        style={styles.imageDevice}*/}
+            {/*    />*/}
+            {/*}*/}
+            <Image
+                style={styles.imageDevice}
+                source={{
+                    uri: 'https://reactnative.dev/img/tiny_logo.png',
+                }}
+            />
             <View style={styles.container}>
                 <View style={styles.content}>
                     <View style={styles.itemContent} key={Math.random().toString()}>

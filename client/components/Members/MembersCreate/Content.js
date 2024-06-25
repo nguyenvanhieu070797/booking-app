@@ -13,6 +13,7 @@ function Content() {
             formData.append(key, data[key]);
         });
         return createUsers(formData, headers).then(({status}) => {
+            console.log({status});
             return status === 200;
         }).catch(err => {
             return false;

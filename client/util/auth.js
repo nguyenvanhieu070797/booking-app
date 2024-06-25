@@ -3,6 +3,8 @@ import {API_URL} from "@env"
 
 export async function authenticate(mode, userName, password) {
     const url = `${API_URL}/auth/login`;
+
+
     const response = await axios.post(
         url,
         {
@@ -10,6 +12,7 @@ export async function authenticate(mode, userName, password) {
             password: password,
         }
     );
+    console.log({response});
     return response?.data?.token || "";
 }
 

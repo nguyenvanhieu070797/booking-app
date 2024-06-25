@@ -46,7 +46,8 @@ function MembersList() {
     }
 
     useEffect(() => {
-        if(isFetchUsers || isFocused) {
+        console.log({isFocused, isFetchUsers});
+        if(isFetchUsers) {
             getUsers().then(result => {
                 setState(currentState => {
                     return {
@@ -77,13 +78,15 @@ function MembersList() {
         },
     ];
 
+    console.log("MemberList", {isFocused, isFetchUsers});
+
     return (
         <View style={styles.rootContainer}>
             <View style={styles.header}>
                 <Header onShowDropdownMenu={dropdownMenuHandler}/>
                 {showSidebar && <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>}
             </View>
-            <ListItem data={users}/>
+            {!isFetchUsers && <ListItem data={users}/>}
             <MenuDropdown data={dropdownMenu} show={showDropdown} onPress={onDropdownMenuHandler}/>
         </View>
     )

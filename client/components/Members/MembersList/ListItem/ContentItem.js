@@ -13,29 +13,23 @@ function ContentItem({item}) {
     const token = useSelector((state) => {
         return state?.auth?.token || ""
     });
+    const accessToken = 'Bearer ' + token;
     return (
         <View style={styles.rootContainer}>
-            {/*{*/}
-            {/*    item.image && token ?  <Image*/}
-            {/*        source={{*/}
-            {/*            method: 'GET',*/}
-            {/*            uri: uriImage,*/}
-            {/*            headers: {Authorization: 'Bearer ' + token}*/}
-            {/*        }}*/}
-            {/*        style={styles.imageDevice}*/}
-            {/*    /> :  <Image*/}
-            {/*        source={*/}
-            {/*            require("../../../../assets/icon.png")*/}
-            {/*        }*/}
-            {/*        style={styles.imageDevice}*/}
-            {/*    />*/}
-            {/*}*/}
-            <Image
-                style={styles.imageDevice}
-                source={{
-                    uri: 'https://reactnative.dev/img/tiny_logo.png',
-                }}
-            />
+            {
+                item.image ? <Image
+                    source={{
+                        uri: uriImage,
+                        headers: {Authorization: accessToken}
+                    }}
+                    style={styles.imageDevice}
+                /> :  <Image
+                    source={
+                        require("../../../../assets/icon.png")
+                    }
+                    style={styles.imageDevice}
+                />
+            }
             <View style={styles.container}>
                 <View style={styles.content}>
                     <View style={styles.itemContent} key={Math.random().toString()}>

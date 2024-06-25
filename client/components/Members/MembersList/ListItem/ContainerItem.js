@@ -3,7 +3,6 @@ import Colors from "../../../../constants/colors";
 import ContentItem from "./ContentItem";
 
 function UsersContainerItem({item, onPress, style}) {
-    console.log("UsersContainerItem");
     if (item === undefined || Object.values(item).length === 0) {
         return "";
     }

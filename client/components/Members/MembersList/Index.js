@@ -46,7 +46,6 @@ function MembersList() {
     }
 
     useEffect(() => {
-        console.log({isFocused, isFetchUsers});
         if(isFetchUsers) {
             getUsers().then(result => {
                 setState(currentState => {
@@ -57,8 +56,6 @@ function MembersList() {
                         showDropdown: false,
                     };
                 });
-            }).catch((err) => {
-                console.log({err});
             })
         }
     }, [isFocused, isFetchUsers]);

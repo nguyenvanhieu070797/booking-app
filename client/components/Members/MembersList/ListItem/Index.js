@@ -14,7 +14,6 @@ function ListItem({data}) {
     function _onPress(item) {
         navigation.navigate("MembersDetailScreen", {data: item});
     }
-    console.log("ListItem");
     return (
         <SafeAreaView style={styles.rootContainer}>
             <FlatList

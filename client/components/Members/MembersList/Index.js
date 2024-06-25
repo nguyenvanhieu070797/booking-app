@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {View, StyleSheet, Alert} from "react-native";
+import {View, StyleSheet} from "react-native";
 import SidebarMenu from "./SidebarMenu";
 import Header from "./Header";
 import ListItem from "./ListItem/Index";

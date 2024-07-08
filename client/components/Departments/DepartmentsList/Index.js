@@ -38,7 +38,6 @@ function MembersList() {
 
     function onDropdownMenuHandler(data) {
         const action  = data.action || "";
-        console.log({action});
         switch (action) {
             case "addDepartment":
                 navigation.navigate("DepartmentsCreateScreen");
@@ -77,8 +76,6 @@ function MembersList() {
             action: "addDepartment"
         },
     ];
-
-    console.log({departments});
 
     return (
         <View style={styles.rootContainer}>

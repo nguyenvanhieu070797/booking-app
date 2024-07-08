@@ -48,6 +48,7 @@ function MembersList() {
     useEffect(() => {
         if(isFetchUsers) {
             getUsers().then(result => {
+                console.log({result});
                 setState(currentState => {
                     return {
                         ...currentState,
@@ -74,8 +75,6 @@ function MembersList() {
             action: "addMember"
         },
     ];
-
-    console.log("MemberList", {isFocused, isFetchUsers});
 
     return (
         <View style={styles.rootContainer}>

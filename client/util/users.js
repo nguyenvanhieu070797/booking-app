@@ -16,7 +16,10 @@ export async function getData() {
     return axios.request(config)
         .then(result => {
             return result.data;
-        }).catch(err => console.log(err));
+        }).catch(error => {
+            console.log({error});
+            return false;
+        });
 }
 
 export async function postData(mode, data, headers = {}) {

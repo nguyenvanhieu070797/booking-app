@@ -1,4 +1,4 @@
-import {Alert} from 'react-native';
+import {Alert, Linking} from 'react-native';
 import {launchImageLibraryAsync, useCameraPermissions, useMediaLibraryPermissions, PermissionStatus, MediaTypeOptions} from 'expo-image-picker';
 import PrimaryButton from "./PrimaryButton";
 
@@ -14,11 +14,13 @@ function ImageChoose({title = "take image", style = {}, onTakenImage}) {
             return permissionResponse.granted;
         }
 
-        if (cameraPermissionInformation.status === PermissionStatus.DENIED){
+        if (cameraPermissionInformation.status === PermissionStatus.DENIED) {
             Alert.alert(
-                "Insufficient Permission!",
-                "You need to grant camera permissions to use this app."
+                'Quyền bị chặn',
+                'Quyền truy cập máy ảnh đã bị chặn. Vui lòng cấp quyền trong cài đặt ứng dụng.',
+                [{ text: 'Mở Cài Đặt', onPress: () => Linking.openSettings() }]
             );
+
             return false;
         }
 
@@ -35,9 +37,11 @@ function ImageChoose({title = "take image", style = {}, onTakenImage}) {
 
         if (mediaLibraryPermissions.status === PermissionStatus.DENIED){
             Alert.alert(
-                "Insufficient Permission!",
-                "You need to grant media library permissions to use this app."
+                'Quyền bị chặn',
+                'Quyền truy cập hình ảnh đã bị chặn. Vui lòng cấp quyền trong cài đặt ứng dụng.',
+                [{ text: 'Mở Cài Đặt', onPress: () => Linking.openSettings() }]
             );
+
             return false;
         }
 

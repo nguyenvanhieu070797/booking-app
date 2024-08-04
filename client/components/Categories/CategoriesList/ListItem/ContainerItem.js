@@ -1,10 +1,8 @@
 import {StyleSheet, TouchableHighlight, View} from "react-native";
 import Colors from "../../../../constants/colors";
-import HeaderItem from "./HeaderItem";
 import ContentItem from "./ContentItem";
-import FooterItem from "./FooterItem";
 
-function DevicesContainerItem({item, onPress, style}) {
+function ContainerItem({item, onPress, style}) {
     if (item === undefined || Object.values(item).length === 0) {
         return "";
     }
@@ -18,7 +16,7 @@ function DevicesContainerItem({item, onPress, style}) {
     )
 }
 
-export default DevicesContainerItem;
+export default ContainerItem;
 
 
 const styles = StyleSheet.create({

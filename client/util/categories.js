@@ -1,6 +1,6 @@
 import axios from 'axios'
-
-const http = "http://192.168.20.147:3000";
+import {API_URL} from "@env"
+const http = API_URL;
 
 export async function getData() {
     const url = `${http}/admin/categories`;

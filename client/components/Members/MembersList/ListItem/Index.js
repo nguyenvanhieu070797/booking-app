@@ -6,8 +6,8 @@ import {
     SafeAreaView
 } from "react-native";
 import Colors from "../../../../constants/colors";
+import ContainerItem from "./ContainerItem";
 import {useNavigation} from "@react-navigation/native";
-import UsersContainerItem from "./ContainerItem";
 
 function ListItem({data}) {
     const navigation = useNavigation();
@@ -24,7 +24,7 @@ function ListItem({data}) {
                 data={data}
                 renderItem={({item, index}) => {
                     const isMod = index % 2 === 0;
-                    return <UsersContainerItem
+                    return <ContainerItem
                         item={item}
                         key={Math.random()}
                         style={isMod ? styles._DevicesContainer : styles.__DevicesContainer}

@@ -1,8 +1,10 @@
 import {StyleSheet, TouchableHighlight, View} from "react-native";
 import Colors from "../../../../constants/colors";
+import HeaderItem from "./HeaderItem";
 import ContentItem from "./ContentItem";
+import FooterItem from "./FooterItem";
 
-function UsersContainerItem({item, onPress, style}) {
+function DevicesContainerItem({item, onPress, style}) {
     if (item === undefined || Object.values(item).length === 0) {
         return "";
     }
@@ -10,13 +12,15 @@ function UsersContainerItem({item, onPress, style}) {
     return (
         <TouchableHighlight activeOpacity={0.95} key={item.key} onPress={() => onPress(item)}>
             <View style={[styles.rootContainer, style]}>
+                {/*<HeaderItem key={item.key} title={item.title} code={item.code}/>*/}
                 <ContentItem key={item.key} item={item}/>
+                {/*<FooterItem key={item.key} item={item}/>*/}
             </View>
         </TouchableHighlight>
     )
 }
 
-export default UsersContainerItem;
+export default DevicesContainerItem;
 
 
 const styles = StyleSheet.create({

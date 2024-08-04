@@ -6,10 +6,10 @@ import InputCustomLabel from "../../UI/InputCustomLabel";
 import PrimaryButton from "../../UI/PrimaryButton";
 import DangerButton from "../../UI/DangerButton";
 import TakeImageModal from "./Modal/TakeImageModal";
-import {API_URL} from "@env"
-
 
 function Form({onUpdateData, onDeleteData, data}) {
+    console.log({data});
+
     const [state, setState] = useState({
         formData: {
             user_id: data?.user_id || "",
@@ -19,7 +19,7 @@ function Form({onUpdateData, onDeleteData, data}) {
             description: data?.description || "",
         },
         modalVisible: false,
-        imageUri: data?.image ? `${API_URL}/${data.image}` : "",
+        imageUri: data?.image ? `http://192.168.20.147:3000/${data.image}` : "",
     });
     const {modalVisible, imageUri} = state;
     const {user_name: userName, password, email, description} = state.formData;

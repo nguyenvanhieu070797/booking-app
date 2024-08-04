@@ -21,7 +21,7 @@ function ContentItem({item}) {
                     <View style={styles.itemContent} key={Math.random().toString()}>
                         <View style={styles.itemTitle}>
                             <Text style={styles.textTitle}>
-                                {item?.category_name ? item.category_name.toUpperCase() : ""}
+                                {item?.department_name ? item.department_name.toUpperCase() : ""}
                             </Text>
                         </View>
                     </View>

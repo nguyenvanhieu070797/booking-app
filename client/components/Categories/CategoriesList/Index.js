@@ -78,6 +78,8 @@ function CategoriesList() {
         },
     ];
 
+    console.log({categories});
+
     return (
         <View style={styles.rootContainer}>
             <View style={styles.header}>

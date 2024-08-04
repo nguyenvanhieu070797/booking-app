@@ -1,32 +1,19 @@
 import axios from 'axios'
-import {API_URL} from "@env"
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const http = "http://192.168.20.147:3000";
 
 export async function getData() {
-    const token = await AsyncStorage.getItem("token");
-    const headers = {
-        Authorization: `Bearer ${token}`
-    }
-    let config = {
-        method: 'get',
-        maxBodyLength: Infinity,
-        url: `${API_URL}/admin/department`,
-        headers,
-    };
-    return axios.request(config)
-        .then(result => {
-            return result.data;
-        }).catch(err => console.log(err));
+    const url = `${http}/admin/department`;
+    return axios.get(url).then(result => {
+        return result.data;
+    }).catch(err => console.log(err));
 }
 
 export async function postData(mode, data, headers = {}) {
-    const token = await AsyncStorage.getItem("token");
-    headers["Authorization"] = `Bearer ${token}`;
-    const url = `${API_URL}/admin/department/${mode}`;
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url,
+        url: `${http}/admin/department/${mode}`,
         headers,
         data
     };

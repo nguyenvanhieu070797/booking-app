@@ -50,7 +50,6 @@ exports.postAddUser = (req, res) => {
         error.data = errors.array();
         res.end(JSON.stringify({
             message: error.data?.[0]?.["msg"] || "",
-            status: 302
         }, null, 3)).status(302);
     } else {
         const imageUrl = req.file.path;
@@ -62,7 +61,6 @@ exports.postAddUser = (req, res) => {
         bcrypt
             .hash(password, parseInt(process.env?.BCRYPT_LENGTH || 12))
             .then(hashedPw => {
-
                 User.create({
                     user_id: uuid.v4(),
                     user_name: username,
@@ -74,7 +72,6 @@ exports.postAddUser = (req, res) => {
                 }).then((user) => {
                     res.end(JSON.stringify({
                         data: user,
-                        status: 200,
                     }, null, 3)).status(200);
                 }).catch(err => {
                     console.log(err);
@@ -137,6 +134,7 @@ exports.postDeleteUser = (req, res) => {
             return user.destroy();
         })
         .then(() => {
+            console.log('DESTROYED PRODUCT');
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({status: 200}, null, 3)).status(200);
         })

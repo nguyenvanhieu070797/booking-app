@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {View, StyleSheet} from "react-native";
+import {View, StyleSheet, Alert} from "react-native";
 import SidebarMenu from "./SidebarMenu";
 import Header from "./Header";
 import ListItem from "./ListItem/Index";
@@ -46,9 +46,8 @@ function MembersList() {
     }
 
     useEffect(() => {
-        if(isFetchUsers) {
+        if(isFetchUsers || isFocused) {
             getUsers().then(result => {
-                console.log({result});
                 setState(currentState => {
                     return {
                         ...currentState,
@@ -57,6 +56,8 @@ function MembersList() {
                         showDropdown: false,
                     };
                 });
+            }).catch((err) => {
+                console.log({err});
             })
         }
     }, [isFocused, isFetchUsers]);
@@ -82,7 +83,7 @@ function MembersList() {
                 <Header onShowDropdownMenu={dropdownMenuHandler}/>
                 {showSidebar && <SidebarMenu onPress={categoriesActiveHandler} idActive={idDepartment}/>}
             </View>
-            {!isFetchUsers && <ListItem data={users}/>}
+            <ListItem data={users}/>
             <MenuDropdown data={dropdownMenu} show={showDropdown} onPress={onDropdownMenuHandler}/>
         </View>
     )

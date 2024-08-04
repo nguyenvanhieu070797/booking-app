@@ -5,23 +5,14 @@ import {
 } from "react-native";
 import React from "react";
 import Colors from "../../../../constants/colors";
-import {API_URL} from "@env"
-import {useSelector} from 'react-redux'
 
 function ContentItem({item}) {
-    const uriImage = `${API_URL}/${item.image}`;
-    const token = useSelector((state) => {
-        return state?.auth?.token || ""
-    });
-    const accessToken = 'Bearer ' + token;
+    const uriImage = `http://192.168.20.147:3000/${item.image}`;
     return (
         <View style={styles.rootContainer}>
             {
-                item.image ? <Image
-                    source={{
-                        uri: uriImage,
-                        headers: {Authorization: accessToken}
-                    }}
+                item.image ?  <Image
+                    source={{uri: uriImage}}
                     style={styles.imageDevice}
                 /> :  <Image
                     source={

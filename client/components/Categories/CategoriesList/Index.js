@@ -49,7 +49,6 @@ function CategoriesList() {
     useEffect(() => {
         if(isFetch || isFocused) {
             getCategories().then(result => {
-                console.log({result});
                 setState(currentState => {
                     return {
                         ...currentState,
@@ -73,12 +72,10 @@ function CategoriesList() {
                 color: Colors.blue400,
                 size: 20,
             },
-            text: "Thêm phòng ban",
-            action: "addDepartment"
+            text: "Thêm danh mục",
+            action: "addCategories"
         },
     ];
-
-    console.log({categories});
 
     return (
         <View style={styles.rootContainer}>

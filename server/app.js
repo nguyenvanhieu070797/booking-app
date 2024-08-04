@@ -21,6 +21,10 @@ const authRoutes = require('./routes/auth');
 const ocrRoutes = require('./routes/ocr');
 const isAuth = require("./middleware/is-auth");
 
+const fs = require('fs');
+const sharp = require('sharp');
+
+
 const uuid = require('uuid');
 
 require('dotenv').config();
@@ -103,6 +107,33 @@ app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 app.use('/ocr', ocrRoutes);
 app.use('/images', isAuth, express.static(path.join(__dirname, 'images')));
+
+const imagesDirectory = path.join(__dirname, 'images');
+
+// Endpoint để lấy nhiều hình ảnh
+app.get('/image-users', async (req, res) => {
+    const files = await fs.promises.readdir(imagesDirectory + "/users/");
+
+    const imageFiles = files.filter(file => {
+        return file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.png') || file.endsWith('.gif');
+    });
+
+    const imageUrls = await Promise.all(imageFiles.map(async file => {
+        const filePath = path.join(imagesDirectory, file);
+        const resizedImagePath = path.join(imagesDirectory, 'resized', file);
+
+        // Kiểm tra nếu hình ảnh đã được nén và lưu trước đó
+        if (!fs.existsSync(resizedImagePath)) {
+            await sharp(filePath)
+                .resize(800) // Điều chỉnh kích thước hình ảnh (nếu cần)
+                .toFile(resizedImagePath);
+        }
+
+        return `http://localhost:3000/images/resized/${file}`;
+    }));
+
+    res.json(imageUrls);
+});
 
 app.use(errorController.get404);
 

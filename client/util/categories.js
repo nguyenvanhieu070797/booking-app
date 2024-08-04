@@ -1,30 +1,43 @@
 import axios from 'axios'
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {API_URL} from "@env"
-const http = API_URL;
 
 export async function getData() {
-    const url = `${http}/admin/categories`;
-    return axios.get(url).then(result => {
-        return result.data;
-    }).catch(err => console.log(err));
+    const token = await AsyncStorage.getItem("token");
+    const headers = {
+        Authorization: `Bearer ${token}`
+    }
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `${API_URL}/admin/category`,
+        headers,
+    };
+    return axios.request(config)
+        .then(result => {
+            return result.data;
+        }).catch(err => console.log(err));
 }
 
 export async function postData(mode, data, headers = {}) {
+    const url = `${API_URL}/admin/category/${mode}`;
+    const token = await AsyncStorage.getItem("token");
+    headers["Authorization"] = `Bearer ${token}`;
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: `${http}/admin/categories/${mode}`,
+        url,
         headers,
         data
     };
 
-    return axios.request(config)
-        .then((response) => {
-             return response.data;
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+    return axios.request(config).then(result => {
+        return result.data;
+    }).catch(err => console.log(err)).then((response) => {
+        return response.data;
+    }).catch((error) => {
+        console.log(error);
+    });
 }
 
 
@@ -44,3 +57,4 @@ export function updateCategories(data) {
 export function deleteCategories(data) {
     return postData("delete", data);
 }
+

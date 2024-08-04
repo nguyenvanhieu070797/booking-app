@@ -1,15 +1,30 @@
 import axios from 'axios'
 import {API_URL} from "@env"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function getData() {
-    const url = `${API_URL}/admin/user`;
-    return axios.get(url).then(result => {
-        return result.data;
-    }).catch(err => console.log(err));
+    const token = await AsyncStorage.getItem("token");
+    const headers = {
+        Authorization: `Bearer ${token}`
+    }
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `${API_URL}/admin/user`,
+        headers,
+    };
+    return axios.request(config)
+        .then(result => {
+            return result.data;
+        }).catch(error => {
+            console.log({error});
+            return false;
+        });
 }
 
 export async function postData(mode, data, headers = {}) {
-    console.log({uri: `${API_URL}/admin/user/${mode}`});
+    const token = await AsyncStorage.getItem("token");
+    headers["Authorization"] = `Bearer ${token}`;
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
@@ -20,9 +35,10 @@ export async function postData(mode, data, headers = {}) {
 
     return axios.request(config)
         .then((response) => {
-             return response.data;
+            return response.data;
         })
         .catch((error) => {
+            console.log({error});
             return false;
         });
 }
@@ -43,3 +59,4 @@ export function updateUsers(user_id, data, headers) {
 export function deleteUser(data) {
     return postData("delete", data);
 }
+

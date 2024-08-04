@@ -45,7 +45,7 @@ function Root() {
     }, []);
 
     if (isTryingLogin) {
-        return <LoadingOverlay message="Waring for you...."/>
+        return <LoadingOverlay message="Hãy chờ một giây lát...."/>
     }
 
     return <Navigation/>;
@@ -72,7 +72,7 @@ export default function App() {
     }, [fontsLoaded]);
 
     if (!fontsLoaded) {
-        return <LoadingOverlay message="Loading..."/>;
+        return <LoadingOverlay message="Đang tải..."/>;
     }
 
     return (

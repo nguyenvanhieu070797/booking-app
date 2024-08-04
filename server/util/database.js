@@ -1,17 +1,14 @@
 const Sequelize = require('sequelize');
-
-const host      = process?.env?.DB_HOST     || 'localhost'
-const database  = process?.env?.DB_NAME     || 'internal-device'
-const user      = process?.env?.DB_USER     || 'postgres'
-const password  = process?.env?.DB_PASS     || ''
-const dialect   = process?.env?.DB_DIALECT  || 'postgres'
+const config = require('./config.js');
 
 const sequelize = new Sequelize(
-    database,
-    user,
-    password, {
-        dialect,
-        host,
+    config.developer.database,
+    config.developer.username,
+    config.developer.password,
+    {
+        host: config.developer.host,
+        port: config.developer.port,
+        dialect: config.developer.dialect,
         define: {
             createdAt: false,  // If don't want createdAt
             updatedAt: false,  // If don't want updatedAt

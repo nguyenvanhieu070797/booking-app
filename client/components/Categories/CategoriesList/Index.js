@@ -40,7 +40,7 @@ function CategoriesList() {
     function onDropdownMenuHandler(data) {
         const action  = data.action || "";
         switch (action) {
-            case "addDepartment":
+            case "addCategory":
                 navigation.navigate("CategoriesCreateScreen");
                 break;
         }
@@ -73,7 +73,7 @@ function CategoriesList() {
                 size: 20,
             },
             text: "Thêm danh mục",
-            action: "addCategories"
+            action: "addCategory"
         },
     ];
 

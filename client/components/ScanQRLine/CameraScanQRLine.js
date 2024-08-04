@@ -1,14 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
-    View,
-    Button,
     StyleSheet,
     Text,
     Image,
     SafeAreaView,
+    ScrollView,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import {uploadOCR} from "../../util/ocr";
+import PrimaryButton from "../UI/PrimaryButton";
+import Card from "../UI/Card";
 
 export default function CameraScanQRLine() {
     const [image, setImage] = useState(null);
@@ -38,7 +40,6 @@ export default function CameraScanQRLine() {
             allowsMultipleSelection: false,
         });
         if (!result.canceled) {
-
             // Perform OCR on the captured image
             // Set the captured image in state
             performOCR(result.assets[0]);
@@ -47,65 +48,64 @@ export default function CameraScanQRLine() {
     };
 
     const performOCR = (file) => {
-        // myHeaders.append(
-        //     "apikey",
-        //
-        //     // ADDD YOUR API KEY HERE
-        //     "FEmvQr5uj99ZUvk3essuYb6P5lLLBS20"
-        // );
-        let myHeaders = new Headers();
-        myHeaders.append(
-            "Content-Type",
-            "multipart/form-data"
-        );
+        const fileName = file.uri.split('/').pop();
+        const headers =  {  'Content-Type': 'multipart/form-data', };
+        let formData = new FormData();
+        formData.append("image", {
+            uri: file.uri,
+            type: file.mimeType,
+            name: fileName,
+        })
 
-        // let raw = file;
-        let requestOptions = {
-            method: "get",
-            headers: myHeaders,
-            // body: raw,
-        };
-
-        // Send a POST request to the OCR API
-        fetch(
-            "http://192.168.20.147:3005/admin/img-upload",
-            requestOptions
-        )
-            .then((response) => response.json())
-            .then((result) => {
-                setExtractedText(result["data"]);
-            })
-            .catch((error) => console.log("error", error));
+        return uploadOCR(formData, headers).then((response) => {
+            const text = response?.data ? response.data.join("\n") : "";
+            setExtractedText(text);
+        }).catch(err => {
+            return false;
+        })
     };
 
     return (
-        <SafeAreaView style={styles.container}>
-            <Button
-                title="Pick an image from gallery"
-                onPress={pickImageGallery}
-            />
-            <Button
-                title="Pick an image from camera"
-                onPress={pickImageCamera}
-            />
-            {image && (
-                <Image
-                    source={{ uri: image }}
-                    style={{
-                        width: 400,
-                        height: 300,
-                        objectFit: "contain",
-                    }}
-                />
-            )}
-            <View>
-                <Text style={styles.text1}>
-                    Extracted text:
-                </Text>
-                <Text style={styles.text1}>
-                    {extractedText}
-                </Text>
-            </View>
+        <SafeAreaView>
+            <ScrollView>
+                <Card
+                    style={styles.card}
+                >
+                    <PrimaryButton
+                        style={styles.buttonPrimary}
+                        onPress={pickImageGallery}
+                    >
+                        Chọn hình ảnh từ thư viện ảnh
+                    </PrimaryButton>
+                    <PrimaryButton
+                        style={styles.buttonPrimary}
+                        onPress={pickImageCamera}
+                    >
+                        Chọn hình ảnh từ camera
+                    </PrimaryButton>
+                    {image && (
+                        <Image
+                            source={{ uri: image }}
+                            style={{
+                                marginTop: 10,
+                                width: 400,
+                                height: 300,
+                                objectFit: "contain",
+                            }}
+                        />
+                    )}
+                </Card>
+
+                <Card>
+                    <Text style={styles.text1}>
+                        Extracted text:
+                    </Text>
+                    <Text style={styles.text1}>
+                        {extractedText}
+                    </Text>
+                </Card>
+            </ScrollView>
+
             <StatusBar style="auto" />
         </SafeAreaView>
     );
@@ -140,4 +140,23 @@ const styles = StyleSheet.create({
         color: "black",
         fontWeight: "bold",
     },
+    // Button Submit
+    buttonPrimary: {
+        container: {
+            marginTop: 10,
+            marginHorizontal: 12,
+            borderRadius: 5,
+            justifyContent: "center",
+        },
+        text: {
+            fontFamily: 'font-bold',
+        },
+        pressed: {
+            padding: 10,
+            elevation: 2,
+        }
+    },
+    card: {
+        width: "100%"
+    }
 });
